@@ -1,0 +1,24 @@
+{
+  "name": "code.gavinengel.com",
+  "version": "1.0.0",
+  "description": "gavinengel.github.io ====================",
+  "main": "index.js",
+  "dependencies": {
+    "xml2js": "^0.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gavinengel/gavinengel.github.io.git"
+  },
+  "keywords": [],
+  "author": "Gavin Engel <gavin@engel.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gavinengel/gavinengel.github.io/issues"
+  },
+  "homepage": "https://github.com/gavinengel/gavinengel.github.io"
+}

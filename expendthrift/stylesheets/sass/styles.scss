@@ -1,0 +1,275 @@
+$mobile-inflection: 600px;
+$largest-width: 1000px;
+
+body {
+  padding-left: 0;
+  padding-right: 0;
+  .container {
+    width: auto;
+  }
+  .navbar {
+    height: 60px;
+    overflow-y: hidden;
+    .navbar-inner {
+      background: rgba(255, 255, 255, 0.96078);
+      border: none;
+      height: 60px;
+      padding-left: 20px;
+      padding-right: 20px;
+      .brand {
+        @media (max-width: $mobile-inflection) {
+          display: none;
+        }
+        margin: 0px 0px 0px -15px;
+        text-shadow: none;
+        font-family: "oswald";
+        font-weight: bold;
+        font-size: 18px;
+        color: #333333;
+        line-height: 40px;
+        min-width: 125px;
+        padding-right: 5px;
+        .icon {
+          font-size: 21px;
+          height: 41px;
+          width: 44px;
+        }
+        .icon::before {
+          vertical-align: text-top;
+        }
+      }
+      .nav { 
+        background: rgba(255, 255, 255, 0.96078);
+        @media (max-width: $mobile-inflection) {
+          width: 100%;
+        }
+        li a { 
+          line-height: 40px; 
+          padding-right: 7px;
+          white-space: nowrap;
+          overflow: hidden;
+          @media (max-width: $mobile-inflection) {
+            //min-width: 100px;
+          }
+        }
+        #signout { display: none;}
+      }
+      .image {
+        border-radius: 0px;
+        margin: 16px 0px 0px 0px;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        -o-box-shadow: none;
+        box-shadow: none;
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+  #topbanner {
+    h1 {
+      font-size: 6vw;
+      @media (min-width: $largest-width) {
+        font-size: 72px ;
+      }
+    }
+    p {
+      font-weight: bold;
+      font-size: 3vw;
+      color: hotpink;
+      @media (min-width: $largest-width) {
+        font-size: 23px ;
+      }
+    }
+  }
+  #benefits {
+    span {
+      @media (max-width: 520px) {
+        width: auto;
+      }
+    }
+  }
+  #signin {
+    .row {
+      width: 75%;
+      margin: auto;
+      .well {
+        margin: auto;
+        max-width: 350px;
+        min-width: 120px;
+        width: auto;
+        float: none;
+        input {
+          width: 100%;
+          max-width: 336px;
+        }
+   
+      }
+    }
+  }
+  #expense-app {
+    display: none;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 90%;
+    [class^="icon-"], [class*=" icon-"] {
+      vertical-align: super;
+    }
+    #expenses {
+      width: 100%;
+      #example_wrapper {
+        width: 100%;
+        > .span6 {
+          width: 173px;
+        }
+        .span6:nth-child(2) {
+          width: 34%;
+          float: right;
+          label {
+            input {
+              width: 100%;
+              float: right;
+            }
+          }
+        }
+        #example {
+          width: 100%;
+          @media (max-width: $mobile-inflection) {
+            font-size:13px;
+          }
+        }
+        .dataTables_paginate {
+          a {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    #expense-entry {
+      min-height: 240px;
+      width: 60%;
+      min-width: 350px;
+      border: 2px solid silver;
+
+      .liquid {
+        float: left;
+        margin: 5px;
+        width: 47%;
+        div {
+          width: 100%;
+        }
+        input {
+          width: 75%;
+        }
+      }
+
+    }
+  }
+  .container-fluid.container-fluid-1 {
+    background: black url(../images/source.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    height: 250px;
+    width: 100%;
+  }
+
+  .container-fluid-1 {
+    .container {
+      margin-top: 70px;
+      margin-bottom: 170px;
+      .row-fluid .span12 {
+        .heading {
+          font-size: 58px;
+          color: #64a3d8;
+          line-height: 64px;
+        }
+        p {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+
+  .container.container-1 {
+    margin-top: 60px;
+  }
+
+  .container-1 .row-fluid .span4 {
+    .heading {
+      font-size: 29px;
+      text-align: center;
+      color: #454545;
+      font-weight: normal;
+    }
+    p {
+      font-weight: 300;
+      font-size: 16px;
+      text-align: center;
+      line-height: 25px;
+    }
+  }
+
+  .container.container-2 {
+    padding: 60px 0px 60px 0px;
+  }
+
+  .container-2 .row-fluid .span12 p {
+    font-weight: 300;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .container-fluid {
+    width: 100%;
+    &.container-fluid-2 {
+      background: #333333;
+      padding: 30px 20px 30px 20px;
+    }
+  }
+
+  .container-fluid-2 {
+    .container {
+      width: auto;
+      .row-fluid .span12 {
+        .pull-left p {
+          font-weight: 300;
+          color: #ffffff;
+          line-height: 36px;
+        }
+        .nav {
+          margin: 0px;
+          li a {
+            text-align: center;
+            color: #cccccc;
+          }
+        }
+      }
+    }
+  }
+  #toast-container {
+    > .toast {
+        background-image: none !important;
+    }
+    > .toast:before {
+        position: fixed;
+        font-family: FontAwesome;
+        font-size: 24px;
+        line-height: 18px;
+        float: left;
+        color: #FFF;
+        padding-right: 0.5em;
+        margin: auto 0.5em auto -1.5em;
+    }        
+    > .toast-warning:before {
+        content: "\f06a";
+    }
+    > .toast-error:before {
+        content: "\f071";
+    }
+    > .toast-info:before {
+        content: "\f05a";
+    }
+    > .toast-success:before {
+        content: "\f164";
+    }
+  }
+}

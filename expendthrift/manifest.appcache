@@ -1,0 +1,61 @@
+CACHE MANIFEST
+### css
+http://gavinengel.github.io/expendthrift/stylesheets/bootstrap.css
+http://gavinengel.github.io/expendthrift/stylesheets/bootstrap-responsive.css
+http://gavinengel.github.io/expendthrift/stylesheets/common.css
+http://gavinengel.github.io/expendthrift/stylesheets/fontawesome.css
+http://gavinengel.github.io/expendthrift/stylesheets/datepicker.css
+http://gavinengel.github.io/expendthrift/stylesheets/styles.css
+http://gavinengel.github.io/expendthrift/stylesheets/DT_bootstrap.css
+http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css
+http://gavinengel.github.io/expendthrift/stylesheets/datepicker.css
+http://jdewit.github.io/bootstrap-timepicker/css/bootstrap-timepicker.min.css
+http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css
+http://gavinengel.github.io/expendthrift/stylesheets/datepicker.css
+http://gavinengel.github.io/expendthrift/stylesheets/datepicker.css
+https://fonts.googleapis.com/css?family=Limelight|Flamenco|Federo|Yesteryear|Josefin Sans|Spinnaker|Sansita One|Handlee|Droid Sans|Oswald:400,300,700
+http://gavinengel.github.io/expendthrift/stylesheets/offline-theme-chrome.css
+
+# js
+http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js
+http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js
+http://gavinengel.github.io/expendthrift/scripts/TableTools/js/dataTables.tableTools.js
+http://datatables.github.io/Plugins/integration/bootstrap/2/dataTables.bootstrap.js
+http://gavinengel.github.io/expendthrift/scripts/bootstrap-datepicker.js
+http://jdewit.github.io/bootstrap-timepicker/js/bootstrap-timepicker.js
+http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js
+http://gavinengel.github.io/expendthrift/scripts/jqapp.js
+http://gavinengel.github.io/expendthrift/scripts/offline.min.js
+#js-map
+http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.map
+http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js.map
+# images
+http://gavinengel.github.io/expendthrift/images/source.jpg
+http://gavinengel.github.io/expendthrift/stylesheets/images/sort_both.png
+http://gavinengel.github.io/expendthrift/stylesheets/images/sort_asc.png
+http://gavinengel.github.io/expendthrift/stylesheets/images/sort_desc.png
+# fonts
+http://fonts.googleapis.com/css?family=Limelight|Flamenco|Federo|Yesteryear|Josefin%20Sans|Spinnaker|Sansita%20One|Handlee|Droid%20Sans|Oswald:400,300,700
+https://fonts.googleapis.com/css?family=Limelight|Flamenco|Federo|Yesteryear|Josefin%20Sans|Spinnaker|Sansita%20One|Handlee|Droid%20Sans|Oswald:400,300,700
+http://gavinengel.github.io/expendthrift/fonts/fontawesome-webfont.woff
+http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/font/fontawesome-webfont.woff?v=3.2.1
+http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/font/fontawesome-webfont.ttf?v=3.2.1
+http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/font/fontawesome-webfont.svg
+http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1
+http://gavinengel.github.io/expendthrift/fonts/fontawesome-webfont.svg
+# swf
+http://gavinengel.github.io/expendthrift/scripts/TableTools/swf/copy_csv_xls_pdf.swf
+
+
+### offline.html will be displayed if the user is offline
+FALLBACK:
+
+
+### All other resources (e.g. sites or ajax) require the user to be online. 
+NETWORK:
+*
+
+
+
+### Additional resources to cache
+CACHE:

@@ -1,0 +1,347 @@
+{
+    "_": {
+        "date": "2015-04-08-1114"
+    },
+    "header": {
+        "title": "Gavin Engel",
+        "subtitle": "Web Developer & Server Administrator (LAMP, Node.js)",
+        "contact": [
+            { "type": "cv", "value": "http://cv.gavinengel.com" },
+            { "type": "email", "value": "gavin@engel.com" },
+            { "type": "phone", "value": "(858) 227-4593" },
+            { "type": "www", "value": "https://www.gavinengel.com" },
+            { "type": "twitter", "value": "@gavinengel" },
+            { "type": "git", "value": "https://github.com/gavinengel" },
+            { "type": "npm", "value": "https://www.npmjs.com/~gavinengel" },
+            { "type": "linkedin", "value": "https://linkedin.com/in/gavinengel" },
+            { "type": "home", "value": "Dover, NH" },
+            { "type": "stack", "value": "http://stackoverflow.com/users/1284857/gavin" }
+        ]
+    },
+    "sections": {
+        "summary": {
+            "title": "Summary",
+            "list": [
+                "9 years professional Internet development experience.",
+                "6 years of experience managing production LAMP servers.",
+                "Over a decade of daily Linux desktop usage, esp. RedHat Fedora",
+                "Professional usage of PHP, CSS, Javascript, SQL, Drupal, WordPress, MVC frameworks.",
+                "Experience using open source tools, such as LAMP and frameworks such as ZendFramework, CodeIgniter, CodeIgniter+ZendFramework together, Kohana, Drupal, jQuery & jQueryUI.",
+                "Bachelor's Degree in Architectural Engineering Technology.",
+                "Excited by Node.js, Angular.js, Ember.js, and other new javascript projects; also about new ways to leverage javascript in mobile apps, such as Telerik Nativescript."
+            ]
+        },
+        "profexp": {
+            "title": "Professional Experience",
+            "sections": [
+                {
+                    "title": "MMIS/MediSpend",
+                    "subtitle": {
+                        "loc": "Portsmouth, NH",
+                        "dates": "Jun 2014 - Mar 2015"
+                    },
+                    "list": [
+                        "Drupal web developer; Collaborating daily with many other developers; In the past I was part of an international team with developers in New Hampshire, Pennsylvania, France, and Ukraine.  Work was corrdinated daily with Jira, Outlook (web client), Git (Github), Appear.in, and HipChat",
+                        "Appearing daily (5 days a week; 40 hours a week) at office on Pease Tradeport",
+                        "Working daily with sensitive data; consisting of names and related professional information of medical providers",
+                        "Working on a multi-client Drupal (version 6) project, for dozens of clients in medical industry; some usage of small CodeIgniter project",
+                        "Pushing code changes via Git Enterprise & Jenkins continuous integration server",
+                        "Agile Scrum project, daily standups with dedicated Scrumaster",
+                        "Daily Jira usage for all tickets",
+                        "Using at various points following IDEs: NetBeans, Komodo IDE, PHPStorm, Sublime Edit",
+                        "Daily usage of PHP Xdebug to quickly debug issues, with various IDEs",
+                        "Complete LAMP stack of my own to develop and debug safely",
+                        "Git usage via Cli as well as Github interface",
+                        "Some usage of Phantom.js (Node.js) for Browser testing of Jira issues",
+                        "Usage of newer tools for debugging/tracing, such as blackfire.io",
+                        "Developed custom Drupal (and Drush) modules; best example is one to pull data from Keboola.com API and parse CSV into Drupal content types",
+                        "Daily usage of HipChat, Appear.in, and other newer technologies to quickly communicate without bottlenecks"
+                    ]
+                },
+                {
+                    "title": "Timezone Multimedia/Youreeeka/Glockstore",
+                    "subtitle": {
+                        "loc": "San Diego, CA",
+                        "dates": "Jun 2011 - Dec 2014 (current)"
+                    },
+                    "list": [
+                        "Actively contributing to project remotely (part-time)",
+                        "Systems overview: PHP 5, Apache 2, Linux (RHEL, SUSE, Ubuntu), MySQL 5, Varnish Cache, Rackspace Cloud servers, Hardware Load balancer for web servers, Memcached for MySQL, SVN version control",
+                        "Helped to lead and implement brand new Magento store on Glockstore.com, a leader in its retail space.  Glockstore.com projected to earn $10M+ in revenues per year.",
+                        "Implemented Magento custom extension; Extension uses Zend MVC achitecture as is typical.  This custom extension allows for custom session variables to be inserted into each user’s current browser session.",
+                        "Completed re-working of Youreeeka frontend and backend.  Youreeeka uses Codeigniter and Kohana in a multi subdomain configuration.  A single MySQL database is used for storing user data and purchases.  Sessions are passed via URL, and connected to a file stored session via PHP session handlers.",
+                        "Led programming and extension integration effort to produce crspotless.com, a Magento store.  This work was duplicated in various other Magento sites, such as undertechundercover.com and stopneckpain.com.  The reuse of team knowledge on additional Magento sites has saved significant time in custom store creation.",
+                        "Migrated 220+ sites (the majority consisting of a handful of static pages) to Rackspace Cloud servers.",
+                        "(As of March 2013, working as remote contractor part-time).  This was done through Bash shell scripts, SSH/SFTP,  and simple Google Spreadsheets to maintain communication with the team on migrated/non-migrated sites.",
+                        "Lead point of contact for Rackspace Hosting calls, discussing unexpected events and new planning.",
+                        "Attended weekly status meetings to present work accomplished, and help to achieve absolute team/manager understand of all projects involved.",
+                        "Setup Apple Xserve video encoding environment in a server co-location.  The uploaded videos to Youreeeka are encoded on the fly with software called Episode (produced by Telestream).  This encoding process was accomplished with a combination of AJAX uploads, MySQL queue storage, PHP file manipulation, Unix cron scripts, and custom email notifications.",
+                        "Helped convert data from existing MySQL 4 database to MySQL 5/Magento database.  Problems included making sure Unicode characters are properly migrated.",
+                        "Website uptime testing via www.monitor.us"
+                    ]
+                },
+                {
+                    "title": "Timberland/Onward Search",
+                    "subtitle": {
+                        "loc": "Stratham, NH",
+                        "dates": "Oct 2013 - Jan 2014"
+                    },
+                    "list": [
+                        "Temporary Contract for Senior Web Developer",
+                        "Systems overview: PHP 5, Apache 2, Linux (CentOS, Ubuntu), MySQL 5, git, Rackspace Dedicated server, git version control",
+                        "Developed from scratch a micro site used by sales staff, and soon to be released to consumers for upcoming Fall 2014 products.  Site uses responsive web design (desktop, tablet, mobile) extensively",
+                        "Updated complex microsite for the 'Yellow Boot', and the general history of the Timberland corporation",
+                        "Updated Wordpress-based microsite with design changes",
+                        "Helped to flesh out mass email templates with new image and text content; emails send to over 1 million subscribers bi-weekly",
+                        "Extensive use of SASS for CSS compilation, along with Bourbon and Breakpoint related projects",
+                        "Featured javascript libraries: Modernizr.js, jQuery Mobile,  Bower, NPM, iDangerous Slider, jQuery Transit animations"
+                    ]
+                },
+                {
+                    "title": "The Atom Group",
+                    "subtitle": {
+                        "loc": "Portsmouth, NH",
+                        "dates": "July 2013 - Aug 2013"
+                    },
+                    "list": [
+                        "Short term position via contract",
+                        "Systems overview: PHP 5, Apache 2, Linux (Ubuntu), MySQL 5, Amazon EC2, Git version control",
+                        "Project consisted of developing the frontend & backend of an unreleased Drupal 7 installation.",
+                        "Used Amazon EC2, an on-site LAMP development server, a locally hosted Ubuntu VMware virtual machine, alongside git (via github) to coordinate changes with team members.",
+                        "Applied custom CSS updates to Sass CSS files, and immediately compiled via command line (Ruby gem).",
+                        "Sass CSS updates always with responsive design in mind (sizing of dom elements affected by page width) in order to make mobile, tablet, and desktop viewing optimal.",
+                        "Converted some final mockups developed in Adobe Photoshop into final HTML/CSS, using new browser extensions such as Chrome Web Developer and Perfect Pixel to save time and improve quality.",
+                        "Daily meetings with staff and manager, using a style similar to scrum project management.  Web story tracking tool used was Pivotal Tracker.",
+                        "Drupal 7 data schema from client conveted into appropriate content type fields (including taxonomy when applicable)",
+                        "Agile/Scrum based team project management.  Story tracking via PivotalTracker"
+                    ]
+                },
+                {
+                    "title": "BRIM Agency/Best Rank, Inc.",
+                    "subtitle": {
+                        "loc": "San Diego, CA",
+                        "dates": "Apr 2010 - Jun 2011"
+                    },
+                    "list": [
+                        "BRIM Agency is a marketing, website development,  and SEO optimization company.",
+                        "Systems overview: PHP 5, Apache 2, Linux (RHEL, Ubuntu, trivial FreeBSD), MySQL 5, SVN version control",
+                        "Used Drupal and Wordpress as primary platforms.  To accomplish this, I (and the CTO) created a system of template to new project automation for new Drupal & Wordpress websites.  Using Plesk, CentOS Linux running on a Rackspace dedicated server, we were able to keep the templates always up",
+                        "Multiple successful Drupal Ubercart E-commerce stores, including cellbiolabs.com, alpacacollections.com, colonialpest.com.",
+                        "Helped produce many more Wordpress sites, including sdgkc.com, usa.nidek.com, royalhawaiianmovers.com, sparkpe.org.",
+                        "Integrated Apache Solr for node search & geolocation into Drupal.  This system was running on two identical Amazon EC2 servers--one as a master and one as a tester.",
+                        "Used my own anti-spam (without a CAPTCHA) PHP library, located here: http://code.gavinengel.com/guaranteemail . This library features multi server & browser side approaches to  block spam without having to rely on a CAPTCHA (CAPTCHAs can annoy some visitors, so the goal is to not use it all all).",
+                        "Worked closely with CTO, sales staff, and project managers using Basecamp project management system."
+                    ]
+                },
+                {
+                    "title": "Timezone Multimedia/Youreeeka (defunct)/Glockstore",
+                    "subtitle": {
+                        "loc": "San Diego, CA",
+                        "dates": "Dec 2008 - Apr 2010"
+                    },
+                    "list": [
+                        "Systems overview: PHP 4 & 5, Apache 2, Linux (RHEL, SUSE, Ubuntu), MySQL 4 & 5, SVN version control",
+                        "Used CodeIgniter/Kohana for many sites.",
+                        "Fully integrated Authorize.net CIM and AIM checkouts.",
+                        "Extensive use of jQuery and also jQueryUI to make cross-browser compatible UI elements.",
+                        "Created from scratch WebsiteAdvertisingNetwork.com. WAN is an Adobe Flash 10 based video advertising service with shopping cart.",
+                        "Created from scratch ResortTradeHub engine, used on ourplatinumconcierge.com and tonopalo.net.  The RTH engine allows timesharing resorts to keep track of units, and allow owners to trade weeks--not only internally, but with connected external resorts.  Incorporated Google Maps into RTH and PFV.",
+                        "Used Google Docs, Unfuddle and Basecamp for project management.",
+                        "Produced Drupal 5 & 6 projects.",
+                        "Managed Rackspace-hosted servers (Running on RHEL and OpenSuse).",
+                        "For UI tablegrids, used TableSorter, DataTables, and jqGrid."
+                    ]
+                },
+                {
+                    "title": "Neu Solutions (Contract)",
+                    "subtitle": {
+                        "loc": "San Diego, CA",
+                        "dates": "Aug 2008 - Sep 2008"
+                    },
+                    "list": [
+                        "Temporary contract position.",
+                        "Systems overview: PHP, Apache 2, Linux (Fedora), MySQL",
+                        "Produced login portal for Aidarex.com, using CakePHP and MySQL.",
+                        "Used AJAX libraries Prototype and Scriptaculous.",
+                        "Added HTML WYSIWYG editor for easier web-based messaging (TinyMCE)."
+                    ]
+                },
+                {
+                    "title": "Rightway Gate",
+                    "subtitle": {
+                        "loc": "Carlsbad, CA",
+                        "dates": "Feb 2008 - Aug 2008"
+                    },
+                    "list": [
+                        "Rightway Gate (rwgusa.com) is domain-registration, e-commerce shopping cart, and SEO services company.",
+                        "Systems overview: PHP 5, Apache 2, Linux (Ubuntu), MySQL 5, CVS version control",
+                        "Majority of development in LAMP (Linux Apache MySQL and object-oriented PHP 5).",
+                        "Used Eclipse+PDT IDE with an SVN repository for most development.",
+                        "Created small internal webapps (such as: a mass-marketing emailer, address database frontend, and pulling XML based data via REST and converting to SQL).",
+                        "Used Zend Framework MVC for projects.",
+                        "Yahoo UI (YUI) and jQuery used on all interenal webapps.",
+                        "Extended internal sites for administering domain registration accounts.",
+                        "Produced domain search tool, used on: 101domain.com/corporate_domain_selecting_tool.php and rwgusa.net/corporate_domain_tool.php"
+                    ]
+                },
+                {
+                    "title": "AJ-USA, Inc.",
+                    "subtitle": {
+                        "loc": "San Diego, CA",
+                        "dates": "Jun 2007 - Feb 2008"
+                    },
+                    "list": [
+                        "Systems overview: PHP 4, Apache 2, Linux (Fedora, Ubuntu), MySQL 5, SVN version control",
+                        "AJ-USA is automotive-parts retailer.",
+                        "Produced ajusa.com.",
+                        "Researched and demonstrated various PHP-MVC frameworks, including Zend Framework, CakePHP, Symfony, CodeIgniter.",
+                        "Recreated existing PERL-based website with new features.",
+                        "Created reuseable custom scripts to convert vendor product databases to local database structure.",
+                        "Tutored junior script-writer."
+                    ]
+                }
+            ]
+        },
+        "concepts": {
+            "title": "Concepts",
+            "sections": [
+                {
+                    "title": "REST API",
+                    "key": "rest-api",
+                    "list": [
+                        "I've spent much of the past year working on small projects with StrongLoop's Loopback Node.js framework.  Loopback makes creating RESTful APIs, which self-documenting Swagger explorers, very easy."
+                    ]
+                },
+                {
+                    "title": "NoSQL Databases",
+                    "key": "nosql",
+                    "list": [
+                        "Whenever working (non professionally thusfar) with Node.js, Angular.js, Ember.js, as usually connect to a small MongoDB.  Additionally, I have extended into simply passing data to Parse.com, Firebase.com, Compose.io, and Modulus.io (instead of managing the NoSQL database)"
+                    ]
+                },
+                {
+                    "title": "AJAX (Asynchronous Javascript and XML)",
+                    "key": "ajax",
+                    "list": [
+                        "Custom AJAX is being use in the Glockstore SKU lookup and the (former) Youreeeka Upload page.  In Youreeeka's case, this allows producers to begin uploading their main & preview videos, while at the same time completing the rest of the upload form."
+                    ]
+                },
+                {
+                    "title": "MySQL Optimization",
+                    "key": "mysql",
+                    "list": [
+                        "On a number of sites (for example crspotless.com, tonopalo.net, ourplatinumconcierge.com) I do some very basic (and very effective) MySQL optimization using MySQL Tuner and MySQL Tuning Primer Script.  In addition, I also use the built-in MySQL 'mysqlcheck' to optimize & repair tables."
+                    ]
+                },
+                {
+                    "title": "PHP Optimization",
+                    "key": "php",
+                    "list": [
+                        "Implemented APC (Alternative PHP Cache) to speed up PHP webapps.  APC used on most applications listed in my history above."
+                    ]
+                },
+                {
+                    "title": "Server Administration (Virtual Hosts, SSL certificates, FTP accounts, etc)",
+                    "key": "server-admin",
+                    "list": [
+                        "I've multiple cloud servers without any third-party administration tools, and also using Virtualmin/Webmin (common), Plesk, and Ajenti (rarely)."
+                    ]
+                },
+                {
+                    "title": "Debugging",
+                    "key": "debug",
+                    "list": [
+                        "Breakpoint debugging:  Debugging with breakpoints is a ciritical way to check each line for issues, while viewing the current variable values during program execution.  For PHP I've used Xdebug along with Komodo IDE, Netbeans, and PHPStorm.  I'm currently using Komodo IDE.",
+                        "Profiling:  Profiling lets us see a visual representation of the function/class program flow.  I've found Blackfire.io to be a good PHP profiler.",
+                        "Extended tracing:  Tracing allows us to view a line-by-line account of function calls, and the time each began.  This is useful when trying to figure out why things are slow (who is the culprit).  I prefer Xdebug for tracing when needed, instead of Kint which requires modified source. For viewing the .xt files in /tmp, I use: https://github.com/tungbi/xdebug-trace-explorer"
+                    ]
+                }
+            ]
+        },
+        "qa": {
+            "title": "QA",
+            "sections": [
+                {
+                    "q": "Describe your experience working with JavaScript.",
+                    "a": [
+                        ""
+                    ]
+                },
+                {
+                    "q": "Describe your experience with HTML5/CSS3.",
+                    "a": [
+                        ""
+                    ]
+                },
+                {
+                    "q": "Do you have experience with any of the newer JS frameworks?",
+                    "a": [
+                        ""
+                    ]
+                },
+                {
+                    "q": "Do you have any database/server side experience?",
+                    "a": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        "prevwork": {
+            "title": "Previous Work",
+            "list": [
+                "www.glockstore.com/",
+                "www.timberland.com/yellow-boot/",
+                "www.starrosesandplants.com/",
+                "www.utopiamanagement.com/",
+                "www.cellbiolabs.com/",
+                "usa.nidek.com/",
+                "www.sparkpe.org/",
+                "www.royalhawaiianmovers.com/",
+                "www.ajusa.com/",
+                "www.sdgkc.com/",
+                "www.colonialpest.com/",
+                "www.resorttradehub.com/",
+                "www.ourplatinumconcierge.com/",
+                "www.websiteadvertisingnetwork.com/",
+                "www.alpacacollections.com/",
+                "www.101domain.com/corporate_domain_selecting_tool.php",
+                "www.rwgusa.net/corporate_domain_tool.php",
+                "www.sustainableportsmouth.org"
+            ]
+        },
+        "education": {
+            "title": "Formal Education",
+            "list": [
+                {
+                    "title": "Wentworth Institute of Technology - Boston, MA",
+                    "desc": "Bachelor's of Science Degree in Architectural Engineering Technology, August 2001",
+                    "url": "http://www.wit.edu/"
+                },
+                {
+                    "title": "Wentworth Institute of Technology - Boston, MA",
+                    "desc": "Bachelor's of Science Degree in Architectural Engineering Technology, August 2001",
+                    "url": "http://www.wit.edu/"
+                }
+            ]
+        },
+        "certificates": {
+            "title": "Certificates",
+            "list": [
+                {
+                    "title": "General Administration 101 - Linux Self Assessment - Ubuntu",
+                    "desc": "General Linux Self Assess. Perform a series of tasks related to general Linux system administration tasks.",
+                    "url": "https://trueability.com/results/share/965324f3-a1ad-43f3-a915-7916046eac09#capability-general-linux-self-assess"
+                },
+                {
+                    "title": "General Administration 101 - Linux Self Assessment - Ubuntu",
+                    "desc": "General Linux Self Assess. Perform a series of tasks related to general Linux system administration tasks.",
+                    "url": "https://trueability.com/results/share/965324f3-a1ad-43f3-a915-7916046eac09#capability-general-linux-self-assess"
+                }
+            ]
+        }
+    },
+    "footer": {
+        "aside": "Thank you for your time."
+    }
+}

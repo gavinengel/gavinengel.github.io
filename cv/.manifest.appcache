@@ -1,0 +1,51 @@
+CACHE MANIFEST
+
+#version 1.0 2-25-2015
+
+CACHE:
+
+#images
+http://code.gavinengel.com/cv/image/concept-ajax.png
+http://code.gavinengel.com/cv/image/concept-debug.png
+http://code.gavinengel.com/cv/image/concept-mysql.png
+http://code.gavinengel.com/cv/image/concept-nosql.png
+http://code.gavinengel.com/cv/image/concept-php.png
+http://code.gavinengel.com/cv/image/concept-rest-api.png
+http://code.gavinengel.com/cv/image/concept-server-admin.png
+http://code.gavinengel.com/cv/image/gavin.png
+
+#internal HTML documents
+http://code.gavinengel.com/cv/
+http://code.gavinengel.com/cv/index.html
+
+#style sheets
+http://code.gavinengel.com/cv/css/animate.css
+http://code.gavinengel.com/cv/css/bootstrap.min.css
+http://code.gavinengel.com/cv/css/creative-brands.css
+http://code.gavinengel.com/cv/css/custom.css
+http://code.gavinengel.com/cv/css/custom.css.map
+http://code.gavinengel.com/cv/css/font-awesome.min.css
+http://code.gavinengel.com/cv/css/vertical-carousel.css
+http://fonts.googleapis.com/css?family=Alegreya+Sans+SC
+http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic
+http://fonts.googleapis.com/css?family=Lilita+One
+http://fonts.googleapis.com/css?family=Montserrat
+
+#style sheet images
+
+
+#javascript files
+http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js
+http://code.gavinengel.com/cv/js/tweets.js
+http://code.gavinengel.com/cv/js/bootstrap.min.js
+https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js
+http://code.gavinengel.com/cv/js/creative-brands.js
+http://code.gavinengel.com/cv/js/jquery.easy-pie-chart.js
+http://code.gavinengel.com/cv/js/modernizr.custom.js
+http://code.gavinengel.com/cv/js/waypoints.min.js
+http://code.gavinengel.com/cv/js/jquery.countTo.js
+http://code.gavinengel.com/cv/js/jqBootstrapValidation.js
+http://code.gavinengel.com/cv/js/custom.js
+
+NETWORK:
+*

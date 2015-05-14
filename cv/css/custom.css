@@ -1,0 +1,1011 @@
+html {
+  height: 100%; }
+  html body {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+    /* SCROLL UP BUTTON */
+    /*------------------------------
+      MEDIUM DEVICES
+    ------------------------------*/
+    /*------------------------------
+      SMALL DEVICES
+    ------------------------------*/
+    /*------------------------------
+      EXTRA SMALL DEVICES
+    ------------------------------*/
+    /*------------------------------
+      PHONES 600px width
+    ------------------------------*/
+    /*------------------------------
+      PHONES 548px width
+    ------------------------------*/
+    /*------------------------------
+      PHONES 480px width
+    ------------------------------*/
+    /*------------------------------
+      PHONES 320px width
+    ------------------------------*/ }
+    html body h1.page-top {
+      display: none; }
+    html body a {
+      outline: 0 none;
+      text-decoration: none; }
+      html body a:focus, html body a:hover {
+        outline: 0 none;
+        text-decoration: none; }
+    html body p {
+      margin: 0 0 20px;
+      font-size: 16px;
+      line-height: 28px; }
+    html body h2 {
+      margin: 0 0 20px;
+      color: #FFFFFF;
+      font-family: 'Montserrat';
+      font-size: 56px;
+      text-align: center; }
+    html body h3 {
+      color: #FFFFFF;
+      font-family: 'Alegreya Sans SC'; }
+    html body h4 {
+      color: #FFFFFF;
+      font-family: 'Alegreya Sans SC';
+      margin-top: 0; }
+    html body #app [target=_blank] {
+      cursor: alias; }
+    html body #app #footer {
+      background-color: #2F4254;
+      text-align: center;
+      padding: 40px 0;
+      color: #FFFFFF;
+      border-top: 8px inset #333;
+      border-top: 8px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2); }
+      @media print {
+        html body #app #footer {
+          display: none; } }
+      html body #app #footer .brands li a {
+        color: #16A085;
+        border-radius: 50px;
+        border: 0; }
+        html body #app #footer .brands li a:hover {
+          color: #FFFFFF;
+          background-color: #283848; }
+      html body #app #footer p {
+        margin: 0; }
+    html body #app #resume #resume-items {
+      float: none;
+      overflow: hidden; }
+    html body #app #summary-items {
+      text-align: start;
+      margin-left: 15px;
+      margin-right: 15px;
+      float: right; }
+    html body #app #summary, html body #app #resume, html body #app #file.default.css {
+      text-align: start; }
+      html body #app #summary .info, html body #app #resume .info, html body #app #file.default.css .info {
+        font-style: italic; }
+      html body #app #summary .row .three, html body #app #resume .row .three, html body #app #file.default.css .row .three {
+        width: 20%; }
+      html body #app #summary .row .twelve, html body #app #resume .row .twelve, html body #app #file.default.css .row .twelve {
+        width: 100%; }
+      html body #app #summary .row [class*="column"] + [class*="column"]:last-child, html body #app #resume .row [class*="column"] + [class*="column"]:last-child, html body #app #file.default.css .row [class*="column"] + [class*="column"]:last-child {
+        float: right; }
+      html body #app #summary .row .nine, html body #app #resume .row .nine, html body #app #file.default.css .row .nine {
+        width: 75%; }
+      html body #app #summary .row h1 span, html body #app #resume .row h1 span, html body #app #file.default.css .row h1 span {
+        border-bottom: 3px solid #11ABB0;
+        padding-bottom: 6px; }
+      html body #app #summary .row h2, html body #app #resume .row h2, html body #app #file.default.css .row h2 {
+        text-align: center; }
+      html body #app #summary .row h3, html body #app #resume .row h3, html body #app #file.default.css .row h3 {
+        font-weight: bold; }
+      html body #app #summary .column, html body #app #summary .columns, html body #app #resume .column, html body #app #resume .columns, html body #app #file.default.css .column, html body #app #file.default.css .columns {
+        position: relative;
+        padding: 0 20px;
+        min-height: 1px;
+        float: left; }
+        @media (max-width: 767px) {
+          html body #app #summary .column, html body #app #summary .columns, html body #app #resume .column, html body #app #resume .columns, html body #app #file.default.css .column, html body #app #file.default.css .columns {
+            width: auto !important;
+            float: none;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0 15px; } }
+      @media (max-width: 767px) {
+        html body #app #summary .header-col, html body #app #resume .header-col, html body #app #file.default.css .header-col {
+          padding-top: 0;
+          margin-bottom: 48px;
+          text-align: center; } }
+    html body #app #slideshow i {
+      color: #16A085; }
+    html body #app #slideshow .slide1 .icon-first {
+      color: #ED5A64; }
+    html body #app #about {
+      padding-top: 30px;
+      padding-bottom: 0; }
+      html body #app #about h3 {
+        border-bottom: 3px solid #FFFFFF;
+        padding-bottom: 5px;
+        max-width: 150px; }
+      html body #app #about .brands > li > a {
+        background-color: transparent;
+        color: #FFFFFF;
+        transition-duration: 0.4s; }
+        html body #app #about .brands > li > a:hover {
+          color: #34495E; }
+    html body #app #about .overlay-wrapper .brands > li > a {
+      width: 25px;
+      margin-top: 15px; }
+      html body #app #about .overlay-wrapper .brands > li > a:hover {
+        color: #1ABC9C; }
+    html body #app #skills {
+      display: none;
+      background-color: #2F4254;
+      padding: 30px 0; }
+    html body #app #skills-toggle {
+      border-radius: 5px 5px 0 0; }
+    html body #app .easyPieChart {
+      position: relative; }
+      html body #app .easyPieChart canvas {
+        position: absolute;
+        top: 0;
+        left: 0; }
+    html body #app [class*=bg-] a {
+      color: white; }
+    html body #app .bg-green-dk {
+      background-color: #16A085; }
+    html body #app .bg-green {
+      background-color: #1ABC9C; }
+    html body #app .bg-blue {
+      background-color: #34495E; }
+    html body #app .bg-blue-dk {
+      background-color: #2C3E50; }
+    html body #app .carousel-inner {
+      height: 84px; }
+      @media (max-width: 767px) {
+        html body #app .carousel-inner {
+          height: 136px; } }
+    html body #app .jumbotron .btn {
+      margin-right: 15px; }
+    html body #app .chart {
+      margin: 10px auto;
+      font-size: 14px;
+      font-weight: bold;
+      height: 100px;
+      line-height: 100px;
+      width: 100px;
+      text-align: center; }
+    html body #app .timeline {
+      border-left: 3px solid #FFFFFF;
+      margin-left: 110px;
+      padding-left: 0px; }
+    html body #app .tweets {
+      margin-top: 0;
+      background-color: #16A085;
+      border-radius: 6px;
+      padding: 7px 0;
+      color: #FFFFFF;
+      min-height: 84px;
+      margin-bottom: 10px; }
+      html body #app .tweets p {
+        padding: 8px 15px 0 0px;
+        font-family: 'Montserrat';
+        font-size: 16px; }
+      html body #app .tweets .media-body {
+        padding-left: 0;
+        height: 84px; }
+      html body #app .tweets i {
+        font-size: 68px;
+        color: #34495E;
+        padding-left: 15px; }
+    html body #app .event {
+      padding: 20px 10px 20px 18px;
+      margin-bottom: 15px; }
+      html body #app .event .event-info {
+        position: absolute;
+        left: 50px;
+        width: 100px; }
+        html body #app .event .event-info:after {
+          font-family: FontAwesome;
+          width: 36px;
+          height: 36px;
+          position: absolute;
+          right: 5px;
+          top: -7px;
+          content: "\f024";
+          text-align: center;
+          font-size: 14px;
+          border-radius: 50%;
+          background-color: #1ABC9C;
+          border: 6px solid #34495E;
+          display: inline-block;
+          padding-top: 2px; }
+        html body #app .event .event-info .date {
+          font-size: 12px;
+          font-family: 'Montserrat';
+          margin-left: 25px; }
+          html body #app .event .event-info .date div {
+            float: left;
+            padding: 8px 0 0 12px;
+            font-weight: 600; }
+    html body #app .service > h3 {
+      transition-duration: 0.5s; }
+    html body #app .service:hover > h3 {
+      color: #34495E; }
+    html body #app .service > p {
+      line-height: 22px;
+      text-align: justify; }
+    html body #app #services img {
+      max-width: 100px; }
+    html body #app #separator {
+      text-align: center;
+      padding: 50px 0; }
+      html body #app #separator i {
+        color: #ED5A64;
+        font-size: 20px;
+        margin-bottom: 10px; }
+      html body #app #separator .highlight {
+        border-bottom: 3px solid #ED5A64;
+        font-weight: 600;
+        font-size: 16px; }
+    html body #app #showcase h2 {
+      margin-bottom: 35px; }
+    html body #app #showcase h4 {
+      color: #FFFFFF;
+      margin-top: 15px; }
+    html body #app #showcase .showcase-text {
+      text-align: left; }
+      html body #app #showcase .showcase-text .media {
+        margin-bottom: 30px; }
+        html body #app #showcase .showcase-text .media p {
+          margin-bottom: 0; }
+    html body #app .showcase-icon {
+      font-size: 70px;
+      color: #34495E;
+      display: inline-block;
+      width: 80px;
+      text-align: center; }
+    html body #app .media-body {
+      padding-left: 20px; }
+    html body #app #showcase .showcase-carousel {
+      margin-top: 30px; }
+    html body #app .showcase-text .showcase-button i {
+      color: #FFFFFF; }
+    html body #app #carousel-reference {
+      position: absolute;
+      top: 28px;
+      right: 37px;
+      left: 37px;
+      bottom: 0; }
+    html body #app .carousel .carousel-control {
+      background: none;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(237, 90, 100, 0.4);
+      top: 130px;
+      padding-top: 5px;
+      display: none;
+      border-radius: 50px; }
+      html body #app .carousel .carousel-control.left {
+        left: 10px; }
+      html body #app .carousel .carousel-control.right {
+        right: 10px; }
+      html body #app .carousel .carousel-control:hover {
+        background-color: rgba(237, 90, 100, 0.8); }
+    html body #app .blockquote-reverse {
+      border-color: #2C3E50;
+      margin: 0 auto; }
+      html body #app .blockquote-reverse p {
+        font-size: 22px; }
+        html body #app .blockquote-reverse p i {
+          margin-right: 5px; }
+    html body #app blockquote footer {
+      color: #1ABC9C;
+      font-size: 18px;
+      font-style: italic; }
+    html body #app .grid {
+      padding: 20px;
+      max-width: 1300px;
+      margin: 0 auto;
+      list-style: none;
+      text-align: center; }
+      html body #app .grid li {
+        display: inline-block;
+        width: 350px;
+        margin: 0;
+        padding: 20px;
+        text-align: left;
+        position: relative; }
+      html body #app .grid figure {
+        margin: 0;
+        position: relative; }
+        html body #app .grid figure img {
+          max-width: 100%;
+          display: block;
+          position: relative; }
+      html body #app .grid figcaption {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 15px;
+        background: #2c3f52;
+        color: #ed4e6e; }
+        html body #app .grid figcaption h3 {
+          margin: 0;
+          padding: 0;
+          color: #fff; }
+        html body #app .grid figcaption span:before {
+          content: 'by '; }
+        html body #app .grid figcaption a {
+          text-align: center;
+          padding: 5px 10px;
+          border-radius: 2px;
+          display: inline-block;
+          background: #ed4e6e;
+          color: #fff; }
+    html body #app .cs-style-4 li {
+      -webkit-perspective: 1700px;
+      -moz-perspective: 1700px;
+      perspective: 1700px;
+      -webkit-perspective-origin: 0 50%;
+      -moz-perspective-origin: 0 50%;
+      perspective-origin: 0 50%; }
+    html body #app .cs-style-4 figure {
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      transform-style: preserve-3d; }
+      html body #app .cs-style-4 figure > div {
+        overflow: hidden; }
+      html body #app .cs-style-4 figure img {
+        -webkit-transition: -webkit-transform 0.4s;
+        -moz-transition: -moz-transform 0.4s;
+        transition: transform 0.4s; }
+    html body #app .no-touch .cs-style-4 figure:hover img {
+      -webkit-transform: translateX(25%);
+      -moz-transform: translateX(25%);
+      -ms-transform: translateX(25%);
+      transform: translateX(25%); }
+    html body #app .cs-style-4 figure.cs-hover img {
+      -webkit-transform: translateX(25%);
+      -moz-transform: translateX(25%);
+      -ms-transform: translateX(25%);
+      transform: translateX(25%); }
+    html body #app .cs-style-4 figcaption {
+      height: 100%;
+      width: 50%;
+      opacity: 0;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform-origin: 0 0;
+      -moz-transform-origin: 0 0;
+      transform-origin: 0 0;
+      -webkit-transform: rotateY(-90deg);
+      -moz-transform: rotateY(-90deg);
+      transform: rotateY(-90deg);
+      -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+      -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+      transition: transform 0.4s, opacity 0.1s 0.3s; }
+    html body #app .no-touch .cs-style-4 figure:hover figcaption {
+      opacity: 1;
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+      -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+      transition: transform 0.4s, opacity 0.1s; }
+    html body #app .cs-style-4 figure.cs-hover figcaption {
+      opacity: 1;
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+      -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+      transition: transform 0.4s, opacity 0.1s; }
+    html body #app .cs-style-4 figcaption a {
+      position: absolute;
+      bottom: 15px;
+      background-color: #ED5A64; }
+      html body #app .cs-style-4 figcaption a:hover {
+        color: #ED5A64;
+        background-color: #ffffff; }
+    html body #app #blog {
+      text-align: center; }
+    html body #app .blog-post {
+      background-color: #2C3E50;
+      text-align: left;
+      border-radius: 5px;
+      margin-top: 30px; }
+    html body #app .blog-body {
+      padding: 5px 10px;
+      text-align: right; }
+      html body #app .blog-body h3 {
+        text-align: left; }
+      html body #app .blog-body p {
+        text-align: left;
+        margin: 0;
+        max-height: 24px;
+        overflow: hidden; }
+      html body #app .blog-body div {
+        position: relative; }
+        html body #app .blog-body div img {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          opacity: 0.4;
+          height: 24px;
+          max-width: 33%; }
+    html body #app .blog-post .blog-info {
+      padding: 0; }
+      html body #app .blog-post .blog-info > a {
+        display: table-cell;
+        float: none;
+        width: 1%;
+        background-color: #f0f0f0;
+        text-align: center;
+        border-right: 1px solid #dddddd;
+        color: #999;
+        font-weight: bold;
+        padding: 10px 0;
+        transition: all 0.3s ease-in; }
+        html body #app .blog-post .blog-info > a:first-child {
+          border-bottom-left-radius: 5px; }
+        html body #app .blog-post .blog-info > a:last-child {
+          border-right: 0;
+          border-bottom-right-radius: 5px; }
+        html body #app .blog-post .blog-info > a:hover {
+          background-color: #ED5A64;
+          color: #ffffff;
+          font-weight: bold; }
+    html body #app #blog .line {
+      background-color: #ED5A64;
+      height: 4px;
+      margin: 50px 0 30px 0; }
+      html body #app #blog .line i {
+        position: absolute;
+        top: -23px;
+        left: 176px;
+        background-color: #2F4254;
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+        padding: 13px 0 0 0;
+        font-size: 28px; }
+    html body #app #pricing ul {
+      padding: 5px 5px;
+      margin: 0; }
+      html body #app #pricing ul li {
+        color: #2C3E50;
+        padding: 5px 0;
+        font-size: 16px; }
+        html body #app #pricing ul li strong, html body #app #pricing ul li i {
+          margin-right: 10px; }
+    html body #app #pricing #formal > div {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      float: none; }
+    html body #app #pricing #certificates > div {
+      margin-left: auto;
+      margin-right: auto;
+      float: none; }
+    html body #app #pricing .btn-wrapper {
+      background-color: #e0e0e0;
+      padding: 15px 0;
+      border-radius: 0 0 5px 5px; }
+    html body #app #pricing .btn {
+      padding: 7px 30px; }
+    html body #app #pricing .pricing-headline {
+      background-color: #2C3E50;
+      padding: 5px 5px;
+      border-radius: 5px 5px 0 0;
+      transition: all 0.3s ease-in-out; }
+      html body #app #pricing .pricing-headline h3 {
+        font-size: 24px;
+        transition: all 0.3s ease-in-out; }
+    html body #app #pricing .pricing-table {
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      margin-top: 20px; }
+      html body #app #pricing .pricing-table:hover .pricing-headline, html body #app #pricing .pricing-table.active .pricing-headline {
+        background-color: #ffffff; }
+      html body #app #pricing .pricing-table:hover .pricing-headline h3, html body #app #pricing .pricing-table.active .pricing-headline h3 {
+        color: #2C3E50; }
+      html body #app #pricing .pricing-table:hover .prize, html body #app #pricing .pricing-table.active .prize {
+        background-color: #2C3E50;
+        color: #ffffff; }
+    html body #app #pricing .prize {
+      background-color: #fff;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto;
+      color: #2C3E50;
+      border-radius: 50%;
+      font-size: 25px;
+      font-weight: bold;
+      padding-top: 22px;
+      transition: all 0.3s ease-in-out; }
+    html body #app #testimonials {
+      background-color: #16A085; }
+      html body #app #testimonials .media {
+        margin-top: 20px; }
+        html body #app #testimonials .media a.pull-left {
+          border-radius: 50%;
+          margin-right: 15px; }
+          html body #app #testimonials .media a.pull-left img {
+            max-width: 100px; }
+        html body #app #testimonials .media .media-body {
+          background-color: rgba(0, 0, 0, 0.1);
+          padding: 15px 20px;
+          border-radius: 12px; }
+          html body #app #testimonials .media .media-body h4 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 22px; }
+          html body #app #testimonials .media .media-body span {
+            margin: 5px 0 15px;
+            display: block;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 14px;
+            color: #333; }
+          html body #app #testimonials .media .media-body p {
+            margin: 0;
+            padding: 5px 0 0;
+            border-top: 1px dashed rgba(0, 0, 0, 0.2);
+            text-align: left;
+            line-height: 25px;
+            font-size: 14px; }
+    html body #app #contact {
+      color: #333333;
+      text-align: center; }
+      html body #app #contact .contact-alert .alert {
+        margin: 0; }
+      html body #app #contact .macbook-inner {
+        position: absolute;
+        top: 65px;
+        left: 163px;
+        width: 845px;
+        height: 532px;
+        padding: 50px 30px 0;
+        transition: all 0.3s ease; }
+        html body #app #contact .macbook-inner.black {
+          background-color: #222222; }
+      html body #app #contact h3 {
+        text-align: left;
+        margin: 0 0 20px;
+        color: #333333;
+        font-weight: bold;
+        font-size: 26px; }
+      html body #app #contact .form-control {
+        box-shadow: none;
+        border-radius: 5px;
+        background-color: #FFFFFF;
+        border: 0;
+        margin-bottom: 28px;
+        height: 38px; }
+      html body #app #contact textarea.form-control {
+        height: 140px; }
+      html body #app #contact .form-control:focus {
+        background-color: #ddd; }
+      html body #app #contact textarea {
+        resize: none; }
+      html body #app #contact .contact-info {
+        background-color: #1ABC9C;
+        border-radius: 5px;
+        color: #FFFFFF;
+        padding: 0 12px;
+        text-align: left; }
+        html body #app #contact .contact-info p {
+          border-bottom: 2px dashed #16A085;
+          margin: 0;
+          padding: 12px 0;
+          font-weight: bold; }
+          html body #app #contact .contact-info p:last-child {
+            border-bottom: 0; }
+    html body #app .contact-image {
+      width: 164px;
+      padding-bottom: 15px; }
+    html body #app #contact .controls {
+      position: relative; }
+    html body #app #contact .help-block {
+      margin: 0;
+      color: #DB4F58;
+      font-size: 14px;
+      position: absolute;
+      right: 0;
+      top: -22px; }
+      html body #app #contact .help-block ul {
+        margin: 0;
+        list-style: none; }
+    html body .content-first {
+      background-color: #34495E;
+      padding: 80px 0;
+      color: #FFFFFF;
+      border-top: 8px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2); }
+    html body .content-second {
+      background-color: #1ABC9C;
+      padding: 80px 0;
+      color: #FFFFFF;
+      border-top: 8px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
+      text-align: center; }
+    html body .scrollpoint {
+      opacity: 0; }
+      html body .scrollpoint.active {
+        opacity: 1; }
+    html body .scroll-up {
+      position: fixed;
+      bottom: 15px;
+      right: 25px;
+      color: #ED5A64;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+      display: none;
+      width: 45px;
+      height: 44px;
+      text-align: center;
+      padding-top: 9px;
+      z-index: 1000;
+      transition-duration: 0.5s;
+      background-color: #2F4254;
+      border-radius: 50%; }
+      html body .scroll-up:hover {
+        background-color: #FFFFFF;
+        border-color: rgba(0, 0, 0, 0.2);
+        padding-top: 0px;
+        color: #ED5A64; }
+    html body .btn {
+      font-family: 'Montserrat';
+      border-bottom: 4px solid #FFFFFF;
+      color: #FFFFFF;
+      transition-duration: 0.4s; }
+      html body .btn:hover, html body .btn:focus {
+        font-family: 'Montserrat';
+        border-bottom: 4px solid #FFFFFF;
+        color: #FFFFFF;
+        transition-duration: 0.4s; }
+    html body .btn-primary {
+      background-color: #ED5A64;
+      border-color: #DB4F58; }
+    html body .btn-footer {
+      background-color: #FFFFFF;
+      color: #2C3E50;
+      margin-left: 5px; }
+      html body .btn-footer:hover {
+        background-color: #2C3E50; }
+    html body .btn-primary:hover, html body .btn-primary:focus {
+      background-color: #DB4F58;
+      color: #ffffff;
+      border-color: #DB4F58; }
+    html body .btn-reference {
+      border: 1px solid #FFFFFF;
+      border-bottom: 3px solid #FFFFFF;
+      background-color: transparent; }
+      html body .btn-reference:hover, html body .btn-reference.btn-active {
+        border: 1px solid #16A085;
+        border-bottom: 3px solid #16A085;
+        color: #16A085; }
+    html body .alert {
+      border: 0;
+      color: #ffffff; }
+    html body .alert-success {
+      background-color: #16A085; }
+    html body .alert-danger {
+      background-color: #ED5A64; }
+    html body .navbar-default {
+      margin: 0;
+      background-color: #2C3E50;
+      border: none;
+      border-radius: 0;
+      height: 78px;
+      padding-top: 3px;
+      border-bottom: 8px solid rgba(0, 0, 0, 0.1);
+      display: none; }
+      html body .navbar-default .navbar-brand {
+        font-family: 'Montserrat';
+        padding: 23px 0 0 25px;
+        color: #16A085;
+        font-size: 24px;
+        transition-duration: 0.7s; }
+    html body .navbar-logo {
+      padding: 7px 0 0 0;
+      width: 50px; }
+    html body .navbar-default .navbar-brand:hover {
+      color: #FFFFFF; }
+    html body .navbar-default .navbar-nav > li > a {
+      color: #FFFFFF;
+      font-family: 'Alegreya Sans SC';
+      margin-top: 6px;
+      font-size: 18px;
+      border-left: 4px solid transparent;
+      transition-duration: 0.7s; }
+      html body .navbar-default .navbar-nav > li > a:hover {
+        color: #16A085;
+        border-left: 4px solid #16A085; }
+    html body .hr {
+      content: "";
+      height: 1px;
+      width: 100%;
+      background: -webkit-linear-gradient(left, transparent 0%, #272727 50%, transparent 100%);
+      margin-top: 10px;
+      margin-bottom: 15px; }
+    html body .navbar-collapse {
+      margin: 0;
+      background-color: #2C3E50;
+      border: none;
+      border-radius: 0;
+      padding-top: 3px;
+      overflow: hidden; }
+    @media print {
+      html body .noprint {
+        display: none;
+        width: 0;
+        height: 0;
+        visibility: hidden; } }
+    html body header {
+      color: white;
+      text-align: center;
+      background-color: #2F4254; }
+      html body header #contacts {
+        min-width: 100px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        overflow: hidden; }
+        html body header #contacts ul li {
+          text-align: initial; }
+    html body .jumbotron {
+      margin: 0;
+      background-color: #2F4254; }
+      html body .jumbotron img {
+        margin: 0 auto 0 auto;
+        max-height: 350px;
+        margin-bottom: 15px; }
+    html body .social-wrapper h2 {
+      display: inline;
+      padding: 0 15px 0 15px;
+      font-size: 78px; }
+    html body .brands {
+      display: inline; }
+      html body .brands > li > a {
+        background-color: transparent;
+        color: #FFFFFF;
+        border-top: 3px solid #16A085;
+        transition-duration: 0.2s; }
+        html body .brands > li > a:hover {
+          color: #16A085;
+          border-top: 3px solid #2F4254; }
+    html body .overlay-wrapper {
+      position: relative; }
+      html body .overlay-wrapper .overlay {
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: center;
+        padding-top: 25%;
+        border-radius: 150px; }
+      html body .overlay-wrapper:hover .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 1;
+        transition-duration: 0.6s; }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      html body .carousel .carousel-control {
+        top: 140px; }
+      html body #blog .line i {
+        left: 138px; }
+      html body #contact .macbook-inner {
+        top: 56px;
+        left: 137px;
+        width: 697px;
+        height: 435px; }
+      html body #contact .form-control {
+        margin-bottom: 21px;
+        height: 32px; }
+      html body #contact textarea.form-control {
+        height: 100px; }
+      html body .contact-image {
+        width: 74px; } }
+    @media (min-width: 768px) and (max-width: 991px) {
+      html body header {
+        height: auto; }
+      html body #skills-toggle {
+        margin-top: 25px; }
+      html body #services {
+        height: auto; }
+      html body #carousel-reference {
+        top: 24px;
+        right: 35px;
+        left: 35px; }
+      html body .carousel .carousel-control {
+        top: 100px; }
+      html body #blog .line i {
+        left: 100px; }
+      html body #contact .macbook-inner {
+        top: 43px;
+        left: 108px;
+        width: 535px;
+        height: 334px;
+        padding: 40px 20px; }
+      html body #contact .form-control {
+        margin-bottom: 7px;
+        height: 28px; }
+      html body #contact textarea.form-control {
+        height: 70px; }
+      html body #contact h3 {
+        margin: 0 0 10px;
+        font-size: 22px; }
+      html body .macbook-inner .btn {
+        padding: 4px 8px; }
+      html body #contact .help-block {
+        font-size: 12px;
+        top: -20px; }
+      html body .tweets p {
+        line-height: 20px;
+        font-size: 14px; } }
+    @media (max-width: 767px) {
+      html body .navbar-collapse {
+        box-shadow: none; }
+      html body .navbar-default {
+        height: 58px;
+        padding-top: 0; }
+      html body .navbar-logo {
+        padding: 5px 0 0 15px;
+        width: 55px; }
+      html body .navbar-default .navbar-toggle {
+        margin: 0;
+        background-color: #16A085;
+        border: 0;
+        border-radius: 0;
+        padding: 3px 0 0;
+        height: 50px;
+        width: 50px;
+        color: #FFFFFF;
+        font-size: 24px; }
+        html body .navbar-default .navbar-toggle:hover, html body .navbar-default .navbar-toggle:focus {
+          background-color: #16A085; }
+      html body .navbar-brand {
+        top: -9px;
+        position: relative; }
+      html body h2 {
+        font-size: 35px; }
+      html body .content-first, html body .content-second {
+        padding: 30px 0; }
+      html body .scrollpoint {
+        opacity: 1; }
+      html body header {
+        height: auto; }
+      html body .social-wrapper h2 {
+        display: inline;
+        padding: 0 15px 0 15px;
+        font-size: 38px; }
+      html body .jumbotron img {
+        max-height: 150px; }
+      html body #about {
+        padding-bottom: 0;
+        padding-top: 0; }
+      html body .tweets p {
+        line-height: 22px; }
+      html body #skills-toggle {
+        margin-top: 25px; }
+      html body #blog .blog-main p {
+        padding-bottom: 15px;
+        border-bottom: 4px dashed #2C3E50; }
+      html body .blog-post {
+        margin: 0 50px 25px; } }
+  @media print and (max-width: 767px) {
+    html body .blog-post {
+      margin: 0; } }
+    @media (max-width: 767px) {
+      html body .blog-body p {
+        text-align: left;
+        font-size: 14px; }
+      html body #skills {
+        padding: 10px 0; }
+        html body #skills .chart {
+          margin-bottom: 50px; }
+      html body .tweets {
+        min-height: 90px; }
+        html body .tweets p {
+          font-size: 12px; }
+        html body .tweets i {
+          font-size: 48px;
+          color: #34495E; }
+      html body #services {
+        height: auto; }
+      html body .showcase-text .media {
+        margin-bottom: 20px; }
+      html body .blockquote-reverse p {
+        font-size: 16px; }
+      html body blockquote footer {
+        font-size: 14px; }
+      html body .grid li {
+        width: 370px; }
+      html body section > p {
+        padding: 0 20px; }
+      html body .pricing-table {
+        margin: 0 50px; }
+      html body #testimonials .media a.pull-left img {
+        max-width: 50px; }
+      html body #testimonials .media .media-body p {
+        text-align: left; }
+      html body #contact {
+        padding: 20px; }
+        html body #contact .macbook-inner {
+          position: static;
+          width: 100%;
+          height: auto;
+          padding: 0px 0px; }
+          html body #contact .macbook-inner.black {
+            background-color: transparent; }
+          html body #contact .macbook-inner > .animated {
+            -webkit-animation-duration: 0;
+            animation-duration: 0;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both; }
+        html body #contact .contact-alert .alert {
+          margin-bottom: 20px; }
+        html body #contact .contact-info {
+          margin-top: 35px; }
+      html body .btn-footer {
+        margin-top: 10px; }
+      html body .timeline {
+        margin: 25px 0 0 350px; }
+      html body .event .event-info {
+        width: 340px; }
+        html body .event .event-info .date {
+          margin-left: 265px; } }
+    @media (max-width: 600px) {
+      html body .timeline {
+        margin: 25px 0 0 270px; }
+      html body .event .event-info {
+        width: 260px; }
+        html body .event .event-info .date {
+          margin-left: 185px; } }
+    @media (max-width: 548px) {
+      html body .timeline {
+        margin: 25px 0 0 245px; }
+      html body .event .event-info {
+        width: 235px; }
+        html body .event .event-info .date {
+          margin-left: 160px; }
+      html body .grid li {
+        width: 370px; }
+      html body .pricing-table {
+        margin: 0 30px; } }
+    @media (max-width: 480px) {
+      html body .timeline {
+        margin: 25px 0 0 210px; }
+      html body .event .event-info {
+        width: 200px; }
+        html body .event .event-info .date {
+          margin-left: 125px; }
+      html body .blog-post {
+        margin: 0 10px 25px; } }
+    @media (max-width: 320px) {
+      html body .jumbotron .btn {
+        margin-bottom: 15px;
+        margin-right: 0px; }
+      html body .tweets p {
+        line-height: 18px; }
+      html body .blog-post {
+        margin: 0 0 25px; }
+      html body .timeline {
+        margin: 25px 0 0 110px; }
+      html body .event .event-info {
+        width: 100px; }
+        html body .event .event-info .date {
+          margin-left: 25px; }
+      html body .grid li {
+        width: 280px; }
+      html body .pricing-table {
+        margin: 0; } }
+
+/*# sourceMappingURL=custom.css.map */

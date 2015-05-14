@@ -1,0 +1,12 @@
+{
+  "name": "_",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./.scripts/jade.js; sass /_/Workspace/gits/code.gavinengel.com/cv/css/custom.scss:/_/Workspace/gits/code.gavinengel.com/cv/css/custom.css --sourcemap=file;"
+  },
+  "author": "Gavin Engel <gavin@engel.com>",
+  "license": "ISC"
+}

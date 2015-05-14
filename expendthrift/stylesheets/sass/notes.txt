@@ -1,0 +1,14 @@
+# converting css -> scss
+$ sass-convert -T scss styles.css sass/styles.scss; 
+
+# compiling scss to css
+$ sass sass/styles.scss styles.css --style compressed; 
+
+# install newest version of sass if yours cannot use sourcemap yet
+gem install sass -v '>=3.3.0alpha' --pre
+
+# watching ...
+ alias sassy="cd /home/gavin/gits/toptal/expendthrift/expendthrift/stylesheets/sass/; sass --watch styles.scss:../styles.css  2> /dev/null"; # or with --sourcemap 
+
+
+ # add datepicker http://www.eyecon.ro/bootstrap-datepicker/

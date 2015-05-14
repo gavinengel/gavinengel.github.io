@@ -1,0 +1,1904 @@
+
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" type="text/css" href="http://cdn.tutorialzine.com/wp-content/cache/minify/000000/3f6f8/default.include.e0a998.css" media="all" />
+
+  <title>Learn AngularJS With These 5 Practical Examples | Tutorialzine</title>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no" />
+
+  
+  <link rel="pingback" href="http://tutorialzine.com/xmlrpc.php" />
+
+  <link rel="alternate" type="application/rss+xml" title="Tutorialzine &raquo; Learn AngularJS With These 5 Practical Examples Comments Feed" href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/feed/" />
+<link rel='stylesheet' id='highlight.css-css'  href='http://cdn.tutorialzine.com/wp-content/themes/tzine/js/highlight.tomorrow.css?ver=1' type='text/css' media='all' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://tutorialzine.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://tutorialzine.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Create a slide-out footer with this neat z-index trick' href='http://tutorialzine.com/2013/08/slideout-footer-css/' />
+<link rel='next' title='Quick Tip: Add a Progress Bar to Your Site' href='http://tutorialzine.com/2013/09/quick-tip-progress-bar/' />
+<link rel='canonical' href='http://tutorialzine.com/2013/08/learn-angularjs-5-examples/' />
+<link rel='shortlink' href='http://tutorialzine.com/?p=3380' />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+<link rel="alternate" type="application/rss+xml" title="Tutorialzine &raquo; Full Feed" href="http://feeds.feedburner.com/Tutorialzine" />
+<meta property="og:site_name" content="Tutorialzine" />
+<meta property="fb:admins" content="1674521632" />
+<meta name="keywords" content="tutorialzine, tutorial zine, tzine, tutorials, freebies, resources, web development, webdev, demo, PHP, MySQL, jQuery, CSS, XHTML, jQuery UI, CSS3, HTML5, HTML, web design, webdesign" />
+<meta name="description" content="By now you&#039;ve probably heard of AngularJS - the exciting open source framework, developed by Google. Learn the basic building blocks and how to build apps with these 5 practical examples." />
+<link rel="image_src" href="http://cdn.tutorialzine.com/wp-content/uploads/2013/08/featured-150x150.jpg" />
+<meta name="twitter:image" content="http://cdn.tutorialzine.com/wp-content/uploads/2013/08/featured-150x150.jpg" />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@tutorialzine" />
+<meta name="twitter:url" content="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/" />
+<meta name="twitter:title" content="Learn AngularJS With These 5 Practical Examples" />
+<meta name="twitter:description" content="By now you&#039;ve probably heard of AngularJS - the exciting open source framework, developed by Google. Learn the basic building blocks and how to build apps with these 5 practical examples.">
+<meta name="twitter:creator" content="@tutorialzine" />
+
+</head>
+
+<body>
+
+<!-- BuySellAds.com Ad Code -->
+<script type="text/javascript">
+(function(){
+  var bsa = document.createElement('script');
+     bsa.type = 'text/javascript';
+     bsa.async = true;
+     bsa.src = '//s3.buysellads.com/ac/bsa.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+})();
+</script>
+<!-- END BuySellAds.com Ad Code -->
+
+  <header>
+
+    <h1><a title="Home" href="http://tutorialzine.com/" id="logo">tutorial<b>zine</b></a></h1>
+
+    
+    <nav class="Articles">
+      <a href="http://tutorialzine.com/posts/" class="">Articles</a>
+      <a href="http://tutorialzine.com/webdev-newsletter/" class="">newsletter</a>
+      <a href="http://tutorialzine.com/books/jquery-trickshots/" style="color:#f6ab29 !important" class="">The book</a>
+    </nav>
+
+    <a class="searchIcon">
+      <form action="http://tutorialzine.com/"><input type="text" placeholder="Search the site!" name="s" /></form>
+    </a>
+
+  </header>
+
+<section id="content">
+    <aside id="sidebar">
+
+      <div class="sidebar-group about">
+        <p><b>Tutorialzine</b> is a site dedicated to bringing you the coolest web development tutorials and resources. Follow us!</p>
+        
+        <div class="social-icons">
+          <a href="http://twitter.com/Tutorialzine" class="twitter" target="_blank" data-hint="30,938+"></a>
+          <a href="http://www.facebook.com/Tutorialzine" class="facebook" target="_blank" data-hint="0+"></a>
+          <a class="googleplus" href="https://plus.google.com/102299652175684141333" target="_blank"></a>
+          <a href="http://feeds.feedburner.com/Tutorialzine" class="rss" target="_blank" data-hint="19,692+"></a>
+        </div>
+
+      </div>
+      
+      <div class="sidebar-group as adsbygoogle">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Tutorialzine Intro Text Ad -->
+        <ins class="adsbygoogle"
+           style="display:inline-block;width:336px;height:280px"
+           data-ad-client="ca-pub-4243460155472587"
+           data-ad-slot="9761819353"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+      
+      <div class="sidebar-group rek">
+
+        <!-- BuySellAds.com Zone Code -->
+        <div id="bsap_1251274" class="bsarocks bsap_fe75131c335e3bd42585d699208c59c8"></div>
+        <!-- END BuySellAds.com Zone Code -->
+
+        
+        <p><a href="http://www.wix.com/ecommerce/website">Ecommerce Website Builder by Wix.com</a></p>
+        <p>Looking for <a href="http://skillforge.com/courses/web-development/">Website Design Courses</a> you can take from anywhere? Visit SkillForge.com!</p>
+
+        <a href="http://www.maxcdn.com/" class="maxcdn" title="Accelerated by maxcdn" target="_blank">Accelerated by maxcdn</a>
+
+      </div>
+
+      <div class="sidebar-group posts">
+        <h5 class="active" data-tab="latest-articles">Latest Articles</h5>
+        <h5 data-tab="challenges">Challenges</h5>
+        <h5 data-tab="freebies">Freebies</h5>
+
+        <ul id="latest-articles" class="active">
+                    
+          <li>
+            <a href="http://tutorialzine.com/2015/04/material-design-stopwatch-alarm-and-timer/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/04/material-design-stopwatch-timer-and-alarm-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="material-design-stopwatch-timer-and-alarm" />              
+              <span class="title">Experiment: Material Design Stopwatch, Alarm and Timer</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2015/04/first-webapp-react/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/04/creating-your-first-web-app-with-react-100x100.png" class="attachment-tzthumb wp-post-image" alt="creating-your-first-web-app-with-react" />              
+              <span class="title">Making Your First Webapp with React</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2015/04/freebie-5-elegant-and-responsive-sidebar-templates/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/04/5-elegant-and-responsive-sidebar-templates-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="5-elegant-and-responsive-sidebar-templates" />              
+              <span class="title">Freebie: 5 Elegant and Responsive Sidebar Templates</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2015/04/our-favorite-jquery-plugins-and-libraries-for-spring-2015/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/04/our-favorite-jquery-plugins-libraries-spring-2015-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="our-favorite-jquery-plugins-libraries-spring-2015" />              
+              <span class="title">Our Favorite jQuery Plugins and Libraries For Spring 2015</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2015/03/npm-driven-website/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/03/creating-an-npm-driven-website-copy-100x100.png" class="attachment-tzthumb wp-post-image" alt="creating-an-npm-driven-website copy" />              
+              <span class="title">Tutorial: Creating an NPM-driven Website</span>
+            </a>
+          </li>
+
+                  </ul>
+
+        
+        <ul id="freebies">
+                    
+          <li>
+            <a href="http://tutorialzine.com/2015/04/material-design-stopwatch-alarm-and-timer/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/04/material-design-stopwatch-timer-and-alarm-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="material-design-stopwatch-timer-and-alarm" />              
+              <span class="title">Experiment: Material Design Stopwatch, Alarm and Timer</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2015/04/freebie-5-elegant-and-responsive-sidebar-templates/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/04/5-elegant-and-responsive-sidebar-templates-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="5-elegant-and-responsive-sidebar-templates" />              
+              <span class="title">Freebie: 5 Elegant and Responsive Sidebar Templates</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2015/02/freebie-7-responsive-header-templates/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/02/7-beautiful-responsive-header-templates-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="7-beautiful-responsive-header-templates" />              
+              <span class="title">Freebie: 7 Pretty and Responsive Header Templates</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2015/01/freebie-5-responsive-footer-templates/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/01/5-beautiful-responsive-footer-templates-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="5-beautiful-responsive-footer-templates" />              
+              <span class="title">Freebie: 5 Beautiful and Responsive Footer Templates</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2014/09/real-time-visitor-globe-nodejs-webgl/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2014/09/real-time-globe-nodejs-webgl-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="real-time-globe-nodejs-webgl" />              
+              <span class="title">Real-time Visitor Globe with Node.js and WebGL</span>
+            </a>
+          </li>
+
+                  </ul>
+        
+        <ul id="challenges">
+                    
+          <li>
+            <a href="http://tutorialzine.com/2014/08/what-does-this-function-do/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2014/08/what-does-this-function-do-100x100.png" class="attachment-tzthumb wp-post-image" alt="what-does-this-function-do" />              
+              <span class="title">JavaScript Quiz: What does this function do?</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2014/06/guess-the-programming-language/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2014/06/guess-the-programming-language-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="guess-the-programming-language" />              
+              <span class="title">Guess the Programming Language</span>
+            </a>
+          </li>
+
+          
+          <li>
+            <a href="http://tutorialzine.com/2014/05/javascript-challenge-make-me-blue/">
+
+                              <img width="100" height="100" src="http://cdn.tutorialzine.com/wp-content/uploads/2014/05/make-me-blue-100x100.jpg" class="attachment-tzthumb wp-post-image" alt="make-me-blue" />              
+              <span class="title">JavaScript Challenge: Make Me Blue!</span>
+            </a>
+          </li>
+
+                  </ul>
+        
+      </div>
+
+      <div class="sidebar-group fb">
+        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FTutorialzine&amp;width=292&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=false&amp;appId=191042970944652" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:258px;background-color:#fefefe;" allowTransparency="true"></iframe>
+      </div>
+
+      <div class="sidebar-group twitter">
+        <h5 class="single">Best from <a href="https://twitter.com/Tutorialzine/" target="_blank">@Tutorialzine</a></h5>
+
+        <ul class='tweetFavList'>
+      <li>
+        What to expect in PHP 7 <a href="http://ttzn.co/1bj9i3W" target="_blank">http://ttzn.co/1bj9i3W</a>       <span>
+          <a href="http://twitter.com/Tutorialzine" target="_blank"
+            title="Go to Tutorialzine's twitter page">Tutorialzine</a>
+
+                      · <span title="Retweet Count">1</span>
+                    <a href="http://twitter.com/Tutorialzine/status/591387363391209473" class="date" target="_blank">6 days ago</a>
+        </span>
+            </li>
+
+            
+      <li>
+        A Node.js module for setting wallpapers on Linux, Windows and OS X <a href="http://ttzn.co/1QjxW4Q" target="_blank">http://ttzn.co/1QjxW4Q</a>        <span>
+          <a href="http://twitter.com/Tutorialzine" target="_blank"
+            title="Go to Tutorialzine's twitter page">Tutorialzine</a>
+
+                      · <span title="Retweet Count">1</span>
+                    <a href="http://twitter.com/Tutorialzine/status/591343295927865344" class="date" target="_blank">6 days ago</a>
+        </span>
+            </li>
+
+            
+      <li>
+        Free-for-dev - A large list of free services and resources for developers and admins <a href="http://ttzn.co/1bj9dxa" target="_blank">http://ttzn.co/1bj9dxa</a>        <span>
+          <a href="http://twitter.com/Tutorialzine" target="_blank"
+            title="Go to Tutorialzine's twitter page">Tutorialzine</a>
+
+                      · <span title="Retweet Count">4</span>
+                    <a href="http://twitter.com/Tutorialzine/status/591266810311376897" class="date" target="_blank">6 days ago</a>
+        </span>
+            </li>
+
+            
+      <li>
+        Lumen - a stunningly fast PHP micro-framework based on Laravel <a href="http://ttzn.co/1bj99NI" target="_blank">http://ttzn.co/1bj99NI</a>        <span>
+          <a href="http://twitter.com/Tutorialzine" target="_blank"
+            title="Go to Tutorialzine's twitter page">Tutorialzine</a>
+
+                      · <span title="Retweet Count">1</span>
+                    <a href="http://twitter.com/Tutorialzine/status/591221487849369600" class="date" target="_blank">6 days ago</a>
+        </span>
+            </li>
+
+            
+      <li>
+        JQuery lightSlider - Lightweight and responsive content slider with lots of features <a href="http://ttzn.co/1zMniJx" target="_blank">http://ttzn.co/1zMniJx</a>        <span>
+          <a href="http://twitter.com/Tutorialzine" target="_blank"
+            title="Go to Tutorialzine's twitter page">Tutorialzine</a>
+
+                      · <span title="Retweet Count">6</span>
+                    <a href="http://twitter.com/Tutorialzine/status/591024974951018496" class="date" target="_blank">7 days ago</a>
+        </span>
+            </li>
+
+            </ul>
+        <div id="followTwitterButton"></div>
+
+      </div>
+
+    </aside>
+
+    <article id="post" class="leftPostCol">
+
+              <img class="featured" src="http://cdn.tutorialzine.com/wp-content/uploads/2013/08/featured.jpg" alt="Learn AngularJS With These 5 Practical Examples" />
+      
+      <div class="post-body">
+        <h2>Learn AngularJS With These 5 Practical Examples</h2>
+
+        <p class="post-info"><i class="icon-author"></i> Martin Angelov <i class="icon-cal"></i><time datetime="2013-08-30">August 30th, 2013</time></p>
+
+        <div class="tutorialButtons">
+          
+                      <a href="http://demo.tutorialzine.com/2013/08/learn-angularjs-5-examples/angularjs-examples.zip" class="button blue big">Download</a>
+                    
+          <div id="shareBar" style="display:none"></div>
+        </div>
+
+        <p>By now you&#8217;ve probably heard of <a href="http://angularjs.org/" target="_blank">AngularJS</a> &#8211; the exciting open source framework, developed by Google, that changes the way you think about web apps. There has been much written about it, but I have yet to find something that is written for developers who prefer quick and practical examples. This changes today. Below you will find the basic building blocks of Angular apps &#8211; Models, Views, Controllers, Services and Filters &#8211; explained in 5 practical examples that you can edit directly in your browser. If you prefer to open them up in your favorite code editor, grab the zip above.</p>
+<h3>What is AngularJS?</h3>
+<p>On a high level, <a href="http://angularjs.org/" target="_blank">AngularJS</a> is a framework that binds your HTML (views) to JavaScript objects (models). When your models change, the page updates automatically. The opposite is also true &#8211; a model, associated with a text field, is updated when the content of the field is changed. Angular handles all the glue code, so you don&#8217;t have to update HTML manually or listen for events, like you do with jQuery. As a matter of fact, none of the examples here even include jQuery!</p>
+<p>To use AngularJS, you have to include it in your page before the closing &lt;body&gt; tag. <a href="https://developers.google.com/speed/libraries/devguide#angularjs" target="_blank">Google&#8217;s CDN</a> is recommended for a faster load time:</p>
+<pre class="brush:html">&lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"&gt;&lt;/script&gt;</pre>
+<p>AngularJS gives you a large number of <a href="http://docs.angularjs.org/guide/directive" target="_blank">directives</a> that let you associate HTML elements to models. They are attributes that start with <strong>ng-</strong> and can be added to any element. The most important attribute that you have to include in any page, if you wish to use Angular, is <code>ng-app</code>:</p>
+<pre class="brush:html">&lt;body ng-app&gt;</pre>
+<p>It should be added to an element that encloses the rest of the page, like the body element or an outermost div. Angular looks for it when the page loads and automatically evaluates all directives it sees on its child elements.</p>
+<p>Enough with the theory! Now let&#8217;s see some code.</p>
+<h3 id="1-navigation-menu">1. Navigation Menu</h3>
+<p>As a first example, we will build a navigation menu that highlights the selected entry. The example uses only Angular&#8217;s <a href="http://docs.angularjs.org/guide/directive" target="_blank">directives</a>, and is the simplest app possible using the framework. Click the &#8220;<strong>Edit</strong>&#8221; button to see the source code. It is ready for experimentation!</p>
+<div class="inline-editor" data-includes="[&quot;https:\/\/ajax.googleapis.com\/ajax\/libs\/angularjs\/1.0.7\/angular.min.js&quot;]" style="height:550px" data-autorun="1"></p>
+<pre data-type="html">&lt;!-- Adding the ng-app declaration to initialize AngularJS --&gt;
+&lt;div id="main" ng-app&gt;
+  &lt;!-- The navigation menu will get the value of the "active" variable as a class.
+     The $event.preventDefault() stops the page from jumping when a link is clicked. --&gt;
+
+  &lt;nav class="{{active}}" ng-click="$event.preventDefault()"&gt;
+
+    &lt;!-- When a link in the menu is clicked, we set the active variable --&gt;
+
+    &lt;a href="#" class="home" ng-click="active='home'"&gt;Home&lt;/a&gt;
+    &lt;a href="#" class="projects" ng-click="active='projects'"&gt;Projects&lt;/a&gt;
+    &lt;a href="#" class="services" ng-click="active='services'"&gt;Services&lt;/a&gt;
+    &lt;a href="#" class="contact" ng-click="active='contact'"&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- ng-show will show an element if the value in the quotes is truthful,
+     while ng-hide does the opposite. Because the active variable is not set
+     initially, this will cause the first paragraph to be visible. --&gt;
+
+  &lt;p ng-hide="active"&gt;Please click a menu item&lt;/p&gt;
+  &lt;p ng-show="active"&gt;You chose &lt;b&gt;{{active}}&lt;/b&gt;&lt;/p&gt;
+&lt;/div&gt;</pre>
+<pre data-type="css">*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font:15px/1.3 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align:center;
+}
+
+a, a:visited {
+  outline:none;
+  color:#389dc1;
+}
+
+a:hover{
+  text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+  display: block;
+}
+
+/*-------------------------
+  The menu
+--------------------------*/
+
+nav{
+  display:inline-block;
+  margin:60px auto 45px;
+  background-color:#5597b4;
+  box-shadow:0 1px 1px #ccc;
+  border-radius:2px;
+}
+
+nav a{
+  display:inline-block;
+  padding: 18px 30px;
+  color:#fff !important;
+  font-weight:bold;
+  font-size:16px;
+  text-decoration:none !important;
+  line-height:1;
+  text-transform: uppercase;
+  background-color:transparent;
+
+  -webkit-transition:background-color 0.25s;
+  -moz-transition:background-color 0.25s;
+  transition:background-color 0.25s;
+}
+
+nav a:first-child{
+  border-radius:2px 0 0 2px;
+}
+
+nav a:last-child{
+  border-radius:0 2px 2px 0;
+}
+
+nav.home .home,
+nav.projects .projects,
+nav.services .services,
+nav.contact .contact{
+  background-color:#e35885;
+}
+
+p{
+  font-size:22px;
+  font-weight:bold;
+  color:#7d9098;
+}
+
+p b{
+  color:#ffffff;
+  display:inline-block;
+  padding:5px 10px;
+  background-color:#c4d7e0;
+  border-radius:2px;
+  text-transform:uppercase;
+  font-size:18px;
+}</pre>
+<p></div>
+<p>In the code above, we are using Angular&#8217;s directives to set and read the <strong>active</strong> variable. When it changes, it causes the HTML that uses it to be updated automatically. In Angular&#8217;s terminology, this variable is called a model. It is available to all directives in the current scope, and can be accessed in your controllers (more on that in the next example).</p>
+<p>If you have used JavaScript templates before, you are familiar with the <code>{{var}}</code> syntax. When the framework sees such a string, it replaces it with the contents of the variable. This operation is repeated every time var is changed.</p>
+<h3 id="2-inline-editor">2. Inline Editor</h3>
+<p>For the second example, we will create a simple inline editor &#8211; clicking a paragraph will show a tooltip with a text field. We will use a controller that will initialize the models and declare two methods for toggling the visibility of the tooltip. Controllers are regular JavaScript functions which are executed automatically by Angular, and which are associated with your page using the <code>ng-controller</code> directive:</p>
+<div class="inline-editor" data-includes="[&quot;https:\/\/ajax.googleapis.com\/ajax\/libs\/angularjs\/1.0.7\/angular.min.js&quot;]" style="height:550px" data-autorun="1"></p>
+<pre data-type="html">&lt;!-- When this element is clicked, hide the tooltip --&gt;
+&lt;div id="main" ng-app ng-controller="InlineEditorController" ng-click="hideTooltip()"&gt;
+
+  &lt;!-- This is the tooltip. It is shown only when the showtooltip variable is truthful --&gt;
+  &lt;div class="tooltip" ng-click="$event.stopPropagation()" ng-show="showtooltip"&gt;
+
+    &lt;!-- ng-model binds the contents of the text field with the "value" model.
+     Any changes to the text field will automatically update the value, and
+     all other bindings on the page that depend on it.  --&gt;
+    &lt;input type="text" ng-model="value" /&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Call a method defined in the InlineEditorController that toggles
+   the showtooltip variable --&gt;
+  &lt;p ng-click="toggleTooltip($event)"&gt;{{value}}&lt;/p&gt;
+
+&lt;/div&gt;</pre>
+<pre data-type="js">// The controller is a regular JavaScript function. It is called
+// once when AngularJS runs into the ng-controller declaration.
+
+function InlineEditorController($scope){
+
+  // $scope is a special object that makes
+  // its properties available to the view as
+  // variables. Here we set some default values:
+
+  $scope.showtooltip = false;
+  $scope.value = 'Edit me.';
+
+  // Some helper functions that will be
+  // available in the angular declarations
+
+  $scope.hideTooltip = function(){
+
+    // When a model is changed, the view will be automatically
+    // updated by by AngularJS. In this case it will hide the tooltip.
+
+    $scope.showtooltip = false;
+  }
+
+  $scope.toggleTooltip = function(e){
+    e.stopPropagation();
+    $scope.showtooltip = !$scope.showtooltip;
+  }
+}</pre>
+<pre data-type="css">*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font:15px/1.3 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align:center;
+}
+
+a, a:visited {
+  outline:none;
+  color:#389dc1;
+}
+
+a:hover{
+  text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+  display: block;
+}
+
+/*-------------------------
+  The edit tooltip
+--------------------------*/
+
+.tooltip{
+  background-color:#5c9bb7;
+
+  background-image:-webkit-linear-gradient(top, #5c9bb7, #5392ad);
+  background-image:-moz-linear-gradient(top, #5c9bb7, #5392ad);
+  background-image:linear-gradient(top, #5c9bb7, #5392ad);
+
+  box-shadow: 0 1px 1px #ccc;
+  border-radius:3px;
+  width: 290px;
+  padding: 10px;
+
+  position: absolute;
+  left:50%;
+  margin-left:-150px;
+  top: 80px;
+}
+
+.tooltip:after{
+  /* The tip of the tooltip */
+  content:'';
+  position:absolute;
+  border:6px solid #5190ac;
+  border-color:#5190ac transparent transparent;
+  width:0;
+  height:0;
+  bottom:-12px;
+  left:50%;
+  margin-left:-6px;
+}
+
+.tooltip input{
+  border: none;
+  width: 100%;
+  line-height: 34px;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px #bbb inset;
+  text-align: center;
+  font-size: 16px;
+  font-family: inherit;
+  color: #8d9395;
+  font-weight: bold;
+  outline: none;
+}
+
+p{
+  font-size:22px;
+  font-weight:bold;
+  color:#6d8088;
+  height: 30px;
+  cursor:default;
+}
+
+p b{
+  color:#ffffff;
+  display:inline-block;
+  padding:5px 10px;
+  background-color:#c4d7e0;
+  border-radius:2px;
+  text-transform:uppercase;
+  font-size:18px;
+}
+
+p:before{
+  content:'✎';
+  display:inline-block;
+  margin-right:5px;
+  font-weight:normal;
+  vertical-align: text-bottom;
+}
+
+#main{
+  height:300px;
+  position:relative;
+  padding-top: 150px;
+}</pre>
+<p></div>
+<p>When the controller function is executed, it gets the special <code>$scope</code> object as a parameter. Adding properties or functions to it makes them available to the view. Using the <code>ng-model</code> binding on the text field tells Angular to update that variable when the value of the field changes (this in turn re-renders the paragraph with the value).</p>
+<h3 id="3-order-form">3. Order Form</h3>
+<p>In this example, we will code an order form with a total price updated in real time, using another one of Angular&#8217;s useful features &#8211; <a href="http://docs.angularjs.org/guide/dev_guide.templates.filters" target="_blank">filters</a>. Filters let you modify models and can be chained together using the pipe character <code>|</code>. In the example below, I am using the <a href="http://docs.angularjs.org/api/ng.filter:currency" target="_blank">currency filter</a>, to turn a number into a properly formatted price, complete with a dollar sign and cents. You can easily make your own filters, as you will see in example #4.</p>
+<div class="inline-editor" data-includes="[&quot;https:\/\/ajax.googleapis.com\/ajax\/libs\/angularjs\/1.0.7\/angular.min.js&quot;]" style="height:640px" data-autorun="1"></p>
+<pre data-type="html">&lt;!-- Declare a new AngularJS app and associate the controller --&gt;
+&lt;form ng-app ng-controller="OrderFormController"&gt;
+
+  &lt;h1&gt;Services&lt;/h1&gt;
+
+  &lt;ul&gt;
+    &lt;!-- Loop through the services array, assign a click handler, and set or
+      remove the "active" css class if needed --&gt;
+    &lt;li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}"&gt;
+      &lt;!-- Notice the use of the currency filter, it will format the price --&gt;
+      {{service.name}} &lt;span&gt;{{service.price | currency}}&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;div class="total"&gt;
+    &lt;!-- Calculate the total price of all chosen services. Format it as currency. --&gt;
+    Total: &lt;span&gt;{{total() | currency}}&lt;/span&gt;
+  &lt;/div&gt;
+
+&lt;/form&gt;</pre>
+<pre data-type="js">function OrderFormController($scope){
+
+  // Define the model properties. The view will loop
+  // through the services array and genreate a li
+  // element for every one of its items.
+
+  $scope.services = [
+    {
+      name: 'Web Development',
+      price: 300,
+      active:true
+    },{
+      name: 'Design',
+      price: 400,
+      active:false
+    },{
+      name: 'Integration',
+      price: 250,
+      active:false
+    },{
+      name: 'Training',
+      price: 220,
+      active:false
+    }
+  ];
+
+  $scope.toggleActive = function(s){
+    s.active = !s.active;
+  };
+
+  // Helper method for calculating the total price
+
+  $scope.total = function(){
+
+    var total = 0;
+
+    // Use the angular forEach helper method to
+    // loop through the services array:
+
+    angular.forEach($scope.services, function(s){
+      if (s.active){
+        total+= s.price;
+      }
+    });
+
+    return total;
+  };
+}</pre>
+<pre data-type="css">*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font:15px/1.3 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align:center;
+}
+
+a, a:visited {
+  outline:none;
+  color:#389dc1;
+}
+
+a:hover{
+  text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+  display: block;
+}
+
+/*-------------------------
+  The order form
+--------------------------*/
+
+form{
+  background-color: #61a1bc;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px #ccc;
+  width: 400px;
+  padding: 35px 60px;
+  margin: 50px auto;
+}
+
+form h1{
+  color:#fff;
+  font-size:64px;
+  font-family:'Cookie', cursive;
+  font-weight: normal;
+  line-height:1;
+  text-shadow:0 3px 0 rgba(0,0,0,0.1);
+}
+
+form ul{
+  list-style:none;
+  color:#fff;
+  font-size:20px;
+  font-weight:bold;
+  text-align: left;
+  margin:20px 0 15px;
+}
+
+form ul li{
+  padding:20px 30px;
+  background-color:#e35885;
+  margin-bottom:8px;
+  box-shadow:0 1px 1px rgba(0,0,0,0.1);
+  cursor:pointer;
+}
+
+form ul li span{
+  float:right;
+}
+
+form ul li.active{
+  background-color:#8ec16d;
+}
+
+div.total{
+  border-top:1px solid rgba(255,255,255,0.5);
+  padding:15px 30px;
+  font-size:20px;
+  font-weight:bold;
+  text-align: left;
+  color:#fff;
+}
+
+div.total span{
+  float:right;
+}</pre>
+<p></div>
+<p>The <code>ng-repeat</code> binding (<a href="http://docs.angularjs.org/api/ng.directive:ngRepeat" target="_blank">docs</a>) is another useful feature of the framework. It lets you loop through an array of items and generate markup for  them. It is intelligently updated when an item is changed or deleted.</p>
+<p><strong>Note:</strong> For a more complete version, see <a title="Quick Tip: Convert The Service Chooser App From Backbone.js to AngularJS" href="http://tutorialzine.com/2013/05/quick-tip-convert-backbone-to-angularjs/">this tutorial</a>, which is based on <a title="Your First Backbone.js App – Service Chooser" href="http://tutorialzine.com/2013/04/services-chooser-backbone-js/">this one</a>, written with Backbone.js.</p>
+<h3 id="4-instant-search">4. Instant Search</h3>
+<p>This example will allow users to filter a list of items by typing into a text field. This is another place where Angular shines, and is the perfect use case for writing a custom filter. To do this though, we first have to turn our application into a module.</p>
+<p>Modules are a way of organizing JavaScript applications into self-contained components that can be combined in new and interesting ways. Angular relies on this technique for code isolation and requires that your application follows it before you can create a filter. There are only two things that you need to do to turn your app into a module:</p>
+<ol>
+<li>Use the <code>angular.module("name",[])</code> function call in your JS. This will instantiate and return a new module;</li>
+<li>Pass the name of the module as the value of the <code>ng-app</code> directive.</li>
+</ol>
+<p>Creating a filter then is as simple as calling the <code>filter()</code> method on the module object returned by <code>angular.module("name", [])</code>.</p>
+<div class="inline-editor" data-includes="[&quot;https:\/\/ajax.googleapis.com\/ajax\/libs\/angularjs\/1.0.7\/angular.min.js&quot;]" style="height:590px" data-autorun="1"></p>
+<pre data-type="html">&lt;!-- Initialize a new AngularJS app and associate it with a module named "instantSearch"--&gt;
+&lt;div ng-app="instantSearch" ng-controller="InstantSearchController"&gt;
+
+  &lt;div class="bar"&gt;
+    &lt;!-- Create a binding between the searchString model and the text field --&gt;
+    &lt;input type="text" ng-model="searchString" placeholder="Enter your search terms" /&gt;
+  &lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;!-- Render a li element for every entry in the items array. Notice
+       the custom search filter "searchFor". It takes the value of the
+       searchString model as an argument.
+     --&gt;
+    &lt;li ng-repeat="i in items | searchFor:searchString"&gt;
+      &lt;a href="{{i.url}}"&gt;&lt;img ng-src="{{i.image}}" /&gt;&lt;/a&gt;
+      &lt;p&gt;{{i.title}}&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</pre>
+<pre data-type="js">// Define a new module for our app. The array holds the names of dependencies if any.
+var app = angular.module("instantSearch", []);
+
+// Create the instant search filter
+
+app.filter('searchFor', function(){
+
+  // All filters must return a function. The first parameter
+  // is the data that is to be filtered, and the second is an
+  // argument that may be passed with a colon (searchFor:searchString)
+
+  return function(arr, searchString){
+
+    if(!searchString){
+      return arr;
+    }
+
+    var result = [];
+
+    searchString = searchString.toLowerCase();
+
+    // Using the forEach helper method to loop through the array
+    angular.forEach(arr, function(item){
+
+      if(item.title.toLowerCase().indexOf(searchString) !== -1){
+        result.push(item);
+      }
+
+    });
+
+    return result;
+  };
+
+});
+
+// The controller
+
+function InstantSearchController($scope){
+
+  // The data model. These items would normally be requested via AJAX,
+  // but are hardcoded here for simplicity. See the next example for
+  // tips on using AJAX.
+
+  $scope.items = [
+    {
+      url: 'http://tutorialzine.com/2013/07/50-must-have-plugins-for-extending-twitter-bootstrap/',
+      title: '50 Must-have plugins for extending Twitter Bootstrap',
+      image: 'http://cdn.tutorialzine.com/wp-content/uploads/2013/07/featured_4-100x100.jpg'
+    },
+    {
+      url: 'http://tutorialzine.com/2013/08/simple-registration-system-php-mysql/',
+      title: 'Making a Super Simple Registration System With PHP and MySQL',
+      image: 'http://cdn.tutorialzine.com/wp-content/uploads/2013/08/simple_registration_system-100x100.jpg'
+    },
+    {
+      url: 'http://tutorialzine.com/2013/08/slideout-footer-css/',
+      title: 'Create a slide-out footer with this neat z-index trick',
+      image: 'http://cdn.tutorialzine.com/wp-content/uploads/2013/08/slide-out-footer-100x100.jpg'
+    },
+    {
+      url: 'http://tutorialzine.com/2013/06/digital-clock/',
+      title: 'How to Make a Digital Clock with jQuery and CSS3',
+      image: 'http://cdn.tutorialzine.com/wp-content/uploads/2013/06/digital_clock-100x100.jpg'
+    },
+    {
+      url: 'http://tutorialzine.com/2013/05/diagonal-fade-gallery/',
+      title: 'Smooth Diagonal Fade Gallery with CSS3 Transitions',
+      image: 'http://cdn.tutorialzine.com/wp-content/uploads/2013/05/featured-100x100.jpg'
+    },
+    {
+      url: 'http://tutorialzine.com/2013/05/mini-ajax-file-upload-form/',
+      title: 'Mini AJAX File Upload Form',
+      image: 'http://cdn.tutorialzine.com/wp-content/uploads/2013/05/ajax-file-upload-form-100x100.jpg'
+    },
+    {
+      url: 'http://tutorialzine.com/2013/04/services-chooser-backbone-js/',
+      title: 'Your First Backbone.js App – Service Chooser',
+      image: 'http://cdn.tutorialzine.com/wp-content/uploads/2013/04/service_chooser_form-100x100.jpg'
+    }
+  ];
+
+}</pre>
+<pre data-type="css">*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font:15px/1.3 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align:center;
+}
+
+a, a:visited {
+  outline:none;
+  color:#389dc1;
+}
+
+a:hover{
+  text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+  display: block;
+}
+
+/*-------------------------
+  The search input
+--------------------------*/
+
+.bar{
+  background-color:#5c9bb7;
+
+  background-image:-webkit-linear-gradient(top, #5c9bb7, #5392ad);
+  background-image:-moz-linear-gradient(top, #5c9bb7, #5392ad);
+  background-image:linear-gradient(top, #5c9bb7, #5392ad);
+
+  box-shadow: 0 1px 1px #ccc;
+  border-radius: 2px;
+  width: 400px;
+  padding: 14px;
+  margin: 45px auto 20px;
+  position:relative;
+}
+
+.bar input{
+  background:#fff no-repeat 13px 13px;
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkU5NEY0RTlFMTA4NzExRTM5RTEzQkFBQzMyRjkyQzVBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkU5NEY0RTlGMTA4NzExRTM5RTEzQkFBQzMyRjkyQzVBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RTk0RjRFOUMxMDg3MTFFMzlFMTNCQUFDMzJGOTJDNUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RTk0RjRFOUQxMDg3MTFFMzlFMTNCQUFDMzJGOTJDNUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4DjA/RAAABK0lEQVR42pTSQUdEURjG8dOY0TqmPkGmRcqYD9CmzZAWJRHVRIa0iFYtM6uofYaiEW2SRJtEi9YxIklp07ZkWswu0v/wnByve7vm5ee8M+85zz1jbt9Os+WiGkYdYxjCOx5wgFeXUHmtBSzpcCGa+5BJTCjEP+0nKWAT8xqe4ArPGEEVC1hHEbs2oBwdXkM7mj/JLZrad437sCGHOfUtcziutuYu2v8XUFF/4f6vMK/YgAH1HxkBYV60AR31gxkBYd6xAeF3VzMCwvzOBpypX8V4yuFRzX2d2gD/l5yjH4fYQEnzkj4fae5rJulF2sMXVrAsaTWttRFu4Osb+1jEDT71/ZveyhouTch2fINQL9hKefKjuYFfuznXWzXMTabyrvfyIV3M4vhXgAEAUMs7K0J9UJAAAAAASUVORK5CYII=);
+
+  border: none;
+  width: 100%;
+  line-height: 19px;
+  padding: 11px 0;
+
+  border-radius: 2px;
+  box-shadow: 0 2px 8px #c4c4c4 inset;
+  text-align: left;
+  font-size: 14px;
+  font-family: inherit;
+  color: #738289;
+  font-weight: bold;
+  outline: none;
+  text-indent: 40px;
+}
+
+ul{
+  list-style: none;
+  width: 428px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+ul li{
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  overflow: hidden;
+}
+
+ul li img{
+  width:60px;
+  height:60px;
+  float:left;
+  border:none;
+}
+
+ul li p{
+  margin-left: 75px;
+  font-weight: bold;
+  padding-top: 12px;
+  color:#6e7a7f;
+}</pre>
+<p></div>
+<p>Filters follow the Angular.js philosophy &#8211; every piece of code that you write should be self-contained, testable and reusable. You can use this filter in all your views and even combine it with others through chaining.</p>
+<h3 id="5-switchable-grid">5. Switchable Grid</h3>
+<p>Another popular UI interaction is switching between different layout modes (grid or list) with a click of a button. This is very easy to do in Angular. In addition, I will introduce another important concept &#8211; <strong>Services</strong>. They are objects that can be used by your application to communicate with a server, an API, or another data source. In our case, we will write a service that communicates with <a href="http://instagram.com/developer/" target="_blank">Instagram&#8217;s API</a> and returns an array with the most popular photos at the moment.</p>
+<p>Note that for this code to work, we will have to include one additional Angular.js file in the page:</p>
+<pre class="brush:html">&lt;script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"&gt;&lt;/script&gt;</pre>
+<p>This includes the <a href="http://docs.angularjs.org/api/ngResource.$resource" target="_blank">ngResource module</a> for easily working with AJAX APIs (the module is exposed as the <strong>$resource</strong> variable in the code). This file is automatically included in the editor below.</p>
+<div class="inline-editor" data-includes="[&quot;https:\/\/ajax.googleapis.com\/ajax\/libs\/angularjs\/1.0.7\/angular.min.js&quot;,&quot;http:\/\/ajax.googleapis.com\/ajax\/libs\/angularjs\/1.0.7\/angular-resource.min.js&quot;]" style="height:650px" data-autorun="1"></p>
+<pre data-type="html">&lt;div ng-app="switchableGrid" ng-controller="SwitchableGridController"&gt;
+
+  &lt;div class="bar"&gt;
+
+    &lt;!-- These two buttons switch the layout variable,
+       which causes the correct UL to be shown. --&gt;
+
+    &lt;a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"&gt;&lt;/a&gt;
+    &lt;a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"&gt;&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;!-- We have two layouts. We choose which one to show depending on the "layout" binding --&gt;
+
+  &lt;ul ng-show="layout == 'grid'" class="grid"&gt;
+    &lt;!-- A view with big photos and no text --&gt;
+    &lt;li ng-repeat="p in pics"&gt;
+      &lt;a href="{{p.link}}" target="_blank"&gt;&lt;img ng-src="{{p.images.low_resolution.url}}" /&gt;&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;ul ng-show="layout == 'list'" class="list"&gt;
+    &lt;!-- A compact view smaller photos and titles --&gt;
+    &lt;li ng-repeat="p in pics"&gt;
+      &lt;a href="{{p.link}}" target="_blank"&gt;&lt;img ng-src="{{p.images.thumbnail.url}}" /&gt;&lt;/a&gt;
+      &lt;p&gt;{{p.caption.text}}&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</pre>
+<pre data-type="js">// Define a new module. This time we declare a dependency on
+// the ngResource module, so we can work with the Instagram API
+
+var app = angular.module("switchableGrid", ['ngResource']);
+
+// Create and register the new "instagram" service
+app.factory('instagram', function($resource){
+
+  return {
+    fetchPopular: function(callback){
+
+      // The ngResource module gives us the $resource service. It makes working with
+      // AJAX easy. Here I am using the client_id of a test app. Replace it with yours.
+
+      var api = $resource('https://api.instagram.com/v1/media/popular?client_id=:client_id&amp;callback=JSON_CALLBACK',{
+        client_id: '642176ece1e7445e99244cec26f4de1f'
+      },{
+        // This creates an action which we've chosen to name "fetch". It issues
+        // an JSONP request to the URL of the resource. JSONP requires that the
+        // callback=JSON_CALLBACK part is added to the URL.
+
+        fetch:{method:'JSONP'}
+      });
+
+      api.fetch(function(response){
+
+        // Call the supplied callback function
+        callback(response.data);
+
+      });
+    }
+  }
+
+});
+
+// The controller. Notice that I've included our instagram service which we
+// defined below. It will be available inside the function automatically.
+
+function SwitchableGridController($scope, instagram){
+
+  // Default layout of the app. Clicking the buttons in the toolbar
+  // changes this value.
+
+  $scope.layout = 'grid';
+
+  $scope.pics = [];
+
+  // Use the instagram service and fetch a list of the popular pics
+  instagram.fetchPopular(function(data){
+
+    // Assigning the pics array will cause the view
+    // to be automatically redrawn by Angular.
+    $scope.pics = data;
+  });
+
+}</pre>
+<pre data-type="css">*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font:15px/1.3 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align:center;
+}
+
+a, a:visited {
+  outline:none;
+  color:#389dc1;
+}
+
+a:hover{
+  text-decoration:none;
+}
+
+section, footer, header, aside, nav{
+  display: block;
+}
+
+/*-------------------------
+  The search input
+--------------------------*/
+
+.bar{
+  background-color:#5c9bb7;
+
+  background-image:-webkit-linear-gradient(top, #5c9bb7, #5392ad);
+  background-image:-moz-linear-gradient(top, #5c9bb7, #5392ad);
+  background-image:linear-gradient(top, #5c9bb7, #5392ad);
+
+  box-shadow: 0 1px 1px #ccc;
+  border-radius: 2px;
+  width: 580px;
+  padding: 10px;
+  margin: 45px auto 25px;
+  position:relative;
+  text-align:right;
+  line-height: 1;
+}
+
+.bar a{
+  background:#4987a1 center center no-repeat;
+  width:32px;
+  height:32px;
+  display:inline-block;
+  text-decoration:none !important;
+  margin-right:5px;
+  border-radius:2px;
+  cursor:pointer;
+}
+
+.bar a.active{
+  background-color:#c14694;
+}
+
+.bar a.list-icon{
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYzNkFCQ0ZBMTBCRTExRTM5NDk4RDFEM0E5RkQ1NEZCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYzNkFCQ0ZCMTBCRTExRTM5NDk4RDFEM0E5RkQ1NEZCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjM2QUJDRjgxMEJFMTFFMzk0OThEMUQzQTlGRDU0RkIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjM2QUJDRjkxMEJFMTFFMzk0OThEMUQzQTlGRDU0RkIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7h1bLqAAAAWUlEQVR42mL8////BwYGBn4GCACxBRlIAIxAA/4jaXoPEkMyjJ+A/g9MDJQBRhYg8RFqMwg8RJIUINYLFDmBUi+ADQAF1n8ofk9yIAy6WPg4GgtDMRYAAgwAdLYwLAoIwPgAAAAASUVORK5CYII=);
+}
+
+.bar a.grid-icon{
+  background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBEQkMyQzE0MTBCRjExRTNBMDlGRTYyOTlBNDdCN0I4IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBEQkMyQzE1MTBCRjExRTNBMDlGRTYyOTlBNDdCN0I4Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MERCQzJDMTIxMEJGMTFFM0EwOUZFNjI5OUE0N0I3QjgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MERCQzJDMTMxMEJGMTFFM0EwOUZFNjI5OUE0N0I3QjgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4MjPshAAAAXklEQVR42mL4////h/8I8B6IGaCYKHFGEMnAwCDIAAHvgZgRyiZKnImBQsACxB+hNoDAQyQ5osQZIT4gH1DsBZABH6AB8x/JaQzEig++WPiII7Rxio/GwmCIBYAAAwAwVIzMp1R0aQAAAABJRU5ErkJggg==);
+}
+
+.bar input{
+  background:#fff no-repeat 13px 13px;
+
+  border: none;
+  width: 100%;
+  line-height: 19px;
+  padding: 11px 0;
+
+  border-radius: 2px;
+  box-shadow: 0 2px 8px #c4c4c4 inset;
+  text-align: left;
+  font-size: 14px;
+  font-family: inherit;
+  color: #738289;
+  font-weight: bold;
+  outline: none;
+  text-indent: 40px;
+}
+
+/*-------------------------
+  List layout
+--------------------------*/
+
+ul.list{
+  list-style: none;
+  width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+ul.list li{
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  overflow: hidden;
+}
+
+ul.list li img{
+  width:120px;
+  height:120px;
+  float:left;
+  border:none;
+}
+
+ul.list li p{
+  margin-left: 135px;
+  font-weight: bold;
+  color:#6e7a7f;
+}
+
+/*-------------------------
+  Grid layout
+--------------------------*/
+
+ul.grid{
+  list-style: none;
+  width: 570px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+ul.grid li{
+  padding: 2px;
+  float:left;
+}
+
+ul.grid li img{
+  width:280px;
+  height:280px;
+  display:block;
+  border:none;
+}</pre>
+<p></div>
+<p>Services are entirely self-contained, which makes it possible to write different implementations without affecting the rest of your code. For example, while testing, you might prefer to return a hard-coded array of photos which would speed up your tests.</p>
+<h3>Further Reading</h3>
+<p>If you&#8217;ve reached this point, you have already grasped the basics of developing with Angular. However, there is much to learn if you want to be a pro. Here is a list of resources which will help you in your quest:</p>
+<ul>
+<li><span style="line-height: 13px;"><a href="http://angularjs.org/" target="_blank">The AngularJS Home Page</a><br />
+</span></li>
+<li><a href="http://docs.angularjs.org/guide/overview" target="_blank">The AngularJS Guide</a></li>
+<li><a href="http://docs.angularjs.org/tutorial" target="_blank">The Official AngularJS Tutorial</a></li>
+<li><a href="https://github.com/jmcunningham/AngularJS-Learning" target="_blank">A list of lots and lots of more resources, videos and tutorials</a></li>
+</ul>
+        
+                
+          <div class="webappstudio-animation">
+
+            <a href="/bootstrapstudio/"></a>
+
+            <div class="limiter">
+
+              <h6>Presenting <strong><span>Bootstrap Studio</span></strong></h6>
+
+              <p>a revolutionary tool that developers and designers use to create<br>beautiful interfaces using the Bootstrap Framework.</p>
+
+              <a href="#">Learn more</a>
+
+              <div class="animation">
+
+                <img src="http://cdn.tutorialzine.com/wp-content/themes/tzine/img/webappstudio/animation/browser.svg" class="browser" alt="Web Browser Frame" />
+
+                <img src="http://cdn.tutorialzine.com/wp-content/themes/tzine/img/webappstudio/animation/box.svg" class="box" alt="DevKit Box" />
+
+
+                <span class="header-drop"></span>
+                <span class="body-drop"></span>
+                <span class="column-drop"></span>
+
+                <img src="http://cdn.tutorialzine.com/wp-content/themes/tzine/img/webappstudio/animation/cursor.svg" class="cursor" alt="Mouse Cursor" width="32" height="32">
+
+                <div class="box-top"></div>
+
+              </div>
+
+            </div>
+
+          </div>
+        
+                
+        <div class="social-icons">
+          <a href="http://twitter.com/Tutorialzine" class="twitter" target="_blank">Tutorialzine on Twitter</a>
+          <a href="http://www.facebook.com/Tutorialzine" class="facebook" target="_blank">Tutorialzine on Facebook</a>
+          <a class="googleplus" href="https://plus.google.com/102299652175684141333" target="_blank">Tutorialzine on Google+</a>
+          <a href="http://feeds.feedburner.com/Tutorialzine" class="rss" target="_blank">Tutorialzine's RSS feed</a>
+        </div>
+
+        <div id="author-info" class="hide600">
+          <img alt='' src='http://1.gravatar.com/avatar/18635cef09f45858ce6b07c8612c9f5b?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' />          <h5>by <strong>Martin Angelov</strong></h5>
+          <p>Martin is a web developer with an eye for design from Bulgaria. He founded Tutorialzine in 2009 and it still is his favorite side project.</p>
+        </div>
+
+        <div class="bottom-meta">
+          
+                      <p id="categories"><a href="http://tutorialzine.com/category/articles/" rel="category tag">Articles</a></p>
+                      
+          
+            <div id="tags">
+
+              
+                <a href="/tag/angularjs/" class="tagged tag-angularjs">AngularJS</a>
+
+              
+                <a href="/tag/javascript/" class="tagged tag-javascript">JavaScript</a>
+
+              
+                <a href="/tag/quick-learn/" class="tagged tag-quick-learn">Quick Learn</a>
+
+              
+            </div>
+
+            
+        </div>
+        
+      </div>
+
+    </article>
+
+        <div id="relatedSection" class="leftPostCol hide600">
+
+            <ul>
+
+        
+          <li><a href="http://tutorialzine.com/2014/07/5-practical-examples-for-learning-facebooks-react-framework/" title="5 Practical Examples For Learning The React Framework">
+
+                          <img width="150" height="150" src="http://cdn.tutorialzine.com/wp-content/uploads/2014/07/5-practical-examples-for-learning-react-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="5-practical-examples-for-learning-react" />            
+              <span>5 Practical Examples For Learning The React Framework</span>
+          </a></li>
+
+        
+          <li><a href="http://tutorialzine.com/2013/05/quick-tip-convert-backbone-to-angularjs/" title="Quick Tip: Convert The Service Chooser App From Backbone.js to AngularJS">
+
+                          <img src="http://cdn.tutorialzine.com/wp-content/themes/tzine/img/default_thumb_mid.png" />
+            
+              <span>Quick Tip: Convert The Service Chooser App From Backbone.js to AngularJS</span>
+          </a></li>
+
+        
+          <li><a href="http://tutorialzine.com/2015/01/learn-handlebars-in-10-minutes/" title="Learn Handlebars in 10 Minutes or Less">
+
+                          <img width="150" height="150" src="http://cdn.tutorialzine.com/wp-content/uploads/2015/01/learn-handlebars-in-10-minutes-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="learn-handlebars-in-10-minutes" />            
+              <span>Learn Handlebars in 10 Minutes or Less</span>
+          </a></li>
+
+        
+          <li><a href="http://tutorialzine.com/2014/12/the-languages-and-frameworks-that-you-should-learn-in-2015/" title="The Languages And Frameworks That You Should Learn In 2015">
+
+                          <img width="150" height="150" src="http://cdn.tutorialzine.com/wp-content/uploads/2014/12/languages-frameworks-learn-2015-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="languages-frameworks-learn-2015" />            
+              <span>The Languages And Frameworks That You Should Learn In 2015</span>
+          </a></li>
+
+        
+          <li><a href="http://tutorialzine.com/2014/12/learn-regular-expressions-in-20-minutes/" title="Learn Regular Expressions in 20 Minutes">
+
+                          <img width="150" height="150" src="http://cdn.tutorialzine.com/wp-content/uploads/2014/12/learn-regex-20-minutes-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="learn-regex-20-minutes" />            
+              <span>Learn Regular Expressions in 20 Minutes</span>
+          </a></li>
+
+        
+            </ul>
+
+        </div>
+
+    <div id="newsletter-sidebar" class="ns-angularjs">
+
+      <form method="post" action="/members/" method="post">
+        <p class="subscribers-count"><b>&hearts; 24,665</b> developers love it</p>
+        <input type="text" placeholder="Enter Your Email" name="email" />
+        <input type="submit" name="submit" class="button blue" value="Join!">
+      </form>
+
+      <div class="hider"></div>
+    </div>
+
+    <script>
+      var the_title = "Learn AngularJS With These 5 Practical Examples";
+      var the_permalink = "http:\/\/tutorialzine.com\/2013\/08\/learn-angularjs-5-examples\/";
+    </script>
+
+        
+<div id="comments" class="leftPostCol hide600">
+
+  <h4><b>32</b> Comments</h4>
+
+  
+    <ol>
+        <li class="comment even thread-even depth-1" id="comment-87319">
+        <div id="div-comment-87319" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/70a3c375f25d04c90b3968bcd8a674bf?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://chemvl.com' rel='external nofollow' class='url'>Deeds</a></cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87319">
+      August 30, 2013 at 4:04 pm</a>    </div>
+
+    <p>Awesome! Thanks so much!</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87319#respond' onclick='return addComment.moveForm( "div-comment-87319", "87319", "respond", "3380" )' aria-label='Reply to Deeds'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-87320">
+        <div id="div-comment-87320" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/812d053f4e6455e26f35236815bae4aa?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://olim.tj/' rel='external nofollow' class='url'>Daler</a></cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87320">
+      August 30, 2013 at 4:18 pm</a>    </div>
+
+    <p>Instant search is great. thank you</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87320#respond' onclick='return addComment.moveForm( "div-comment-87320", "87320", "respond", "3380" )' aria-label='Reply to Daler'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1 parent" id="comment-87321">
+        <div id="div-comment-87321" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/98a4c0b0d041590124ff0754e4d7ad57?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://jozoor.com' rel='external nofollow' class='url'>Mohamed</a></cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87321">
+      August 30, 2013 at 4:26 pm</a>    </div>
+
+    <p>great examples , like it , i have question : what is the code editor you using to show this examples ? which have button run and edit ? ... thanks for great tuts all time .</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87321#respond' onclick='return addComment.moveForm( "div-comment-87321", "87321", "respond", "3380" )' aria-label='Reply to Mohamed'>Reply</a></div>
+        </div>
+    <ol class="children">
+    <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-87362">
+        <div id="div-comment-87362" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/18635cef09f45858ce6b07c8612c9f5b?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Martin Angelov</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87362">
+      August 31, 2013 at 9:31 am</a>    </div>
+
+    <p>Thank you! I made the editors myself. They are based on <a href="http://ace.c9.io/" target="_blank" rel="nofollow">ace</a>.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87362#respond' onclick='return addComment.moveForm( "div-comment-87362", "87362", "respond", "3380" )' aria-label='Reply to Martin Angelov'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even depth-2" id="comment-245193">
+        <div id="div-comment-245193" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/bd8ebd8a6c59610077ac417add45e2b0?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Theo</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-245193">
+      August 18, 2014 at 9:46 pm</a>    </div>
+
+    <p>Ace editor is really a great editor for in the browser for css, javascript, html. I believe Github uses ace for the inline code editor as well.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=245193#respond' onclick='return addComment.moveForm( "div-comment-245193", "245193", "respond", "3380" )' aria-label='Reply to Theo'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-87325">
+        <div id="div-comment-87325" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/a1f5087b10f777a7e8fc3fc90758b3b8?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://www.compzets.com' rel='external nofollow' class='url'>ram swaroop</a></cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87325">
+      August 30, 2013 at 6:07 pm</a>    </div>
+
+    <p>Awesome tutorial, keep up the great work!</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87325#respond' onclick='return addComment.moveForm( "div-comment-87325", "87325", "respond", "3380" )' aria-label='Reply to ram swaroop'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="comment-87327">
+        <div id="div-comment-87327" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/e263fafcec50bb05f6d50b436c43254e?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://www.opensourceconnections.com' rel='external nofollow' class='url'>Doug Turnbull</a></cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87327">
+      August 30, 2013 at 6:56 pm</a>    </div>
+
+    <p>Thanks! Your readers might like my Angular <a href="http://www.opensourceconnections.com/2013/08/25/instant-search-with-solr-and-angular/" rel="nofollow">instant search</a> example that uses Solr. Its a great simple example to get started with Angular and Solr (something we do very frequently)</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87327#respond' onclick='return addComment.moveForm( "div-comment-87327", "87327", "respond", "3380" )' aria-label='Reply to Doug Turnbull'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-87336">
+        <div id="div-comment-87336" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/65e3434da8fb17c08786ac6535c048e0?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Gabriel</cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87336">
+      August 30, 2013 at 9:29 pm</a>    </div>
+
+    <p>Very useful, thanks a lot!!!</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87336#respond' onclick='return addComment.moveForm( "div-comment-87336", "87336", "respond", "3380" )' aria-label='Reply to Gabriel'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="comment-87369">
+        <div id="div-comment-87369" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/2a0466a65830979f3a9f8f77d9a36b93?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://www.inserthtml.com/' rel='external nofollow' class='url'>Johnny</a></cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87369">
+      August 31, 2013 at 4:21 pm</a>    </div>
+
+    <p>This is really good man, keep up the good work. I was just about to write about Angular.js. The inline demos are a really neat idea.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87369#respond' onclick='return addComment.moveForm( "div-comment-87369", "87369", "respond", "3380" )' aria-label='Reply to Johnny'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-87380">
+        <div id="div-comment-87380" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/ae341f7eb365518d32b1b6bec287fa8b?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://deansofer.com' rel='external nofollow' class='url'>Dean Sofer | ProLoser</a></cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87380">
+      September 1, 2013 at 1:10 pm</a>    </div>
+
+    <p>Your filter instructions are misleading. If you call angular.module('myApp',[]) more than once, you will wipe out your app.<br />
+You also don't need to create a filter since you could use the built-in orderBy filter.<br />
+You also could use ui-route instead of having 4 css active class selectors for the navigation.</p>
+<p><b>There is a problem with best practices and quality in the community. I'm extending a formal invitation to all bloggers and newsletters and tutorialists to come together to discuss an official AngularUI sponsored project.</b></p>
+<p>https://github.com/angular-ui/community/issues/1</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87380#respond' onclick='return addComment.moveForm( "div-comment-87380", "87380", "respond", "3380" )' aria-label='Reply to Dean Sofer | ProLoser'>Reply</a></div>
+        </div>
+    <ol class="children">
+    <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-87398">
+        <div id="div-comment-87398" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/18635cef09f45858ce6b07c8612c9f5b?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Martin Angelov</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87398">
+      September 2, 2013 at 6:48 am</a>    </div>
+
+    <p>Thank you for your comment! A thing to keep in mind is that the article is for beginners who want to get a feeling of how common tasks can be accomplished with Angular. There are surely more efficient ways to do the examples, and I encourage people to continue learning about the framework and improving them.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87398#respond' onclick='return addComment.moveForm( "div-comment-87398", "87398", "respond", "3380" )' aria-label='Reply to Martin Angelov'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-87395">
+        <div id="div-comment-87395" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/0e0ae28461488b97193e1957043fb995?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://www.newbiedev.com/' rel='external nofollow' class='url'>Rahul</a></cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87395">
+      September 2, 2013 at 3:59 am</a>    </div>
+
+    <p>I have to say, the more I read about AngularJS the more I waana learn it. This is one of best AngularJS post I've seen on  Hacker News. Curiously waiting for part 2 :D</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87395#respond' onclick='return addComment.moveForm( "div-comment-87395", "87395", "respond", "3380" )' aria-label='Reply to Rahul'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-87396">
+        <div id="div-comment-87396" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/47074001328d96b0d866db8d263fe51b?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Ray</cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87396">
+      September 2, 2013 at 5:33 am</a>    </div>
+
+    <p>Any way you could do the instant search into an ajax search to database? I think that would be more practical for most sites.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87396#respond' onclick='return addComment.moveForm( "div-comment-87396", "87396", "respond", "3380" )' aria-label='Reply to Ray'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1 parent" id="comment-87397">
+        <div id="div-comment-87397" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/02044824dd6f68d46aa0f67a91718013?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://orbital.co.nz' rel='external nofollow' class='url'>Johan</a></cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87397">
+      September 2, 2013 at 5:48 am</a>    </div>
+
+    <p>Nice simple examples - well done.</p>
+<p>The last example that switches between grid and list views is not very efficient since it creates both options and the shows/hides one. A simpler/better approach would be using a single ul with repeater and ng-switch and then enabling the alternate list elements using ng-switch-case.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87397#respond' onclick='return addComment.moveForm( "div-comment-87397", "87397", "respond", "3380" )' aria-label='Reply to Johan'>Reply</a></div>
+        </div>
+    <ol class="children">
+    <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-87399">
+        <div id="div-comment-87399" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/18635cef09f45858ce6b07c8612c9f5b?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Martin Angelov</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87399">
+      September 2, 2013 at 6:49 am</a>    </div>
+
+    <p>Thank you for your input! Note taken.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87399#respond' onclick='return addComment.moveForm( "div-comment-87399", "87399", "respond", "3380" )' aria-label='Reply to Martin Angelov'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-87440">
+        <div id="div-comment-87440" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/89c553ef5e5f2106470e197aa1dc0681?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Christian</cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87440">
+      September 3, 2013 at 8:08 pm</a>    </div>
+
+    <p>I don't get it. How does Angular know when to call the total() function in the 3. Order form example?</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87440#respond' onclick='return addComment.moveForm( "div-comment-87440", "87440", "respond", "3380" )' aria-label='Reply to Christian'>Reply</a></div>
+        </div>
+    <ol class="children">
+    <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-87762">
+        <div id="div-comment-87762" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/18635cef09f45858ce6b07c8612c9f5b?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Martin Angelov</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87762">
+      September 15, 2013 at 2:52 pm</a>   </div>
+
+    <p>Angular keeps track of which models were accessed the first time the function was run. Once one of these models change, the function is executed again, and the HTML is updated with the new total value.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87762#respond' onclick='return addComment.moveForm( "div-comment-87762", "87762", "respond", "3380" )' aria-label='Reply to Martin Angelov'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-87502">
+        <div id="div-comment-87502" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/6bb5a5acf8202a587e6920d455860df3?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://batescreative.com' rel='external nofollow' class='url'>ozgur coruhlu</a></cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87502">
+      September 5, 2013 at 2:48 pm</a>    </div>
+
+    <p>Nice Tut Martin, I guess  its time to explore more on this. Thanks</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87502#respond' onclick='return addComment.moveForm( "div-comment-87502", "87502", "respond", "3380" )' aria-label='Reply to ozgur coruhlu'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-87559">
+        <div id="div-comment-87559" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/c2d3ddf3e4e57b716495a0a4bf5aba10?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://mvrx.io' rel='external nofollow' class='url'>David Chase</a></cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87559">
+      September 7, 2013 at 6:32 pm</a>    </div>
+
+    <p>Good article if I may only one suggestion when you introduce the module api and use it with filters, factories, etc you should make the controllers in that same format &quot;app.controller&quot; that way there is no questions about consistency in your app and also to showcase the ability to have controllers as methods of the module.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87559#respond' onclick='return addComment.moveForm( "div-comment-87559", "87559", "respond", "3380" )' aria-label='Reply to David Chase'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-87581">
+        <div id="div-comment-87581" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/0c55da71a5fdfc928f060d4079b47b25?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Abhi</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87581">
+      September 8, 2013 at 11:14 am</a>   </div>
+
+    <p>Awesome article Martin, after seeing these examples I think angular.js is an exciting and powerful javascript mvc to learn but after looking up the web for tutorials on angular.js for beginners I couldn't find any easy to understand tutorials or articles most of them are complex or incomplete<br />
+So I request You to write an article similar to the one you wrote on best resources to <a href="http://tutorialzine.com/2013/05/the-best-free-books-videos-tutorials-and-more-for-learning-jquery/" rel="nofollow">learn jQuery</a><br />
+Thank you</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87581#respond' onclick='return addComment.moveForm( "div-comment-87581", "87581", "respond", "3380" )' aria-label='Reply to Abhi'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-87603">
+        <div id="div-comment-87603" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/6222081fd7dcea7dfb193788d138c457?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://www.beabigrockstar.com' rel='external nofollow' class='url'>Jerrie Pelser</a></cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87603">
+      September 9, 2013 at 6:25 pm</a>    </div>
+
+    <p>Nice examples, thank you Martin!</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87603#respond' onclick='return addComment.moveForm( "div-comment-87603", "87603", "respond", "3380" )' aria-label='Reply to Jerrie Pelser'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-87677">
+        <div id="div-comment-87677" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/2074981acb2e4eb21502e7430f03d3cc?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn"><a href='http://www.Beaglesong.com' rel='external nofollow' class='url'>Beaglesong</a></cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-87677">
+      September 12, 2013 at 1:47 pm</a>   </div>
+
+    <p>Very nice demos!  Simple and meaningful.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=87677#respond' onclick='return addComment.moveForm( "div-comment-87677", "87677", "respond", "3380" )' aria-label='Reply to Beaglesong'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-88715">
+        <div id="div-comment-88715" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/b65a263f3784b9de7c4dd7d38b413a84?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Ayan</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-88715">
+      October 24, 2013 at 8:44 am</a>   </div>
+
+    <p>Hi Martin,<br />
+Great Article !!<br />
+Just wanted to ask if in the 4th example(Instant Search), it would be possible to also highlight the letters of the search results that match the letter typed in the searchBox.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=88715#respond' onclick='return addComment.moveForm( "div-comment-88715", "88715", "respond", "3380" )' aria-label='Reply to Ayan'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-94261">
+        <div id="div-comment-94261" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/6d19507eea4312362e449b9954a1de83?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Girish</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-94261">
+      December 2, 2013 at 12:32 pm</a>    </div>
+
+    <p>Martin,<br />
+Thanks for excellent examples. Really learning a lot from these. </p>
+<p>btw, in InstantSearch sample, any reason why you didn't just use *filter* function directly like this ? </p>
+<p>&lt;li ng-repeat=&quot;item in items | filter:searchString&quot;&gt;</p>
+<p>I am assuming you wanted to demo custom filter solution. Is that so ?</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=94261#respond' onclick='return addComment.moveForm( "div-comment-94261", "94261", "respond", "3380" )' aria-label='Reply to Girish'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-94493">
+        <div id="div-comment-94493" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/5282164c48296e80dfde3702b8207ca7?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Nash</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-94493">
+      December 3, 2013 at 5:24 pm</a>   </div>
+
+    <p>Great tutorial and it helped me and saved lot of my time.Keep up good work.Thanks.<br />
+--Nash.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=94493#respond' onclick='return addComment.moveForm( "div-comment-94493", "94493", "respond", "3380" )' aria-label='Reply to Nash'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-95647">
+        <div id="div-comment-95647" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/d989d74220d6a46436b5156036f78378?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Andy</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-95647">
+      December 15, 2013 at 9:22 am</a>    </div>
+
+    <p>Martin, your examples made it even more clear to me that I need to implement AngularJS for my web app. (otakucms). You certainly have a talent for design combined with code. Thanks!</p>
+<p>What I need to understand most is how to do the equivalent of jQuery Ajax (pushing and pulling of data between server and client). So it looks like I need to learn about services. Also, reading your article made the concept of a single page site click in my head.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=95647#respond' onclick='return addComment.moveForm( "div-comment-95647", "95647", "respond", "3380" )' aria-label='Reply to Andy'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-96983">
+        <div id="div-comment-96983" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/ba269c78a5b4ff6bd675d11ea047e678?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Phillip</cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-96983">
+      January 7, 2014 at 6:26 pm</a>    </div>
+
+    <p>Great article, thank you.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=96983#respond' onclick='return addComment.moveForm( "div-comment-96983", "96983", "respond", "3380" )' aria-label='Reply to Phillip'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-97006">
+        <div id="div-comment-97006" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/2f5283cc7b85e352c0f86ad8581ff371?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Dmitri</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-97006">
+      January 9, 2014 at 3:04 pm</a>    </div>
+
+    <p>Love the simplicity, clear comments explaining what is important, and lack of anything unnecessary and unimportant.</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=97006#respond' onclick='return addComment.moveForm( "div-comment-97006", "97006", "respond", "3380" )' aria-label='Reply to Dmitri'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-97173">
+        <div id="div-comment-97173" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/a9083136a8cd91f0601a68b52938ad4b?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Satya</cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-97173">
+      January 22, 2014 at 7:44 pm</a>   </div>
+
+    <p>Thanks. You have covered every angle of angular…. Just saying...</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=97173#respond' onclick='return addComment.moveForm( "div-comment-97173", "97173", "respond", "3380" )' aria-label='Reply to Satya'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-106562">
+        <div id="div-comment-106562" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/210bebd79d1f82886cfe5ed4f3df9b11?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Eckard Ritter</cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-106562">
+      April 25, 2014 at 2:54 pm</a>   </div>
+
+    <p>Instant search is very cool, thank you. You mention it would normally be used with Ajax. I would like to use it for an RSS feed. Found an Angularjs solution for feeds <a href="http://www.jdev.it/a-very-simple-rss-reader-with-angularjs-and-google-feed-api/" rel="nofollow">here</a> - but I am very new to Angularjs and have obviously no chance to combine this with your instant search, i.e. searching a feed or even multiple feeds. Do you have something for this problem?</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=106562#respond' onclick='return addComment.moveForm( "div-comment-106562", "106562", "respond", "3380" )' aria-label='Reply to Eckard Ritter'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="comment-399301">
+        <div id="div-comment-399301" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://1.gravatar.com/avatar/9c8808628d6a79d528db2eae15ad137c?s=80&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">Srong</cite> <span class="says">says:</span>   </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-399301">
+      December 23, 2014 at 3:24 am</a>    </div>
+
+    <p>Thank you for sharing, it really helpful!!</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=399301#respond' onclick='return addComment.moveForm( "div-comment-399301", "399301", "respond", "3380" )' aria-label='Reply to Srong'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="comment-412507">
+        <div id="div-comment-412507" class="comment-body">
+        <div class="comment-author vcard">
+      <img alt='' src='http://0.gravatar.com/avatar/eab11ebdc66b56d94f23334af5ac283e?s=80&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D80&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' />      <cite class="fn">DV</cite> <span class="says">says:</span>    </div>
+    
+    <div class="comment-meta commentmetadata"><a href="http://tutorialzine.com/2013/08/learn-angularjs-5-examples/#comment-412507">
+      January 20, 2015 at 9:01 pm</a>   </div>
+
+    <p>Thanks for your post!<br />
+But I don't understand how it works with cross domain requests in Switchable Grid example. Browser limited by the same origin policy but in example you are making ajax with instagram url. Can you explain?</p>
+
+    <div class="reply"><a class='comment-reply-link' href='/2013/08/learn-angularjs-5-examples/?replytocom=412507#respond' onclick='return addComment.moveForm( "div-comment-412507", "412507", "respond", "3380" )' aria-label='Reply to DV'>Reply</a></div>
+        </div>
+    </li><!-- #comment-## -->
+    </ol>
+
+  
+  
+  
+  <div id="respond">
+    <div id="addCommentSection">
+      <h4 id="leavereply">Add Comment</h4>
+      <h4 id="respondtitle">Add a Reply</h4>
+
+      <form action="http://tutorialzine.com/wp-comments-post.php" method="post" id="commentform">
+
+        
+        <p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required='true' />
+        <label for="author"><small>Name</small></label></p>
+
+        <p><input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required='true' />
+        <label for="email"><small>Email (will not be published)</small></label></p>
+
+<!--        <p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+        <label for="url"><small>Website</small></label></p>-->
+
+        
+        <p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+        <p class="notes"><b>HTML is escaped automatically.</b> Surround code blocks with <b>&lt;pre&gt;&lt;/pre&gt;</b> for readability.<br>
+          Perks:&nbsp;&nbsp;&nbsp;<b>**bold**</b>&nbsp;&nbsp;&nbsp;<i>__italics__</i>&nbsp;&nbsp;&nbsp;<span style="color:#008DE6">[some text](http://example.com)</span> for links</p>
+
+        <div style="padding-top:15px;">
+          <input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" class="button blue" />
+          <input type='hidden' name='comment_post_ID' value='3380' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+
+          <div class="cancel-comment-reply">
+            <a rel="nofollow" id="cancel-comment-reply-link" href="/2013/08/learn-angularjs-5-examples/#respond" style="display:none;">Cancel Reply</a>         </div>
+        </div>
+
+        <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b1ed616c48" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="142"/></p>
+
+      </form>
+    </div>
+  </div>
+
+  
+</div>
+
+  </section>
+
+  <footer>
+
+    <div class="footer-limiter">
+
+      <div class="footer-group bottom-nav">
+        <a href="/license/">Article License</a>
+        <a href="/privacy/">Privacy Policy</a>
+        <a href="/contact/">Contact Form</a>
+        <a href="/contact/">Advertise</a>
+
+        <p>Tutorialzine &copy; 2009-2015</p>
+      </div>
+
+      <div class="footer-group contribute">
+        <h6>The License</h6>
+        <p>The <b>source code and techniques</b>, covered in our articles, are free to use in your personal and commercial projects. The articles themselves are copyrighted.</p>
+        <a href="/license/" class="button blue small">Learn more</a>
+      </div>
+
+      <div class="footer-group suggest">
+        <h6>About us</h6>
+        <p>We are a team of highly skilled web developers and designers, based in Varna, Bulgaria. We are always open to new ideas and suggestions.</p>
+        <a href="/contact/" class="button blue small">Contact us</a>
+      </div>
+
+      <div class="footer-group book">
+        <a href="/books/jquery-trickshots/" class="book-cover-small">Book Cover</a>
+        <h6>jQuery Trickshots</h6>
+        <p>Tutorialzine's advanced jQuery techniques book.</p>
+        <a href="/books/jquery-trickshots/" class="button red small">Download it</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script type='text/javascript' src='http://tutorialzine.com/wp-content/plugins/akismet/_inc/form.js?ver=3.1.1'></script>
+
+
+<script type='text/javascript' src='http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js?ver=4.1.4'></script>
+
+    
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-531949-8']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+
+  <img src="http://tz-visitor-globe.herokuapp.com/ping" width="0" height="0" style="display:none;" />
+  
+<script type="text/javascript" src="http://cdn.tutorialzine.com/wp-content/cache/minify/000000/3f6f8/single.include-footer.f67b58.js"></script>
+</body>
+</html>
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Minified using apc
+Page Caching using apc
+Object Caching 2145/2196 objects using apc
+Content Delivery Network via cdn.tutorialzine.com
+
+ Served from: tutorialzine.com @ 2015-04-29 15:52:05 by W3 Total Cache -->

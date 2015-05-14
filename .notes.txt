@@ -1,0 +1,16 @@
+appcache
+
+* add hash to end:  manifest.appcache?asdfasdfasdf
+  no.  if the html is cached, then it wont be seen.  the browser should ping the manifest
+  why? assuming your index.html isn't cached, this allows for a quick ma update
+  proof: update only the hash, (npm run build) push it.  then go online and click reload.  --- FAIL, only opening index.html directly reloads it
+
+* should .appacheingore have manifest.appcache in it?
+  no
+
+* should .appacheingore have *.html in it?
+  lets say yes
+
+
+appcachegen > manifest.appcache; cat external.appcache >> manifest.appcache;
+

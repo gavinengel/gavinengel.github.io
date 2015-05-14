@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html lang="en" manifest="manifest.appcache">
+  
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Limelight|Flamenco|Federo|Yesteryear|Josefin Sans|Spinnaker|Sansita One|Handlee|Droid Sans|Oswald:400,300,700" media="screen" rel="stylesheet" type="text/css" />
+    <style>
+      /* No content under the fixed bootstrap header. */
+      body {
+        padding-top: 60px;
+      }
+    </style>
+    <link href="stylesheets/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/bootstrap-responsive.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/common.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/fontawesome.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/datepicker.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+    <link href="stylesheets/styles.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- Typekit fonts require an account and a kit containing the fonts used. see https://typekit.com/plans for details. <script type="text/javascript" src="//use.typekit.net/YOUR_KIT_ID.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+-->
+    <title>Home</title>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <a class="brand" href="#"> <i class="icon icon-credit-card"></i> Expendthrift
+        </a>
+        <ul class="nav pull-right">
+
+          <li id="signout">
+            <a href="#">Sign Out</a>
+          </li>
+          <li>
+            <a href="http://bit.ly/Expendthrift-DB">Database Records</a>
+          </li>   
+          <li>
+            <a href="https://github.com/gavinengel/gavinengel.github.io/tree/master/expendthrift">Static Code</a>
+          </li>       
+          <li>
+            <a href="https://github.com/gavinengel/gavinengel.github.io/tree/master/expendthrift-api">API Code</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="topbanner" class="container-fluid container-fluid-1">
+      <div class="container">
+        <div class="row-fluid">
+          <span class="span12">
+            <h1 class="heading">Expendthrift Expense Tracker</h1>
+            <p>Example opensource online expense tracker application using jQuery ajax, Github Pages, and Google Sheets for a database</p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div id="benefits" class="container container-1">
+      <div class="row-fluid">
+        <span class="span4">
+          <h2 class="heading">Benefit One</h2>
+          <p>Product benefit number one.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque lacinia elit, at gravida.</p>
+        </span>
+        <span class="span4">
+          <h2 class="heading">Benefit Two</h2>
+          <p>Product benefit number two.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque lacinia elit, at gravida.</p>
+        </span>
+        <span class="span4">
+          <h2 class="heading">Benefit Three</h2>
+          <p>Product benefit number one.&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque lacinia elit, at gravida.</p>
+        </span>
+      </div>
+    </div>
+<!-- begin login/register -->
+<div id="signin" class="container">
+    <div class="row">
+    <div class="span4 offset4 well">
+      <legend>Please Register and Sign In</legend>
+      <!--
+            <div class="alert alert-error">
+                <a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!
+            </div>
+          -->
+      <form>
+      <input type="text" id="username" class="span4" name="username" placeholder="Email">
+      <input type="password" id="password" class="span4" name="password" placeholder="Password">
+            <!--<label class="checkbox">
+              <input type="checkbox" name="remember" value="1"> Remember Me
+            </label>-->
+      <button id="signin-button" type="" name="submit" class="btn btn-info btn-block">Sign in</button>
+      </form>    
+    </div>
+  </div>
+</div>
+<!-- end login/register -->
+
+<div id="expense-app">
+
+<!-- begin expense entry -->
+
+
+<h2>Add expense</h2>
+
+<div id="expense-entry" class="container">
+
+      <div class='liquid'>
+      <label>Amount</label>
+      <div class="input-prepend"><span class="add-on"><i class="icon-shopping-cart"></i></span><input type="text" id="amount" name=""></div>
+      </div>
+
+<div class='liquid'>
+      <label>Date</label>
+      <div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input type="text" id="date" name=""></div>
+</div>
+
+<div class='liquid'>
+      <label>Time</label>
+      <div class="input-prepend"><span class="add-on"><i class="icon-time"></i></span><input type="text" id="time" name=""></div>
+</div>
+
+<div class='liquid'>
+      <label>Description</label>
+      <div class="input-prepend"><span class="add-on"><i class="icon-comment"></i></span><input type="text" id="description" name=""></div>
+</div>
+      
+<div class='liquid'>      
+      <label>Comment</label>
+      <div class="input-prepend"><span class="add-on"><i class="icon-comment"></i></span><input type="text" id="comment" name=""></div>
+</div>
+
+<div class='liquid'>
+      <label>Tags</label>
+      <div class="input-prepend"><span class="add-on"><i class="icon-tags"></i></span><input type="text" id="tags" name=""></div>
+</div>
+      <button id="add-expense-button" type="" name="submit" class="btn btn-info btn-block">Add Expense</button>
+
+</div>
+<!-- end expense entry -->
+
+<!-- begin datatable -->
+
+<h2>View all Expenses</h2>
+    
+<div id="expenses" class="container" style="margin-top: 10px">
+      
+<!-- -->
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/DT_bootstrap.css">
+<script type="text/javascript" charset="utf-8" language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="scripts/TableTools/js/dataTables.tableTools.js"></script>
+<script type="text/javascript" charset="utf-8" language="javascript" src="http://datatables.github.io/Plugins/integration/bootstrap/2/dataTables.bootstrap.js"></script>
+<script type="text/javascript" charset="utf-8" language="javascript" src="scripts/bootstrap-datepicker.js"></script>
+<script type="text/javascript" charset="utf-8" language="javascript" src="http://jdewit.github.io/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<link href="http://jdewit.github.io/bootstrap-timepicker/css/bootstrap-timepicker.min.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" charset="utf-8" language="javascript" src="http://gavinengel.github.io/expendthrift/scripts/offline.min.js"></script>
+<link href="http://gavinengel.github.io/expendthrift/stylesheets/offline-theme-chrome.css" type="text/css" rel="stylesheet" />
+
+
+<!-- -->
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Description</th>
+      <th>Comment</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
+  </tbody>
+   <tfoot>
+      <tr>
+          <th>= </th> 
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </tfoot>
+</table>
+      
+    </div>
+<!-- end datatable -->
+
+</div><!-- /#expense-app -->
+
+    <div class="container container-2">
+      <div class="row-fluid">
+        <span class="span12">
+          <p>Our philosophy here.&nbsp;Curabitur vel consequat tortor. Aliquam. Erat. Volutpat.</p>
+        </span>
+      </div>
+    </div>
+    <div class="container-fluid container-fluid-2">
+      <div class="container">
+        <div class="row-fluid">
+          <span class="span12">
+            <div class="pull-left">
+              <p>&copy; AwesomeCo</p>
+            </div>
+            <ul class="nav nav-pills pull-right">
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Privacy</a>
+              </li>
+              <li>
+                <a href="#">Terms Of Service</a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
+    </div>
+<!-- notifications begin -->
+    
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+        
+<!-- notifications end -->
+
+  </body>
+
+
+    <script type="text/javascript" charset="utf-8" language="javascript" src="apps/jquery/app.js"></script>
+
+</html>

@@ -7,3 +7,8 @@
 .modal.fade.in {
   top: 40%;
 }
+
+.footer {
+  background-color: inherit;
+  color: inherit;
+}

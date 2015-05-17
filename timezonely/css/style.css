@@ -13,7 +13,7 @@
   .footer .container {
     padding: 0; }
     .footer .container .footer-inner {
-      padding: 0; }
+      padding: 5px 5px; }
 
 .container {
   width: inherit;

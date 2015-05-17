@@ -2,6 +2,14 @@ body > .container {
   width: inherit;
   padding: 20px 20px;
   max-width: 960px; }
+  body > .container .footer {
+    margin-top: 0;
+    background-color: inherit;
+    color: inherit; }
+    body > .container .footer .container {
+      padding: 0; }
+      body > .container .footer .container .footer-inner {
+        padding: 5px 5px; }
   body > .container .jumbotron {
     background: none;
     box-shadow: none;
@@ -10,11 +18,3 @@ body > .container {
     top: 40%; }
   body > .container .navbar .navbar-inner .container {
     padding: 0; }
-body .footer {
-  margin-top: 0;
-  background-color: inherit;
-  color: inherit; }
-  body .footer .container {
-    padding: 0; }
-    body .footer .container .footer-inner {
-      padding: 5px 5px; }

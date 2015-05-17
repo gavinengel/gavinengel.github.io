@@ -154,9 +154,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap'])
             var timezoneUrl = fbURL + timezone_table + '/' + id;
             $scope.timezone = $firebase(new Firebase(timezoneUrl));
             $scope.timezone.id = id;
-        } else {
-            $scope.timezone.designation = $scope.designations[0].name;
-        }
+        } 
 
         // close modal
         $scope.cancel = function() {

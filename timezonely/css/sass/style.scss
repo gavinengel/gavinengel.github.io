@@ -28,8 +28,8 @@ body {
     }
   }
   .modal {
-    &>.fade {
-      &>.in {
+    &.fade {
+      &.in {
         top: 40%;
       }
     }

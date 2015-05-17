@@ -74,17 +74,11 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap'])
         $scope.user = {};
         $scope.alerts = [];         // array of alert message objects.
         $scope.designations = [{
-            name: 'Co-owner',
-            value: "Co-owner"
+            name: 'Regular',
+            value: "Regular"
         }, {
-            name: 'PM',
-            value: "PM"
-        }, {
-            name: 'HR',
-            value: "HR"
-        }, {
-            name: 'Developer',
-            value: "Developer"
+            name: 'Manager',
+            value: "Manager"
         }];
         
 
@@ -154,20 +148,6 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap'])
     $scope.model = function($scope, $modalInstance, Timezones, id, $firebase, fbURL, timezone_table) {
         $scope.timezone = {};
         $scope.alerts = [];         // array of alert message objects.
-        $scope.designations = [{
-            name: 'Co-owner',
-            value: "Co-owner"
-        }, {
-            name: 'PM',
-            value: "PM"
-        }, {
-            name: 'HR',
-            value: "HR"
-        }, {
-            name: 'Developer',
-            value: "Developer"
-        }];
-        
 
         // if clicked edit. id comes from $scope.modal->timezoneId
         if (angular.isDefined(id)) {

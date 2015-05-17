@@ -12,3 +12,8 @@
   background-color: inherit;
   color: inherit;
 }
+
+.container {
+  width: inherit;
+  padding: 10px 10px;
+}

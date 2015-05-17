@@ -16,5 +16,5 @@ body .container {
     color: #333333; }
   body .container .navbar .navbar-inner .container {
     padding: 0; }
-body .modal .fade .in {
+body .modal.fade.in {
   top: 40%; }

@@ -33,7 +33,7 @@
         <div ng-controller='TimeCtrl'>
             <p>{{ clock | date:'medium'}}</p>
         </div>
-        <span ng-bind="getLocalTime(timezone.city)"></span>
+        <span ng-bind="getLocalTime(timezone)"></span>
 				<span ng-if="!timezone.$edit">{{timezone.id}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="getLocalTime(timezone.$id)" /></div>
 			</td>

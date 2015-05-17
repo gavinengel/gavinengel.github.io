@@ -11,6 +11,13 @@ body {
     .modal.fade.in {
       top: 40%;
     }
+    .navbar {
+      .navbar-inner {
+        .container {
+          padding: 0;
+        }
+      }
+    }
   }
   .footer {
     margin-top: 0;

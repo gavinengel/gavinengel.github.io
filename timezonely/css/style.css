@@ -8,6 +8,8 @@ body > .container {
     color: #333333; }
   body > .container .modal.fade.in {
     top: 40%; }
+  body > .container .navbar .navbar-inner .container {
+    padding: 0; }
 body .footer {
   margin-top: 0;
   background-color: inherit;

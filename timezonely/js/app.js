@@ -146,7 +146,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap'])
     };
 
     $scope.getLocalTime = function(timezone) {
-
+        var timeout;
         $scope.clock = "loading clock..."; // initialise the time variable
         $scope.tickInterval = 1000 //ms
 

@@ -10,13 +10,13 @@
 		<tr>
 			<th>Timezone Name</th>
 			<th>Name of city</th>
-			<th>difference to GMT time</th>
+			<th>difference</th>
 			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="(key, timezone) in timezones | orderByPriority | filter:search | orderBy:'zonename'">
-			<td data-title="'Name'">
+			<td data-title="'Name'" width="200">
 				<span ng-if="!timezone.$edit">{{timezone.zonename}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.zonename" /></div>
 			</td>

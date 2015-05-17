@@ -19,9 +19,6 @@ body {
       box-shadow: none;
       color: #333333;
     }
-    .modal.fade.in {
-      top: 40%;
-    }
     .navbar {
       .navbar-inner {
         .container {
@@ -30,5 +27,11 @@ body {
       }
     }
   }
-
+  .modal {
+    .fade {
+      .in {
+        top: 40%;
+      }
+    }
+  }
 }

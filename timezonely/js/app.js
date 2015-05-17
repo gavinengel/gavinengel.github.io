@@ -145,6 +145,10 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap'])
         });
     };
 
+    $scope.getLocalTime = function(timezoneId) {
+        return 'test123';
+    };
+
     $scope.model = function($scope, $modalInstance, Timezones, id, $firebase, fbURL, timezone_table) {
         $scope.timezone = {};
         $scope.alerts = [];         // array of alert message objects.

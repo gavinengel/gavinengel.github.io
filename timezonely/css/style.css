@@ -12,6 +12,8 @@
   color: inherit; }
   .footer .container {
     padding: 0; }
+    .footer .container .footer-inner {
+      padding: 0; }
 
 .container {
   width: inherit;

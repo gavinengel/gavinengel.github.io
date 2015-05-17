@@ -64,11 +64,6 @@
 					<input id="difference" name="difference" ng-model="timezone.difference" type="text" placeholder="Difference" class="input-xlarge" required="required"  ng-class="{error: timezone.difference.$invalid && !timezone.difference.$pristine}"/>
 				</div>
 			</div>			
-			<td data-title="'Actions'" width="200">
-				<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(user.$id)">Edit</a>
-				<a ng-if="!user.$destroy" ng-click="removeRecord(user.$id)" class="btn btn-default btn-xs">Delete</a>
-				<a ng-if="user.$edit" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
-			</td>
 			
 		</form>
 	</div>

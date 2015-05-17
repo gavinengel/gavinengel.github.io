@@ -1,0 +1,9 @@
+.jumbotron {
+  background: none;
+  box-shadow: none;
+  color: #333333;
+}
+
+.modal.fade.in {
+  top: 40%;
+}

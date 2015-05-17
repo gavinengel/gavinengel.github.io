@@ -146,6 +146,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap'])
     };
 
     $scope.getLocalTime = function(timezoneId) {
+        console.log('in getLocalTime and passed '+timezoneId);
         return 'test123';
     };
 

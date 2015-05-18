@@ -17,17 +17,15 @@ body {
         }
       }
     }
-    .jumbotron {
-      background: none;
-      box-shadow: none;
-      color: #333333;
-    }
     .navbar {
       .navbar-inner {
         .container {
           padding: 0;
         }
       }
+    }
+    .search-query {
+      max-width: 100px;
     }
   }
   .modal {

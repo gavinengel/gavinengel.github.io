@@ -10,7 +10,7 @@
 		<tr>
 			<th>Timezone Name</th>
 			<th>Name of city</th>
-			<th>difference</th>
+			<th>+/-</th>
 			<th>local time</th>
 			<th>Action</th>
 		</tr>
@@ -25,7 +25,7 @@
 				<span ng-if="!timezone.$edit">{{timezone.city}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.city" /></div>
 			</td>
-			<td data-title="'Text'" width="100">
+			<td data-title="'Text'" width="50">
 				<span ng-if="!timezone.$edit">{{timezone.difference}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.difference" /></div>
 			</td>

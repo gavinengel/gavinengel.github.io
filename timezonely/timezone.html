@@ -17,19 +17,19 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="(key, timezone) in timezones | orderByPriority | filter:search | orderBy:'zonename'">
-			<td data-title="'Name'" width="100">
+			<td data-title="'Name'" >
 				<span ng-if="!timezone.$edit">{{timezone.zonename}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.zonename" /></div>
 			</td>
-			<td data-title="'Text'" width="100">
+			<td data-title="'Text'" >
 				<span ng-if="!timezone.$edit">{{timezone.city}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.city" /></div>
 			</td>
-			<td data-title="'Text'" width="50">
+			<td data-title="'Text'" >
 				<span ng-if="!timezone.$edit">{{timezone.difference}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.difference" /></div>
 			</td>
-			<td data-title="'Text'" width="100">
+			<td data-title="'Text'" >
         <div ng-controller='TimeCtrl'>
             <p>{{ clock | date:'medium'}}</p>
         </div>
@@ -37,7 +37,7 @@
 				<span ng-if="!timezone.$edit">{{timezone.id}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="getLocalTime(timezone.$id)" /></div>
 			</td>
-			<td data-title="'Actions'" width="200">
+			<td data-title="'Actions'" >
 				<a ng-if="!timezone.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(timezone.$id)">Edit</a>
 				<a ng-if="!timezone.$destroy" ng-click="removeRecord(timezone.$id)" class="btn btn-default btn-xs">Delete</a>
 				<a ng-if="timezone.$edit" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>

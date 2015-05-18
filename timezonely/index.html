@@ -1,0 +1,77 @@
+<!doctype html>
+<html ng-app="timezonely">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/timezonely/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/timezonely/css/docs.css">
+    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/timezonely/css/league-0.0.1.css">
+    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/timezonely/css/style.css">
+    <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+	<style type="text/css">
+		.dropdown-menu .btn.btn-default.btn-sm.btn-block { width: 100%;}
+		.dropdown-menu .btn.btn-default.btn-sm { background-color: #fff; background-image: none; }
+	</style>
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js"></script>
+  <script type="text/javascript" src="http://code.gavinengel.com/timezonely/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="http://code.gavinengel.com/timezonely/vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script>
+  <script type="text/javascript" src="http://code.gavinengel.com/timezonely/vendor/angular-grid/build/ng-grid.js"></script>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+  <script src="http://code.gavinengel.com/timezonely/js/app.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<h2>Timezonely</h2>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li ui-route="/home" ng-class="{active:$uiRoute}" class="ng-scope">
+              <a href="#/home">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li ui-route="/users" ng-class="{active:$uiRoute}" class="ng-scope">
+              <a href="#/users">
+                <i class="icon-info-sign"></i>
+                Users
+              </a>
+            </li>
+            <li ui-route="/timezones" ng-class="{active:$uiRoute}" class="ng-scope">
+              <a href="#/timezones">
+                <i class="icon-github-alt"></i>
+                Timezones
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+		<div ng-view></div>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>
+            :-)
+
+            <div ng-controller='TimeCtrl'>
+                <p>{{ clock | date:'medium'}}</p>
+            </div>
+          </p>
+        </div>
+      </div>
+    </footer>
+	</div>
+
+
+</body>
+
+</html>

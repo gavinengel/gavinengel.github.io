@@ -262,53 +262,6 @@
                 }
             ]
         },
-        "qa": {
-            "title": "QA",
-            "sections": [
-                {
-                    "q": "Describe your experience working with JavaScript.",
-                    "a": [
-                        "I've used JavaScript for many years.  Usually, my projects use some degree of interactivity, normally accomplished with jQuery.",
-                        "Often, the JavaScript method for working with AJAX requests is done with jQuery.",
-                        "Lately, I've been diving deeply in Node.js development.  Please feel free to review some of my Node work on my npm account: https://www.npmjs.com/~gavinengel"
-                    ]
-                },
-                {
-                    "q": "Describe your experience with HTML5/CSS3.",
-                    "a": [
-                        "HTML5 has added many new tags, most of which I do not use that often.  A couple example HTML5 tags that I do try to use in my projects are 'nav' and 'footer'.",
-                        "For a smaller project, WAN (Website Advertising Network), I helped to bring together a HTML5 video library and custom JavaScript code for creating a unique video-tag player for WAN videos.",
-                        "CSS3 has provided many new elements that I have become accustomed to.  Using polyfills and SASS Bourbon, I've been using CSS3 elements without worrying too much about end user compatibility."
-                    ]
-                },
-                {
-                    "q": "Do you have experience with any of the newer JS frameworks?",
-                    "a": [
-                        "The newer frontend frameworks, some examples are Angular, Backbone, Ember, haven't been ones I've used professionally.  Of the non-jQuery frontend frameworks I have been experimenting with Angular mostly.  My github account has some work I've done, sometimes with a friend, using Angular."
-                    ]
-                },
-                {
-                    "q": "Do you have any database/server side experience?",
-                    "a": [
-                        "Absolutely.  My primary expertise is as a server-side developer--LAMP.  I have been managing Linux web services anddatabase services for years.",
-                        "Noteably, the three Linux distributions I have spent the most time managing are RHEL/CentOS, Ubuntu, and Suse.",
-                        "The majority of my professional database administration work has been with MySQL and some MariaDB."
-                    ]
-                },
-                {
-                    "q": "Please detail your level of experience with PHP programming",
-                    "a": [
-                        "I have been a PHP developer since the days of PHP 4.5/4.6.  My earlier larger projects used Drupal, WordPress, and CodeIgniter.  Since then I've developed projects in various other CMSs and MVCs.  I've developed some open source PHP, Guaranteemail, for example."
-                    ]
-                },
-                {
-                    "q": "Please detail your level of experience with WordPress development/customization",
-                    "a": [
-                        "Generally, my work with WordPress is pulling together a theme, usually beginning with a barebone or a more polished one, then adding and configuring plugins per the client's needs.  After creating a child theme, I've generally been able to accomplish the project goals by adding custom CSS and hook functions to functions.php.  Occasionally, I will need to consolidate work into a stand alone plugin.  More often, the amalgamation of these standalone pieces, along with UI/UX frontend theming, is enough to fulfill the project's needs."
-                    ]
-                }
-            ]
-        },
         "prevwork": {
             "title": "Previous Work",
             "list": [

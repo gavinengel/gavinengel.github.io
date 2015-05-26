@@ -12,8 +12,8 @@ var oauth2Controller = require('./controllers/oauth2');
 var clientController = require('./controllers/client');
 
 // Connect to the timezoneapp MongoDB
-//mongoose.connect('mongodb://localhost:27017/timezoneapp');
-mongoose.connect('mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ':' + process.env.OPENSHIFT_MONGODB_DB_PASSWORD + '@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/' + process.env.OPENSHIFT_APP_NAME);
+mongoose.connect('mongodb://localhost:27017/timezoneapp');
+//mongoose.connect('mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ':' + process.env.OPENSHIFT_MONGODB_DB_PASSWORD + '@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/' + process.env.OPENSHIFT_APP_NAME);
 
 
 // Create our Express application

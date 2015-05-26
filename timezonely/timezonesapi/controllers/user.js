@@ -12,7 +12,7 @@ exports.postUsers = function(req, res) {
     if (err)
       res.send(err);
 
-    res.json({ message: 'New timezone user added to the app room!' });
+    res.json({ message: 'New timezone user added to the app!' });
   });
 };
 

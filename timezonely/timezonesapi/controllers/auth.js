@@ -50,8 +50,8 @@ passport.use(new DigestStrategy(
 ));
 
 passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'pass'
+    usernameField: 'username',
+    passwordField: 'password'
   },
   function(username, password, callback) {
     User.findOne({ username: username }, function (err, user) {

@@ -41,7 +41,7 @@ Thumbs.db
 *.scssc
 .sass-cache
 node_modules
-config.json
+config/
 
 
 # APP Specific #

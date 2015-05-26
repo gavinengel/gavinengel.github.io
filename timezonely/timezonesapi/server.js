@@ -1,4 +1,5 @@
 // Load required packages
+var config = require('./config.json');
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -12,7 +13,8 @@ var oauth2Controller = require('./controllers/oauth2');
 var clientController = require('./controllers/client');
 
 // Connect to the timezoneapp MongoDB
-mongoose.connect('mongodb://localhost:27017/timezoneapp');
+var mongodbConnect = 'mongodb://'+config.mongodb.username + ':'+ config.mongodb.password + '@' + config.mongodb.host + ':' + config.mongodb.port + '/' + config.mongodb.db
+mongoose.connect(mongodbConnect);
 //mongoose.connect('mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ':' + process.env.OPENSHIFT_MONGODB_DB_PASSWORD + '@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/' + process.env.OPENSHIFT_APP_NAME);
 
 

@@ -1,5 +1,5 @@
 // Load required packages
-var config = require('./config.json');
+var config = require('./config/config.json');
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');

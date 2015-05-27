@@ -355,7 +355,7 @@ var array = JSON.stringify([ 'foo', 'bar' ]);
 timezone.username = 'gavin';
 timezone.password = 'engel';
 
-$http({
+return $http({
 url: getUrl(),//+'?username=gavin&password=engel',
 method: "POST",
 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,

@@ -1,4 +1,4 @@
-angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-storage', 'ui.router', 'weblogng'])
+angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-storage', 'ui.router')
 
     .value('fbURL', 'https://timezonely.firebaseio.com/')
     .value('user_table', 'user')

@@ -361,10 +361,10 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         };
 
         service.create = function (timezone) {
-            //timezone = addCredentials(timezone)
-console.log('here is url:'+getUrl())
+            timezone = addCredentials(timezone)
+//console.log('here is url:'+getUrl())
             return $http({
-                url: getUrl(),
+                url: 'http://ovh.engeldev.com:9000/api/timezones/',//getUrl(),
                 method: "POST",
                 params: timezone,
             }).success(function (data, status, headers, config) {

@@ -191,14 +191,13 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         }
 */
         $scope.getItems = function() {
-            alert('in getItems')
             ItemsModel.all()
                 .then(function (result) {
                     dashboard.items = result.data;
                 });
         };
 
-
+/*
         function createItem(item) {
 alert('in createItems')
             ItemsModel.create(item)
@@ -207,6 +206,17 @@ alert('in createItems')
                     getItems();
                 });
         }
+*/
+        $scope.createItem = function(item) {
+alert('in createItems')
+            ItemsModel.create(item)
+                .then(function (result) {
+                    initCreateForm();
+                    getItems();
+                });
+        }
+        };
+
 
         function updateItem(item) {
             alert('in updateItems')
@@ -248,7 +258,7 @@ alert('in createItems')
         dashboard.editedItem = null;
         dashboard.isEditing = false;
         dashboard.getItems = $scope.getItems;
-        dashboard.createItem = createItem;
+        dashboard.createItem = $scope.createItem;
         dashboard.updateItem = updateItem;
         dashboard.deleteItem = deleteItem;
         dashboard.setEditedItem = setEditedItem;

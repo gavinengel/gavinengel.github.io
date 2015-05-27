@@ -362,9 +362,9 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
 var encoded = encodeURIComponent(JSON.stringify(timezone2))
             return $http({
-                url: getUrl(),
+                url: getUrl()+'?username=gavin&password=engel',
                 method: "POST",
-                data: "username=" + 'gavin' + "&password=" + 'engel' + "&city=" + encodeURIComponent(timezone.city), //timezone2,//encoded,
+                data: "&city=" + encodeURIComponent(timezone.city), //timezone2,//encoded,
                 headers: {'Content-Type':  'application/json'} //  'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
                     console.log(data);

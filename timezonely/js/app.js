@@ -350,7 +350,18 @@ postObject.token = "testAgent2";
 postObject.terminalInfo = "test2";
 postObject.forceLogin = "false";
 var array = JSON.stringify([ 'foo', 'bar' ]);
+//
+$http.post(getUrl()+'?username=gavin&password=engel', {msg:'hello word!'}).
+  success(function(data, status, headers, config) {
+    // this callback will be called asynchronously
+    // when the response is available
+  }).
+  error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
 
+//
 //var encoded = encodeURIComponent(JSON.stringify(timezone2))
             return $http({
                 url: getUrl()+'?username=gavin&password=engel',

@@ -209,8 +209,8 @@ alert('in createTimezones')
         }
 */
         $scope.createTimezone = function(timezone) {
-alert('in createTimezones')
-alert(timezone)
+//alert('in createTimezones')
+//alert(timezone)
             TimezonesModel.create(timezone)
                 .then(function (result) {
                     initCreateForm();
@@ -365,6 +365,8 @@ alert(timezone)
             //alert('service.create')
             timezone.username = 'gavin'
             timezone.password = 'engel'
+            delete timezone['$id']
+            delete timezone['$$hashKey']
             console.log('timezone is:')
             console.log(timezone)
             return $http.post(getUrl(), timezone);

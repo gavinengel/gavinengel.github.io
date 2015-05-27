@@ -57,11 +57,8 @@ passport.use(new LocalStrategy({
   function(username, password, callback) {
 
     // this will disable userauth
-
-    username = 'gavin'
-    password = 'engel'
-
     User.findOne({ username: username }, function (err, user) {
+
       if (err) { return callback(err); }
 
       // No user found with that username

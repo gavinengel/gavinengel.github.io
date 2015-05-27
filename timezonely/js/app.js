@@ -349,6 +349,7 @@ postObject.userId = "testAgent2";
 postObject.token = "testAgent2";
 postObject.terminalInfo = "test2";
 postObject.forceLogin = "false";
+var array = JSON.stringify([ 'foo', 'bar' ]);
 
 //var encoded = encodeURIComponent(JSON.stringify(timezone2))
             return $http({
@@ -356,7 +357,9 @@ postObject.forceLogin = "false";
                 method: "POST",
                 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
                 //headers: {'Content-Type':  'application/x-www-form-urlencoded'} //  'application/json'}
-                data: postObject,
+                //data: postObject,
+                data: { data: array },
+
                 //headers: {'Content-Type':  'application/json'}
                 }).success(function (data, status, headers, config) {
                     console.log(data);

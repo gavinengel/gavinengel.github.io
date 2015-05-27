@@ -1,6 +1,7 @@
 // Load required packages
 var config = require('./config/config.json');
 var express = require('express');
+var cors = require('cors');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
@@ -39,6 +40,9 @@ app.use(session({
 // Use the passport package in our application
 app.use(passport.initialize());
 
+// Enable all CORS requests
+app.use(cors());
+
 // Create our Express router
 var router = express.Router();
 
@@ -76,6 +80,6 @@ router.route('/api/oauth2/token')
 app.use(router);
 
 // Start the server
-var  port = process.env.OPENSHIFT_NODEJS_PORT || 3000
+var  port = process.env.OPENSHIFT_NODEJS_PORT || 9000
 app.listen(port);
 console.log('listening on port '+port);

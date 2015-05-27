@@ -4,6 +4,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.*",
     "body-parser": "1.*",
+    "cors": "^2.6.0",
     "ejs": "1.*",
     "express": "4.*",
     "express-session": "1.*",

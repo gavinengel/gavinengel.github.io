@@ -215,7 +215,6 @@ alert(item)
                     initCreateForm();
                     getItems();
                 });
-        }
         };
 
 

@@ -352,7 +352,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
                 method: "POST",
                 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
                 //headers: {'Content-Type':  'application/x-www-form-urlencoded'} //  'application/json'}
-                data: timezone, 
+                data: JSON.stringify(timezone),
                 headers: {'Content-Type':  'application/json'}
                 }).success(function (data, status, headers, config) {
                     console.log(data);

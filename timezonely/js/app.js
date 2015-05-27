@@ -275,28 +275,9 @@ alert(timezone)
     //angular.module('SimpleRESTWebsite', ['angular-storage', 'ui.router', 'weblogng'])
     //.constant('ENDPOINT_URI', 'http://ovh.engeldev.com:1337/api/') // this is the simple api
     .constant('ENDPOINT_URI', 'http://ovh.engeldev.com:9000/api/') // this is the timezones api
+    .constant('ENDPOINT_PARAMS', '?username=gavin&password=engel') // debug to login api
 
-    /*
-    .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
-        $stateProvider
-            .state('login', {
-                url: '/login',
-                templateUrl: 'app/templates/login.tmpl.html',
-                controller: 'LoginCtrl',
-                controllerAs: 'login'
-            })
-            .state('dashboard', {
-                url: '/dashboard',
-                templateUrl: 'app/templates/dashboard.tmpl.html',
-                controller: 'DashboardCtrl',
-                controllerAs: 'dashboard'
-            });
-
-        $urlRouterProvider.otherwise('/dashboard');
-
-        $httpProvider.interceptors.push('APIInterceptor');
-    })
-*/
+   
     .service('APIInterceptor', function($rootScope, UserService) {
         var service = this;
 
@@ -400,7 +381,7 @@ alert(timezone)
         }
 
         function getUrlForId(timezoneId) {
-            return getUrl(path) + timezoneId;
+            return getUrl(path) + timezoneId + ENDPOINT_PARAMS;
         }
 
         service.all = function () {
@@ -475,74 +456,6 @@ alert(timezone)
         main.logout = logout;
         main.currentUser = UserService.getCurrentUser();
     })
-    /*
-    .controller('DashboardCtrl', function(ItemsModel){
-        var dashboard = this;
-
-        function getItems() {
-            ItemsModel.all()
-                .then(function (result) {
-                    dashboard.items = result.data;
-                });
-        }
-
-        function createItem(item) {
-            ItemsModel.create(item)
-                .then(function (result) {
-                    initCreateForm();
-                    getItems();
-                });
-        }
-
-        function updateItem(item) {
-            ItemsModel.update(item.id, item)
-                .then(function (result) {
-                    cancelEditing();
-                    getItems();
-                });
-        }
-
-        function deleteItem(itemId) {
-            ItemsModel.destroy(itemId)
-                .then(function (result) {
-                    cancelEditing();
-                    getItems();
-                });
-        }
-
-        function initCreateForm() {
-            dashboard.newItem = { name: '', description: '' };
-        }
-
-        function setEditedItem(item) {
-            dashboard.editedItem = angular.copy(item);
-            dashboard.isEditing = true;
-        }
-
-        function isCurrentItem(itemId) {
-            return dashboard.editedItem !== null && dashboard.editedItem.id === itemId;
-        }
-
-        function cancelEditing() {
-            dashboard.editedItem = null;
-            dashboard.isEditing = false;
-        }
-
-        dashboard.items = [];
-        dashboard.editedItem = null;
-        dashboard.isEditing = false;
-        dashboard.getItems = getItems;
-        dashboard.createItem = createItem;
-        dashboard.updateItem = updateItem;
-        dashboard.deleteItem = deleteItem;
-        dashboard.setEditedItem = setEditedItem;
-        dashboard.isCurrentItem = isCurrentItem;
-        dashboard.cancelEditing = cancelEditing;
-
-        initCreateForm();
-        getItems();
-    })
-    */
 ;
 
 //

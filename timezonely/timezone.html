@@ -41,7 +41,7 @@
 				<a ng-if="!timezone.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(timezone.$id)">Edit</a>
 				<a ng-if="!timezone.$destroy" ng-click="removeRecord(timezone.$id)" class="btn btn-default btn-xs">Delete</a>
 				<a ng-if="timezone.$edit" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
-				<a href="" class="btn btn-primary btn-xs" ng-click="getItems()">DEBUG</a>
+				<a href="" class="btn btn-primary btn-xs" ng-click="createItem(timezone.$id)">DEBUG</a>
 
 			</td>
 		</tr>

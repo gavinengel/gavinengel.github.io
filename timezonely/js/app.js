@@ -209,6 +209,7 @@ alert('in createItems')
 */
         $scope.createItem = function(item) {
 alert('in createItems')
+alert(item)
             ItemsModel.create(item)
                 .then(function (result) {
                     initCreateForm();

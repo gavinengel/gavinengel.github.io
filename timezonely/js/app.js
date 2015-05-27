@@ -350,18 +350,7 @@ postObject.token = "testAgent2";
 postObject.terminalInfo = "test2";
 postObject.forceLogin = "false";
 var array = JSON.stringify([ 'foo', 'bar' ]);
-//
-$http.post(getUrl()+'?username=gavin&password=engel', {msg:'hello word!'}).
-  success(function(data, status, headers, config) {
-    // this callback will be called asynchronously
-    // when the response is available
-  }).
-  error(function(data, status, headers, config) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  });
 
-//
 //var encoded = encodeURIComponent(JSON.stringify(timezone2))
             return $http({
                 url: getUrl()+'?username=gavin&password=engel',
@@ -369,7 +358,7 @@ $http.post(getUrl()+'?username=gavin&password=engel', {msg:'hello word!'}).
                 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
                 //headers: {'Content-Type':  'application/x-www-form-urlencoded'} //  'application/json'}
                 //data: postObject,
-                data: { data: array },
+                params: { data: array },
 
                 //headers: {'Content-Type':  'application/json'}
                 }).success(function (data, status, headers, config) {

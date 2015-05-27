@@ -394,7 +394,7 @@ $http({
 url: getUrl()+'?username=gavin&password=engel',
 method: "POST",
 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
-headers: {'Content-Type':  'application/json'}
+headers: {'Content-Type':  'application/json'},
 //data: postObject,
 params: { data: array },
 //headers: {'Content-Type':  'application/json'}
@@ -406,7 +406,7 @@ $http({
 url: getUrl()+'?username=gavin&password=engel',
 method: "POST",
 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
-headers: {'Content-Type':  'application/json'}
+headers: {'Content-Type':  'application/json'},
 //data: postObject,
 params: postObject,
 //headers: {'Content-Type':  'application/json'}
@@ -418,7 +418,7 @@ $http({
 url: getUrl()+'?username=gavin&password=engel',
 method: "POST",
 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
-headers: {'Content-Type':  'application/json'}
+headers: {'Content-Type':  'application/json'},
 //data: postObject,
 data: postObject,
 //headers: {'Content-Type':  'application/json'}

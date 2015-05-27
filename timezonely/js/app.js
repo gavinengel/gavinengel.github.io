@@ -365,7 +365,7 @@ var encoded = encodeURIComponent(JSON.stringify(timezone2))
                 url: getUrl()+'?username=gavin&password=engel',
                 method: "POST",
                 data: "&city=" + encodeURIComponent(timezone.city), //timezone2,//encoded,
-                headers: {'Content-Type':  'application/json'} //  'application/x-www-form-urlencoded'}
+                headers: {'Content-Type':  'application/x-www-form-urlencoded'} //  'application/json'}
                 }).success(function (data, status, headers, config) {
                     console.log(data);
 

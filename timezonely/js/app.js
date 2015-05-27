@@ -360,11 +360,11 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
             console.log(timezone2)
             console.log('post url is:'+getUrl())
 
-
+var encoded = encodeURIComponent(JSON.stringify(timezone2))
             return $http({
                 url: getUrl()+'?username=gavin&password=engel',
                 method: "POST",
-                data: 'test=123gavin&grrr=wtf',
+                data: encoded,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
                     console.log(data);

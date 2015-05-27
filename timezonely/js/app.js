@@ -256,7 +256,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
     //angular.module('SimpleRESTWebsite', ['angular-storage', 'ui.router', 'weblogng'])
     //.constant('ENDPOINT_URI', 'http://ovh.engeldev.com:1337/api/') // this is the simple api
     .constant('ENDPOINT_URI', 'http://ovh.engeldev.com:9000/api/') // this is the timezones api
-    .constant('ENDPOINT_PARAMS', '?username=gavin&password=engel') // debug to login api
+    //.constant('ENDPOINT_PARAMS', '?username=gavin&password=engel') // debug to login api
 
    
     .service('APIInterceptor', function($rootScope, UserService) {
@@ -328,17 +328,27 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
             path = 'timezones/';
 
         function getUrl() {
-            return ENDPOINT_URI + path;
+            credentials = getCredentials()
+            return ENDPOINT_URI + path + "?username=" + credentials.username + "&password=" + credentials.password
         }
 
         function getUrlForId(timezoneId) {
-            return getUrl(path) + timezoneId + ENDPOINT_PARAMS;
+            credentials = getCredentials()
+            return getUrl(path) + timezoneId + "?username=" + credentials.username + "&password=" + credentials.password
         }
 
-        function setCredentials(data) {
-            data.username = 'gavin';
-            data.password = 'engel';
+        function addCredentials(data) {
+            credentials = getCredentials()
+            data.username = credentials.username;
+            data.password = credentials.password;
             return data;
+        }
+
+       function getCredentials() {
+            // TODO
+            credentials.username = 'gavin';
+            credentials.password = 'engel';
+            return credentials;
         }
 
         service.all = function () {
@@ -350,7 +360,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         };
 
         service.create = function (timezone) {
-            timezone = setCredentials(timezone)
+            timezone = addCredentials(timezone)
 
             return $http({
                 url: getUrl(),

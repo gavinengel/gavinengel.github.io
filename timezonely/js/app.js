@@ -362,7 +362,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
         service.create = function (timezone) {
             timezone = addCredentials(timezone)
-
+console.log('here is url:'+getUrl)
             return $http({
                 url: getUrl(),
                 method: "POST",

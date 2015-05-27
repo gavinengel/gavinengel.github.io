@@ -248,6 +248,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
     // new://////////////////////////////////////////////////////////////////////////////////////////////////////////
     //angular.module('SimpleRESTWebsite', ['angular-storage', 'ui.router', 'weblogng'])
     .constant('ENDPOINT_URI', 'http://ovh.engeldev.com:1337/api/')
+    /*
     .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider
             .state('login', {
@@ -267,6 +268,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
         $httpProvider.interceptors.push('APIInterceptor');
     })
+*/
     .service('APIInterceptor', function($rootScope, UserService) {
         var service = this;
 

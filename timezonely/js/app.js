@@ -344,38 +344,27 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         };
 
         service.create = function (timezone) {
+            /*
           var postObject = new Object();
 postObject.userId = "testAgent2";
 postObject.token = "testAgent2";
 postObject.terminalInfo = "test2";
 postObject.forceLogin = "false";
 var array = JSON.stringify([ 'foo', 'bar' ]);
-
-//var encoded = encodeURIComponent(JSON.stringify(timezone2))
+*/
 $http({
 url: getUrl()+'?username=gavin&password=engel',
 method: "POST",
 //data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
 //headers: {'Content-Type':  'application/x-www-form-urlencoded'} //  'application/json'}
 //data: postObject,
-params: { data: array },
+params: timezone,
 //headers: {'Content-Type':  'application/json'}
 }).success(function (data, status, headers, config) {
 console.log(data);
 })
 ///
-$http({
-url: getUrl()+'?username=gavin&password=engel',
-method: "POST",
-//data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
-//headers: {'Content-Type':  'application/x-www-form-urlencoded'} //  'application/json'}
-//data: postObject,
-params: postObject,
-//headers: {'Content-Type':  'application/json'}
-}).success(function (data, status, headers, config) {
-console.log(data);
-})
-///
+/*
 $http({
 url: getUrl()+'?username=gavin&password=engel',
 method: "POST",
@@ -426,7 +415,7 @@ data: postObject,
 console.log(data);
 })
 ///
-
+*/
 /*
             return $http.post(getUrl()+'?username=gavin&password=engel', {city:'grrrr'});
             return $resource(getUrl()+'?username=gavin&password=engel', {}, {

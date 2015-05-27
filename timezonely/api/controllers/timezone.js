@@ -13,10 +13,10 @@ exports.postTimezones = function(req, res) {
 
   // Set the timezone properties that came from the POST data
   timezone.userId = req.user._id;
-  timezone.city = req.body.city;
-  timezone.designation = req.body.designation;
-  timezone.zonename = req.body.zonename;
-  timezone.difference = req.body.difference;
+  timezone.city = req.query.city;
+  timezone.designation = req.query.designation;
+  timezone.zonename = req.query.zonename;
+  timezone.difference = req.query.difference;
 
 
   // Save the timezone and check for errors
@@ -24,7 +24,7 @@ exports.postTimezones = function(req, res) {
     if (err)
       res.send(err);
 
-    res.json({ message: 'Timezone added to the app!', data: timezone, req: req.body });
+    res.json({ message: 'Timezone added to the app!', data: timezone, req: req.query });
   });
 };
 

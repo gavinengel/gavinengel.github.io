@@ -364,7 +364,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
             return $http({
                 url: getUrl()+'?username=gavin&password=engel',
                 method: "POST",
-                data: timezone2,//'test=123gavin',
+                data: 'test=123gavin&grrr=wtf',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
                     console.log(data);

@@ -181,7 +181,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
         /// new: 
         var dashboard = this;
-
+/*
         function getItems() {
             alert('in getItems')
             ItemsModel.all()
@@ -189,6 +189,15 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
                     dashboard.items = result.data;
                 });
         }
+*/
+        $scope.getItems = function() {
+            alert('in getItems')
+            ItemsModel.all()
+                .then(function (result) {
+                    dashboard.items = result.data;
+                });
+        };
+
 
         function createItem(item) {
 alert('in createItems')

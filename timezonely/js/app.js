@@ -363,7 +363,9 @@ alert(timezone)
 
         service.create = function (timezone) {
             alert('service.create')
-            return $http.post(getUrl() + ENDPOINT_PARAMS, timezone);
+            timezone.username = 'gavin'
+            timezone.password = 'engel'
+            return $http.post(getUrl(), timezone);
         };
 
         service.update = function (timezoneId, timezone) {

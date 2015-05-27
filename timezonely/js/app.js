@@ -182,15 +182,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
         /// new: 
         var dashboard = this;
-/*
-        function getTimezones() {
-            alert('in getTimezones')
-            TimezonesModel.all()
-                .then(function (result) {
-                    dashboard.timezones = result.data;
-                });
-        }
-*/
+
         $scope.getTimezones = function() {
             TimezonesModel.all()
                 .then(function (result) {
@@ -198,23 +190,13 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
                 });
         };
 
-/*
-        function createTimezone(timezone) {
-alert('in createTimezones')
-            TimezonesModel.create(timezone)
-                .then(function (result) {
-                    initCreateForm();
-                    getTimezones();
-                });
-        }
-*/
+
         $scope.createTimezone = function(timezone) {
-//alert('in createTimezones')
-//alert(timezone)
+
             TimezonesModel.create(timezone)
                 .then(function (result) {
                     initCreateForm();
-                    getTimezones();
+                    $scope.getTimezones();
                 });
         };
 
@@ -224,7 +206,7 @@ alert('in createTimezones')
             TimezonesModel.update(timezone.id, timezone)
                 .then(function (result) {
                     cancelEditing();
-                    getTimezones();
+                    $scope.getTimezones();
                 });
         }
 
@@ -233,7 +215,7 @@ alert('in createTimezones')
             TimezonesModel.destroy(timezoneId)
                 .then(function (result) {
                     cancelEditing();
-                    getTimezones();
+                    $scope.getTimezones();
                 });
         }
 

@@ -13,8 +13,8 @@ exports.postTimezones = function(req, res) {
   timezone.zonename = req.body.zonename;
   timezone.difference = req.body.difference;
 
-  console.log('passed this req.*:')
-  console.log(req)
+  //console.log('passed this req.*:')
+  //console.log(req)
   console.log('passed this req.body:')
   console.log(req.body)
 

@@ -365,6 +365,7 @@ alert(timezone)
             //alert('service.create')
             timezone.username = 'gavin'
             timezone.password = 'engel'
+            alert('timezone is:')
             alert(timezone)
             return $http.post(getUrl(), timezone);
         };

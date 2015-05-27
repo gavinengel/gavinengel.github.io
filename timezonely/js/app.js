@@ -346,6 +346,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
        function getCredentials() {
             // TODO
+            var credentials = {}
             credentials.username = 'gavin';
             credentials.password = 'engel';
             return credentials;

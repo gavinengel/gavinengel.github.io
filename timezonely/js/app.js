@@ -345,7 +345,7 @@ console.log('why am i here?')
 
         service.create = function (timezone) {
             //alert('service.create')
-            timezone2 = {}
+            var timezone2 = {}
             timezone2.username = 'gavin'
             timezone2.password = 'engel'
             //delete timezone['$id']

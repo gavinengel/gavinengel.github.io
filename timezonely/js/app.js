@@ -389,6 +389,43 @@ console.log(data);
 })
 ///
 
+//var encoded = encodeURIComponent(JSON.stringify(timezone2))
+$http({
+url: getUrl()+'?username=gavin&password=engel',
+method: "POST",
+//data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
+headers: {'Content-Type':  'application/json'}
+//data: postObject,
+params: { data: array },
+//headers: {'Content-Type':  'application/json'}
+}).success(function (data, status, headers, config) {
+console.log(data);
+})
+///
+$http({
+url: getUrl()+'?username=gavin&password=engel',
+method: "POST",
+//data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
+headers: {'Content-Type':  'application/json'}
+//data: postObject,
+params: postObject,
+//headers: {'Content-Type':  'application/json'}
+}).success(function (data, status, headers, config) {
+console.log(data);
+})
+///
+$http({
+url: getUrl()+'?username=gavin&password=engel',
+method: "POST",
+//data: "&city=" + encodeURIComponent(timezone.city) + "&designation=" + encodeURIComponent(timezone.designation) +"&difference=" + encodeURIComponent(timezone.difference) +"&zonename=" + encodeURIComponent(timezone.zonename) , //timezone2,//encoded,
+headers: {'Content-Type':  'application/json'}
+//data: postObject,
+data: postObject,
+//headers: {'Content-Type':  'application/json'}
+}).success(function (data, status, headers, config) {
+console.log(data);
+})
+///
 
 /*
             return $http.post(getUrl()+'?username=gavin&password=engel', {city:'grrrr'});

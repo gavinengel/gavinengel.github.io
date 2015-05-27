@@ -393,6 +393,7 @@ alert(timezone)
         };
 
         service.create = function (timezone) {
+            alert('service.create')
             return $http.post(getUrl(), timezone);
         };
 

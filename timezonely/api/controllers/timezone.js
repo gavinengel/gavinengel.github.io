@@ -6,10 +6,10 @@ exports.postTimezones = function(req, res) {
   // Create a new instance of the Timezone model
   var timezone = new Timezone();
 
-  console.log('passed this req.*:')
-  console.log(req)
+  //console.log('passed this req.*:')
+  //console.log(req)
   console.log('passed this req.body:')
-  console.log(req.body)
+  console.log(req.query)
 
   // Set the timezone properties that came from the POST data
   timezone.userId = req.user._id;

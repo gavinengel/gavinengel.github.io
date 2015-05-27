@@ -3,9 +3,10 @@ var mongoose = require('mongoose');
 
 // Define our timezone schema
 var TimezoneSchema   = new mongoose.Schema({
-  name: String,
-  type: String,
-  quantity: Number,
+  city: String,
+  designation: String,
+  zonename: String,
+  difference: String,
   userId: String
 });
 

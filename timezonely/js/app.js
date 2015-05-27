@@ -329,12 +329,12 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
         function getUrl() {
             credentials = getCredentials()
-            return ENDPOINT_URI + path + "?username=" + credentials.username + "&password=" + credentials.password
+            return ENDPOINT_URI + path //+ "?username=" + credentials.username + "&password=" + credentials.password
         }
 
         function getUrlForId(timezoneId) {
             credentials = getCredentials()
-            return getUrl(path) + timezoneId + "?username=" + credentials.username + "&password=" + credentials.password
+            return getUrl(path) + timezoneId //+ "?username=" + credentials.username + "&password=" + credentials.password
         }
 
         function addCredentials(data) {
@@ -364,7 +364,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
             timezone = addCredentials(timezone)
 //console.log('here is url:'+getUrl())
             return $http({
-                url: 'http://ovh.engeldev.com:9000/api/timezones/',//getUrl(),
+                url: getUrl(),
                 method: "POST",
                 params: timezone,
             }).success(function (data, status, headers, config) {

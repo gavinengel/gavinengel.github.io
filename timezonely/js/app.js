@@ -109,7 +109,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
             };
         };
     })
-    .controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, ItemsModel) {
+    .controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesModel) {
         // Define valriables
         $scope.alerts = [];     // array of alert message objects.
 
@@ -178,95 +178,98 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
                 $modalInstance.dismiss('cancel');
             };
         };
+//
 
         /// new: 
         var dashboard = this;
 /*
-        function getItems() {
-            alert('in getItems')
-            ItemsModel.all()
+        function getTimezones() {
+            alert('in getTimezones')
+            TimezonesModel.all()
                 .then(function (result) {
-                    dashboard.items = result.data;
+                    dashboard.timezones = result.data;
                 });
         }
 */
-        $scope.getItems = function() {
-            ItemsModel.all()
+        $scope.getTimezones = function() {
+            TimezonesModel.all()
                 .then(function (result) {
-                    dashboard.items = result.data;
+                    dashboard.timezones = result.data;
                 });
         };
 
 /*
-        function createItem(item) {
-alert('in createItems')
-            ItemsModel.create(item)
+        function createTimezone(timezone) {
+alert('in createTimezones')
+            TimezonesModel.create(timezone)
                 .then(function (result) {
                     initCreateForm();
-                    getItems();
+                    getTimezones();
                 });
         }
 */
-        $scope.createItem = function(item) {
-alert('in createItems')
-alert(item)
-            ItemsModel.create(item)
+        $scope.createTimezone = function(timezone) {
+alert('in createTimezones')
+alert(timezone)
+            TimezonesModel.create(timezone)
                 .then(function (result) {
                     initCreateForm();
-                    getItems();
+                    getTimezones();
                 });
         };
 
 
-        function updateItem(item) {
-            alert('in updateItems')
-            ItemsModel.update(item.id, item)
+        function updateTimezone(timezone) {
+            alert('in updateTimezones')
+            TimezonesModel.update(timezone.id, timezone)
                 .then(function (result) {
                     cancelEditing();
-                    getItems();
+                    getTimezones();
                 });
         }
 
-        function deleteItem(itemId) {
-            alert('in deleteItem')
-            ItemsModel.destroy(itemId)
+        function deleteTimezone(timezoneId) {
+            alert('in deleteTimezone')
+            TimezonesModel.destroy(timezoneId)
                 .then(function (result) {
                     cancelEditing();
-                    getItems();
+                    getTimezones();
                 });
         }
 
         function initCreateForm() {
-            dashboard.newItem = { name: '', description: '' };
+            dashboard.newTimezone = { name: '', description: '' };
         }
 
-        function setEditedItem(item) {
-            dashboard.editedItem = angular.copy(item);
+        function setEditedTimezone(timezone) {
+            dashboard.editedTimezone = angular.copy(timezone);
             dashboard.isEditing = true;
         }
 
-        function isCurrentItem(itemId) {
-            return dashboard.editedItem !== null && dashboard.editedItem.id === itemId;
+        function isCurrentTimezone(timezoneId) {
+            return dashboard.editedTimezone !== null && dashboard.editedTimezone.id === timezoneId;
         }
 
         function cancelEditing() {
-            dashboard.editedItem = null;
+            dashboard.editedTimezone = null;
             dashboard.isEditing = false;
         }
 
-        dashboard.items = [];
-        dashboard.editedItem = null;
+        dashboard.timezones = [];
+        dashboard.editedTimezone = null;
         dashboard.isEditing = false;
-        dashboard.getItems = $scope.getItems;
-        dashboard.createItem = $scope.createItem;
-        dashboard.updateItem = updateItem;
-        dashboard.deleteItem = deleteItem;
-        dashboard.setEditedItem = setEditedItem;
-        dashboard.isCurrentItem = isCurrentItem;
+        dashboard.getTimezones = $scope.getTimezones;
+        dashboard.createTimezone = $scope.createTimezone;
+        dashboard.updateTimezone = updateTimezone;
+        dashboard.deleteTimezone = deleteTimezone;
+        dashboard.setEditedTimezone = setEditedTimezone;
+        dashboard.isCurrentTimezone = isCurrentTimezone;
         dashboard.cancelEditing = cancelEditing;
 
         initCreateForm();
-        $scope.getItems();
+        $scope.getTimezones();
+
+//
     })
     // new://////////////////////////////////////////////////////////////////////////////////////////////////////////
     //angular.module('SimpleRESTWebsite', ['angular-storage', 'ui.router', 'weblogng'])
@@ -385,6 +388,39 @@ alert(item)
 
         service.destroy = function (itemId) {
             return $http.delete(getUrlForId(itemId));
+        };
+    })
+
+    .service('TimezonesModel', function ($http, ENDPOINT_URI) {
+        var service = this,
+            path = 'timezones/';
+
+        function getUrl() {
+            return ENDPOINT_URI + path;
+        }
+
+        function getUrlForId(timezoneId) {
+            return getUrl(path) + timezoneId;
+        }
+
+        service.all = function () {
+            return $http.get(getUrl());
+        };
+
+        service.fetch = function (timezoneId) {
+            return $http.get(getUrlForId(timezoneId));
+        };
+
+        service.create = function (timezone) {
+            return $http.post(getUrl(), timezone);
+        };
+
+        service.update = function (timezoneId, timezone) {
+            return $http.put(getUrlForId(timezoneId), timezone);
+        };
+
+        service.destroy = function (timezoneId) {
+            return $http.delete(getUrlForId(timezoneId));
         };
     })
     .controller('LoginCtrl', function($rootScope, $state, LoginService, UserService){

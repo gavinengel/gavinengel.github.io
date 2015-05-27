@@ -192,7 +192,6 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
 
         $scope.createTimezone = function(timezone) {
-console.log('why am i here?')
             TimezonesModel.create(timezone)
                 .then(function (result) {
                     initCreateForm();
@@ -324,6 +323,7 @@ console.log('why am i here?')
     
 
     .service('TimezonesModel', function ($http, ENDPOINT_URI, $resource) {
+        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8;";
         var service = this,
             path = 'timezones/';
 
@@ -361,7 +361,7 @@ console.log('why am i here?')
             console.log('post url is:'+getUrl())
 
 
-            ////return $http.post(getUrl()+'?username=gavin&password=engel', {city:'grrrr'});
+            return $http.post(getUrl()+'?username=gavin&password=engel', {city:'grrrr'});
             return $resource(getUrl()+'?username=gavin&password=engel', {}, {
                 update: {
                     method:'POST', 

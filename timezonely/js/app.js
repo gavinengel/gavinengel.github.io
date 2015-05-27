@@ -1,4 +1,4 @@
-angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-storage', 'ui.router', 'ngResource'])
+var timezonelyApp = angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-storage', 'ui.router', 'ngResource'])
 
     .value('fbURL', 'https://timezonely.firebaseio.com/')
     .value('user_table', 'user')
@@ -252,12 +252,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
 //
     })
-    // new://////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //angular.module('SimpleRESTWebsite', ['angular-storage', 'ui.router', 'weblogng'])
-    //.constant('ENDPOINT_URI', 'http://ovh.engeldev.com:1337/api/') // this is the simple api
     .constant('ENDPOINT_URI', 'http://ovh.engeldev.com:9000/api/') // this is the timezones api
-    //.constant('ENDPOINT_PARAMS', '?username=gavin&password=engel') // debug to login api
-
    
     .service('APIInterceptor', function($rootScope, UserService) {
         var service = this;
@@ -345,7 +340,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         }
 
        function getCredentials() {
-            // TODO
+            // TODO this is a stub
             var credentials = {}
             credentials.username = 'gavin';
             credentials.password = 'engel';
@@ -362,7 +357,6 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
 
         service.create = function (timezone) {
             timezone = addCredentials(timezone)
-//console.log('here is url:'+getUrl())
             return $http({
                 url: getUrl(),
                 method: "POST",
@@ -434,17 +428,3 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
     })
 ;
 
-//
-
-function TimeCtrl($scope, $timeout) {
-    $scope.clock = "loading clock..."; // initialise the time variable
-    $scope.tickInterval = 1000 //ms
-
-    var tick = function () {
-        $scope.clock = Date.now() // get the current time
-        $timeout(tick, $scope.tickInterval); // reset the timer
-    }
-
-    // Start the timer
-    $timeout(tick, $scope.tickInterval);
-}

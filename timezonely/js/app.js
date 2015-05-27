@@ -339,38 +339,7 @@ alert(timezone)
             return $http.post(getUrl(), user);
         };
     })
-    .service('ItemsModel', function ($http, ENDPOINT_URI) {
-        var service = this,
-            path = 'items/';
-
-        function getUrl() {
-            return ENDPOINT_URI + path;
-        }
-
-        function getUrlForId(itemId) {
-            return getUrl(path) + itemId;
-        }
-
-        service.all = function () {
-            return $http.get(getUrl());
-        };
-
-        service.fetch = function (itemId) {
-            return $http.get(getUrlForId(itemId));
-        };
-
-        service.create = function (item) {
-            return $http.post(getUrl(), item);
-        };
-
-        service.update = function (itemId, item) {
-            return $http.put(getUrlForId(itemId), item);
-        };
-
-        service.destroy = function (itemId) {
-            return $http.delete(getUrlForId(itemId));
-        };
-    })
+    
 
     .service('TimezonesModel', function ($http, ENDPOINT_URI) {
         var service = this,
@@ -394,7 +363,7 @@ alert(timezone)
 
         service.create = function (timezone) {
             alert('service.create')
-            return $http.post(getUrl(), timezone);
+            return $http.post(getUrl() + ENDPOINT_PARAMS, timezone);
         };
 
         service.update = function (timezoneId, timezone) {

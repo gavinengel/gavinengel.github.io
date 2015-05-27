@@ -359,7 +359,7 @@ console.log('why am i here?')
             console.log('timezone is:')
             console.log(timezone2)
             console.log('post url is:'+getUrl())
-            return $http.post(getUrl()+'?username=gavin&password=engel', timezone2);
+            return $http.post(getUrl()+'?username=gavin&password=engel', {"city":"grrrr"});
         };
 
         service.update = function (timezoneId, timezone) {

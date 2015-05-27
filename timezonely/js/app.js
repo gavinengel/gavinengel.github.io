@@ -256,7 +256,7 @@ alert('in createItems')
         dashboard.cancelEditing = cancelEditing;
 
         initCreateForm();
-        getItems();
+        $scope.getItems();
     })
     // new://////////////////////////////////////////////////////////////////////////////////////////////////////////
     //angular.module('SimpleRESTWebsite', ['angular-storage', 'ui.router', 'weblogng'])

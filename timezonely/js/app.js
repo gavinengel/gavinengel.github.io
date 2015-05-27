@@ -270,7 +270,9 @@ alert(item)
     })
     // new://////////////////////////////////////////////////////////////////////////////////////////////////////////
     //angular.module('SimpleRESTWebsite', ['angular-storage', 'ui.router', 'weblogng'])
-    .constant('ENDPOINT_URI', 'http://ovh.engeldev.com:1337/api/')
+    //.constant('ENDPOINT_URI', 'http://ovh.engeldev.com:1337/api/') // this is the simple api
+    .constant('ENDPOINT_URI', 'http://ovh.engeldev.com:9000/api/') // this is the timezones api
+
     /*
     .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         $stateProvider

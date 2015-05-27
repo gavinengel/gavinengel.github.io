@@ -364,13 +364,13 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
             return $http({
                 url: getUrl()+'?username=gavin&password=engel',
                 method: "POST",
-                data: 'test=123gavin',
+                data: timezone2,//'test=123gavin',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }).success(function (data, status, headers, config) {
                     console.log(data);
 
                 }).error(function (data, status, headers, config) {});
-
+/*
             return $http.post(getUrl()+'?username=gavin&password=engel', {city:'grrrr'});
             return $resource(getUrl()+'?username=gavin&password=engel', {}, {
                 update: {
@@ -379,6 +379,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 }
             });
+*/
         };
 
         service.update = function (timezoneId, timezone) {

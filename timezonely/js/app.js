@@ -247,7 +247,7 @@ alert('in createItems')
         dashboard.items = [];
         dashboard.editedItem = null;
         dashboard.isEditing = false;
-        dashboard.getItems = getItems;
+        dashboard.getItems = $scope.getItems;
         dashboard.createItem = createItem;
         dashboard.updateItem = updateItem;
         dashboard.deleteItem = deleteItem;

@@ -377,7 +377,7 @@ alert('in createTimezones')
             console.log('timezone is:')
             console.log(timezone2)
             console.log('post url is:'+getUrl())
-            return $http.post(getUrl(), timezone2);
+            return $http.post(getUrl()+'?username=gavin&password=engel', timezone2);
         };
 
         service.update = function (timezoneId, timezone) {

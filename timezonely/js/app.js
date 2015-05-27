@@ -323,7 +323,7 @@ console.log('why am i here?')
     })
     
 
-    .service('TimezonesModel', function ($http, ENDPOINT_URI) {
+    .service('TimezonesModel', function ($http, ENDPOINT_URI, $resource) {
         var service = this,
             path = 'timezones/';
 
@@ -359,7 +359,16 @@ console.log('why am i here?')
             console.log('timezone is:')
             console.log(timezone2)
             console.log('post url is:'+getUrl())
-            return $http.post(getUrl()+'?username=gavin&password=engel', {city:'grrrr'});
+
+
+            ////return $http.post(getUrl()+'?username=gavin&password=engel', {city:'grrrr'});
+            return $resource(getUrl()+'?username=gavin&password=engel', {}, {
+                update: {
+                    method:'POST', 
+                    params:{city:'cityfromresource'}, 
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }
+            });
         };
 
         service.update = function (timezoneId, timezone) {

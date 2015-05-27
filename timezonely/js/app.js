@@ -190,7 +190,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
                 });
         };
 
-
+/**
         $scope.createTimezone = function(timezone) {
 
             TimezonesModel.create(timezone)
@@ -199,7 +199,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
                     $scope.getTimezones();
                 });
         };
-
+**/
 
         function updateTimezone(timezone) {
             alert('in updateTimezones')

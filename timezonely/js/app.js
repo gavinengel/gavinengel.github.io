@@ -183,6 +183,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         var dashboard = this;
 
         function getItems() {
+            alert('in getItems')
             ItemsModel.all()
                 .then(function (result) {
                     dashboard.items = result.data;
@@ -190,6 +191,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         }
 
         function createItem(item) {
+alert('in createItems')
             ItemsModel.create(item)
                 .then(function (result) {
                     initCreateForm();
@@ -198,6 +200,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         }
 
         function updateItem(item) {
+            alert('in updateItems')
             ItemsModel.update(item.id, item)
                 .then(function (result) {
                     cancelEditing();
@@ -206,6 +209,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
         }
 
         function deleteItem(itemId) {
+            alert('in deleteItem')
             ItemsModel.destroy(itemId)
                 .then(function (result) {
                     cancelEditing();

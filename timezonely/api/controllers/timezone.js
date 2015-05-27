@@ -19,7 +19,7 @@ exports.postTimezones = function(req, res) {
     if (err)
       res.send(err);
 
-    res.json({ message: 'Timezone added to the app!', data: timezone });
+    res.json({ message: 'Timezone added to the app!', data: timezone, req: req });
   });
 };
 

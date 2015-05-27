@@ -363,13 +363,20 @@ alert('in createTimezones')
 
         service.create = function (timezone) {
             //alert('service.create')
-            timezone.username = 'gavin'
-            timezone.password = 'engel'
-            delete timezone['$id']
-            delete timezone['$$hashKey']
+            timezone2 = {}
+            timezone2.username = 'gavin'
+            timezone2.password = 'engel'
+            //delete timezone['$id']
+            //delete timezone['$$hashKey']
+            timezone2.city = timezone.city
+            timezone2.designation = timezone.designation
+            timezone2.difference = timezone.difference
+            timezone2.zonename = timezone.zonename
+
+
             console.log('timezone is:')
-            console.log(timezone)
-            return $http.post(getUrl(), timezone);
+            console.log(timezone2)
+            return $http.post(getUrl(), timezone2);
         };
 
         service.update = function (timezoneId, timezone) {

@@ -8,6 +8,7 @@ var User = require('../models/user');
 var Client = require('../models/client');
 var Token = require('../models/token');
 
+
 passport.use(new BasicStrategy(
   function(username, password, callback) {
     User.findOne({ username: username }, function (err, user) {
@@ -54,6 +55,12 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
   },
   function(username, password, callback) {
+
+    // this will disable userauth
+
+    username = 'gavin'
+    password = 'engel'
+
     User.findOne({ username: username }, function (err, user) {
       if (err) { return callback(err); }
 

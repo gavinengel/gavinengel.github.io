@@ -6,11 +6,6 @@ exports.postTimezones = function(req, res) {
   // Create a new instance of the Timezone model
   var timezone = new Timezone();
 
-  //console.log('passed this req.*:')
-  //console.log(req)
-  console.log('passed this req.body:')
-  console.log(req.query)
-
   // Set the timezone properties that came from the POST data
   timezone.userId = req.user._id;
   timezone.city = req.query.city;
@@ -18,11 +13,9 @@ exports.postTimezones = function(req, res) {
   timezone.zonename = req.query.zonename;
   timezone.difference = req.query.difference;
 
-
   // Save the timezone and check for errors
   timezone.save(function(err) {
-    if (err)
-      res.send(err);
+    if (err) res.send(err);
 
     res.json({ message: 'Timezone added to the app!', data: timezone, req: req.query });
   });
@@ -32,8 +25,7 @@ exports.postTimezones = function(req, res) {
 exports.getTimezones = function(req, res) {
   // Use the Timezone model to find all timezone
   Timezone.find({ userId: req.user._id }, function(err, timezones) {
-    if (err)
-      res.send(err);
+    if (err) res.send(err);
 
     res.json(timezones);
   });
@@ -53,7 +45,7 @@ exports.getTimezone = function(req, res) {
 // Create endpoint /api/timezones/:timezone_id for PUT
 exports.putTimezone = function(req, res) {
   // Use the Timezone model to find a specific timezone
-  Timezone.update({ userId: req.user._id, _id: req.params.timezone_id }, { quantity: req.body.quantity }, function(err, num, raw) {
+  Timezone.update({ userId: req.user._id, _id: req.params.timezone_id }, { quantity: req.query.quantity }, function(err, num, raw) {
     if (err)
       res.send(err);
 

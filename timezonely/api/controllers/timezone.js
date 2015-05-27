@@ -7,10 +7,12 @@ exports.postTimezones = function(req, res) {
   var timezone = new Timezone();
 
   // Set the timezone properties that came from the POST data
-  timezone.name = req.body.name;
-  timezone.type = req.body.type;
-  timezone.quantity = req.body.quantity;
   timezone.userId = req.user._id;
+  timezone.city = req.body.city;
+  timezone.designation = req.body.designation;
+  timezone.zonename = req.body.zonename;
+  timezone.difference = req.body.difference;
+
 
   // Save the timezone and check for errors
   timezone.save(function(err) {

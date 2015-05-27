@@ -109,7 +109,7 @@ angular.module('timezonely', ['ngRoute', 'firebase', 'ui.bootstrap',  'angular-s
             };
         };
     })
-    .controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, ItemsModel) {
+    .controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesModel) {
         // Define valriables
         $scope.alerts = [];     // array of alert message objects.
 

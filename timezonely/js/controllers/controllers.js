@@ -6,7 +6,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     $scope.viewData = {}
     $scope.timezones = Timezones;
 
-$scope.viewData.test = {{city: 'asdf'},{city: 'asdffff'},{city: 'ffffffffffff'}} // debug
+//$scope.viewData.test = {{city: 'asdf'},{city: 'asdffff'},{city: 'ffffffffffff'}} // debug
 
 
 

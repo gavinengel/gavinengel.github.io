@@ -53,6 +53,10 @@
 new table:
 <span ng-bind="viewData.timezones"></span>
 
+<div ng-repeat="each in viewData.timezones">
+  {{each.city}}!!
+</div>
+
 <script type="text/ng-template" id="add_timezone_modal">
 	<div class="modal-header">
 		<h3>Timezone Form</h3>

@@ -80,64 +80,6 @@ $scope.save = function() {
 
 
 
-timezonelyApp.service('TimezonesModel', function ($http, ENDPOINT_URI, $resource) {
-    //$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8;";
-    var service = this,
-        path = 'timezones/';
-
-    function getUrl() {
-        credentials = getCredentials()
-        return ENDPOINT_URI + path //+ "?username=" + credentials.username + "&password=" + credentials.password
-    }
-
-    function getUrlForId(timezoneId) {
-        credentials = getCredentials()
-        return getUrl(path) + timezoneId //+ "?username=" + credentials.username + "&password=" + credentials.password
-    }
-
-    function addCredentials(data) {
-        credentials = getCredentials()
-        data.username = credentials.username;
-        data.password = credentials.password;
-        return data;
-    }
-
-   function getCredentials() {
-        // TODO this is a stub
-        var credentials = {}
-        credentials.username = 'gavin';
-        credentials.password = 'engel';
-        return credentials;
-    }
-
-    service.all = function () {
-        return $http.get(getUrl());
-    };
-
-    service.fetch = function (timezoneId) {
-        return $http.get(getUrlForId(timezoneId));
-    };
-
-    service.create = function (timezone) {
-        timezone = addCredentials(timezone)
-        return $http({
-            url: getUrl(),
-            method: "POST",
-            params: timezone,
-        }).success(function (data, status, headers, config) {
-            console.log(data);
-        })
-    };
-
-    service.update = function (timezoneId, timezone) {
-        return $http.put(getUrlForId(timezoneId), timezone);
-    };
-
-    service.destroy = function (timezoneId) {
-        return $http.delete(getUrlForId(timezoneId));
-    };
-})
-
 timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesModel) {
 // Define valriables
 $scope.alerts = [];     // array of alert message objects.

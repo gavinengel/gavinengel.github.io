@@ -6,7 +6,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     $scope.timezones = Timezones;
     $scope.dashboard = {}
 
-    //$scope.dashboard.test = {{city: 'asdf'},{city: 'asdffff'},{city: 'ffffffffffff'}} // debug
+    $scope.dashboard.test = 'debug'//{{city: 'asdf'},{city: 'asdffff'},{city: 'ffffffffffff'}} // debug
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {

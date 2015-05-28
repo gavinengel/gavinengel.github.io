@@ -184,32 +184,11 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
         credentials.password = 'engel';
         return credentials;
     }
-
+/*
     service.all = function () {
       console.log('inside all')
       var url = getUrl();
       console.log(url)
-      //var result = $http.get(url);
-/*
-        return $http({
-            url: url,
-            method: "GET"
-        }).success(function (data, status, headers, config) {
-            console.log(data);
-        })
-*/
-/*
-$http.get(url)
-    .success(function (data, status, headers, config) {
-      alert('success')
-        console.log(data);
-        return data;
-    }).error(function (data, status, headers, config) {
-        alert("error");
-        return status;
-});
-*/
-
 
       var result =  $http.get(url)
         .success(function(data, status, headers, config) {
@@ -231,7 +210,7 @@ $http.get(url)
       console.log('end result')
       return result;
     };
-
+*/
 
     service.fetchAll = function () {
         return $http.get(getUrl(true));

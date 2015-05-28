@@ -149,9 +149,13 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     var service = this,
         path = 'timezones/';
 
-    function getUrl() {
-        credentials = getCredentials()
-        return ENDPOINT_URI + path //+ "?username=" + credentials.username + "&password=" + credentials.password
+    function getUrl(addCredentials) {
+        var url = ENDPOINT_URI + path
+        if (addCredentials) {
+          credentials = getCredentials()
+          url = url + "?username=" + credentials.username + "&password=" + credentials.password
+        }
+        return  url
     }
 
     function getUrlForId(timezoneId) {
@@ -175,7 +179,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     }
 
     service.all = function () {
-        return $http.get(getUrl());
+        return $http.get(getUrl(true));
     };
 
     service.fetch = function (timezoneId) {

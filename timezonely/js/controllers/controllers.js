@@ -80,7 +80,7 @@ $scope.save = function() {
 
 
 
-timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesModel) {
+timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
 // Define valriables
 $scope.alerts = [];     // array of alert message objects.
 
@@ -155,7 +155,7 @@ $scope.save = function() {
 var dashboard = this;
 
 $scope.getTimezones = function() {
-    TimezonesModel.all()
+    TimezonesService.all()
     .then(function (result) {
         dashboard.timezones = result.data;
     });
@@ -163,7 +163,7 @@ $scope.getTimezones = function() {
 
 
 $scope.createTimezone = function(timezone) {
-    TimezonesModel.create(timezone)
+    TimezonesService.create(timezone)
     .then(function (result) {
         initCreateForm();
         $scope.getTimezones();
@@ -173,7 +173,7 @@ $scope.createTimezone = function(timezone) {
 
 function updateTimezone(timezone) {
     alert('in updateTimezones')
-    TimezonesModel.update(timezone.id, timezone)
+    TimezonesService.update(timezone.id, timezone)
     .then(function (result) {
         cancelEditing();
         $scope.getTimezones();
@@ -182,7 +182,7 @@ function updateTimezone(timezone) {
 
 function deleteTimezone(timezoneId) {
     alert('in deleteTimezone')
-    TimezonesModel.destroy(timezoneId)
+    TimezonesService.destroy(timezoneId)
     .then(function (result) {
         cancelEditing();
         $scope.getTimezones();

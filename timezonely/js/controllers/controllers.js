@@ -1,10 +1,10 @@
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, envoy, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
+timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
     // Define valriables
     $scope.alerts = [];     // array of alert message objects.
     $scope.timezones = Timezones;
-
+    if (typeof $scope.envoy != 'undefined') { $scope.envoy = { valid: true } }
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {
@@ -147,9 +147,8 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, env
     //console.log('timezones:')
     //console.log($scope.dashboard.timezones)
 
-    envoy.test = 2;
-    console.log(envoy)
-    $scope.envoy = envoy
+    $scope.envoy.test = 2;
+    console.log($scope.envoy)
     //
 })
 

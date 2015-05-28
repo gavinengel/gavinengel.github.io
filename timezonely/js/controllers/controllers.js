@@ -143,6 +143,8 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     // fill 'timezones' for view
     //$scope.timezones = Timezones;
     $scope.timezones = $scope.getTimezones()
+    console.log('timezones:')
+    console.log($scope.timezones)
     //
 })
 

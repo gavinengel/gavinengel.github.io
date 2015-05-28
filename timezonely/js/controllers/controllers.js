@@ -202,8 +202,12 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     var service = this,
         path = 'timezones/';
 
-    function getUrl(addCredentials) {console.log(68)
+    function getUrl(addCredentials, id) {console.log(68)
         var url = ENDPOINT_URI + path
+
+        if (id) {
+          url = url + id
+        }
         if (addCredentials) {
           credentials = getCredentials()
           url = url + "?username=" + credentials.username + "&password=" + credentials.password
@@ -212,8 +216,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     }
 
     function getUrlForId(timezoneId) {console.log(68)
-        credentials = getCredentials()
-        return getUrl(path) + timezoneId //+ "?username=" + credentials.username + "&password=" + credentials.password
+        return getUrl(path, timezoneId) //+ "?username=" + credentials.username + "&password=" + credentials.password
     }
 
     function addCredentials(data) {console.log(68)
@@ -255,8 +258,10 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
         return $http.put(getUrlForId(timezoneId), timezone);
     };
 
-    service.destroy = function (timezoneId) {console.log(68)
-        return $http.delete(getUrlForId(timezoneId));
+    service.destroy = function (timezoneId) {console.log('in destroy... id is:'+timezoneId)
+        var url = getUrlForId(timezoneId);
+        console.log('destroy url is:'+url+'[end]')
+        return $http.delete(url);
     };
 })
 

@@ -3,7 +3,7 @@ var timezonelyApp = angular.module('timezonely', ['ngRoute', 'firebase', 'ui.boo
 .value('user_table', 'user')
 .value('timezone_table', 'timezone')
 .value('envoy', {name:'envoy'}) // carries data to views
-.constant('ENDPOINT_URI', 'http://ovh.engeldev.com:9000/api/') // this is the timezones api
+.constant('ENDPOINT_URI', 'http://localhost:9000/api/') // this is the timezones api http://ovh.engeldev.com:9000/api/
 .config(function($routeProvider) {
     $routeProvider
     .when('/home', {

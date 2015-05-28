@@ -16,7 +16,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="(key, timezone) in timezones | orderByPriority | filter:search | orderBy:'zonename'">
+		<tr ng-repeat="(key, timezone) in viewData.timezones | orderByPriority | filter:search | orderBy:'zonename'">
 			<td data-title="'Name'" >
 				<span ng-if="!timezone.$edit">{{timezone.zonename}}</span>
 				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.zonename" /></div>

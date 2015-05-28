@@ -3,10 +3,9 @@
 timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
     // Define valriables
     $scope.alerts = [];     // array of alert message objects.
-    $scope.viewData = {}
     $scope.timezones = Timezones;
 
-    //$scope.viewData.test = {{city: 'asdf'},{city: 'asdffff'},{city: 'ffffffffffff'}} // debug
+    //$scope.dashboard.test = {{city: 'asdf'},{city: 'asdffff'},{city: 'ffffffffffff'}} // debug
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {
@@ -145,9 +144,9 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     initCreateForm();
     $scope.getTimezones();
     // fill 'timezones' for view
-    //$scope.viewData.timezones = $scope.getTimezones()
+    //$scope.dashboard.timezones = $scope.getTimezones()
     console.log('timezones:')
-    console.log($scope.viewData.timezones)
+    console.log($scope.dashboard.timezones)
     //
 })
 
@@ -184,33 +183,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
         credentials.password = 'engel';
         return credentials;
     }
-/*
-    service.all = function () {
-      console.log('inside all')
-      var url = getUrl();
-      console.log(url)
 
-      var result =  $http.get(url)
-        .success(function(data, status, headers, config) {
-          console.log('success in 202')
-          console.log(data)
-          $scope.viewData.timezones = data.records;
-        })
-        .error(function(data, status, headers, config) {
-          console.log('error in 206')
-          console.log(data)
-
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-        })
-
-
-      console.log('result is:')
-      console.log(result)
-      console.log('end result')
-      return result;
-    };
-*/
 
     service.fetchAll = function () {
         return $http.get(getUrl(true));

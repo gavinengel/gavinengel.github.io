@@ -6,7 +6,10 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     $scope.viewData = {}
     $scope.timezones = Timezones;
 
-$scope.viewData.test = '123'
+$scope.viewData.test = '123' // debug
+
+
+
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {
         var timezoneUrl = fbURL + timezone_table + '/' + timezoneId;

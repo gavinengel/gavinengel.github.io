@@ -7,15 +7,15 @@ var timezonelyApp = angular.module('timezonely', ['ngRoute', 'firebase', 'ui.boo
     $routeProvider
     .when('/home', {
         controller: 'HomeCtrl',
-        templateUrl: 'home.html'
+        templateUrl: 'partials/home.html'
     })
     .when('/users', {
         controller: 'UserCtrl',
-        templateUrl: 'user.html'
+        templateUrl: 'partials/user.html'
     })
     .when('/timezones', {
         controller: 'TimezoneCtrl',
-        templateUrl: 'timezone.html'
+        templateUrl: 'partials/timezone.html'
     })
     .otherwise({
         redirectTo: '/home'

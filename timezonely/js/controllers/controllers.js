@@ -1,6 +1,6 @@
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
+timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, envoy, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
     // Define valriables
     $scope.alerts = [];     // array of alert message objects.
     $scope.timezones = Timezones;
@@ -146,6 +146,9 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     //$scope.dashboard.timezones = $scope.getTimezones()
     console.log('timezones:')
     console.log($scope.dashboard.timezones)
+
+    envoy.test = 2;
+    console.log(envoy)
     //
 })
 

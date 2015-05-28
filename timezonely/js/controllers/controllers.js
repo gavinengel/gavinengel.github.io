@@ -1,10 +1,13 @@
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
+timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
     // Define valriables
+    envoy.TimezoneCtrl = true;
+    console.log(envoy)
+
     $scope.alerts = [];     // array of alert message objects.
     $scope.timezones = Timezones;
-    if (typeof $scope.envoy === 'undefined') { $scope.envoy = { valid: true } }
+    //if (typeof envoy === 'undefined') { envoy = { valid: true } }
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {
@@ -41,35 +44,6 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
 
     };
 
-    $scope.model = function($scope, $modalInstance, Timezones, id, $firebase, fbURL, timezone_table) {
-      $scope.timezone = {};
-      $scope.alerts = []; // array of alert message objects.
-
-      // if clicked edit. id comes from $scope.modal->timezoneId
-      if (angular.isDefined(id)) {
-          var timezoneUrl = fbURL + timezone_table + '/' + id;
-          $scope.timezone = $firebase(new Firebase(timezoneUrl));
-          $scope.timezone.id = id;
-      } 
-
-      // close modal
-      $scope.cancel = function() {
-          $modalInstance.dismiss('cancel');
-      };
-
-      // Add new timezone
-      $scope.add = function() {
-          Timezones.$add($scope.timezone)
-          $modalInstance.dismiss('cancel');
-      };
-
-      // Save edited timezone.
-      $scope.save = function() {
-          $scope.timezone.$save();
-          $modalInstance.dismiss('cancel');
-      };
-    };
-    //
 
     /// new: 
     var dashboard = this;
@@ -80,18 +54,21 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
         .then(function (result) {
             console.log('then...')
             dashboard.timezones = result.data;//debug
-            $scope.envoy.timezones = result.data;
+            envoy.timezones = result.data;
             console.log('here be envoy:')
-            console.log($scope.envoy)
+            console.log(envoy.timezones)
         });
     };
 
 
     $scope.createTimezone = function(timezone) {
+      console.log('lets do it and create timezone')
         TimezonesService.create(timezone)
         .then(function (result) {
             initCreateForm();
             $scope.getTimezones();
+                    $modalInstance.dismiss('cancel');
+
         });
     };
 
@@ -148,10 +125,69 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     // fill 'timezones' for view
     //console.log('timezones:')
     //console.log($scope.dashboard.timezones)
-    //$scope.envoy.timezones = $scope.getTimezones()
-    $scope.envoy.test = 2;
-
+    //envoy.timezones = $scope.getTimezones()
+    envoy.test = 2;
+    console.log('envoy:')
+    console.log(envoy)
+    console.log('155')
     //
+
+    $scope.model = function(envoy, $scope, $modalInstance, Timezones, id, $firebase, fbURL, timezone_table) {
+      envoy.model = true;
+      console.log(envoy)
+      console.log(45)
+      $scope.timezone = {};
+      $scope.alerts = []; // array of alert message objects.
+
+      // if clicked edit. id comes from $scope.modal->timezoneId
+      if (angular.isDefined(id)) {
+        console.log(51)
+          var timezoneUrl = fbURL + timezone_table + '/' + id;
+          $scope.timezone = $firebase(new Firebase(timezoneUrl));
+          $scope.timezone.id = id;
+          console.log(55)
+      } 
+
+      // close modal
+      $scope.cancel = function() {
+        console.log(57)
+          $modalInstance.dismiss('cancel');
+          console.log(59)
+      };
+
+      // Add new timezone
+      $scope.add = function() {
+            envoy.add = true;
+    console.log(envoy)
+        TimezonesService.create($scope.timezone)
+        .then(function (result) {
+          initCreateForm();
+          $scope.getTimezones();
+        })
+
+        TimezonesService.fetchAll()//.all()
+        .then(function (result) {
+            console.log('then...')
+            //dashboard.timezones = result.data;//debug
+            envoy.timezones = result.data;
+            console.log('here be envoy.timezones:')
+            console.log(envoy.timezones)
+        });
+
+        $modalInstance.dismiss('cancel');
+
+      }
+
+      // Save edited timezone.
+      $scope.save = function() {
+        console.log(68)
+          $scope.timezone.$save();
+          $modalInstance.dismiss('cancel');
+          console.log(71)
+      };
+    };
+    //
+    $scope.envoy = envoy
 })
 
 
@@ -159,7 +195,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     var service = this,
         path = 'timezones/';
 
-    function getUrl(addCredentials) {
+    function getUrl(addCredentials) {console.log(68)
         var url = ENDPOINT_URI + path
         if (addCredentials) {
           credentials = getCredentials()
@@ -168,19 +204,19 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
         return  url
     }
 
-    function getUrlForId(timezoneId) {
+    function getUrlForId(timezoneId) {console.log(68)
         credentials = getCredentials()
         return getUrl(path) + timezoneId //+ "?username=" + credentials.username + "&password=" + credentials.password
     }
 
-    function addCredentials(data) {
+    function addCredentials(data) {console.log(68)
         credentials = getCredentials()
         data.username = credentials.username;
         data.password = credentials.password;
         return data;
     }
 
-   function getCredentials() {
+   function getCredentials() {console.log(68)
         // TODO this is a stub
         var credentials = {}
         credentials.username = 'gavin';
@@ -189,15 +225,15 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     }
 
 
-    service.fetchAll = function () {
+    service.fetchAll = function () {console.log(68)
         return $http.get(getUrl(true));
     };
 
-    service.fetch = function (timezoneId) {
+    service.fetch = function (timezoneId) {console.log(68)
         return $http.get(getUrlForId(timezoneId));
     };
 
-    service.create = function (timezone) {
+    service.create = function (timezone) {console.log(68)
         timezone = addCredentials(timezone)
         return $http({
             url: getUrl(),
@@ -208,11 +244,11 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
         })
     };
 
-    service.update = function (timezoneId, timezone) {
+    service.update = function (timezoneId, timezone) {console.log(68)
         return $http.put(getUrlForId(timezoneId), timezone);
     };
 
-    service.destroy = function (timezoneId) {
+    service.destroy = function (timezoneId) {console.log(68)
         return $http.delete(getUrlForId(timezoneId));
     };
 })

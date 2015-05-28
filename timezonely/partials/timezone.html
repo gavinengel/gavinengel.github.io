@@ -5,8 +5,7 @@
 	<button ng-click="open()" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add new timezone</button>
 </section>
 <br/>
-<script>
-/* OLD firebase debug
+<!--
 <table ng-table="tableParams" class="table">
 	<thead>
 		<tr>
@@ -51,7 +50,7 @@
 		</tr>
 	</tbody>
 </table>
-*/ </script>
+-->
 <table ng-table="tableParams" class="table">
 	<thead>
 		<tr>
@@ -128,7 +127,14 @@
 	</div>
 	<div class="modal-footer">
 		<button ng-click="save()" ng-if="timezone.id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+		
+
+
 		<button ng-click="add()" type="submit" ng-if="!timezone.id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+
+
+		<button ng-click="createTimezone(timezone)" type="submit" ng-if="!timezone.id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add2</button>
+
 		<button ng-click="cancel()" class="btn">Cancel</button>
 	</div>
 </script>

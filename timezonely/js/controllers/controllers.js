@@ -77,9 +77,11 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
 
     $scope.getTimezones = function() {
       console.log('in getTimezones')
-        TimezonesService.all()
+        TimezonesService.fetchAll()//.all()
         .then(function (result) {
+          .console.log('WTFFFF')
             dashboard.timezones = result.data;
+            console.log(dashboard.timezones)
         });
     };
 
@@ -141,9 +143,9 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     dashboard.cancelEditing = cancelEditing;
 
     initCreateForm();
-    //$scope.getTimezones();
+    $scope.getTimezones();
     // fill 'timezones' for view
-    $scope.viewData.timezones = $scope.getTimezones()
+    //$scope.viewData.timezones = $scope.getTimezones()
     console.log('timezones:')
     console.log($scope.viewData.timezones)
     //
@@ -185,13 +187,64 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
 
     service.all = function () {
       console.log('inside all')
-      var url = getUrl(true);
+      var url = getUrl();
       console.log(url)
-      var result = $http.get(url);
+      //var result = $http.get(url);
+/*
+        return $http({
+            url: url,
+            method: "GET"
+        }).success(function (data, status, headers, config) {
+            console.log(data);
+        })
+*/
+
+return $http.get(url)
+    .success(function (data, status, headers, config) {
+      alert('success')
+        console.log(data);
+        return data;
+    }).error(function (data, status, headers, config) {
+        alert("error");
+        return status;
+});
+
+$http.get('/someUrl')
+  .success(function(data, status, headers, config) {
+    // this callback will be called asynchronously
+    // when the response is available
+    console.log('aaaaaaaaaaa')
+  })
+  .error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+    console.log('bbbbbbbbbbb')
+  });
+
+      var result =  $http.get(url)
+        .success(function(data, status, headers, config) {
+          console.log('success in 202')
+          console.log(data)
+          $scope.viewData.timezones = data.records;
+        })
+        .error(function(data, status, headers, config) {
+          console.log('error in 206')
+          console.log(data)
+
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+        })
+
+
       console.log('result is:')
       console.log(result)
       console.log('end result')
       return result;
+    };
+
+
+    service.fetchAll = function () {
+        return $http.get(getUrl());
     };
 
     service.fetch = function (timezoneId) {

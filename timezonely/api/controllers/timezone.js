@@ -23,11 +23,15 @@ exports.postTimezones = function(req, res) {
 
 // Create endpoint /api/timezones for GET
 exports.getTimezones = function(req, res) {
+  console.log(26)
   // Use the Timezone model to find all timezone
   Timezone.find({ userId: req.user._id }, function(err, timezones) {
+    console.log(27)
     if (err) res.send(err);
+    console.log(28)
 
     res.json(timezones);
+    console.log(29)
   });
 };
 

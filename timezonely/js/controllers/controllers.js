@@ -80,7 +80,7 @@ $scope.save = function() {
 
 
 
-timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
+timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, LoginService, UserService, TimezonesService) {
 // Define valriables
 $scope.alerts = [];     // array of alert message objects.
 

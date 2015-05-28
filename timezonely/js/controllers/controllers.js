@@ -149,6 +149,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, env
 
     envoy.test = 2;
     console.log(envoy)
+    $scope.envoy = envoy
     //
 })
 

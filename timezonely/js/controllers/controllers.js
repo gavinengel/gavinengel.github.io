@@ -74,7 +74,7 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
         .then(function (result) {
             initCreateForm();
             $scope.getTimezones();
-                    $modalInstance.dismiss('cancel');
+            $modalInstance.dismiss('cancel');
 
         });
     };
@@ -146,79 +146,68 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
       $scope.timezone = {};
       $scope.alerts = []; // array of alert message objects.
 
-      // if clicked edit. id comes from $scope.modal->timezoneId
-      // old
-      if (angular.isDefined(id)) {
-        console.log(51)
-          var timezoneUrl = fbURL + timezone_table + '/' + id;
-          $scope.timezone = $firebase(new Firebase(timezoneUrl));
-          $scope.timezone.id = id;
-          console.log(55)
-      } 
-      // new
       if (angular.isDefined(id)) {
         console.log('here be the id!!'+id)
-        // add a timezone to envoy.editTimezone 
-        envoy.editTimezone = TimezonesService.fetch(id)
-        /*.then(function (result) {
+ 
+        TimezonesService.fetch(id)//.all()
+        .then(function (res) {
             console.log('then...')
-            //dashboard.timezones = result.data;//debug
-             = result.data;
-            console.log('here be envoy.editTimezone:')
-            console.log(envoy.editTimezone)
-        });*/
-
-console.log('and... envoy')
-console.log(envoy)
-
-
+            $scope.timezone = res.data[0];
+            console.log('here be envoy.timezone:')
+            console.log(envoy.timezone)
+        });
       }
 
 
       // close modal
       $scope.cancel = function() {
-        console.log(57)
-          $modalInstance.dismiss('cancel');
-          console.log(59)
+        $modalInstance.dismiss('cancel');
       };
 
       // Add new timezone
       $scope.add = function() {
-            envoy.add = true;
-    console.log(envoy)
         TimezonesService.create($scope.timezone)
         .then(function (result) {
-          initCreateForm();
-          //$scope.getTimezones();
-        })
 
-        TimezonesService.fetchAll()//.all()
-        .then(function (result) {
-            console.log('then...')
-            //dashboard.timezones = result.data;//debug
+          TimezonesService.fetchAll()
+          .then(function (result) {
             envoy.timezones = result.data;
-            console.log('here be envoy.timezones:')
-            console.log(envoy.timezones)
-        });
+          });
 
-        $modalInstance.dismiss('cancel');
+
+          initCreateForm();
+          $modalInstance.dismiss('cancel');
+
+        })
 
       }
 
       // Save edited timezone.
       $scope.save = function() {
-        console.log(68)
-          $scope.timezone.$save();
+        TimezonesService.update($scope.timezone._id, $scope.timezone)
+        .then(function (res) {
+          TimezonesService.fetchAll()
+          .then(function (result) {
+            envoy.timezones = result.data;
+            console.log('reloaded with this:')
+            console.log(envoy.timezones)
+          });
+
+
+          initCreateForm();
           $modalInstance.dismiss('cancel');
-          console.log(71)
+
+        })
+
+
       };
     };
-    //
+    
     $scope.envoy = envoy
 })
 
 
-timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
+timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy) {
     var service = this,
         path = 'timezones/';
 
@@ -260,26 +249,8 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     };
 
     service.fetch = function (timezoneId) {console.log(68)
-        //var timezones = $http.get(getUrlForId(timezoneId));
-        //console.log('fetched:')
-        //console.log(timezones)
-        //return timezones[0]
 
-///
-
-
-        $http({
-            url: getUrlForId(timezoneId),
-            method: "GET"
-        }).success(function (data, status, headers, config) {
-            console.log('fetched:')
-            console.log(data[0])
-            return data[0];
-        })
-    
-
-///
-        console.log('problem for fetch')
+        return $http.get(getUrlForId(timezoneId));
 
     };
 
@@ -295,7 +266,12 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     };
 
     service.update = function (timezoneId, timezone) {console.log(68)
-        return $http.put(getUrlForId(timezoneId), timezone);
+        var url = getUrlForId(timezoneId);
+        url = url + '&city=' + timezone.city + '&designation=' + timezone.designation + '&difference=' + timezone.difference + '&zonename=' + timezone.zonename
+        console.log('sending this shit:')
+        console.log(timezone)
+        console.log(url)
+        return $http.put(url, timezone); //TODO figure out why params aren't being sent:
     };
 
     service.destroy = function (timezoneId) {console.log('in destroy... id is:'+timezoneId)

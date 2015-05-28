@@ -49,10 +49,29 @@ exports.getTimezone = function(req, res) {
 
 // Create endpoint /api/timezones/:timezone_id for PUT
 exports.putTimezone = function(req, res) {
+  console.log('updating...')
   // Use the Timezone model to find a specific timezone
-  Timezone.update({ userId: req.user._id, _id: req.params.timezone_id }, { quantity: req.query.quantity }, function(err, num, raw) {
-    if (err)
+  //Timezone.update({ userId: req.user._id, _id: req.params.timezone_id }, { quantity: req.query.quantity }, function(err, num, raw) {
+  Timezone.update(
+    { _id: req.params.timezone_id }, 
+    { city: req.query.city, designation: req.query.designation, difference: req.query.difference, zonename: req.query.zonename }, 
+    function(err, num, raw) {  
+    if (err) {   console.log('error in updating...')
+
       res.send(err);
+    }
+
+console.log('req :')
+console.log(req)
+
+console.log('req params:')
+console.log(req.params)
+
+console.log('req.query is:')
+console.log(req.query)
+
+  console.log('updating num is:')
+  console.log(num)
 
     res.json({ message: num + ' updated' });
   });

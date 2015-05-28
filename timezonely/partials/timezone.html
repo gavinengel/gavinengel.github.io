@@ -103,7 +103,7 @@
 			<div class="control-group">
 				<label class="control-label" for="zonename">Timezone Name</label>
 				<div class="controls">
-					<input id="zonename" name="zonename" ng-model="envoy.editTimezone.zonename" type="text" placeholder="Timezone Name" class="input-xlarge" required=""  ng-class="{error: timezone.zonename.$invalid && !timezone.zonename.$pristine}"/>
+					<input id="zonename" name="zonename" ng-model="timezone.zonename" type="text" placeholder="Timezone Name" class="input-xlarge" required=""  ng-class="{error: timezone.zonename.$invalid && !timezone.zonename.$pristine}"/>
 				</div>
 			</div>
 
@@ -124,9 +124,9 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button ng-click="save()" ng-if="timezone._id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+		<button ng-click="save()" ng-if="true" ng-disabled="!timezone.zonename || !timezone.city || !timezone.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
 		
-		<button ng-click="add()" type="submit" ng-if="!timezone.id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+		<button ng-click="add()" type="submit" ng-if="!timezone._id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
 
 		<button ng-click="cancel()" class="btn">Cancel</button>
 	</div>

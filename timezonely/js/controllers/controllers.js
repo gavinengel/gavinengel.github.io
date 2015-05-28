@@ -4,7 +4,6 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     // Define valriables
     $scope.alerts = [];     // array of alert message objects.
     $scope.timezones = Timezones;
-    if (typeof $scope.envoy === 'undefined') { $scope.envoy = { valid: true } }
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {

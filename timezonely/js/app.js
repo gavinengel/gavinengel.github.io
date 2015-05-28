@@ -4,6 +4,9 @@ var timezonelyApp = angular.module('timezonely', ['ngRoute', 'firebase', 'ui.boo
 .value('timezone_table', 'timezone')
 .constant('ENDPOINT_URI', 'http://ovh.engeldev.com:9000/api/') // this is the timezones api
 .config(function($routeProvider) {
+    if (typeof $scope.envoy === 'undefined') { $scope.envoy = { valid: true } }
+
+
     $routeProvider
     .when('/home', {
         controller: 'HomeCtrl',

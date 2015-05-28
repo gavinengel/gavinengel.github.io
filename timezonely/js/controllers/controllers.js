@@ -147,6 +147,7 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
       $scope.alerts = []; // array of alert message objects.
 
       // if clicked edit. id comes from $scope.modal->timezoneId
+      // old
       if (angular.isDefined(id)) {
         console.log(51)
           var timezoneUrl = fbURL + timezone_table + '/' + id;
@@ -154,6 +155,25 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
           $scope.timezone.id = id;
           console.log(55)
       } 
+      // new
+      if (angular.isDefined(id)) {
+        console.log('here be the id!!'+id)
+        // add a timezone to envoy.editTimezone 
+        envoy.editTimezone = TimezonesService.fetch(id)
+        /*.then(function (result) {
+            console.log('then...')
+            //dashboard.timezones = result.data;//debug
+             = result.data;
+            console.log('here be envoy.editTimezone:')
+            console.log(envoy.editTimezone)
+        });*/
+
+console.log('and... envoy')
+console.log(envoy)
+
+
+      }
+
 
       // close modal
       $scope.cancel = function() {
@@ -169,7 +189,7 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
         TimezonesService.create($scope.timezone)
         .then(function (result) {
           initCreateForm();
-          $scope.getTimezones();
+          //$scope.getTimezones();
         })
 
         TimezonesService.fetchAll()//.all()
@@ -240,7 +260,27 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     };
 
     service.fetch = function (timezoneId) {console.log(68)
-        return $http.get(getUrlForId(timezoneId));
+        //var timezones = $http.get(getUrlForId(timezoneId));
+        //console.log('fetched:')
+        //console.log(timezones)
+        //return timezones[0]
+
+///
+
+
+        $http({
+            url: getUrlForId(timezoneId),
+            method: "GET"
+        }).success(function (data, status, headers, config) {
+            console.log('fetched:')
+            console.log(data[0])
+            return data[0];
+        })
+    
+
+///
+        console.log('problem for fetch')
+
     };
 
     service.create = function (timezone) {console.log(68)

@@ -81,15 +81,13 @@
       </div>
       <span ng-bind="getLocalTime(timezone)"></span>
 			<span ng-if="true">{{timezone.id}}</span>
-			<div ng-if="false"><input class="form-control" type="text" ng-model="getLocalTime(timezone.$id)" /></div>
+			<div ng-if="false"><input class="form-control" type="text" ng-model="getLocalTime(timezone._id)" /></div>
 		</td>
 
 		<td data-title="'Actions'" >
-			<a ng-if="true" href="" class="btn btn-primary btn-xs" ng-click="open(timezone.$id)">Edit</a>
+			<a ng-if="true" href="" class="btn btn-primary btn-xs" ng-click="open(timezone._id)">Edit</a>
 			<a ng-if="true" ng-click="removeRecord(timezone._id)" class="btn btn-default btn-xs">Delete</a>
 			<a ng-if="false" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
-			<a href="" class="btn btn-primary btn-xs" ng-click="createTimezone(timezone)">DEBUGcreate</a>
-			<a href="" class="btn btn-primary btn-xs" ng-click="getTimezones()">DEBUGget</a>
 		</td>
 	</tr>
 	</tbody>
@@ -105,7 +103,7 @@
 			<div class="control-group">
 				<label class="control-label" for="zonename">Timezone Name</label>
 				<div class="controls">
-					<input id="zonename" name="zonename" ng-model="timezone.zonename" type="text" placeholder="Timezone Name" class="input-xlarge" required=""  ng-class="{error: timezone.zonename.$invalid && !timezone.zonename.$pristine}"/>
+					<input id="zonename" name="zonename" ng-model="envoy.editTimezone.zonename" type="text" placeholder="Timezone Name" class="input-xlarge" required=""  ng-class="{error: timezone.zonename.$invalid && !timezone.zonename.$pristine}"/>
 				</div>
 			</div>
 
@@ -126,14 +124,9 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button ng-click="save()" ng-if="timezone.id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+		<button ng-click="save()" ng-if="timezone._id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
 		
-
-
 		<button ng-click="add()" type="submit" ng-if="!timezone.id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
-
-
-		<button ng-click="createTimezone(timezone)" type="submit" ng-if="!timezone.id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add2</button>
 
 		<button ng-click="cancel()" class="btn">Cancel</button>
 	</div>

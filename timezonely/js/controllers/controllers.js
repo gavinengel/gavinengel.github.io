@@ -80,6 +80,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
         TimezonesService.fetchAll()//.all()
         .then(function (result) {
             dashboard.timezones = result.data;
+            console.log(dashboard.timezones)
         });
     };
 
@@ -143,7 +144,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     initCreateForm();
     $scope.getTimezones();
     // fill 'timezones' for view
-    $scope.viewData.timezones = $scope.getTimezones()
+    //$scope.viewData.timezones = $scope.getTimezones()
     console.log('timezones:')
     console.log($scope.viewData.timezones)
     //

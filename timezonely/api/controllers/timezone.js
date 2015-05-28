@@ -1,6 +1,7 @@
 // Load required packages
 var Timezone = require('../models/timezone');
 
+
 // Create endpoint /api/timezones for POST
 exports.postTimezones = function(req, res) {
   // Create a new instance of the Timezone model
@@ -59,11 +60,13 @@ exports.putTimezone = function(req, res) {
 
 // Create endpoint /api/timezones/:timezone_id for DELETE
 exports.deleteTimezone = function(req, res) {
+  console.log('delete1')
   // Use the Timezone model to find a specific timezone and remove it
   Timezone.remove({ userId: req.user._id, _id: req.params.timezone_id }, function(err) {
     if (err)
       res.send(err);
-
+console.log('delete2')
     res.json({ message: 'Timezone removed from the app!' });
+    console.log('delete3')
   });
 };

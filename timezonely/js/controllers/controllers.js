@@ -11,13 +11,20 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {
-        var timezoneUrl = fbURL + timezone_table + '/' + timezoneId;
-        $scope.timezone = $firebase(new Firebase(timezoneUrl));
-        $scope.timezone.$remove()
+        //var timezoneUrl = fbURL + timezone_table + '/' + timezoneId;
+        //$scope.timezone = $firebase(new Firebase(timezoneUrl));
+        //$scope.timezone.$remove()
         $scope.alerts.splice(0, 1);
         $scope.alerts.push({
             type: 'success',
             msg: "timezone removed successfully!"
+        });
+        //
+
+        TimezonesService.destroy(timezoneId)
+        .then(function (result) {
+            cancelEditing();
+            $scope.getTimezones();
         });
     };
 

@@ -64,8 +64,8 @@
 	<tbody>
 		<tr ng-repeat="(key, timezone) in dashboard.timezones">
 			<td data-title="'Name'" >
-				<span ng-if="!timezone.$edit">{{timezone.zonename}}</span>
-				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.zonename" /></div>
+				<span >{{timezone.zonename}}</span>
+				<div ><input class="form-control" type="text" ng-model="timezone.zonename" /></div>
 			</td>
 			<td data-title="'Text'" >
 				<span ng-if="!timezone.$edit">{{timezone.city}}</span>

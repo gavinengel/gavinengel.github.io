@@ -3,7 +3,7 @@
 timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
     // Define valriables
     $scope.alerts = [];     // array of alert message objects.
-
+    $scope.viewData = {}
     $scope.timezones = Timezones;
 
 

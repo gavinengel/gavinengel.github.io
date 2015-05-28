@@ -4,7 +4,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     // Define valriables
     $scope.alerts = [];     // array of alert message objects.
     $scope.viewData = {}
-    $scope.viewData.timezones = Timezones;
+    $scope.timezones = Timezones;
 
 
     // Remove timezone

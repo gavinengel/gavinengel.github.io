@@ -44,32 +44,32 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     };
 
     $scope.model = function($scope, $modalInstance, Timezones, id, $firebase, fbURL, timezone_table) {
-        $scope.timezone = {};
-    $scope.alerts = [];         // array of alert message objects.
+      $scope.timezone = {};
+      $scope.alerts = []; // array of alert message objects.
 
-    // if clicked edit. id comes from $scope.modal->timezoneId
-    if (angular.isDefined(id)) {
-        var timezoneUrl = fbURL + timezone_table + '/' + id;
-        $scope.timezone = $firebase(new Firebase(timezoneUrl));
-        $scope.timezone.id = id;
-    } 
+      // if clicked edit. id comes from $scope.modal->timezoneId
+      if (angular.isDefined(id)) {
+          var timezoneUrl = fbURL + timezone_table + '/' + id;
+          $scope.timezone = $firebase(new Firebase(timezoneUrl));
+          $scope.timezone.id = id;
+      } 
 
-    // close modal
-    $scope.cancel = function() {
-        $modalInstance.dismiss('cancel');
-    };
+      // close modal
+      $scope.cancel = function() {
+          $modalInstance.dismiss('cancel');
+      };
 
-    // Add new timezone
-    $scope.add = function() {
-        Timezones.$add($scope.timezone)
-        $modalInstance.dismiss('cancel');
-    };
+      // Add new timezone
+      $scope.add = function() {
+          Timezones.$add($scope.timezone)
+          $modalInstance.dismiss('cancel');
+      };
 
-    // Save edited timezone.
-    $scope.save = function() {
-        $scope.timezone.$save();
-        $modalInstance.dismiss('cancel');
-    };
+      // Save edited timezone.
+      $scope.save = function() {
+          $scope.timezone.$save();
+          $modalInstance.dismiss('cancel');
+      };
     };
     //
 
@@ -198,7 +198,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
             console.log(data);
         })
 */
-
+/*
 $http.get(url)
     .success(function (data, status, headers, config) {
       alert('success')
@@ -208,18 +208,8 @@ $http.get(url)
         alert("error");
         return status;
 });
+*/
 
-$http.get('/someUrl')
-  .success(function(data, status, headers, config) {
-    // this callback will be called asynchronously
-    // when the response is available
-    console.log('aaaaaaaaaaa')
-  })
-  .error(function(data, status, headers, config) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-    console.log('bbbbbbbbbbb')
-  });
 
       var result =  $http.get(url)
         .success(function(data, status, headers, config) {

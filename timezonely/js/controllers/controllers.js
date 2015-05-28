@@ -76,6 +76,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Tim
     var dashboard = this;
 
     $scope.getTimezones = function() {
+      console.log('in getTimezones')
         TimezonesService.all()
         .then(function (result) {
             dashboard.timezones = result.data;

@@ -278,3 +278,123 @@ timezonelyApp.controller('MainCtrl', function ($rootScope, $state, LoginService,
     main.logout = logout;
     main.currentUser = UserService.getCurrentUser();
 })
+
+timezonelyApp.service('APIInterceptor', function($rootScope, UserService) {
+    var service = this;
+
+    service.request = function(config) {
+        var currentUser = UserService.getCurrentUser(),
+            access_token = currentUser ? currentUser.access_token : null;
+
+        if (access_token) {
+            config.headers.authorization = access_token;
+        }
+        return config;
+    };
+
+    service.responseError = function(response) {
+        if (response.status === 401) {
+            $rootScope.$broadcast('unauthorized');
+        }
+        return response;
+    };
+})
+timezonelyApp.service('UserService', function(store) {
+    var service = this,
+        currentUser = null;
+
+    service.setCurrentUser = function(user) {
+        currentUser = user;
+        store.set('user', user);
+        return currentUser;
+    };
+
+    service.getCurrentUser = function() {
+        if (!currentUser) {
+            currentUser = store.get('user');
+        }
+        return currentUser;
+    };
+})
+timezonelyApp.service('LoginService', function($http, ENDPOINT_URI) {
+    var service = this,
+        path = 'Users/';
+
+    function getUrl() {
+        return ENDPOINT_URI + path;
+    }
+
+    function getLogUrl(action) {
+        return getUrl() + action;
+    }
+
+    service.login = function(credentials) {
+        return $http.post(getLogUrl('login'), credentials);
+    };
+
+    service.logout = function() {
+        return $http.post(getLogUrl('logout'));
+    };
+
+    service.register = function(user) {
+        return $http.post(getUrl(), user);
+    };
+})
+
+
+timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
+    var service = this,
+        path = 'timezones/';
+
+    function getUrl() {
+        credentials = getCredentials()
+        return ENDPOINT_URI + path //+ "?username=" + credentials.username + "&password=" + credentials.password
+    }
+
+    function getUrlForId(timezoneId) {
+        credentials = getCredentials()
+        return getUrl(path) + timezoneId //+ "?username=" + credentials.username + "&password=" + credentials.password
+    }
+
+    function addCredentials(data) {
+        credentials = getCredentials()
+        data.username = credentials.username;
+        data.password = credentials.password;
+        return data;
+    }
+
+   function getCredentials() {
+        // TODO this is a stub
+        var credentials = {}
+        credentials.username = 'gavin';
+        credentials.password = 'engel';
+        return credentials;
+    }
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
+
+    service.fetch = function (timezoneId) {
+        return $http.get(getUrlForId(timezoneId));
+    };
+
+    service.create = function (timezone) {
+        timezone = addCredentials(timezone)
+        return $http({
+            url: getUrl(),
+            method: "POST",
+            params: timezone,
+        }).success(function (data, status, headers, config) {
+            console.log(data);
+        })
+    };
+
+    service.update = function (timezoneId, timezone) {
+        return $http.put(getUrlForId(timezoneId), timezone);
+    };
+
+    service.destroy = function (timezoneId) {
+        return $http.delete(getUrlForId(timezoneId));
+    };
+})

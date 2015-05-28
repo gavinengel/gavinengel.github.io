@@ -243,7 +243,7 @@ $http.get('/someUrl')
 
 
     service.fetchAll = function () {
-        return $http.get(getUrl());
+        return $http.get(getUrl(true));
     };
 
     service.fetch = function (timezoneId) {

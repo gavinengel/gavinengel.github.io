@@ -183,7 +183,10 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
     }
 
     service.all = function () {
-        return $http.get(getUrl(true));
+      console.log('inside all')
+        var result = $http.get(getUrl(true));
+        console.log(result)
+        return result;
     };
 
     service.fetch = function (timezoneId) {

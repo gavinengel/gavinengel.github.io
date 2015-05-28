@@ -1,10 +1,10 @@
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, /*Timezones, $firebase, fbURL,*/ $routeParams, timezone_table, filterFilter, TimezonesService) {
-    // Define variables
+timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
+    // Define valriables
     $scope.alerts = [];     // array of alert message objects.
 
-    /*$scope.timezones = Timezones;*/
+    $scope.timezones = Timezones;
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {
@@ -41,7 +41,7 @@ timezonelyApp.controller('TimezoneCtrl', function($scope, $modal, $location, /*T
 
     };
 
-    $scope.model = function($scope, $modalInstance, /*Timezones,*/ id, $firebase, fbURL, timezone_table) {
+    $scope.model = function($scope, $modalInstance, Timezones, id, $firebase, fbURL, timezone_table) {
         $scope.timezone = {};
     $scope.alerts = [];         // array of alert message objects.
 

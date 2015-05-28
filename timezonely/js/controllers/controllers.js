@@ -190,6 +190,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI) {
       var result = $http.get(url);
       console.log('result is:')
       console.log(result)
+      console.log('end result')
       return result;
     };
 

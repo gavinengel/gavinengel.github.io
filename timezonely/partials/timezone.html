@@ -51,9 +51,10 @@
 </table>
 
 new table:
+<span ng-bind="dashboard.timezones[0].city"></span>
 
 <div ng-repeat="each in dashboard.timezones">
-  !!
+  {{each.city}}
 </div>
 
 <script type="text/ng-template" id="add_timezone_modal">

@@ -24,6 +24,13 @@
   <script type="text/javascript" src="http://code.gavinengel.com/timezonely/js/vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script>
   <script type="text/javascript" src="http://code.gavinengel.com/timezonely/js/vendor/angular-grid/build/ng-grid.js"></script>
   
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>
+
+
+
   <!-- start the custom app -->
   <script src="js/misc.js" defer></script>
   <script src="js/app.js" defer></script>
@@ -36,18 +43,28 @@
 </head>
 
 <body>
+
+
+
 	<div class="container">
 		<h2>Timezonely</h2>
+    <h3>An Angular.js, Bootstrap, and Express app</h3>
+
+<nav ng-controller="LoginCtrl" class="navbar navbar-default">
+  <button ng-if="currentUser.username" class="btn btn-default navbar-btn" ng-click="logout()">
+    Logout <strong>{{currentUser.username}}</strong>
+  </button>
+</nav>
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
           <ul class="nav">
-            <li ui-route="/home" ng-class="{active:$uiRoute}" class="ng-scope">
+            <!--<li ui-route="/home" ng-class="{active:$uiRoute}" class="ng-scope">
               <a href="#/home">
                 <i class="icon-home"></i>
                 Home
               </a>
-            </li>
+            </li>-->
             <li ui-route="/users" ng-class="{active:$uiRoute}" class="ng-scope">
               <a href="#/users">
                 <i class="icon-github-alt"></i>

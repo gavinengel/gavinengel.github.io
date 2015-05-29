@@ -2,7 +2,9 @@
 // TODO remove all firebase stuff
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, $routeParams, timezone_table, filterFilter, TimezonesService) {
+timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, $routeParams, timezone_table, filterFilter, UserService, TimezonesService, store) {
+    UserService.auth()
+
     // Define variables
     envoy.TimezoneCtrl = true;
 
@@ -112,7 +114,6 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
     dashboard.isCurrentTimezone = isCurrentTimezone;
     dashboard.cancelEditing = cancelEditing;
 
-
     $scope.model = function(envoy, $scope, $modalInstance, id, timezone_table) {
       envoy.model = true;
       $scope.timezone = {};
@@ -124,7 +125,6 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
           $scope.timezone = res.data[0];
         });
       }
-
 
       // close modal
       $scope.cancel = function() {
@@ -140,7 +140,6 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
           .then(function (result) {
             envoy.timezones = result.data;
           });
-
 
           //initCreateForm();
           $modalInstance.dismiss('cancel');
@@ -169,8 +168,7 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
     $scope.envoy = envoy //TODO
   })
 
-
-timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy) {
+timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, store, UserService) {
   var service = this,
   path = 'timezones/';
 
@@ -181,8 +179,11 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy) {
       url = url + id
     }
     if (addCredentials) {
-      credentials = getCredentials()
-      url = url + "?username=" + credentials.username + "&password=" + credentials.password
+      credentials = UserService.getCurrentUser() //store.get('user')
+      if (angular.isDefined(credentials)) {
+        url = url + "?username=" + credentials.username + "&password=" + credentials.password  
+      }
+      
     }
     return  url
   }
@@ -190,7 +191,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy) {
   function getUrlForId(timezoneId) {
         return getUrl(path, timezoneId) //+ "?username=" + credentials.username + "&password=" + credentials.password
       }
-
+/*
       function addCredentials(data) {
         credentials = getCredentials()
         data.username = credentials.username;
@@ -205,8 +206,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy) {
         credentials.password = 'engel';
         return credentials;
       }
-
-
+*/
       service.fetchAll = function () {
         return $http.get(getUrl(true));
       };
@@ -243,36 +243,10 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy) {
 // USERS //////////////////////////////////////////////////////////////////////
 
 
-timezonelyApp.controller('LoginCtrl', function($rootScope, $state, LoginService, UserService){
-  var login = this;
-
-  function signIn(user) {
-    LoginService.login(user)
-    .then(function(response) {
-      user.access_token = response.data.id;
-      UserService.setCurrentUser(user);
-      $rootScope.$broadcast('authorized');
-      $state.go('dashboard');
-    });
-  }
-
-  function register(user) {
-    LoginService.register(user)
-    .then(function(response) {
-      login(user);
-    });
-  }
-
-  function submit(user) {
-    login.newUser ? register(user) : signIn(user);
-  }
-
-  login.newUser = false;
-  login.submit = submit;
-})
-
 timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, $routeParams, user_table, filterFilter, UserService) {
-    // Define valriables
+    UserService.auth()
+
+    // Define valiables
     $scope.alerts = [];     // array of alert message objects.
     var dashboard = this;
 
@@ -284,14 +258,11 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
         msg: "user removed successfully!"
       });
 
-      console.log(userId+'is userid in removerecord')
-
       UserService.destroy(userId)
       .then(function (result) {
         $scope.getUsers();
       });
     };
-
 
     // Close alert message
     $scope.closeAlert = function(index) {
@@ -300,7 +271,6 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
 
     // Modal: called by edit(userId) and Add new user
     $scope.open = function(userId) {
-      console.log(306+' '+userId)
       var modalInstance = $modal.open({
         templateUrl: 'add_user_modal',
         controller: $scope.model,
@@ -314,13 +284,11 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
 
 /* TODO
     $scope.setEnvoy = function(key, val) {
-      console.log('setting envoy.'+key+' to:')
-      console.log(val)
       envoy[key] = val
       $scope.envoy = envoy
       cancelEditing();
     }
-*/
+    */
 
     $scope.model = function($scope, envoy, $modalInstance,  id, user_table) {
       $scope.user = {};
@@ -337,7 +305,7 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
           UserService.fetch(id)
           .then(function (res) {
             $scope.user = res.data[0];
-            console.log({'editing user' : $scope.user})
+            //console.log({'editing user' : $scope.user})
           });
         }
 
@@ -348,25 +316,22 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
 
       // Add new user
       $scope.add = function() {
-        console.log(364)
+        //console.log(364)
         UserService.create($scope.user)
         .then(function (result) {
-          console.log(366)
+          //console.log(366)
           UserService.fetchAll()
           .then(function (result) {
-            console.log(369)
+            //console.log(369)
             envoy.users = result.data;
             //$scope.setEnvoy('users', result.data)
             $modalInstance.dismiss('cancel');
-            console.log(373)
+            //console.log(373)
           });
-
 
         })
 
       }
-
-
 
       // Save edited user.
       $scope.save = function() {
@@ -394,22 +359,18 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
       });
     };
 
-
-
     function cancelEditing() {
       dashboard.editedTimezone = null;
       dashboard.isEditing = false;
     }
 
-
     // controller final
     $scope.getUsers()
         $scope.envoy = envoy //TODO
 
-  })
+      })
 
-
-timezonelyApp.service('UserService', function($http, ENDPOINT_URI, envoy, store) {
+timezonelyApp.service('UserService', function($http, $location, ENDPOINT_URI, envoy, store) {
   var service = this,
   currentUser = null,
   path = 'users/';
@@ -436,8 +397,11 @@ timezonelyApp.service('UserService', function($http, ENDPOINT_URI, envoy, store)
         url = url + id
       }
       if (addCredentials) {
-        credentials = getCredentials()
-        url = url + "?username=" + credentials.username + "&password=" + credentials.password
+        user = service.getCurrentUser()
+        if (angular.isDefined(user) && angular.isDefined(user.username)) {
+          url = url + "?username=" + user.username + "&password=" + user.password  
+        }
+        
       }
       return  url
     }
@@ -446,6 +410,8 @@ timezonelyApp.service('UserService', function($http, ENDPOINT_URI, envoy, store)
         return getUrl(path, userId) //+ "?username=" + credentials.username + "&password=" + credentials.password
       }
 
+      /*
+      // use instead: service.setCurrentUser and service.getCurrentUser? TODO
       function addCredentials(data) {
         credentials = getCredentials()
         data.username = credentials.username;
@@ -455,12 +421,35 @@ timezonelyApp.service('UserService', function($http, ENDPOINT_URI, envoy, store)
 
       function getCredentials() {
         // TODO this is a stub
-        var credentials = {}
-        credentials.username = 'gavin';
-        credentials.password = 'engel';
-        return credentials;
+        if (!service.credentials) {
+          var credentials = {}
+          service.credentials = credentials
+          service.credentials.username = 'gavin' // debug TODO
+          service.credentials.password = 'engel'
+        }
+        
+        return service.credentials;
       }
 
+      function setCredentials(user) {
+        service.credentials = user
+      }
+      */
+      service.auth = function () {
+        //user = store.get('user')
+        user = service.getCurrentUser()
+        if (angular.isDefined(user) && angular.isDefined(user.username)) {
+          result = service.fetchByUsername(user.username)
+          .catch(function (res) {
+            //store.set('user', {})
+            $location.path('login')
+          })
+        }
+        else {
+          //store.set('user', {})
+          $location.path('login')
+        }
+      };
 
       service.fetchAll = function () {
         return $http.get(getUrl(true));
@@ -472,8 +461,16 @@ timezonelyApp.service('UserService', function($http, ENDPOINT_URI, envoy, store)
 
       };
 
+      service.fetchByUsername = function (user) {
+        //setCredentials(user)
+        url = getUrl(true, 'login/'+user.username)
+        console.log({'fetchByUsername': url})
+        return $http.get(url);
+
+      };
+
       service.create = function (user) {
-        console.log(489)
+        //console.log(489)
         //user = addCredentials(user)
         return $http({
           url: getUrl(),
@@ -482,28 +479,97 @@ timezonelyApp.service('UserService', function($http, ENDPOINT_URI, envoy, store)
         })
         .success(function (data, status, headers, config) {
           //TODO
-          console.log(497)
+          //console.log(497)
         })
         .error(function(data, status, headers, config) {
-          console.log({"ERROR: service.create": [data, status, headers, config]})
+          //console.log({"ERROR: service.create": [data, status, headers, config]})
         })
       };
 
       service.update = function (userId, user) {
         var url = getUrl(false, userId)
         url = url + '?username=' + user.username + '&name=' + user.name + '&designation=' + user.designation + '&password=' + user.password
-        console.log({'put url:': url})
+        //console.log({'put url:': url})
         return $http.put(url, user); //TODO figure out why params aren't being sent:
       };
 
       service.destroy = function (userId) {
         var url = getUrlForId(userId);
-        console.log(url)
+        //console.log(url)
         return $http.delete(url);
       };
     })
 
-timezonelyApp.service('LoginService', function($http, ENDPOINT_URI) {
+// LOGIN //////////////////////////////////////////////////////////////////////
+
+timezonelyApp.controller('LoginCtrl', function($rootScope, $scope, $location, LoginService, UserService, store){
+  var login = this;
+
+  //function signIn(user) {
+    $scope.signIn = function(user) {
+
+      console.log({'signin': user})
+
+      UserService.setCurrentUser(user)
+      LoginService.login(user).then(function(response) {
+        console.log(247)
+        //user.access_token = response.data.id;
+        //UserService.setCurrentUser(user);
+        //$rootScope.$broadcast('authorized');
+        //$scope.loggedIn = true
+        $scope.currentUser = user
+        //console.log('now loggedin with: '+$scope.user.username)
+        $location.path('timezones')
+      }).catch(function(response) {
+        console.log('invalid login')
+        
+      });
+      /*
+      LoginService.login(user, function (user) {
+        console.log('ahmmmmmm')
+        UserService.setCurrentUser(user);
+        $rootScope.$broadcast('authorized');
+        $location.path('timezones')
+      }).then(function(response) {
+        console.log(259)
+        //$scope.login(user);
+      });
+*/
+    }
+
+  //function register(user) {
+    $scope.register = function(user) {
+
+      console.log(254)
+      LoginService.register(user)
+      .then(function(response) {
+        console.log(259)
+        $scope.login(user);
+      });
+    }
+
+  //function submit(user) {
+    $scope.submit = function(user) {
+
+      login.newUser ? register(user) : $scope.signIn(user);
+    }
+
+    $scope.logout = function() {
+      UserService.setCurrentUser() 
+      $scope.currentUser = {}
+      //store.set('user', {})
+      $location.path('login')
+
+    }
+
+    login.newUser = false; //TODO
+    //login.currentUser = UserService.getCurrentUser();
+    $scope.currentUser = UserService.getCurrentUser()
+
+ })
+
+
+timezonelyApp.service('LoginService', function($http, ENDPOINT_URI, UserService, store) {
   var service = this,
   path = 'Users/';
 
@@ -515,35 +581,43 @@ timezonelyApp.service('LoginService', function($http, ENDPOINT_URI) {
     return getUrl() + action;
   }
 
-  service.login = function(credentials) {
-    return $http.post(getLogUrl('login'), credentials);
+  service.login = function(user) {
+    return UserService.fetchByUsername(user)
   };
 
   service.logout = function() {
+    console.log(509)
     return $http.post(getLogUrl('logout'));
   };
 
-  service.register = function(user) {
-    return $http.post(getUrl(), user);
+  service.register = function(user, callback) {
+    if (user.newUser) {
+      console.log({'register':user})
+      // Add new user
+      UserService.create(user).then(function (res) {
+        // TODO
+      })
+    }
+    callback(user)
   };
 })
 
 // HOME ///////////////////////////////////////////////////////////////////////
-timezonelyApp.controller('HomeCtrl', function($scope) {
-//
+timezonelyApp.controller('HomeCtrl', function($scope, UserService) {
+    UserService.auth()
 })
-
-
-timezonelyApp.controller('MainCtrl', function ($rootScope, $state, LoginService, UserService) {
+/*
+timezonelyApp.controller('MainCtrl', function ($rootScope, LoginService, UserService) {
   var main = this;
 
   function logout() {
+    console.log(528)
     LoginService.logout()
     .then(function(response) {
       main.currentUser = UserService.setCurrentUser(null);
       $state.go('login');
     }, function(error) {
-      console.log(error);
+      //console.log(error);
     });
   }
 
@@ -564,6 +638,7 @@ timezonelyApp.service('APIInterceptor', function($rootScope, UserService) {
   var service = this;
 
   service.request = function(config) {
+    console.log(554)
     var currentUser = UserService.getCurrentUser(),
     access_token = currentUser ? currentUser.access_token : null;
 
@@ -574,9 +649,11 @@ timezonelyApp.service('APIInterceptor', function($rootScope, UserService) {
   };
 
   service.responseError = function(response) {
+    console.log(565)
     if (response.status === 401) {
       $rootScope.$broadcast('unauthorized');
     }
     return response;
   };
 })
+*/

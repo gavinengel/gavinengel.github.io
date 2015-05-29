@@ -7,13 +7,18 @@
 <table ng-table="tableParams" class="table">
 	<thead>
 		<tr>
+			<th>Username</th>
 			<th>Name</th>
 			<th>Designation</th>
 			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="(key, user) in envoy.users | orderByPriority | filter:search | orderBy:'name'">
+		<tr ng-repeat="(key, user) in envoy.users | filter:search | orderBy:'username'">
+			<td data-title="'Username'">
+				<span ng-if="!user.$edit">{{user.username}}</span>
+				<div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.username" /></div>
+			</td>
 			<td data-title="'Name'">
 				<span ng-if="!user.$edit">{{user.name}}</span>
 				<div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.name" /></div>
@@ -38,6 +43,14 @@
 	<div class="modal-body">
 		<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
 		<form name="userForm" class="form-horizontal">
+			
+			<div class="control-group">
+				<label class="control-label" for="username">Username</label>
+				<div class="controls">
+					<input id="username" name="username" ng-model="user.username" type="text" placeholder="Username" class="input-xlarge" required=""  ng-class="{error: user.username.$invalid && !user.username.$pristine}"/>
+				</div>
+			</div>
+
 			<div class="control-group">
 				<label class="control-label" for="name">Name</label>
 				<div class="controls">
@@ -51,14 +64,15 @@
 					<input id="password" name="password" ng-model="user.password" type="password" placeholder="Password" class="input-xlarge" required="" />
 				</div>
 			</div>
-			
+			<!--
 			<div class="control-group" ng-class="{error: user.dob.$invalid && !user.dob.$pristine}">
 				<label class="control-label" for="dob">Date Of Birth</label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" datepicker-popup="yyyy-MM-dd" ng-model="user.dob" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="" date-disabled="disabled(date, mode)" ng-required="true" show-weeks="false" show-button-bar="false" />
 				</div>
 			</div>
-			
+			-->
+			<!--
 			<div class="control-group">
 				<label class="control-label" for="gender">Gender</label>
 				<div class="controls">
@@ -72,7 +86,7 @@
 					</label>
 				</div>
 			</div>
-			
+			-->
 			
 			<div class="control-group">
 				<label class="control-label" for="designation">Designation</label>
@@ -93,8 +107,8 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button ng-click="save()" ng-if="user.id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
-		<button ng-click="add()" type="submit" ng-if="!user.id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+		<button ng-click="save()" ng-if="user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+		<button ng-click="add()" type="submit" ng-if="!user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
 		<button ng-click="cancel()" class="btn">Cancel</button>
 	</div>
 </script>

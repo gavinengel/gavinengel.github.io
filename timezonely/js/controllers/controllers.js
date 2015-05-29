@@ -2,12 +2,11 @@
 // TODO remove all firebase stuff
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, Timezones, $firebase, fbURL, $routeParams, timezone_table, filterFilter, TimezonesService) {
+timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, $routeParams, timezone_table, filterFilter, TimezonesService) {
     // Define variables
     envoy.TimezoneCtrl = true;
 
     $scope.alerts = [];     // array of alert message objects.
-    $scope.timezones = Timezones;
 
     // Remove timezone
     $scope.removeRecord = function(timezoneId) {
@@ -114,7 +113,7 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
     dashboard.cancelEditing = cancelEditing;
 
 
-    $scope.model = function(envoy, $scope, $modalInstance, Timezones, id, $firebase, fbURL, timezone_table) {
+    $scope.model = function(envoy, $scope, $modalInstance, id, timezone_table) {
       envoy.model = true;
       $scope.timezone = {};
       $scope.alerts = []; // array of alert message objects.
@@ -167,7 +166,7 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
     // controller final
     //initCreateForm();
     $scope.getTimezones();
-    $scope.envoy = envoy
+    $scope.envoy = envoy //TODO
   })
 
 
@@ -272,12 +271,10 @@ timezonelyApp.controller('LoginCtrl', function($rootScope, $state, LoginService,
   login.submit = submit;
 })
 
-timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, Users, $firebase, fbURL, $routeParams, user_table, filterFilter, UserService) {
+timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, $routeParams, user_table, filterFilter, UserService) {
     // Define valriables
     $scope.alerts = [];     // array of alert message objects.
     var dashboard = this;
-
-    $scope.users = Users;
 
     // Remove user
     $scope.removeRecord = function(userId) {
@@ -303,6 +300,7 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
 
     // Modal: called by edit(userId) and Add new user
     $scope.open = function(userId) {
+      console.log(306+' '+userId)
       var modalInstance = $modal.open({
         templateUrl: 'add_user_modal',
         controller: $scope.model,
@@ -314,7 +312,17 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
       });
     };
 
-    $scope.model = function($scope, $modalInstance, Users, id, $firebase, fbURL, user_table) {
+/* TODO
+    $scope.setEnvoy = function(key, val) {
+      console.log('setting envoy.'+key+' to:')
+      console.log(val)
+      envoy[key] = val
+      $scope.envoy = envoy
+      cancelEditing();
+    }
+*/
+
+    $scope.model = function($scope, envoy, $modalInstance,  id, user_table) {
       $scope.user = {};
         $scope.alerts = [];         // array of alert message objects.
         $scope.designations = [{
@@ -325,14 +333,12 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
           value: "Manager"
         }];
 
-
-        // if clicked edit. id comes from $scope.modal->userId
         if (angular.isDefined(id)) {
-          var userUrl = fbURL + user_table + '/' + id;
-          $scope.user = $firebase(new Firebase(userUrl));
-          $scope.user.id = id;
-        } else {
-          $scope.user.designation = $scope.designations[0].name;
+          UserService.fetch(id)
+          .then(function (res) {
+            $scope.user = res.data[0];
+            console.log({'editing user' : $scope.user})
+          });
         }
 
         // close modal
@@ -342,21 +348,25 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
 
       // Add new user
       $scope.add = function() {
+        console.log(364)
         UserService.create($scope.user)
         .then(function (result) {
-
+          console.log(366)
           UserService.fetchAll()
           .then(function (result) {
-            //envoy.users = result.data;
-            $scope.setEnvoy('users', result.data)
-
+            console.log(369)
+            envoy.users = result.data;
+            //$scope.setEnvoy('users', result.data)
+            $modalInstance.dismiss('cancel');
+            console.log(373)
           });
 
-          $modalInstance.dismiss('cancel');
 
         })
 
       }
+
+
 
       // Save edited user.
       $scope.save = function() {
@@ -364,33 +374,27 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
         .then(function (res) {
           UserService.fetchAll()
           .then(function (result) {
-            //envoy.users = result.data;
-            $scope.setEnvoy('users', result.data)
+            envoy.users = result.data;
+            //$scope.setEnvoy('users', result.data)
+            $modalInstance.dismiss('cancel');
+
           });
 
-          $modalInstance.dismiss('cancel');
         })
       };
 
-    };
+    }; // end model
 
     $scope.getUsers = function() {
       UserService.fetchAll()
       .then(function (result) {
-        //envoy.users = result.data;
-        $scope.setEnvoy('users', result.data)
+        envoy.users = result.data;
+        //$scope.setEnvoy('users', result.data)
 
       });
     };
 
 
-    $scope.setEnvoy = function(key, val) {
-      console.log('setting envoy.'+key+' to:')
-      console.log(val)
-      envoy[key] = val
-      $scope.envoy = envoy
-      cancelEditing();
-    }
 
     function cancelEditing() {
       dashboard.editedTimezone = null;
@@ -400,6 +404,8 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
 
     // controller final
     $scope.getUsers()
+        $scope.envoy = envoy //TODO
+
   })
 
 
@@ -467,19 +473,26 @@ timezonelyApp.service('UserService', function($http, ENDPOINT_URI, envoy, store)
       };
 
       service.create = function (user) {
-        user = addCredentials(user)
+        console.log(489)
+        //user = addCredentials(user)
         return $http({
           url: getUrl(),
           method: "POST",
           params: user,
-        }).success(function (data, status, headers, config) {
-            //TODO
-          })
+        })
+        .success(function (data, status, headers, config) {
+          //TODO
+          console.log(497)
+        })
+        .error(function(data, status, headers, config) {
+          console.log({"ERROR: service.create": [data, status, headers, config]})
+        })
       };
 
       service.update = function (userId, user) {
-        var url = getUrlForId(userId);
-        url = url + '&city=' + user.city + '&designation=' + user.designation + '&difference=' + user.difference + '&zonename=' + user.zonename
+        var url = getUrl(false, userId)
+        url = url + '?username=' + user.username + '&name=' + user.name + '&designation=' + user.designation + '&password=' + user.password
+        console.log({'put url:': url})
         return $http.put(url, user); //TODO figure out why params aren't being sent:
       };
 

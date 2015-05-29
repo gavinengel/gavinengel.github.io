@@ -13,7 +13,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="(key, user) in users | orderByPriority | filter:search | orderBy:'name'">
+		<tr ng-repeat="(key, user) in envoy.users | orderByPriority | filter:search | orderBy:'name'">
 			<td data-title="'Name'">
 				<span ng-if="!user.$edit">{{user.name}}</span>
 				<div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.name" /></div>
@@ -23,8 +23,8 @@
 				<div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.designation" /></div>
 			</td>
 			<td data-title="'Actions'" width="200">
-				<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(user.$id)">Edit</a>
-				<a ng-if="!user.$destroy" ng-click="removeRecord(user.$id)" class="btn btn-default btn-xs">Delete</a>
+				<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(user._id)">Edit</a>
+				<a ng-if="!user.$destroy" ng-click="removeRecord(user._id)" class="btn btn-default btn-xs">Delete</a>
 				<a ng-if="user.$edit" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
 			</td>
 		</tr>

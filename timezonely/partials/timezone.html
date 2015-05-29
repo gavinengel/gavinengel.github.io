@@ -5,52 +5,7 @@
 	<button ng-click="open()" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add new timezone</button>
 </section>
 <br/>
-<!--
-<table ng-table="tableParams" class="table">
-	<thead>
-		<tr>
-			<th>Timezone Name</th>
-			<th>Name of city</th>
-			<th>+/-</th>
-			<th>local time</th>
-			<th>Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="(key, timezone) in timezones | orderByPriority | filter:search | orderBy:'zonename'">
-			<td data-title="'Name'" >
-				<span ng-if="!timezone.$edit">{{timezone.zonename}}</span>
-				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.zonename" /></div>
-			</td>
-			<td data-title="'Text'" >
-				<span ng-if="!timezone.$edit">{{timezone.city}}</span>
-				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.city" /></div>
-			</td>
-			<td data-title="'Text'" >
-				<span ng-if="!timezone.$edit">{{timezone.difference}}</span>
-				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.difference" /></div>
-			</td>
-			<td data-title="'Text'" >
-        <div ng-controller='TimeCtrl'>
-            <p>{{ clock | date:'medium'}}</p>
-        </div>
-        <span ng-bind="getLocalTime(timezone)"></span>
-				<span ng-if="!timezone.$edit">{{timezone.id}}</span>
-				<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="getLocalTime(timezone.$id)" /></div>
-			</td>
-			<td data-title="'Actions'" >
-				<a ng-if="!timezone.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(timezone.$id)">Edit</a>
-				<a ng-if="!timezone.$destroy" ng-click="removeRecord(timezone.$id)" class="btn btn-default btn-xs">Delete</a>
-				<a ng-if="timezone.$edit" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
-				<a href="" class="btn btn-primary btn-xs" ng-click="createTimezone(timezone)">DEBUGcreate</a>
-				<a href="" class="btn btn-primary btn-xs" ng-click="getTimezones()">DEBUGget</a>
 
-
-			</td>
-		</tr>
-	</tbody>
-</table>
--->
 <table ng-table="tableParams" class="table">
 	<thead>
 		<tr>

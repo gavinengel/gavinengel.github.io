@@ -17,7 +17,8 @@
             { "type": "npm", "value": "https://www.npmjs.com/~gavinengel" },
             { "type": "linkedin", "value": "https://linkedin.com/in/gavinengel" },
             { "type": "home", "value": "Dover, NH" },
-            { "type": "stack", "value": "http://stackoverflow.com/users/1284857/gavin" }
+            { "type": "stack", "value": "http://stackoverflow.com/users/1284857/gavin" },
+            { "type": "skype", "value": "gavin_engel" }
         ]
     },
     "sections": {

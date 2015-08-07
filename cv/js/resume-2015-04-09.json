@@ -342,21 +342,13 @@
                 }
             ]
         },
-        "education2": {
-            "title": "Formal Education",
-            "list": [
-                {
-                    "title": "Wentworth Institute of Technology - Boston, MA",
-                    "desc": "Bachelor's of Science Degree in Architectural Engineering Technology, August 2001",
-                    "url": "http://www.wit.edu/"
-                },
-                {
-                    "title": "Wentworth Institute of Technology - Boston, MA",
-                    "desc": "Bachelor's of Science Degree in Architectural Engineering Technology, August 2001",
-                    "url": "http://www.wit.edu/"
-                }
-            ]
-        },
+        "insurance": {
+            "title": "Professional Liability",
+            "type": "Aggregate limit of liability:  $250,000",
+            "provider": "Hiscox Insurance Company Inc.",
+            "proof": "http://bit.ly/gavinengelinsurance",
+            "refid": "UDC­1616273­EO­15"
+        }
     },
     "footer": {
         "aside": "Thank you for your time."

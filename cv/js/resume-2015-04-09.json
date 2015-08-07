@@ -341,7 +341,22 @@
                     "url": "https://degreed.com/10152852962153716"
                 }
             ]
-        }
+        },
+        "education2": {
+            "title": "Formal Education",
+            "list": [
+                {
+                    "title": "Wentworth Institute of Technology - Boston, MA",
+                    "desc": "Bachelor's of Science Degree in Architectural Engineering Technology, August 2001",
+                    "url": "http://www.wit.edu/"
+                },
+                {
+                    "title": "Wentworth Institute of Technology - Boston, MA",
+                    "desc": "Bachelor's of Science Degree in Architectural Engineering Technology, August 2001",
+                    "url": "http://www.wit.edu/"
+                }
+            ]
+        },
     },
     "footer": {
         "aside": "Thank you for your time."

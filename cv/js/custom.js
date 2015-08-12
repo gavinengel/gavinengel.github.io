@@ -130,6 +130,7 @@ $(document).ready(function() {
   }
 
   // Using YQL and JSONP for iheartquotes.com random quote
+  /* TODO
   $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
     jsonp: "callback",
@@ -150,7 +151,7 @@ $(document).ready(function() {
       $('.blockquote-reverse footer').html(author + '<!-- source: ' + source + '-->')
     }
   })
-
+*/
   $("a.scroll[href^='#']").on('click', function(e) {
     e.preventDefault()
     var hash = this.hash

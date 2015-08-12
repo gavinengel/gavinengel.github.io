@@ -106,9 +106,16 @@ $(document).ready(function() {
     })
 
     // Insurance
-    $('#pricing .pricing-table h3').html(resume.sections.insurance.list[0].title)
-    $('#pricing .pricing-table ul').append('<li>'+resume.sections.insurance.list[0].desc+'</li>')
-    $('#pricing .pricing-table ul').append('<li>'+resume.sections.insurance.list[0].url+'</li>')
+    /*
+      
+      
+      
+      title: "Professional Liability"
+      type: "Aggregate limit of liability:  $250,000"
+    */
+    $('#pricing .pricing-table h3').html(resume.sections.insurance.proof) // insurance: Objectproof: "http://bit.ly/gavinengelinsurance"
+    $('#pricing .pricing-table ul').append('<li>'+resume.sections.insurance.provider+'</li>') // provider: "Hiscox Insurance Company Inc."
+    $('#pricing .pricing-table ul').append('<li>'+resume.sections.insurance.refid+'</li>') // refid: "UDC­1616273­EO­15"
 
 
     // Professional Experience

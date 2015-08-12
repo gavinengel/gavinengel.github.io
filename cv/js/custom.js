@@ -110,6 +110,8 @@ $(document).ready(function() {
     $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.type+'</li>')   // type: "Aggregate limit of liability:  $250,000"
     $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.refid+'</li>')  // refid: "UDC­1616273­EO­15"
     $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.proof+'</li>')  // proof: "http://bit.ly/gavinengelinsurance"
+    $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.end+'</li>')  // end: 
+
 
 
     // Professional Experience

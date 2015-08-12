@@ -105,6 +105,11 @@ $(document).ready(function() {
       }
     })
 
+    // Insurance
+    $('#pricing .pricing-table h3').html(resume.sections.insurance.list[0].title)
+    $('#pricing .pricing-table ul').append('<li>'+resume.sections.insurance.list[0].desc+'</li>')
+    $('#pricing .pricing-table ul').append('<li>'+resume.sections.insurance.list[0].url+'</li>')
+
 
     // Professional Experience
     var list = resume.sections.profexp.sections

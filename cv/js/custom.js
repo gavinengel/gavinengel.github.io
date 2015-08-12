@@ -92,9 +92,9 @@ $(document).ready(function() {
     })
 
     // Formal Education
-    $('#pricing .pricing-table h3').html(resume.sections.education.list[0].title)
-    $('#pricing .pricing-table ul').append('<li>'+resume.sections.education.list[0].desc+'</li>')
-    $('#pricing .pricing-table ul').append('<li>'+resume.sections.education.list[0].url+'</li>')
+    $('#pricing #formal .pricing-table h3').html(resume.sections.education.list[0].title)
+    $('#pricing #formal .pricing-table ul').append('<li>'+resume.sections.education.list[0].desc+'</li>')
+    $('#pricing #formal .pricing-table ul').append('<li>'+resume.sections.education.list[0].url+'</li>')
 
     // Certificates
     var list = resume.sections.certificates.list

@@ -496,23 +496,23 @@ html {
       border-radius: 0 0 5px 5px; }
     html body #app #pricing .btn {
       padding: 7px 30px; }
-    html body #app #pricing .focal-headline, html body #app #pricing .pricing-headline {
+    html body #app #pricing .pricing-headline {
       background-color: #2C3E50;
       padding: 5px 5px;
       border-radius: 5px 5px 0 0;
       transition: all 0.3s ease-in-out; }
-      html body #app #pricing .focal-headline h3, html body #app #pricing .pricing-headline h3 {
+      html body #app #pricing .pricing-headline h3 {
         font-size: 24px;
         transition: all 0.3s ease-in-out; }
-    html body #app #pricing .focal-table, html body #app #pricing .pricing-table {
+    html body #app #pricing .pricing-table {
       background-color: #f0f0f0;
       border-radius: 5px;
       margin-top: 20px; }
-      html body #app #pricing .focal-table:hover .pricing-headline, html body #app #pricing .focal-table.active .pricing-headline, html body #app #pricing .pricing-table:hover .pricing-headline, html body #app #pricing .pricing-table.active .pricing-headline {
+      html body #app #pricing .pricing-table:hover .pricing-headline, html body #app #pricing .pricing-table.active .pricing-headline {
         background-color: #ffffff; }
-      html body #app #pricing .focal-table:hover .pricing-headline h3, html body #app #pricing .focal-table.active .pricing-headline h3, html body #app #pricing .pricing-table:hover .pricing-headline h3, html body #app #pricing .pricing-table.active .pricing-headline h3 {
+      html body #app #pricing .pricing-table:hover .pricing-headline h3, html body #app #pricing .pricing-table.active .pricing-headline h3 {
         color: #2C3E50; }
-      html body #app #pricing .focal-table:hover .prize, html body #app #pricing .focal-table.active .prize, html body #app #pricing .pricing-table:hover .prize, html body #app #pricing .pricing-table.active .prize {
+      html body #app #pricing .pricing-table:hover .prize, html body #app #pricing .pricing-table.active .prize {
         background-color: #2C3E50;
         color: #ffffff; }
     html body #app #pricing .prize {
@@ -1007,3 +1007,5 @@ html {
         width: 280px; }
       html body .pricing-table {
         margin: 0; } }
+
+/*# sourceMappingURL=custom.css.map */

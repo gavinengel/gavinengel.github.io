@@ -107,10 +107,10 @@ $(document).ready(function() {
 
     // Insurance 
     $('#insurance .insurance-table h3').html(resume.sections.insurance.provider)                // provider: "Hiscox Insurance Company Inc."
-    $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.type+'</li>')   // type: "Aggregate limit of liability:  $250,000"
-    $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.refid+'</li>')  // refid: "UDC­1616273­EO­15"
-    $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.proof+'</li>')  // proof: "http://bit.ly/gavinengelinsurance"
-    $('#insurance .insurance-table ul').append('<li>'+resume.sections.insurance.end+'</li>')  // end: 
+    $('#insurance .insurance-table ul').append('<li>type: '+resume.sections.insurance.type+'</li>')   // type: "Aggregate limit of liability:  $250,000"
+    $('#insurance .insurance-table ul').append('<li>refid: '+resume.sections.insurance.refid+'</li>')  // refid: "UDC­1616273­EO­15"
+    $('#insurance .insurance-table ul').append('<li>proof: '+resume.sections.insurance.proof+'</li>')  // proof: "http://bit.ly/gavinengelinsurance"
+    $('#insurance .insurance-table ul').append('<li>term end: '+resume.sections.insurance.end+'</li>')  // end: 
 
 
 

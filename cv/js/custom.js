@@ -173,10 +173,10 @@ $(document).ready(function() {
       var pieces = full.split('--')
       var quote = pieces[0]
       var author = (pieces[1])? pieces[1] : 'anonymous'
-
-      $('.blockquote-reverse span').html(quote)
-      $('.blockquote-reverse footer').html(author + '<!-- source: ' + source + '-->')
       */
+      $('.blockquote-reverse span').html(response.result.quote)
+      $('.blockquote-reverse footer').html(response.result.quote + '<!-- source: ' + response.result.source + '-->')
+      
     }
   })
 

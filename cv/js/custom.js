@@ -165,7 +165,7 @@ $(document).ready(function() {
     },
     success: function( response ) {
       console.log('here is quotely response:');
-      console.log(response)
+      //console.log(response)
       /*
       var source = response.query.results.json.source 
       var full = response.query.results.json.quote

@@ -175,7 +175,7 @@ $(document).ready(function() {
       var author = (pieces[1])? pieces[1] : 'anonymous'
       */
       $('.blockquote-reverse span').html(response.result.quote)
-      $('.blockquote-reverse footer').html(response.result.author + '<!-- source: ' + response.result.source + '-->')
+      $('.blockquote-reverse footer').html(response.result.source + '<!-- source: ' + response.result.source + '-->')
       
     }
   })

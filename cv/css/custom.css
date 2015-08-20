@@ -472,50 +472,50 @@ html {
         height: 50px;
         padding: 13px 0 0 0;
         font-size: 28px; }
-    html body #app #pricing ul {
+    html body #app #pricing ul, html body #app .focal ul {
       padding: 5px 5px;
       margin: 0; }
-      html body #app #pricing ul li {
+      html body #app #pricing ul li, html body #app .focal ul li {
         color: #2C3E50;
         padding: 5px 0;
         font-size: 16px; }
-        html body #app #pricing ul li strong, html body #app #pricing ul li i {
+        html body #app #pricing ul li strong, html body #app #pricing ul li i, html body #app .focal ul li strong, html body #app .focal ul li i {
           margin-right: 10px; }
-    html body #app #pricing #formal > div {
+    html body #app #pricing #formal > div, html body #app .focal #formal > div {
       margin-left: auto;
       margin-right: auto;
       display: block;
       float: none; }
-    html body #app #pricing #certificates > div {
+    html body #app #pricing #certificates > div, html body #app .focal #certificates > div {
       margin-left: auto;
       margin-right: auto;
       float: none; }
-    html body #app #pricing .btn-wrapper {
+    html body #app #pricing .btn-wrapper, html body #app .focal .btn-wrapper {
       background-color: #e0e0e0;
       padding: 15px 0;
       border-radius: 0 0 5px 5px; }
-    html body #app #pricing .btn {
+    html body #app #pricing .btn, html body #app .focal .btn {
       padding: 7px 30px; }
-    html body #app #pricing .focal-headline, html body #app #pricing .pricing-headline {
+    html body #app #pricing .focal-headline, html body #app #pricing .pricing-headline, html body #app .focal .focal-headline, html body #app .focal .pricing-headline {
       background-color: #2C3E50;
       padding: 5px 5px;
       border-radius: 5px 5px 0 0;
       transition: all 0.3s ease-in-out; }
-      html body #app #pricing .focal-headline h3, html body #app #pricing .pricing-headline h3 {
+      html body #app #pricing .focal-headline h3, html body #app #pricing .pricing-headline h3, html body #app .focal .focal-headline h3, html body #app .focal .pricing-headline h3 {
         font-size: 24px;
         transition: all 0.3s ease-in-out; }
-    html body #app #pricing .focal-table, html body #app #pricing .pricing-table {
+    html body #app #pricing .focal-table, html body #app #pricing .pricing-table, html body #app .focal .focal-table, html body #app .focal .pricing-table {
       background-color: #f0f0f0;
       border-radius: 5px;
       margin-top: 20px; }
-      html body #app #pricing .focal-table:hover .pricing-headline, html body #app #pricing .focal-table.active .pricing-headline, html body #app #pricing .pricing-table:hover .pricing-headline, html body #app #pricing .pricing-table.active .pricing-headline {
+      html body #app #pricing .focal-table:hover .pricing-headline, html body #app #pricing .focal-table.active .pricing-headline, html body #app #pricing .pricing-table:hover .pricing-headline, html body #app #pricing .pricing-table.active .pricing-headline, html body #app .focal .focal-table:hover .pricing-headline, html body #app .focal .focal-table.active .pricing-headline, html body #app .focal .pricing-table:hover .pricing-headline, html body #app .focal .pricing-table.active .pricing-headline {
         background-color: #ffffff; }
-      html body #app #pricing .focal-table:hover .pricing-headline h3, html body #app #pricing .focal-table.active .pricing-headline h3, html body #app #pricing .pricing-table:hover .pricing-headline h3, html body #app #pricing .pricing-table.active .pricing-headline h3 {
+      html body #app #pricing .focal-table:hover .pricing-headline h3, html body #app #pricing .focal-table.active .pricing-headline h3, html body #app #pricing .pricing-table:hover .pricing-headline h3, html body #app #pricing .pricing-table.active .pricing-headline h3, html body #app .focal .focal-table:hover .pricing-headline h3, html body #app .focal .focal-table.active .pricing-headline h3, html body #app .focal .pricing-table:hover .pricing-headline h3, html body #app .focal .pricing-table.active .pricing-headline h3 {
         color: #2C3E50; }
-      html body #app #pricing .focal-table:hover .prize, html body #app #pricing .focal-table.active .prize, html body #app #pricing .pricing-table:hover .prize, html body #app #pricing .pricing-table.active .prize {
+      html body #app #pricing .focal-table:hover .prize, html body #app #pricing .focal-table.active .prize, html body #app #pricing .pricing-table:hover .prize, html body #app #pricing .pricing-table.active .prize, html body #app .focal .focal-table:hover .prize, html body #app .focal .focal-table.active .prize, html body #app .focal .pricing-table:hover .prize, html body #app .focal .pricing-table.active .prize {
         background-color: #2C3E50;
         color: #ffffff; }
-    html body #app #pricing .prize {
+    html body #app #pricing .prize, html body #app .focal .prize {
       background-color: #fff;
       width: 80px;
       height: 80px;

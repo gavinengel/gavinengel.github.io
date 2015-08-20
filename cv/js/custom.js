@@ -133,6 +133,7 @@ $(document).ready(function() {
   }
 
   // Using YQL and JSONP for iheartquotes.com random quote
+  /* TODO
   $.ajax({
     url: "http://query.yahooapis.com/v1/public/yql",
     jsonp: "callback",
@@ -142,6 +143,29 @@ $(document).ready(function() {
       format: "json"
     },
     success: function( response ) {
+      var source = response.query.results.json.source 
+      var full = response.query.results.json.quote
+      full = full.replace("\n\n-", '--') // some authors have a single dash in front. sigh.
+      var pieces = full.split('--')
+      var quote = pieces[0]
+      var author = (pieces[1])? pieces[1] : 'anonymous'
+
+      $('.blockquote-reverse span').html(quote)
+      $('.blockquote-reverse footer').html(author + '<!-- source: ' + source + '-->')
+    }
+  })
+*/
+  $.ajax({
+    url: "http://quotely.gavinengel.com",
+    jsonp: "callback",
+    dataType: "jsonp",
+    data: {
+      //q: "select * from json where url=\"http://www.iheartquotes.com/api/v1/random?max_characters=200&format=json&source=esr+humorix_misc+joel_on_software+macintosh+math+mav_flame+osp_rules+paul_graham+prog_style+liberty+literature+misc+murphy+rkba+shlomif_fav+stephen_wright\"",
+      format: "json"
+    },
+    success: function( response ) {
+      console.log('here is quotely response:');
+      console.log(response)
       var source = response.query.results.json.source 
       var full = response.query.results.json.quote
       full = full.replace("\n\n-", '--') // some authors have a single dash in front. sigh.

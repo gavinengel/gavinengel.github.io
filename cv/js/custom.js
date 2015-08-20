@@ -156,7 +156,7 @@ $(document).ready(function() {
   })
 */
   $.ajax({
-    url: "http://quotely.gavinengel.com",
+    url: "http://quotely.gavinengel.com?svc=4",
     jsonp: "callback",
     dataType: "jsonp",
     data: {

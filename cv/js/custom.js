@@ -166,6 +166,7 @@ $(document).ready(function() {
     success: function( response ) {
       console.log('here is quotely response:');
       console.log(response)
+      /*
       var source = response.query.results.json.source 
       var full = response.query.results.json.quote
       full = full.replace("\n\n-", '--') // some authors have a single dash in front. sigh.
@@ -175,6 +176,7 @@ $(document).ready(function() {
 
       $('.blockquote-reverse span').html(quote)
       $('.blockquote-reverse footer').html(author + '<!-- source: ' + source + '-->')
+      */
     }
   })
 

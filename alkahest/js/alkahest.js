@@ -4,19 +4,27 @@
  * example usage: alkahest.fetch('/eql.json', alkahest.mix);
  */
 window.alkahest = {
-    ver: '0.0.4',
+    ver: '0.0.5',
     debug: false,
+    condOper: ['>=', '<=', '>', '<', '='], // add single char conditions at end of array
     ext: {},
-    private: {},
+    priv: {},
     proc: {
+        e: {},
         eId: 0,
         eData: {},
         sel: "",
         eve: "",
-        cdn: {
-            lft: {},
-            op: "",
-            rgt: {}
+        cond: {
+            raw: "",
+            sel: "",
+            attr: "",
+            ext: "",
+            extReturn: null,
+            oper: "",
+            lft: "",
+            rgt: "",
+            result: null
         },
         src: {},
         tar: {}
@@ -45,8 +53,37 @@ alkahest.fetch = function (path, success, error) {
 /**
  *
  */
+alkahest.compare = function(lft, oper, rgt) {
+    result = false
+console.log('comparing', [lft, oper, rgt])
+    switch(oper) {
+        case '=':
+            if (lft == rgt) result = true
+            break;
+        case '<':
+            if (lft < rgt) result = true
+            break;
+        case '>':
+            if (lft > rgt) result = true
+            break;
+        case '<=':
+            if (lft <= rgt) result = true
+            break;
+        case '>=':
+            if (lft >= rgt) result = true
+            break;
+        default:
+            console.error('invalid oper', oper);
+    }
+
+    return result
+}
+
+/**
+ *
+ */
 alkahest.mix = function(O, p, opts) {
-    if (p) { alkahest.private.selectors.push(p); }
+    if (p) { alkahest.priv.selectors.push(p); }
 
     for (var property in O) {
         var value      = O[property]
@@ -57,25 +94,25 @@ alkahest.mix = function(O, p, opts) {
      
          // Array?
          if (Array.isArray(value)) {
-            newValue = alkahest.private.unstring(value[1], opts);
+            newValue = alkahest.priv.unstring(value[1], opts);
             newOperator = value[0]
-            alkahest.private.set(property, newValue, newOperator)
+            alkahest.priv.set(property, newValue, newOperator)
         }
         // String?
         else if (typeof value === 'string' || value instanceof String) {
-            alkahest.private.set(property, alkahest.private.unstring(value))
+            alkahest.priv.set(property, alkahest.priv.unstring(value))
         }
         // Function?
         else if (typeof value === 'function') {
-            alkahest.private.set(property, value)    
+            alkahest.priv.set(property, value)    
         }
 
         // Plain Object?
         else if (typeof value == 'object' && value.constructor == Object) {
             if (property.charAt(0) == '@') {
-                var selector = alkahest.private.selectors.join(' ')
+                var selector = alkahest.priv.selectors.join(' ')
                 // is a rule.  do not add this to selectors.
-                if (property.charAt(1) == 'o' && property.charAt(2) == 'n') {
+                if (property.substr(1, 2) == 'on') {
                     // is @onEvent rule.
                     // we must add a listener for the current selector + this onEvent.
                     var els = document.querySelectorAll( selector )
@@ -100,6 +137,67 @@ alkahest.mix = function(O, p, opts) {
                         });
                     }
                 }
+                else if (property.substr(0, 3) == '@if') {
+
+                    // obtain the the left, op, and right from the condition
+                    var pieces = property.split('(')
+                    var pieces = pieces[1].split(')')
+                    alkahest.proc.cond.raw = pieces[0].trim();
+                    var withoutSel = alkahest.proc.cond.raw
+                    
+                    // is extension-exec?
+                    if (withoutSel.charAt(0) == '$') {
+                        // extension-exec
+                        alkahest.proc.cond.ext = withoutSel.substr(1)    
+                        // execute it
+                        var ext = alkahest.ext[ alkahest.proc.cond.ext ]
+                        var e = {}
+                        if (opts && opts.hasOwnProperty('e')) {
+                            e = opts.e;
+                        }
+
+                        alkahest.proc.cond.extReturn = ext(e)
+                        if (alkahest.proc.cond.extReturn === true) alkahest.proc.cond.result = true
+                    }
+                    else {
+                        // not extension-exec
+                        if (alkahest.proc.cond.raw.indexOf('&') != -1) {
+                            pieces = alkahest.proc.cond.raw.split('&')
+                            alkahest.proc.cond.sel = pieces[0]
+                            alkahest.proc.cond.attr = withoutSel = pieces[1].trim()
+                        }    
+
+                        for (var i=0; i < alkahest.condOper.length; i++ ) {
+                            if (withoutSel.indexOf( alkahest.condOper[i] ) != -1) {
+                                // found a conditional operator: alkahest.condOper[i]
+                                alkahest.proc.cond.oper = alkahest.condOper[i]
+                                pieces = withoutSel.split( alkahest.proc.cond.oper )
+                                alkahest.proc.cond.attr = pieces[0].trim()
+                                alkahest.proc.cond.rgt = pieces[1].trim()
+                            }
+                        }
+
+                        if (alkahest.proc.cond.oper) {
+
+                            alkahest.proc.cond.lft = alkahest.priv.get(alkahest.proc.cond.attr, alkahest.proc.cond.sel, opts)
+                            alkahest.proc.cond.result = alkahest.compare(alkahest.proc.cond.lft, alkahest.proc.cond.oper, alkahest.proc.cond.rgt)
+                        }
+                        else {
+                            alkahest.proc.cond.lft = alkahest.priv.get(alkahest.proc.cond.attr, alkahest.proc.cond.sel, opts)
+                            if (alkahest.proc.cond.lft) {
+                                alkahest.proc.cond.result = true
+                            }
+                        }
+                    
+                    }
+
+                    if (alkahest.proc.cond.result) {
+                        newMix = {}
+                        newMix[selector] = value;
+                        alkahest.mix(newMix, null, opts);
+                    }
+                    
+                }
                 else {
                     console.error('bad rule', property)
                 }
@@ -110,30 +208,30 @@ alkahest.mix = function(O, p, opts) {
             
         }
         else if (typeof value === 'boolean' || typeof value === 'number') {
-            alkahest.private.set(property, value)    
+            alkahest.priv.set(property, value)    
         }
         else {
             console.error('invalid value', value)
         }
     }
-    alkahest.private.selectors.pop()
+    alkahest.priv.selectors.pop()
 }
 
 /**
  * 
  */
-alkahest.private.valuables = ['input']
+alkahest.priv.valuables = ['input']
 
 /**
  * 
  */
-alkahest.private.selectors = []
+alkahest.priv.selectors = []
 
 
 /**
  * 
  */
-alkahest.private.unstring = function(value, opts) {
+alkahest.priv.unstring = function(value, opts) {
     if ((typeof value === 'string' || value instanceof String) && value.charAt(0) == '`') {
         // if the VALUE is surrounded by `` marks, remove them.  It shouldn't be seen as a String.
         // remove ` from ends
@@ -174,12 +272,12 @@ alkahest.private.unstring = function(value, opts) {
             alkahest.proc.src.attr = values[1]
             alkahest.proc.src.sel = values[0]
 
-            value = alkahest.private.get(values[1], values[0], opts) 
+            value = alkahest.priv.get(values[1], values[0], opts) 
         }
         // c) empty or attribute from same selector:         data-foo
         else {
             if (value.length) {
-                value = alkahest.private.get(value, null, opts)    
+                value = alkahest.priv.get(value, null, opts)    
             }
             else {
                 value = ''
@@ -193,14 +291,14 @@ alkahest.private.unstring = function(value, opts) {
 /**
  * 
  */
-alkahest.private.get = function(attribute, differentSelector, opts) {
+alkahest.priv.get = function(attribute, differentSelector, opts) {
     var result = ''
 
     if (differentSelector) {
         selector = differentSelector
     }
     else {
-        selector = alkahest.private.selectors.join(' ')    
+        selector = alkahest.priv.selectors.join(' ')    
     }
     
     if (opts && opts.hasOwnProperty('el')) {
@@ -213,7 +311,7 @@ alkahest.private.get = function(attribute, differentSelector, opts) {
     if (el) {
         // attr or textcontent?
         tag = el.tagName.toLowerCase()
-        if (attribute == 'value' && alkahest.private.valuables.indexOf(tag) === -1) { // use textcontent
+        if (attribute == 'value' && alkahest.priv.valuables.indexOf(tag) === -1) { // use textcontent
             result = el.textContent
         }
         else { // attr, when a=value and tag=input
@@ -231,7 +329,7 @@ alkahest.private.get = function(attribute, differentSelector, opts) {
 /**
  * 
  */
-alkahest.private.set = function(attribute, newValue, newOperator, opts) {
+alkahest.priv.set = function(attribute, newValue, newOperator, opts) {
     
     /// determine proper `selector`
     if(attribute.indexOf('&') !== -1) {
@@ -240,12 +338,12 @@ alkahest.private.set = function(attribute, newValue, newOperator, opts) {
         attribute = pieces[1].trim()
     }
     else {
-        selector = alkahest.private.selectors.join(' ')
+        selector = alkahest.priv.selectors.join(' ')
     }
 
     /// determine final `value`
     if (newOperator) {
-        var existingValue = alkahest.private.get(attribute, selector)
+        var existingValue = alkahest.priv.get(attribute, selector)
         switch(newOperator) {
             case '+':
                 newValue += existingValue;
@@ -301,7 +399,7 @@ alkahest.private.set = function(attribute, newValue, newOperator, opts) {
         for( i=0; i < els.length; i++ ) {
             /// save into attr or into innertext?
             tag = els[i].tagName.toLowerCase()
-            if (attribute == 'value' && alkahest.private.valuables.indexOf(tag) === -1) { 
+            if (attribute == 'value' && alkahest.priv.valuables.indexOf(tag) === -1) { 
                 els[i].textContent = newValue;
             }
             else { // attr, when a=value and tag=input

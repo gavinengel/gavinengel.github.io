@@ -150,13 +150,13 @@ alkahest.private.unstring = function(value, opts) {
             value = value.slice(1)
 
             // if: extension-link
-            if (value.slice(0, 2) == 'on') {
+            if (alkahest.proc.tar.attr.slice(0, 2) == 'on') {
                 value = 'return alkahest.ext.' + value + '(event);'
             }
             // else: extension-exec
             else {
                 //value = 'return alkahest.ext.' + value + '(event);'
-                ext = alkahest.ext[extName]
+                ext = alkahest.ext[value]
         
                 var e = {}
                 if (opts && opts.hasOwnProperty('e')) {

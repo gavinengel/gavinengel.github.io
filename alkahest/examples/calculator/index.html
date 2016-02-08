@@ -1,7 +1,7 @@
 <html>
 <head>
-	<title>Alkahest EQL Calculator App</title>
-	<link rel="stylesheet" href="/examples/calculator/style.css">
+	<title>Alkahest EQL Calculator App.</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div id="calculator">
@@ -37,13 +37,13 @@
 <self>
 	<precog>
 		<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-		<script src="/js/alkahest.js" type="text/javascript"></script>
-		<script src="/examples/calculator/new.js" type="text/javascript"></script>
+		<script src="../../js/alkahest.js" type="text/javascript"></script>
+		<script src="new.js" type="text/javascript"></script>
 	</precog>
 	<cog>
 		<script type="text/javascript">
 			alkahest.debug = true
-			alkahest.fetch('/examples/calculator/eql.json', alkahest.mix);
+			alkahest.fetch('eql.json', alkahest.mix);
 		</script>
 	</cog>
 </self>

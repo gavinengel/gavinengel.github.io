@@ -1,3 +1,5 @@
+// TODO: fix `0 bug`.  to replicate: 1-1, 0 is on screen.  then click and num.
+
 var operators = ['+', '-', 'x', '%']
 
 alkahest.ext.onClickEqFilter = function(e) {

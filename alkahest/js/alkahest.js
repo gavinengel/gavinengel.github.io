@@ -4,9 +4,9 @@
  * example usage: alkahest.fetch('/eql.json', alkahest.mix)
  */
 window.alkahest = {
-    ver: '0.0.6',
+    ver: '0.0.7',
     debug: false,
-    condOper: ['>=', '<=', '>', '<', '='], // add single char conditions at end of array
+    condOper: ['!=', '>=', '<=', '>', '<', '='], // add single char conditions at end of array
     ext: {},
     priv: {
         valuables: ['input'],
@@ -59,12 +59,17 @@ alkahest.fetch = function (path, success, error) {
 alkahest.compare = function(lft, oper, rgt) {
     result = false
 
+    if (alkahest.debug) console.log({lft:lft, oper:oper, rgt:rgt})
+
     lft = parseFloat(lft)
     rgt = parseFloat(rgt)
 
     switch(oper) {
         case '=':
             if (lft == rgt) result = true
+            break
+        case '!=':
+            if (lft != rgt) result = true
             break
         case '<':
             if (lft < rgt) result = true
@@ -81,6 +86,8 @@ alkahest.compare = function(lft, oper, rgt) {
         default:
             console.error('invalid oper', oper)
     }
+
+    if (alkahest.debug) console.log({lft:lft, oper:oper, rgt:rgt, result:result})
 
     return result
 }
@@ -146,6 +153,7 @@ alkahest.mix = function(O, p, opts) {
                 }
                 else if (property.substr(0, 3) == '@if') {
                     // obtain the the left, op, and right from the condition
+                    console.log('found @if', alkahest.proc.cond)
                     var pieces = property.split('(')
                     var pieces = pieces[1].split(')')
                     alkahest.proc.cond.raw = pieces[0].trim()
@@ -195,7 +203,7 @@ alkahest.priv.evalIf = function (expression, opts) {
         // not extension-exec
         if (alkahest.proc.cond.raw.indexOf('&') != -1) {
             pieces = alkahest.proc.cond.raw.split('&')
-            alkahest.proc.cond.sel = pieces[0]
+            alkahest.proc.cond.sel = pieces[0].trim()
             alkahest.proc.cond.attr = withoutSel = pieces[1].trim()
         }    
 
@@ -210,8 +218,9 @@ alkahest.priv.evalIf = function (expression, opts) {
             }
         }
 
-        alkahest.proc.cond.lft = alkahest.priv.get(alkahest.proc.cond.attr, alkahest.proc.cond.sel, opts)
+        alkahest.proc.cond.lft = alkahest.priv.get(alkahest.proc.cond.attr, alkahest.proc.cond.sel)
 
+        console.log('get cond result from:', alkahest.proc.cond)
         if (alkahest.proc.cond.oper) {
             alkahest.proc.cond.result = alkahest.compare(alkahest.proc.cond.lft, alkahest.proc.cond.oper, alkahest.proc.cond.rgt)
         }

@@ -121,6 +121,7 @@ alkahest.mix = function(O, p, opts) {
                 if (property.substr(1, 2) == 'on') {
                     // is @onEvent rule.
                     // we must add a listener for the current selector + this onEvent.
+                    // TODO: pull this into priv.addListener()
                     var els = document.querySelectorAll( selector )
                     var eve = property.slice(3).toLowerCase()
 
@@ -149,9 +150,7 @@ alkahest.mix = function(O, p, opts) {
                     var pieces = pieces[1].split(')')
                     alkahest.proc.cond.raw = pieces[0].trim()
                     if ( alkahest.priv.evalIf(alkahest.proc.cond.raw, opts) ) { 
-                        newMix = {}
-                        newMix[selector] = value
-                        alkahest.mix(newMix, null, opts)
+                        alkahest.mix({ selector: value }, null, opts)
                     }
                 }
                 else {
@@ -212,7 +211,7 @@ alkahest.priv.evalIf = function (expression, opts) {
         }
 
         alkahest.proc.cond.lft = alkahest.priv.get(alkahest.proc.cond.attr, alkahest.proc.cond.sel, opts)
-        
+
         if (alkahest.proc.cond.oper) {
             alkahest.proc.cond.result = alkahest.compare(alkahest.proc.cond.lft, alkahest.proc.cond.oper, alkahest.proc.cond.rgt)
         }
@@ -330,6 +329,7 @@ alkahest.priv.get = function(attribute, differentSelector, opts) {
 alkahest.priv.set = function(attribute, newValue, newOperator, opts) {
     
     /// determine proper `selector`
+    /// TODO: move into a priv fn; TODO find similar code elsewhere
     if(attribute.indexOf('&') !== -1) {
         var pieces = attribute.split('&')
         selector = pieces[0].trim()
@@ -340,6 +340,7 @@ alkahest.priv.set = function(attribute, newValue, newOperator, opts) {
     }
 
     /// determine final `value`
+    /// TODO: pull this into priv.eval(lft, oper, rgt) 
     if (newOperator) {
         var existingValue = alkahest.priv.get(attribute, selector)
         switch(newOperator) {
@@ -392,6 +393,7 @@ alkahest.priv.set = function(attribute, newValue, newOperator, opts) {
     }
     if (!selector) debugger
     /// modify all elements
+    /// TODO move this into a priv fn
     var els = document.querySelectorAll( selector )
     var i = 0
     for( i=0; i < els.length; i++ ) {

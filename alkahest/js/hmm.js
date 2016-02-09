@@ -1,7 +1,7 @@
 /**
  * Alkahest.js
  * `Alchemist for DOM Events and Attributes` 
- * example usage: alkahest.fetch('/eql.json', alkahest.mix);
+ * example usage: alkahest.fetch('/aql.json', alkahest.mix);
  */
 window.alkahest = {
 	ver: '0.0.3',

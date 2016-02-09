@@ -104,17 +104,19 @@ alkahest.mix = function(O, p, opts) {
         alkahest.proc.opts = opts
         alkahest.proc.src.attr = value
         alkahest.proc.tar.attr = property
-     
-         // Array?
-         if (Array.isArray(value)) {
+
+        // Array?
+        if (Array.isArray(value)) {
             newValue = alkahest.priv.unstring(value[1], opts)
             newOperator = value[0]
             alkahest.priv.set(property, newValue, newOperator)
         }
+    
         // String?
         else if (typeof value === 'string' || value instanceof String) {
             alkahest.priv.set(property, alkahest.priv.unstring(value))
         }
+    
         // Function?
         else if (typeof value === 'function') {
             alkahest.priv.set(property, value)    
@@ -259,7 +261,6 @@ alkahest.priv.unstring = function(value, opts) {
         }
         // else if: extension:
         else if (value.charAt(0) == '$') { 
-            // remove % from front
             value = value.slice(1)
 
             // if: extension-link
@@ -283,6 +284,7 @@ alkahest.priv.unstring = function(value, opts) {
         // b) new sel & attribute:     #foo .bar & data-foo
         else if (value.indexOf('&') != -1) {
             var values = value.split('&')
+
 
             alkahest.proc.src.attr = values[1]
             alkahest.proc.src.sel = values[0]
@@ -345,26 +347,7 @@ alkahest.priv.get = function(attribute, differentSelector, opts) {
 /**
  *
  */
-alkahest.priv.parseSelatts = function (selatts) {
-
-    if(selatts.indexOf('&') !== -1) {
-        var pieces = selatts.split('&')
-        selector = pieces[0].trim()
-        attribute = pieces[1].trim()
-    }
-    else {
-        selector = alkahest.priv.selectors.join(' ')
-        attribute = selatts
-    }
-
-    return [selector, attribute]
-}
-
-/**
- *
- */
 alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
-
     var existingValue = alkahest.priv.get(attribute, selector)
     switch(newOperator) {
         case '+':
@@ -387,8 +370,6 @@ alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
             break
         case '$':
             // this is calling an extension.
-            // newValue == 'someExt' == alkahest.ext.someExt.
-            // what to do?
             newValue = 'return alkahest.ext.' + newValue + '(event);'
             break
         case '!': // toggle on/off
@@ -405,10 +386,7 @@ alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
                 // ... doesn't exist.  Add it.
                 existingValues.push(newValue)
             }
-            // join with spaces
             newValue = existingValues.join(' ')
-
-
             break
         default:
             console.error('invalid newOperator', newOperator)
@@ -420,40 +398,51 @@ alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
 /**
  * 
  */
-alkahest.priv.set = function(attribute, newValue, newOperator, opts) {
+alkahest.priv.set = function(selatts, newValue, newOperator, opts) {
     
-    selatta = alkahest.priv.parseSelatts(attribute)
-    selector = selatta[0]
-    attribute = selatta[1]
-
+    if (selatts.indexOf('&') !== -1) {
+        var pieces = selatts.split('&')
+        selector = pieces[0].trim()
+        attribute = pieces[1].trim()
+    }
+    else {
+        selector = alkahest.priv.selectors.join(' ')
+        attribute = selatts
+    }
 
     /// determine final `value`
-    /// TODO: pull this into priv.eval(lft, oper, rgt) 
     if (newOperator) {
         newValue = alkahest.priv.operate(selector, attribute, newOperator, newValue)
     }
+
     if (!selector) debugger
+
     /// modify all elements
-    /// TODO move this into a priv fn
     var els = document.querySelectorAll( selector )
     var i = 0
     for( i=0; i < els.length; i++ ) {
-        /// save into attr or into innertext?
-        tag = els[i].tagName.toLowerCase()
-        if (attribute == 'value' && alkahest.priv.valuables.indexOf(tag) === -1) { 
-            els[i].textContent = newValue
-        }
-        else { // attr, when a=value and tag=input
-            if(els[i].hasAttribute( attribute ) == false) {
-                var a = document.createAttribute( attribute )
-                a.value = newValue
-                els[i].setAttributeNode(a)
-            }
-            else {
-                $( selector ).attr(attribute, newValue)        
-                els[i].setAttribute(attribute, newValue)
-            }
-        }
+        alkahest.priv.setAttribute(els[i], attribute, newValue)
     }
     
+}
+
+/**
+ *
+ */
+alkahest.priv.setAttribute = function(el, attribute, newValue) {
+    tag = el.tagName.toLowerCase()
+    if (attribute == 'value' && alkahest.priv.valuables.indexOf(tag) === -1) { 
+        el.textContent = newValue
+    }
+    else { // attr, when a=value and tag=input
+        if(el.hasAttribute( attribute ) == false) {
+            var a = document.createAttribute( attribute )
+            a.value = newValue
+            el.setAttributeNode(a)
+        }
+        else {
+            $( selector ).attr(attribute, newValue)        
+            el.setAttribute(attribute, newValue)
+        }
+    }
 }

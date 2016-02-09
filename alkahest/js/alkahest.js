@@ -139,7 +139,7 @@ alkahest.mix = function(O, p, opts) {
                     var pieces = pieces[1].split(')')
                     alkahest.proc.cond.raw = pieces[0].trim()
                     if ( alkahest.priv.evalIf(alkahest.proc.cond.raw, opts) ) { 
-                        alkahest.mix({ selector: value }, null, opts)
+                        alkahest.mix(value, null, opts)
                     }
                 }
                 else {

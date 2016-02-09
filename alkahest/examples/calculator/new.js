@@ -23,7 +23,6 @@ alkahest.ext.onClickEqFilter = function(e) {
 
 	// Get the input and button values
 	var input = document.querySelector('.screen')
-	// Now, just append the key values (btnValue) to the input string and finally use javascript's eval function to get the result
 	// If eval key is pressed, calculate and display the result
 	var equation = input.innerHTML
 	var lastChar = equation[equation.length - 1]
@@ -59,15 +58,15 @@ alkahest.ext.onClickOperatorFilter = function(e) {
 	var lastChar = screenVal[screenVal.length - 1]
 	
 	// prevent ops on empty screen.
-	if (!screenVal && btnVal != '-') {
-		btnVal = ''
+	if (!screenVal && newOp != '-') {
+		newOp = ''
 	}
 	
 	// remove the last operator (if exists) from screen 
 	else if(operators.indexOf(lastChar) > -1 && screenVal.length > 1) {
 		// Here, '.' matches any character while $ denotes the end of string, 
 		// so anything (will be an operator in this case) at the end of string will get replaced by new operator
-		screenEL.innerHTML = screenVal.replace(/.$/, btnVal)
+		screenEL.innerHTML = screenVal.replace(/.$/, newOp)
 	}
 
 	return newOp

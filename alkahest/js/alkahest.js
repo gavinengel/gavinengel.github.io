@@ -4,7 +4,7 @@
  * example usage: alkahest.fetch('/aqs.json', alkahest.mix)
  */
 window.alkahest = {
-    ver: '0.0.7',
+    ver: '0.0.8',
     debug: false,
     condOper: ['!=', '>=', '<=', '>', '<', '='], // add single char conditions at end of array
     ext: {},
@@ -127,29 +127,8 @@ alkahest.mix = function(O, p, opts) {
                 // is a rule.  do not add this to selectors.
                 if (property.substr(1, 2) == 'on') {
                     // is @onEvent rule.
-                    // we must add a listener for the current selector + this onEvent.
-                    // TODO: pull this into priv.addListener()
-                    var els = document.querySelectorAll( selector )
                     var eve = property.slice(3).toLowerCase()
-
-                    for (var i=0; i < els.length; i++ ) {
-                        newMix = {}
-                        newMix[selector] = value
-
-                        // stash the event data for later use (by saving key to new element attribute)
-                        var a = document.createAttribute( 'data-' + eve + '-eid'  )
-                        var eId = ++alkahest.proc.eId
-                        alkahest.proc.eData[ eId ] = newMix
-                        a.value = eId
-                        els[i].setAttributeNode( a )
-
-                        els[i].addEventListener(eve, function(e){
-                            eAttr = 'data-' + e.type + '-eid'
-                            eId = e.target.getAttribute( eAttr )
-                            newMix = alkahest.proc.eData[ eId ]
-                            alkahest.mix(newMix, null, {el: e.target, e: e})
-                        })
-                    }
+                    alkahest.priv.addListeners(eve, selector, value)
                 }
                 else if (property.substr(0, 3) == '@if') {
                     // obtain the the left, op, and right from the condition
@@ -180,6 +159,36 @@ alkahest.mix = function(O, p, opts) {
     alkahest.priv.selectors.pop()
 }
 
+/**
+ *
+ */
+alkahest.priv.addListeners = function (eve, selector, value) {
+    // we must add a listener for the current selector + this onEvent.
+    var els = document.querySelectorAll( selector )
+
+    for (var i=0; i < els.length; i++ ) {
+        newMix = {}
+        newMix[selector] = value
+
+        // stash the event data for later use (by saving key to new element attribute)
+        var a = document.createAttribute( 'data-' + eve + '-eid'  )
+        var eId = ++alkahest.proc.eId
+        alkahest.proc.eData[ eId ] = newMix
+        a.value = eId
+        els[i].setAttributeNode( a )
+
+        els[i].addEventListener(eve, function(e){
+            eAttr = 'data-' + e.type + '-eid'
+            eId = e.target.getAttribute( eAttr )
+            newMix = alkahest.proc.eData[ eId ]
+            alkahest.mix(newMix, null, {el: e.target, e: e})
+        })
+    }
+}
+
+/**
+ *
+ */
 alkahest.priv.evalIf = function (expression, opts) {
     result = false; // aka: alkahest.proc.cond.result
 
@@ -332,73 +341,96 @@ alkahest.priv.get = function(attribute, differentSelector, opts) {
     return result
 }
 
+
 /**
- * 
+ *
  */
-alkahest.priv.set = function(attribute, newValue, newOperator, opts) {
-    
-    /// determine proper `selector`
-    /// TODO: move into a priv fn; TODO find similar code elsewhere
-    if(attribute.indexOf('&') !== -1) {
-        var pieces = attribute.split('&')
+alkahest.priv.parseSelatts = function (selatts) {
+
+    if(selatts.indexOf('&') !== -1) {
+        var pieces = selatts.split('&')
         selector = pieces[0].trim()
         attribute = pieces[1].trim()
     }
     else {
         selector = alkahest.priv.selectors.join(' ')
+        attribute = selatts
     }
+
+    return [selector, attribute]
+}
+
+/**
+ *
+ */
+alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
+
+    var existingValue = alkahest.priv.get(attribute, selector)
+    switch(newOperator) {
+        case '+':
+            newValue += existingValue
+            break
+        case '-':
+            newValue -= existingValue
+            break
+        case '*':
+            newValue *= existingValue
+            break
+        case '/':
+            newValue /= existingValue
+            break
+        case '%':
+            newValue %= existingValue
+            break
+        case '&':
+            newValue = existingValue.concat(newValue)
+            break
+        case '$':
+            // this is calling an extension.
+            // newValue == 'someExt' == alkahest.ext.someExt.
+            // what to do?
+            newValue = 'return alkahest.ext.' + newValue + '(event);'
+            break
+        case '!': // toggle on/off
+            // split value by spaces
+            var existingValues = existingValue.split(' ')
+            // check for value...
+            var key = existingValues.indexOf(newValue) // TODO indexOf missing from IE8
+
+            if (key > -1) {
+                // ... exists.  Remove it.
+                console.debug('removed', existingValues.splice(key, 1))
+            }
+            else {
+                // ... doesn't exist.  Add it.
+                existingValues.push(newValue)
+            }
+            // join with spaces
+            newValue = existingValues.join(' ')
+
+
+            break
+        default:
+            console.error('invalid newOperator', newOperator)
+    }
+
+    return newValue
+}
+
+/**
+ * 
+ */
+alkahest.priv.set = function(attribute, newValue, newOperator, opts) {
+    
+    selatta = alkahest.priv.parseSelatts(attribute)
+    selector = selatta[0]
+    attribute = selatta[1]
+
 
     /// determine final `value`
     /// TODO: pull this into priv.eval(lft, oper, rgt) 
     if (newOperator) {
-        var existingValue = alkahest.priv.get(attribute, selector)
-        switch(newOperator) {
-            case '+':
-                newValue += existingValue
-                break
-            case '-':
-                newValue -= existingValue
-                break
-            case '*':
-                newValue *= existingValue
-                break
-            case '/':
-                newValue /= existingValue
-                break
-            case '%':
-                newValue %= existingValue
-                break
-            case '&':
-                newValue = existingValue.concat(newValue)
-                break
-            case '$':
-                // this is calling an extension.
-                // newValue == 'someExt' == alkahest.ext.someExt.
-                // what to do?
-                newValue = 'return alkahest.ext.' + newValue + '(event);'
-                break
-            case '!': // toggle on/off
-                // split value by spaces
-                var existingValues = existingValue.split(' ')
-                // check for value...
-                var key = existingValues.indexOf(newValue) // TODO indexOf missing from IE8
-
-                if (key > -1) {
-                    // ... exists.  Remove it.
-                    console.debug('removed', existingValues.splice(key, 1))
-                }
-                else {
-                    // ... doesn't exist.  Add it.
-                    existingValues.push(newValue)
-                }
-                // join with spaces
-                newValue = existingValues.join(' ')
-
-
-                break
-            default:
-                console.error('invalid newOperator', newOperator)
-        }
+        newValue = alkahest.priv.operate(selector, attribute, newOperator, newValue)
     }
     if (!selector) debugger
     /// modify all elements

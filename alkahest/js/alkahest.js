@@ -134,13 +134,19 @@ alkahest.mix = function(O, p, opts) {
                 }
                 else if (property.substr(0, 3) == '@if') {
                     // obtain the the left, op, and right from the condition
-                    console.log('found @if', alkahest.proc.cond)
                     var pieces = property.split('(')
                     var pieces = pieces[1].split(')')
                     alkahest.proc.cond.raw = pieces[0].trim()
                     if ( alkahest.priv.evalIf(alkahest.proc.cond.raw, opts) ) { 
                         alkahest.mix(value, null, opts)
                     }
+                }
+                else if (property.substr(0, 5) == '@else') {
+                    // obtain the the left, op, and right from the condition
+                    if (alkahest.proc.cond.result === false) {
+                        alkahest.mix(value, null, opts)
+                    }
+                    alkahest.proc.cond.result = null
                 }
                 else {
                     console.error('bad rule', property)

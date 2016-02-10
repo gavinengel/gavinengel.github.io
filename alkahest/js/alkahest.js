@@ -4,11 +4,12 @@
  * example usage: alkahest.fetch('/aeon.json', alkahest.mix)
  */
 window.alkahest = {
-    ver: '0.0.8',
+    ver: '0.0.9',
     debug: false,
     condOper: ['!=', '>=', '<=', '>', '<', '='], // add single char conditions at end of array
     ext: {},
     priv: {
+        mixxers: {},
         valuables: ['input'],
         selectors: []
     },
@@ -17,7 +18,7 @@ window.alkahest = {
         eId: 0,
         eData: {},
         sel: "",
-        eve: "",
+        eventType: "",
         cond: {
             raw: "",
             sel: "",
@@ -118,9 +119,7 @@ alkahest.mix = function(O, p, opts) {
 
         // Array?
         if (Array.isArray(value)) {
-            newValue = alkahest.priv.unstring(value[1], opts)
-            newOperator = value[0]
-            alkahest.priv.set(property, newValue, newOperator)
+            alkahest.priv.mixxers.mixArray(property, value, opts)
         }
     
         // String?
@@ -135,57 +134,7 @@ alkahest.mix = function(O, p, opts) {
 
         // Plain Object?
         else if (typeof value == 'object' && value.constructor == Object) {
-            if (property.charAt(0) == '@') {
-                var selector = alkahest.priv.selectors.join(' ')
-                // is a rule.  do not add this to selectors.
-                if (property.substr(1, 2) == 'on') {
-                    // is @onEvent rule.
-
-                    // get `eve`
-                    var pieces = property.split('(')
-                    var eve = pieces[0].slice(3).toLowerCase()
-
-                    // get `eventCond`
-                    eventCond = { 
-                        lft: '',
-                        op: '',
-                        rgt: ''
-                    }
-                    if (pieces[1]) {
-
-                        pieces = pieces[1].split(')')
-                        wholeCond = pieces[0].trim()
-                        if (alkahest.debug) console.log('found potential condition:', wholeCond)
-                        eventCond = alkahest.priv.parseCondition(wholeCond)
-                        if (alkahest.debug) console.log('... and here it is:', eventCond)
-                    }
-
-                    alkahest.priv.addListeners(eve, eventCond, selector, value)
-                }
-                else if (property.substr(0, 3) == '@if') {
-                    // obtain the the left, op, and right from the condition
-                    var pieces = property.split('(')
-                    var pieces = pieces[1].split(')')
-                    alkahest.proc.cond.raw = pieces[0].trim()
-                    if ( alkahest.priv.evalIf( alkahest.proc.cond.raw, opts ) ) { 
-                        alkahest.mix(value, null, opts)
-                    }
-                }
-                else if (property.substr(0, 5) == '@else') {
-                    // obtain the the left, op, and right from the condition
-                    if (alkahest.proc.cond.result === false) {
-                        alkahest.mix(value, null, opts)
-                    }
-                    alkahest.proc.cond.result = null
-                }
-                else {
-                    console.error('bad rule', property)
-                }
-            }
-            else if (Object.keys(value).length > 0) {
-                alkahest.mix(value, property, opts);    
-            }
-            
+            alkahest.priv.mixxers.mixObject(property, value, opts)
         }
         else if (typeof value === 'boolean' || typeof value === 'number') {
             alkahest.priv.set(property, value)    
@@ -200,7 +149,115 @@ alkahest.mix = function(O, p, opts) {
 /**
  *
  */
-alkahest.priv.addListeners = function (eve, eventCond, selector, value) {
+alkahest.priv.mixxers.mixObject = function(property, value, opts) {
+    if (property.charAt(0) == '@') {
+        alkahest.priv.mixxers.mixRule(property, value, opts)
+    }
+    else if (Object.keys(value).length > 0) {
+        alkahest.mix(value, property, opts);    
+    }
+}
+
+/**
+ *
+ */
+alkahest.priv.mixxers.mixArray = function(property, value, opts) {
+    newValue = alkahest.priv.unstring(value[1], opts)
+    newOperator = value[0]
+    alkahest.priv.set(property, newValue, newOperator)
+}
+
+/**
+ *
+ */
+alkahest.priv.mixxers.mixRule = function(property, value, opts) {
+    var selector = alkahest.priv.selectors.join(' ')
+    // is a rule.  do not add this to selectors.
+
+    // get `rule`
+    var pieces = property.split('(')
+    var rule = pieces[0].substr(1).trim().toLowerCase()
+
+    // get `eventConds`
+    wholeConds = ''
+    eventConds = [] // [{ lft: '', op: '', rgt: '' }]
+    if (pieces[1]) {
+        pieces = pieces[1].split(')')
+        wholeConds = pieces[0].trim()
+        condsPieces = wholeConds.split(';')
+        
+        for (var i = 0; i < condsPieces.length; i++) {
+            wholeCond = condsPieces[ i ].trim()
+            eventCond = alkahest.priv.parseCondition(wholeCond)
+            if (!eventCond.oper) {
+                eventCond = { lft: 'type' , oper: '=' , rgt: eventCond.lft }
+            }
+
+            eventConds.push(eventCond)
+        }
+
+    }
+
+    if (rule.substr(0, 2) == 'on') {
+        alkahest.priv.mixxers.mixOnRule(selector, value, rule, wholeConds, eventConds)
+    }
+    else if (rule == 'if') {
+        alkahest.priv.mixxers.mixIfRule(property, value, opts)
+    }
+    else if (rule == 'else') {
+        alkahest.priv.mixxers.mixElseRule(value, opts)
+    }
+    else {
+        console.error('bad rule', {rule: rule}); debugger
+    }
+}
+
+/**
+ *
+ */
+alkahest.priv.mixxers.mixOnRule = function (selector, value, rule, wholeConds, eventConds){
+    
+    if (rule != 'on') {
+        // is @onEvent rule.
+        eventConds.push({ eventType: rule.slice(2) })
+    }
+console.log({eventConds:eventConds, selector: selector, value: value, rule: rule})
+    for( i=0; i < eventConds.length; i++ ) {
+        eventType = eventConds[i].eventType || eventConds[i].rgt
+        alkahest.priv.addListeners(eventType, eventConds[i], selector, value)
+    }
+}
+
+
+/**
+ *
+ */
+alkahest.priv.mixxers.mixIfRule = function (property, value, opts) {
+// obtain the the left, op, and right from the condition
+        var pieces = property.split('(')
+        var pieces = pieces[1].split(')')
+        alkahest.proc.cond.raw = pieces[0].trim()
+        if ( alkahest.priv.evalIf( alkahest.proc.cond.raw, opts ) ) { 
+            alkahest.mix(value, null, opts)
+        }
+}
+
+/**
+ *
+ */
+alkahest.priv.mixxers.mixElseRule = function (value, opts) {
+    // obtain the the left, op, and right from the condition
+    if (alkahest.proc.cond.result === false) {
+        alkahest.mix(value, null, opts)
+    }
+    alkahest.proc.cond.result = null
+}
+
+
+/**
+ *
+ */
+alkahest.priv.addListeners = function (eventType, eventCond, selector, value) {
     // we must add a listener for the current selector + this onEvent.
     var els = document.querySelectorAll( selector )
 
@@ -209,13 +266,13 @@ alkahest.priv.addListeners = function (eve, eventCond, selector, value) {
         newMix[selector] = value
 
         // stash the event data for later use (by saving key to new element attribute)
-        var a = document.createAttribute( 'data-' + eve + '-eid'  )
+        var a = document.createAttribute( 'data-' + eventType + '-eid'  )
         var eId = ++alkahest.proc.eId
         alkahest.proc.eData[ eId ] = { aeon: newMix, condition: eventCond }
         a.value = eId
         els[i].setAttributeNode( a )
 
-        els[i].addEventListener(eve, function(e){
+        els[i].addEventListener(eventType, function(e){
             if (alkahest.debug) console.log(e)
             eAttr = 'data-' + e.type + '-eid'
             eId = e.target.getAttribute( eAttr )
@@ -304,7 +361,7 @@ alkahest.priv.evalIf = function (expression, opts) {
  */
 alkahest.priv.parseCondition = function (condition) {
     var trio = {
-        lft: '',
+        lft: condition,
         oper: '',
         rgt: '',
     }

@@ -1,0 +1,114 @@
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+<section>
+	<input type="text" ng-model="search" class="search-query pull-left" placeholder="Search">
+	<button ng-click="open()" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add new user</button>
+</section>
+<br/>
+<table ng-table="tableParams" class="table">
+	<thead>
+		<tr>
+			<th>Username</th>
+			<th>Name</th>
+			<th>Designation</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="(key, user) in envoy.users | filter:search | orderBy:'username'">
+			<td data-title="'Username'">
+				<span ng-if="!user.$edit">{{user.username}}</span>
+				<div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.username" /></div>
+			</td>
+			<td data-title="'Name'">
+				<span ng-if="!user.$edit">{{user.name}}</span>
+				<div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.name" /></div>
+			</td>
+			<td data-title="'Text'" width="330">
+				<span ng-if="!user.$edit">{{user.designation}}</span>
+				<div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.designation" /></div>
+			</td>
+			<td data-title="'Actions'" width="200">
+				<a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(user._id)">Edit</a>
+				<a ng-if="!user.$destroy" ng-click="removeRecord(user._id)" class="btn btn-default btn-xs">Delete</a>
+				<a ng-if="user.$edit" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/ng-template" id="add_user_modal">
+	<div class="modal-header">
+		<h3>User Form</h3>
+	</div>
+	<div class="modal-body">
+		<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
+		<form name="userForm" class="form-horizontal">
+			
+			<div class="control-group">
+				<label class="control-label" for="username">Username</label>
+				<div class="controls">
+					<input id="username" name="username" ng-model="user.username" type="text" placeholder="Username" class="input-xlarge" required=""  ng-class="{error: user.username.$invalid && !user.username.$pristine}"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="name">Name</label>
+				<div class="controls">
+					<input id="name" name="name" ng-model="user.name" type="text" placeholder="Name" class="input-xlarge" required=""  ng-class="{error: user.name.$invalid && !user.name.$pristine}"/>
+				</div>
+			</div>
+			
+			<div class="control-group" ng-class="{error: user.password.$invalid && !user.password.$pristine}">
+				<label class="control-label" for="password">Password</label>
+				<div class="controls">
+					<input id="password" name="password" ng-model="user.password" type="password" placeholder="Password" class="input-xlarge" required="" />
+				</div>
+			</div>
+			<!--
+			<div class="control-group" ng-class="{error: user.dob.$invalid && !user.dob.$pristine}">
+				<label class="control-label" for="dob">Date Of Birth</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" datepicker-popup="yyyy-MM-dd" ng-model="user.dob" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="" date-disabled="disabled(date, mode)" ng-required="true" show-weeks="false" show-button-bar="false" />
+				</div>
+			</div>
+			-->
+			<!--
+			<div class="control-group">
+				<label class="control-label" for="gender">Gender</label>
+				<div class="controls">
+					<label class="radio inline" for="male">
+						<input type="radio" name="gender" ng-model="user.gender" id="male" value="male" checked="checked">
+						Male
+					</label>
+					<label class="radio inline" for="female">
+						<input type="radio" name="gender" ng-model="user.gender" id="female" value="female">
+						Female
+					</label>
+				</div>
+			</div>
+			-->
+			
+			<div class="control-group">
+				<label class="control-label" for="designation">Designation</label>
+				<div class="controls">
+					<select id="designation" ng-model="user.designation" name="designation" class="input-xlarge" ng-options="opt.name as opt.name for opt in designations"></select>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="tnc">Term &amp; Condition</label>
+				<div class="controls">
+					<label class="checkbox inline" for="tnc">
+						<input name="tnc" id="tnc" type="checkbox" ng-model="user.tnc" required />Accept
+					</label>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button ng-click="save()" ng-if="user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+		<button ng-click="add()" type="submit" ng-if="!user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+		<button ng-click="cancel()" class="btn">Cancel</button>
+	</div>
+</script>

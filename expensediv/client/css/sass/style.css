@@ -1,0 +1,22 @@
+body .container {
+  width: inherit;
+  padding: 15px 15px;
+  max-width: 960px; }
+  body .container .footer {
+    margin-top: 0;
+    background-color: inherit;
+    color: inherit; }
+    body .container .footer .container {
+      padding: 0; }
+      body .container .footer .container .footer-inner {
+        padding: 5px 5px; }
+  body .container .jumbotron {
+    background: none;
+    box-shadow: none;
+    color: #333333; }
+  body .container .navbar .navbar-inner .container {
+    padding: 0; }
+body .modal.fade.in {
+  top: 40%; }
+
+/*# sourceMappingURL=style.css.map */

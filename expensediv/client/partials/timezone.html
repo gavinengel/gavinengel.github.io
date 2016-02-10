@@ -1,0 +1,88 @@
+
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+<section>
+	<input type="text" ng-model="search" class="search-query pull-left" placeholder="Search">
+	<button ng-click="open()" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add new timezone</button>
+</section>
+<br/>
+
+<table ng-table="tableParams" class="table">
+	<thead>
+		<tr>
+			<th>Timezone Name</th>
+			<th>Name of city</th>
+			<th>+/-</th>
+			<th>local time</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="(key, timezone) in envoy.timezones | filter:search | orderBy:'zonename'">
+		<td data-title="'Name'" >
+			<span >{{timezone.zonename}}</span>
+			<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.zonename" /></div>
+		</td>
+		<td data-title="'Text'" >
+			<span >{{timezone.city}}</span>
+			<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.city" /></div>
+		</td>
+		<td data-title="'Text'" >
+			<span >{{timezone.difference}}</span>
+			<div ng-if="timezone.$edit"><input class="form-control" type="text" ng-model="timezone.difference" /></div>
+		</td>
+		<td data-title="'Text'" >
+      <div ng-controller='TimeCtrl'>
+          <p>{{ clock | date:'medium'}}</p>
+      </div>
+      <span ng-bind="getLocalTime(timezone)"></span>
+			<span ng-if="true">{{timezone.id}}</span>
+			<div ng-if="false"><input class="form-control" type="text" ng-model="getLocalTime(timezone._id)" /></div>
+		</td>
+
+		<td data-title="'Actions'" >
+			<a ng-if="true" href="" class="btn btn-primary btn-xs" ng-click="open(timezone._id)">Edit</a>
+			<a ng-if="true" ng-click="removeRecord(timezone._id)" class="btn btn-default btn-xs">Delete</a>
+			<a ng-if="false" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<script type="text/ng-template" id="add_timezone_modal">
+	<div class="modal-header">
+		<h3>Timezone Form</h3>
+	</div>
+	<div class="modal-body">
+		<!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
+		<form name="timezoneForm" class="form-horizontal">
+			<div class="control-group">
+				<label class="control-label" for="zonename">Timezone Name</label>
+				<div class="controls">
+					<input id="zonename" name="zonename" ng-model="timezone.zonename" type="text" placeholder="Timezone Name" class="input-xlarge" required=""  ng-class="{error: timezone.zonename.$invalid && !timezone.zonename.$pristine}"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="city">Name of city in timezone</label>
+				<div class="controls">
+					<input id="city" name="city" ng-model="timezone.city" type="text" placeholder="City" class="input-xlarge" required="required"  ng-class="{error: timezone.city.$invalid && !timezone.city.$pristine}"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="difference">difference to GMT time</label>
+				<div class="controls">
+					<input id="difference" name="difference" ng-model="timezone.difference" type="text" placeholder="Difference" class="input-xlarge" required="required"  ng-class="{error: timezone.difference.$invalid && !timezone.difference.$pristine}"/>
+				</div>
+			</div>			
+			
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button ng-click="save()" ng-if="timezone._id" ng-disabled="!timezone.zonename || !timezone.city || !timezone.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+		
+		<button ng-click="add()" type="submit" ng-if="!timezone._id" ng-disabled="timezone.$invalid || !timezone.zonename || !timezone.city || !timezone.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+
+		<button ng-click="cancel()" class="btn">Cancel</button>
+	</div>
+</script>

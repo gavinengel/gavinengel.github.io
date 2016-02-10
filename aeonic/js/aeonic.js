@@ -563,28 +563,91 @@ aeonic.priv.operate = function (selector, attribute, newOperator, newValue) {
  */
 aeonic.priv.set = function(selatts, newValue, newOperator, opts) {
     
-    if (selatts.indexOf('&') !== -1) {
-        var pieces = selatts.split('&')
-        selector = pieces[0].trim()
-        attribute = pieces[1].trim()
+    // if a javascript element...
+    if (selatts.charAt(0) == '$') {
+        rawTarget = selatts.substr(1)
+        // split on dot
+        pieces = rawTarget.split('.')
+
+        // first, search in aenic.ext
+        extLink = aeonic.ext
+        for (var i = 0; i < pieces.length-1; i++) {
+
+            if (typeof extLink[ pieces[i] ] != 'undefined') {
+                extLink = extLink[ pieces[i] ]
+            }
+            else {
+                extLink = null
+                break
+            }
+        }
+
+        // else use global
+        if (!extLink) {
+            extLink = window
+            for (var i = 0; i < pieces.length-1; i++) {
+
+                if (typeof extLink[ pieces[i] ] != 'undefined') {
+                    extLink = extLink[ pieces[i] ]
+                }
+                else {
+                    extLink = null
+                    break
+                }
+            }
+        }
+        // final param of pieces is the element to update/call
+        if (pieces.length > 1) {
+
+            target = pieces.pop()
+        }
+
+        // set the target
+        if (extLink !== null) { 
+            if (typeof extLink[target] == 'function') {
+                ext = extLink[target]
+                ext(newValue)
+            }
+            else {
+                if (newOperator) {
+                    newValue = aeonic.priv.operate(selector, attribute, newOperator, newValue)
+                }
+
+                extLink[target] = newValue
+            }
+        }
+        else {
+            console.error('invalid property target', selatts); debugger; 
+        }
+
+
     }
+    // ... else, set DOM object
     else {
-        selector = aeonic.priv.selectors.join(' ')
-        attribute = selatts
-    }
+        if (selatts.indexOf('&') !== -1) {
+            var pieces = selatts.split('&')
+            selector = pieces[0].trim()
+            attribute = pieces[1].trim()
+        }
+        else {
+            selector = aeonic.priv.selectors.join(' ')
+            attribute = selatts
+        }
 
-    /// determine final `value`
-    if (newOperator) {
-        newValue = aeonic.priv.operate(selector, attribute, newOperator, newValue)
-    }
+        /// determine final `value`
+        if (newOperator) {
+            newValue = aeonic.priv.operate(selector, attribute, newOperator, newValue)
+        }
 
-    if (!selector) debugger
+        if (!selector) debugger
 
-    /// modify all elements
-    var els = document.querySelectorAll( selector )
-    var i = 0
-    for( i=0; i < els.length; i++ ) {
-        aeonic.priv.setAttribute(els[i], attribute, newValue)
+        /// modify all elements
+        var els = document.querySelectorAll( selector )
+        var i = 0
+        for( i=0; i < els.length; i++ ) {
+            aeonic.priv.setAttribute(els[i], attribute, newValue)
+        }
+
     }
     
 }

@@ -23,6 +23,9 @@
 		".clear": {
 			"@onclick": {
 				".screen & value": ""
+			},
+			"@ondblclick": {
+				"$location.hash": "hahah"
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 			}
 		},
 		".num": {
-			"@on(close; dblclick)": {
+			"@on(click)": {
 				".screen & value": ["&", "`value`"]
 			}
 		},

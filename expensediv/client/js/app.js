@@ -1,3 +1,6 @@
+user = { username:{} }
+
+
 // TODO eliminate a router library
 var expensedivApp = angular.module('expensediv', ['ngRoute', 'ui.bootstrap',  'angular-storage', 'ui.router', 'ngResource'])
 .value('user_table', 'user')

@@ -1,1 +1,0 @@
-https://cdn.rawgit.com/gavinengel/gavinengel.github.io/master/zeonic/js/zeonic.js

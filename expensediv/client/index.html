@@ -2,43 +2,23 @@
 <html ng-app="expensediv">
 
 <head>
-    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/docs.css">
-    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/league-0.0.1.css">
-    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/style.css">
-    <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-	<style type="text/css">
-		.dropdown-menu .btn.btn-default.btn-sm.btn-block { width: 100%;}
-		.dropdown-menu .btn.btn-default.btn-sm { background-color: #fff; background-image: none; }
-	</style>
 
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
-  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js"></script>
-  <script src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
-  <script type="text/javascript" src="http://code.gavinengel.com/expensediv/client/js/vendor/angular-ui-router/release/angular-ui-router.js"></script>
-  <script type="text/javascript" src="http://code.gavinengel.com/expensediv/client/js/vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script>
-  <script type="text/javascript" src="http://code.gavinengel.com/expensediv/client/js/vendor/angular-grid/build/ng-grid.js"></script>
+  <adorn>
+    <id>
+      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/bootstrap.min.css">
+      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/docs.css">
+      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/league-0.0.1.css">
+      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/style.css">
+      <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    </id>
+    <ego>
+      <style type="text/css">
+        .dropdown-menu .btn.btn-default.btn-sm.btn-block { width: 100%;}
+        .dropdown-menu .btn.btn-default.btn-sm { background-color: #fff; background-image: none; }
+      </style>
+    </ego>
+  </adorn>
   
-
-        <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>
-
-
-
-  <!-- start the custom app -->
-  <script src="js/misc.js" defer></script>
-  <script src="js/app.js" defer></script>
-  <script src="js/services/services.js" defer></script>
-  <script src="js/factories/factories.js" defer></script>
-  <script src="js/controllers/controllers.js" defer></script>
-  <script src="js/filters/filters.js" defer></script>
-  <script src="js/directives/directives.js" defer></script>
 
 </head>
 
@@ -48,7 +28,7 @@
 
 	<div class="container">
 		<h2>Expensediv</h2>
-    <h3>An Angular.js, Bootstrap, and Express app</h3>
+    <h3>A Zeonic, Bootstrap, and Express app</h3>
 
 <nav ng-controller="LoginCtrl" class="navbar navbar-default">
   <button ng-if="currentUser.username" class="btn btn-default navbar-btn" ng-click="logout()">
@@ -59,12 +39,6 @@
       <div class="navbar-inner">
         <div class="container">
           <ul class="nav">
-            <li ui-route="/login" ng-class="{active:$uiRoute}" class="ng-scope">
-              <a href="#/login">
-                <i class="icon-login"></i>
-                Login
-              </a>
-            </li>
             <li ui-route="/home" ng-class="{active:$uiRoute}" class="ng-scope">
               <a href="#/home">
                 <i class="icon-home"></i>
@@ -105,5 +79,45 @@
 
 
 </body>
+<self>
+  <precog>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.min.js"></script>
+    <script src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="http://code.gavinengel.com/expensediv/client/js/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="http://code.gavinengel.com/expensediv/client/js/vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js"></script>
+    <script type="text/javascript" src="http://code.gavinengel.com/expensediv/client/js/vendor/angular-grid/build/ng-grid.js"></script>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-animate.min.js"></script>
+
+
+
+    <!-- start the custom app -->
+    <script src="js/misc.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <script src="js/services/services.js" defer></script>
+    <script src="js/factories/factories.js" defer></script>
+    <script src="js/controllers/controllers.js" defer></script>
+    <script src="js/filters/filters.js" defer></script>
+    <script src="js/directives/directives.js" defer></script>
+    <script src="https://cdn.rawgit.com/gavinengel/gavinengel.github.io/master/zeonic/js/zeonic.js" ></script>
+
+  
+
+  </precog>
+  <cog>
+  </cog>
+</self>
 
 </html>

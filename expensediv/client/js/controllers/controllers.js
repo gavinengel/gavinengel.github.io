@@ -437,7 +437,9 @@ expensedivApp.service('UserService', function($http, $location, ENDPOINT_URI, en
       */
       service.auth = function () {
         //user = store.get('user')
+        return; //debug
         user = service.getCurrentUser()
+        //#user.username = user.username || "tempUsername"
         if (angular.isDefined(user) && angular.isDefined(user.username)) {
           result = service.fetchByUsername(user.username)
           .catch(function (res) {

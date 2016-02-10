@@ -1,7 +1,7 @@
 /**
- * Aeonic.js
+ * zeonic.js
  * `Controller for DOM Events and Attributes` 
- * example usage: zeonic.fetch('/aeon.json', zeonic.mix)
+ * example usage: zeonic.fetch('/zeon.json', zeonic.mix)
  * Public methods:
  * - fetch
  * - mix
@@ -276,7 +276,7 @@ zeonic.priv.addListeners = function (eventType, eventCond, selector, value) {
         // stash the event data for later use (by saving key to new element attribute)
         var a = document.createAttribute( 'data-' + eventType + '-eid'  )
         var eId = ++zeonic.proc.eId
-        zeonic.proc.eData[ eId ] = { aeon: newMix, condition: eventCond }
+        zeonic.proc.eData[ eId ] = { zeon: newMix, condition: eventCond }
         a.value = eId
         els[i].setAttributeNode( a )
 
@@ -306,7 +306,7 @@ zeonic.priv.addListeners = function (eventType, eventCond, selector, value) {
             
             if (condResult) { 
                 if (zeonic.debug) console.log('condition passed', {e:e, eData: eData})
-                zeonic.mix(eData.aeon, null, {el: e.target, e: e})
+                zeonic.mix(eData.zeon, null, {el: e.target, e: e})
 
             }
             else {

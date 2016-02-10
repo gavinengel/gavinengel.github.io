@@ -1,5 +1,5 @@
 /**
- * Aeonic.js
+ * aeonic.js
  * `Controller for DOM Events and Attributes` 
  * example usage: aeonic.fetch('/aeon.json', aeonic.mix)
  * Public methods:

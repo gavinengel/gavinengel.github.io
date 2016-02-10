@@ -14,6 +14,7 @@ window.alkahest = {
         selectors: []
     },
     proc: {
+        opts: {},
         e: {},
         eId: 0,
         eData: {},
@@ -119,7 +120,7 @@ alkahest.mix = function(O, p, opts) {
 
         // Array?
         if (Array.isArray(value)) {
-            alkahest.priv.mixxers.mixArray(property, value, opts)
+            alkahest.priv.mixxers.mixArray(property, value)
         }
     
         // String?
@@ -134,7 +135,7 @@ alkahest.mix = function(O, p, opts) {
 
         // Plain Object?
         else if (typeof value == 'object' && value.constructor == Object) {
-            alkahest.priv.mixxers.mixObject(property, value, opts)
+            alkahest.priv.mixxers.mixObject(property, value)
         }
         else if (typeof value === 'boolean' || typeof value === 'number') {
             alkahest.priv.set(property, value)    
@@ -149,20 +150,20 @@ alkahest.mix = function(O, p, opts) {
 /**
  *
  */
-alkahest.priv.mixxers.mixObject = function(property, value, opts) {
+alkahest.priv.mixxers.mixObject = function(property, value) {
     if (property.charAt(0) == '@') {
-        alkahest.priv.mixxers.mixRule(property, value, opts)
+        alkahest.priv.mixxers.mixRule(property, value)
     }
     else if (Object.keys(value).length > 0) {
-        alkahest.mix(value, property, opts);    
+        alkahest.mix(value, property, alkahest.proc.opts);    
     }
 }
 
 /**
  *
  */
-alkahest.priv.mixxers.mixArray = function(property, value, opts) {
-    newValue = alkahest.priv.unstring(value[1], opts)
+alkahest.priv.mixxers.mixArray = function(property, value) {
+    newValue = alkahest.priv.unstring(value[1], alkahest.proc.opts)
     newOperator = value[0]
     alkahest.priv.set(property, newValue, newOperator)
 }
@@ -170,7 +171,7 @@ alkahest.priv.mixxers.mixArray = function(property, value, opts) {
 /**
  *
  */
-alkahest.priv.mixxers.mixRule = function(property, value, opts) {
+alkahest.priv.mixxers.mixRule = function(property, value) {
     var selector = alkahest.priv.selectors.join(' ')
     // is a rule.  do not add this to selectors.
 
@@ -202,10 +203,10 @@ alkahest.priv.mixxers.mixRule = function(property, value, opts) {
         alkahest.priv.mixxers.mixOnRule(selector, value, rule, wholeConds, eventConds)
     }
     else if (rule == 'if') {
-        alkahest.priv.mixxers.mixIfRule(property, value, opts)
+        alkahest.priv.mixxers.mixIfRule(property, value)
     }
     else if (rule == 'else') {
-        alkahest.priv.mixxers.mixElseRule(value, opts)
+        alkahest.priv.mixxers.mixElseRule(value)
     }
     else {
         console.error('bad rule', {rule: rule}); debugger
@@ -232,23 +233,23 @@ alkahest.priv.mixxers.mixOnRule = function (selector, value, rule, wholeConds, e
 /**
  *
  */
-alkahest.priv.mixxers.mixIfRule = function (property, value, opts) {
+alkahest.priv.mixxers.mixIfRule = function (property, value) {
 // obtain the the left, op, and right from the condition
         var pieces = property.split('(')
         var pieces = pieces[1].split(')')
         alkahest.proc.cond.raw = pieces[0].trim()
-        if ( alkahest.priv.evalIf( alkahest.proc.cond.raw, opts ) ) { 
-            alkahest.mix(value, null, opts)
+        if ( alkahest.priv.evalIf( alkahest.proc.cond.raw ) ) { 
+            alkahest.mix(value, null, alkahest.proc.opts)
         }
 }
 
 /**
  *
  */
-alkahest.priv.mixxers.mixElseRule = function (value, opts) {
+alkahest.priv.mixxers.mixElseRule = function (value) {
     // obtain the the left, op, and right from the condition
     if (alkahest.proc.cond.result === false) {
-        alkahest.mix(value, null, opts)
+        alkahest.mix(value, null, alkahest.proc.opts)
     }
     alkahest.proc.cond.result = null
 }
@@ -311,7 +312,7 @@ alkahest.priv.addListeners = function (eventType, eventCond, selector, value) {
 /**
  *
  */
-alkahest.priv.evalIf = function (expression, opts) {
+alkahest.priv.evalIf = function (expression) {
     result = false; // aka: alkahest.proc.cond.result
 
     var withoutSel = alkahest.proc.cond.attr = expression
@@ -323,8 +324,8 @@ alkahest.priv.evalIf = function (expression, opts) {
         // execute it
         var ext = alkahest.ext[ alkahest.proc.cond.ext ]
         var e = {}
-        if (opts && opts.hasOwnProperty('e')) {
-            e = opts.e
+        if (alkahest.proc.opts && alkahest.proc.opts.hasOwnProperty('e')) {
+            e = alkahest.proc.opts.e
         }
 
         alkahest.proc.cond.extReturn = ext(e)

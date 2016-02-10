@@ -9,14 +9,14 @@ window.alertr = function(e) {
 /// junk above
 
 
-alkahest.debug = true;
-alkahest.run({
+aeonic.debug = true;
+aeonic.run({
 		h1: {
 			xclass: ["~", 'boing']
 		}
 });
 
-alkahest.hi = function() {
+aeonic.hi = function() {
  alert('hi');
 
 }

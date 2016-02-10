@@ -1,9 +1,9 @@
 /**
  * Alkahest.js
  * `Alchemy for DOM Events and Attributes` 
- * example usage: alkahest.fetch('/aeon.json', alkahest.mix)
+ * example usage: aeonic.fetch('/aeon.json', aeonic.mix)
  */
-window.alkahest = {
+window.aeonic = {
     ver: '0.0.9',
     debug: false,
     condOper: ['!=', '>=', '<=', '>', '<', '='], // add single char conditions at end of array
@@ -39,7 +39,7 @@ window.alkahest = {
 /**
  *
  */
-alkahest.fetch = function (path, success, error) {
+aeonic.fetch = function (path, success, error) {
     var xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function()
     {
@@ -58,10 +58,10 @@ alkahest.fetch = function (path, success, error) {
 /**
  *
  */
-alkahest.compare = function(lft, oper, rgt, typecast) {
+aeonic.compare = function(lft, oper, rgt, typecast) {
     result = false
 
-    if (alkahest.debug) console.log({lft:lft, oper:oper, rgt:rgt})
+    if (aeonic.debug) console.log({lft:lft, oper:oper, rgt:rgt})
 
 
     typecast = typecast || typeof lft;
@@ -100,7 +100,7 @@ alkahest.compare = function(lft, oper, rgt, typecast) {
             console.error('invalid oper', oper)
     }
 
-    if (alkahest.debug) console.log({lft:lft, oper:oper, rgt:rgt, result:result})
+    if (aeonic.debug) console.log({lft:lft, oper:oper, rgt:rgt, result:result})
 
     return result
 }
@@ -108,71 +108,71 @@ alkahest.compare = function(lft, oper, rgt, typecast) {
 /**
  *
  */
-alkahest.mix = function(O, p, opts) {
-    if (p) { alkahest.priv.selectors.push(p); }
+aeonic.mix = function(O, p, opts) {
+    if (p) { aeonic.priv.selectors.push(p); }
 
     for (var property in O) {
         var value      = O[property]
 
-        alkahest.proc.opts = opts
-        alkahest.proc.src.attr = value
-        alkahest.proc.tar.attr = property
+        aeonic.proc.opts = opts
+        aeonic.proc.src.attr = value
+        aeonic.proc.tar.attr = property
 
         // Array?
         if (Array.isArray(value)) {
-            alkahest.priv.mixxers.mixArray(property, value)
+            aeonic.priv.mixxers.mixArray(property, value)
         }
     
         // String?
         else if (typeof value === 'string' || value instanceof String) {
-            alkahest.priv.set(property, alkahest.priv.unstring(value))
+            aeonic.priv.set(property, aeonic.priv.unstring(value))
         }
     
         // Function?
         else if (typeof value === 'function') {
-            alkahest.priv.set(property, value)    
+            aeonic.priv.set(property, value)    
         }
 
         // Plain Object?
         else if (typeof value == 'object' && value.constructor == Object) {
-            alkahest.priv.mixxers.mixObject(property, value)
+            aeonic.priv.mixxers.mixObject(property, value)
         }
         else if (typeof value === 'boolean' || typeof value === 'number') {
-            alkahest.priv.set(property, value)    
+            aeonic.priv.set(property, value)    
         }
         else {
             console.error('invalid value', value)
         }
     }
-    alkahest.priv.selectors.pop()
+    aeonic.priv.selectors.pop()
 }
 
 /**
  *
  */
-alkahest.priv.mixxers.mixObject = function(property, value) {
+aeonic.priv.mixxers.mixObject = function(property, value) {
     if (property.charAt(0) == '@') {
-        alkahest.priv.mixxers.mixRule(property, value)
+        aeonic.priv.mixxers.mixRule(property, value)
     }
     else if (Object.keys(value).length > 0) {
-        alkahest.mix(value, property, alkahest.proc.opts);    
+        aeonic.mix(value, property, aeonic.proc.opts);    
     }
 }
 
 /**
  *
  */
-alkahest.priv.mixxers.mixArray = function(property, value) {
-    newValue = alkahest.priv.unstring(value[1], alkahest.proc.opts)
+aeonic.priv.mixxers.mixArray = function(property, value) {
+    newValue = aeonic.priv.unstring(value[1], aeonic.proc.opts)
     newOperator = value[0]
-    alkahest.priv.set(property, newValue, newOperator)
+    aeonic.priv.set(property, newValue, newOperator)
 }
 
 /**
  *
  */
-alkahest.priv.mixxers.mixRule = function(property, value) {
-    var selector = alkahest.priv.selectors.join(' ')
+aeonic.priv.mixxers.mixRule = function(property, value) {
+    var selector = aeonic.priv.selectors.join(' ')
     // is a rule.  do not add this to selectors.
 
     // get `rule`
@@ -189,7 +189,7 @@ alkahest.priv.mixxers.mixRule = function(property, value) {
         
         for (var i = 0; i < condsPieces.length; i++) {
             wholeCond = condsPieces[ i ].trim()
-            eventCond = alkahest.priv.parseCondition(wholeCond)
+            eventCond = aeonic.priv.parseCondition(wholeCond)
             if (!eventCond.oper) {
                 eventCond = { lft: 'type' , oper: '=' , rgt: eventCond.lft }
             }
@@ -200,13 +200,13 @@ alkahest.priv.mixxers.mixRule = function(property, value) {
     }
 
     if (rule.substr(0, 2) == 'on') {
-        alkahest.priv.mixxers.mixOnRule(selector, value, rule, wholeConds, eventConds)
+        aeonic.priv.mixxers.mixOnRule(selector, value, rule, wholeConds, eventConds)
     }
     else if (rule == 'if') {
-        alkahest.priv.mixxers.mixIfRule(property, value)
+        aeonic.priv.mixxers.mixIfRule(property, value)
     }
     else if (rule == 'else') {
-        alkahest.priv.mixxers.mixElseRule(value)
+        aeonic.priv.mixxers.mixElseRule(value)
     }
     else {
         console.error('bad rule', {rule: rule}); debugger
@@ -216,7 +216,7 @@ alkahest.priv.mixxers.mixRule = function(property, value) {
 /**
  *
  */
-alkahest.priv.mixxers.mixOnRule = function (selector, value, rule, wholeConds, eventConds){
+aeonic.priv.mixxers.mixOnRule = function (selector, value, rule, wholeConds, eventConds){
     
     if (rule != 'on') {
         // is @onEvent rule.
@@ -225,7 +225,7 @@ alkahest.priv.mixxers.mixOnRule = function (selector, value, rule, wholeConds, e
 
     for( i=0; i < eventConds.length; i++ ) {
         eventType = eventConds[i].eventType || eventConds[i].rgt
-        alkahest.priv.addListeners(eventType, eventConds[i], selector, value)
+        aeonic.priv.addListeners(eventType, eventConds[i], selector, value)
     }
 }
 
@@ -233,32 +233,32 @@ alkahest.priv.mixxers.mixOnRule = function (selector, value, rule, wholeConds, e
 /**
  *
  */
-alkahest.priv.mixxers.mixIfRule = function (property, value) {
+aeonic.priv.mixxers.mixIfRule = function (property, value) {
 // obtain the the left, op, and right from the condition
         var pieces = property.split('(')
         var pieces = pieces[1].split(')')
-        alkahest.proc.cond.raw = pieces[0].trim()
-        if ( alkahest.priv.evalIf( alkahest.proc.cond.raw ) ) { 
-            alkahest.mix(value, null, alkahest.proc.opts)
+        aeonic.proc.cond.raw = pieces[0].trim()
+        if ( aeonic.priv.evalIf( aeonic.proc.cond.raw ) ) { 
+            aeonic.mix(value, null, aeonic.proc.opts)
         }
 }
 
 /**
  *
  */
-alkahest.priv.mixxers.mixElseRule = function (value) {
+aeonic.priv.mixxers.mixElseRule = function (value) {
     // obtain the the left, op, and right from the condition
-    if (alkahest.proc.cond.result === false) {
-        alkahest.mix(value, null, alkahest.proc.opts)
+    if (aeonic.proc.cond.result === false) {
+        aeonic.mix(value, null, aeonic.proc.opts)
     }
-    alkahest.proc.cond.result = null
+    aeonic.proc.cond.result = null
 }
 
 
 /**
  *
  */
-alkahest.priv.addListeners = function (eventType, eventCond, selector, value) {
+aeonic.priv.addListeners = function (eventType, eventCond, selector, value) {
     // we must add a listener for the current selector + this onEvent.
     var els = document.querySelectorAll( selector )
 
@@ -268,42 +268,42 @@ alkahest.priv.addListeners = function (eventType, eventCond, selector, value) {
 
         // stash the event data for later use (by saving key to new element attribute)
         var a = document.createAttribute( 'data-' + eventType + '-eid'  )
-        var eId = ++alkahest.proc.eId
-        alkahest.proc.eData[ eId ] = { aeon: newMix, condition: eventCond }
+        var eId = ++aeonic.proc.eId
+        aeonic.proc.eData[ eId ] = { aeon: newMix, condition: eventCond }
         a.value = eId
         els[i].setAttributeNode( a )
 
         els[i].addEventListener(eventType, function(e){
-            if (alkahest.debug) console.log(e)
+            if (aeonic.debug) console.log(e)
             eAttr = 'data-' + e.type + '-eid'
             eId = e.target.getAttribute( eAttr )
-            eData = alkahest.proc.eData[ eId ]
+            eData = aeonic.proc.eData[ eId ]
 
             var condResult = true
             if (eData.condition.lft) { 
                 if (eData.condition.oper && eData.condition.rgt) {
-                    if (alkahest.debug) console.log('3 part condition found', {e:e, eData: eData})
+                    if (aeonic.debug) console.log('3 part condition found', {e:e, eData: eData})
 
-                    condResult = alkahest.compare(e[eData.condition.lft], eData.condition.oper, eData.condition.rgt)
+                    condResult = aeonic.compare(e[eData.condition.lft], eData.condition.oper, eData.condition.rgt)
                 }    
                 else {
-                    if (alkahest.debug) console.log('1 part condition found', {e:e, eData: eData})
+                    if (aeonic.debug) console.log('1 part condition found', {e:e, eData: eData})
 
                     if (!e[eData.condition.lft]) condResult = false
                 }
             }
             else {
-                if (alkahest.debug) console.log('no event condition', eventCond)
+                if (aeonic.debug) console.log('no event condition', eventCond)
 
             }
             
             if (condResult) { 
-                if (alkahest.debug) console.log('condition passed', {e:e, eData: eData})
-                alkahest.mix(eData.aeon, null, {el: e.target, e: e})
+                if (aeonic.debug) console.log('condition passed', {e:e, eData: eData})
+                aeonic.mix(eData.aeon, null, {el: e.target, e: e})
 
             }
             else {
-                if (alkahest.debug) console.log('condition failed', {e:e, eData: eData})
+                if (aeonic.debug) console.log('condition failed', {e:e, eData: eData})
             }
         })
     }
@@ -312,46 +312,46 @@ alkahest.priv.addListeners = function (eventType, eventCond, selector, value) {
 /**
  *
  */
-alkahest.priv.evalIf = function (expression) {
-    result = false; // aka: alkahest.proc.cond.result
+aeonic.priv.evalIf = function (expression) {
+    result = false; // aka: aeonic.proc.cond.result
 
-    var withoutSel = alkahest.proc.cond.attr = expression
+    var withoutSel = aeonic.proc.cond.attr = expression
                     
     // is extension-exec?
     if (withoutSel.charAt(0) == '$') {
         // extension-exec
-        alkahest.proc.cond.ext = withoutSel.substr(1)    
+        aeonic.proc.cond.ext = withoutSel.substr(1)    
         // execute it
-        var ext = alkahest.ext[ alkahest.proc.cond.ext ]
+        var ext = aeonic.ext[ aeonic.proc.cond.ext ]
         var e = {}
-        if (alkahest.proc.opts && alkahest.proc.opts.hasOwnProperty('e')) {
-            e = alkahest.proc.opts.e
+        if (aeonic.proc.opts && aeonic.proc.opts.hasOwnProperty('e')) {
+            e = aeonic.proc.opts.e
         }
 
-        alkahest.proc.cond.extReturn = ext(e)
-        if (alkahest.proc.cond.extReturn === true) alkahest.proc.cond.result = true
+        aeonic.proc.cond.extReturn = ext(e)
+        if (aeonic.proc.cond.extReturn === true) aeonic.proc.cond.result = true
     }
     else {
         // not extension-exec
-        if (alkahest.proc.cond.raw.indexOf('&') != -1) {
-            pieces = alkahest.proc.cond.raw.split('&')
-            alkahest.proc.cond.sel = pieces[0].trim()
-            alkahest.proc.cond.attr = withoutSel = pieces[1].trim()
+        if (aeonic.proc.cond.raw.indexOf('&') != -1) {
+            pieces = aeonic.proc.cond.raw.split('&')
+            aeonic.proc.cond.sel = pieces[0].trim()
+            aeonic.proc.cond.attr = withoutSel = pieces[1].trim()
         }    
 
-        var trio = alkahest.priv.parseCondition(withoutSel)
+        var trio = aeonic.priv.parseCondition(withoutSel)
 
-        alkahest.proc.cond.lft = alkahest.priv.get(alkahest.proc.cond.attr, alkahest.proc.cond.sel)
+        aeonic.proc.cond.lft = aeonic.priv.get(aeonic.proc.cond.attr, aeonic.proc.cond.sel)
 
-        console.log('get cond result from:', alkahest.proc.cond)
-        if (alkahest.proc.cond.oper) {
-            alkahest.proc.cond.result = alkahest.compare(alkahest.proc.cond.lft, alkahest.proc.cond.oper, alkahest.proc.cond.rgt)
+        console.log('get cond result from:', aeonic.proc.cond)
+        if (aeonic.proc.cond.oper) {
+            aeonic.proc.cond.result = aeonic.compare(aeonic.proc.cond.lft, aeonic.proc.cond.oper, aeonic.proc.cond.rgt)
         }
-        else if (alkahest.proc.cond.lft) {
-            alkahest.proc.cond.result = true
+        else if (aeonic.proc.cond.lft) {
+            aeonic.proc.cond.result = true
         }
 
-        result = alkahest.proc.cond.result
+        result = aeonic.proc.cond.result
     }
 
     return result
@@ -360,20 +360,20 @@ alkahest.priv.evalIf = function (expression) {
 /**
  *
  */
-alkahest.priv.parseCondition = function (condition) {
+aeonic.priv.parseCondition = function (condition) {
     var trio = {
         lft: condition,
         oper: '',
         rgt: '',
     }
 
-    for (var i=0; i < alkahest.condOper.length; i++ ) {
-        if (condition.indexOf( alkahest.condOper[i] ) != -1) {
-            if (alkahest.debug) console.log('found a conditional operator:', alkahest.condOper[i])
-            trio.oper = alkahest.proc.cond.oper = alkahest.condOper[i]
-            pieces = condition.split( alkahest.proc.cond.oper )
-            trio.lft = alkahest.proc.cond.attr = pieces[0].trim()
-            trio.rgt = alkahest.proc.cond.rgt = pieces[1].trim()
+    for (var i=0; i < aeonic.condOper.length; i++ ) {
+        if (condition.indexOf( aeonic.condOper[i] ) != -1) {
+            if (aeonic.debug) console.log('found a conditional operator:', aeonic.condOper[i])
+            trio.oper = aeonic.proc.cond.oper = aeonic.condOper[i]
+            pieces = condition.split( aeonic.proc.cond.oper )
+            trio.lft = aeonic.proc.cond.attr = pieces[0].trim()
+            trio.rgt = aeonic.proc.cond.rgt = pieces[1].trim()
             break
         }
     }
@@ -384,7 +384,7 @@ alkahest.priv.parseCondition = function (condition) {
 /**
  * 
  */
-alkahest.priv.unstring = function(value, opts) {
+aeonic.priv.unstring = function(value, opts) {
     if ((typeof value === 'string' || value instanceof String) && value.charAt(0) == '`') {
         // if the VALUE is surrounded by `` marks, remove them.  It shouldn't be seen as a String.
         // remove ` from ends
@@ -400,13 +400,13 @@ alkahest.priv.unstring = function(value, opts) {
             value = value.slice(1)
 
             // if: extension-link
-            if (alkahest.proc.tar.attr.slice(0, 2) == 'on') {
-                value = 'return alkahest.ext.' + value + '(event);'
+            if (aeonic.proc.tar.attr.slice(0, 2) == 'on') {
+                value = 'return aeonic.ext.' + value + '(event);'
             }
             // else: extension-exec
             else {
-                //value = 'return alkahest.ext.' + value + '(event);'
-                ext = alkahest.ext[value]
+                //value = 'return aeonic.ext.' + value + '(event);'
+                ext = aeonic.ext[value]
         
                 var e = {}
                 if (opts && opts.hasOwnProperty('e')) {
@@ -422,15 +422,15 @@ alkahest.priv.unstring = function(value, opts) {
             var values = value.split('&')
 
 
-            alkahest.proc.src.attr = values[1]
-            alkahest.proc.src.sel = values[0]
+            aeonic.proc.src.attr = values[1]
+            aeonic.proc.src.sel = values[0]
 
-            value = alkahest.priv.get(values[1], values[0], opts) 
+            value = aeonic.priv.get(values[1], values[0], opts) 
         }
         // c) empty or attribute from same selector:         data-foo
         else {
             if (value.length) {
-                value = alkahest.priv.get(value, null, opts)    
+                value = aeonic.priv.get(value, null, opts)    
             }
             else {
                 value = ''
@@ -444,14 +444,14 @@ alkahest.priv.unstring = function(value, opts) {
 /**
  * 
  */
-alkahest.priv.get = function(attribute, differentSelector, opts) {
+aeonic.priv.get = function(attribute, differentSelector, opts) {
     var result = ''
 
     if (differentSelector) {
         selector = differentSelector
     }
     else {
-        selector = alkahest.priv.selectors.join(' ')    
+        selector = aeonic.priv.selectors.join(' ')    
     }
     
     if (opts && opts.hasOwnProperty('el')) {
@@ -464,7 +464,7 @@ alkahest.priv.get = function(attribute, differentSelector, opts) {
     if (el) {
         // attr or textcontent?
         tag = el.tagName.toLowerCase()
-        if (attribute == 'value' && alkahest.priv.valuables.indexOf(tag) === -1) { // use textcontent
+        if (attribute == 'value' && aeonic.priv.valuables.indexOf(tag) === -1) { // use textcontent
             result = el.textContent
         }
         else { // attr, when a=value and tag=input
@@ -483,8 +483,8 @@ alkahest.priv.get = function(attribute, differentSelector, opts) {
 /**
  *
  */
-alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
-    var existingValue = alkahest.priv.get(attribute, selector)
+aeonic.priv.operate = function (selector, attribute, newOperator, newValue) {
+    var existingValue = aeonic.priv.get(attribute, selector)
     switch(newOperator) {
         case '+':
             newValue += existingValue
@@ -506,7 +506,7 @@ alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
             break
         case '$':
             // this is calling an extension.
-            newValue = 'return alkahest.ext.' + newValue + '(event);'
+            newValue = 'return aeonic.ext.' + newValue + '(event);'
             break
         case '!': // toggle on/off
             // split value by spaces
@@ -534,7 +534,7 @@ alkahest.priv.operate = function (selector, attribute, newOperator, newValue) {
 /**
  * 
  */
-alkahest.priv.set = function(selatts, newValue, newOperator, opts) {
+aeonic.priv.set = function(selatts, newValue, newOperator, opts) {
     
     if (selatts.indexOf('&') !== -1) {
         var pieces = selatts.split('&')
@@ -542,13 +542,13 @@ alkahest.priv.set = function(selatts, newValue, newOperator, opts) {
         attribute = pieces[1].trim()
     }
     else {
-        selector = alkahest.priv.selectors.join(' ')
+        selector = aeonic.priv.selectors.join(' ')
         attribute = selatts
     }
 
     /// determine final `value`
     if (newOperator) {
-        newValue = alkahest.priv.operate(selector, attribute, newOperator, newValue)
+        newValue = aeonic.priv.operate(selector, attribute, newOperator, newValue)
     }
 
     if (!selector) debugger
@@ -557,7 +557,7 @@ alkahest.priv.set = function(selatts, newValue, newOperator, opts) {
     var els = document.querySelectorAll( selector )
     var i = 0
     for( i=0; i < els.length; i++ ) {
-        alkahest.priv.setAttribute(els[i], attribute, newValue)
+        aeonic.priv.setAttribute(els[i], attribute, newValue)
     }
     
 }
@@ -565,9 +565,9 @@ alkahest.priv.set = function(selatts, newValue, newOperator, opts) {
 /**
  *
  */
-alkahest.priv.setAttribute = function(el, attribute, newValue) {
+aeonic.priv.setAttribute = function(el, attribute, newValue) {
     tag = el.tagName.toLowerCase()
-    if (attribute == 'value' && alkahest.priv.valuables.indexOf(tag) === -1) { 
+    if (attribute == 'value' && aeonic.priv.valuables.indexOf(tag) === -1) { 
         el.textContent = newValue
     }
     else { // attr, when a=value and tag=input

@@ -20,7 +20,7 @@
 
 var operators = ['+', '-', 'x', '%']
 
-alkahest.ext.onClickEqFilter = function(e) {
+aeonic.ext.onClickEqFilter = function(e) {
 	var newValue = ''
 
 	// Get the input and button values
@@ -42,7 +42,7 @@ alkahest.ext.onClickEqFilter = function(e) {
 	return newValue
 }
 
-alkahest.ext.onClickDecimal = function(e) {
+aeonic.ext.onClickDecimal = function(e) {
 	result = ''
 
 	if(document.querySelector('.screen').innerHTML.indexOf('.') == -1) {
@@ -52,7 +52,7 @@ alkahest.ext.onClickDecimal = function(e) {
 	return result
 }
 
-alkahest.ext.onClickOperatorFilter = function(e) {
+aeonic.ext.onClickOperatorFilter = function(e) {
 	newOp = e.target.innerHTML
 
 	var screenEL = document.querySelector('.screen')

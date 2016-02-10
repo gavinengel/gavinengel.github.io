@@ -68,7 +68,8 @@ alkahest.ext.onClickOperatorFilter = function(e) {
 	else if(operators.indexOf(lastChar) > -1 && screenVal.length > 1) {
 		// Here, '.' matches any character while $ denotes the end of string, 
 		// so anything (will be an operator in this case) at the end of string will get replaced by new operator
-		screenEL.innerHTML = screenVal.replace(/.$/, newOp)
+		screenEL.innerHTML = screenVal.slice(0, -1);
+
 	}
 
 	return newOp

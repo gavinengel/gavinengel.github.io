@@ -221,7 +221,7 @@ alkahest.priv.mixxers.mixOnRule = function (selector, value, rule, wholeConds, e
         // is @onEvent rule.
         eventConds.push({ eventType: rule.slice(2) })
     }
-console.log({eventConds:eventConds, selector: selector, value: value, rule: rule})
+
     for( i=0; i < eventConds.length; i++ ) {
         eventType = eventConds[i].eventType || eventConds[i].rgt
         alkahest.priv.addListeners(eventType, eventConds[i], selector, value)

@@ -1,6 +1,6 @@
 /**
- * Alkahest.js
- * `Alchemy for DOM Events and Attributes` 
+ * Aeonic.js
+ * `Controller for DOM Events and Attributes` 
  * example usage: aeonic.fetch('/aeon.json', aeonic.mix)
  * Public methods:
  * - fetch
@@ -413,14 +413,49 @@ aeonic.priv.unstring = function(value, opts) {
             // else: extension-exec
             else {
                 //value = 'return aeonic.ext.' + value + '(event);'
-                ext = aeonic.ext[value]
-        
-                var e = {}
-                if (opts && opts.hasOwnProperty('e')) {
-                    e = opts.e
+
+                // is `value` an element in aeonic.ext...
+                if (typeof aeonic.ext[value] != 'undefined') {
+                    // if function, call it ...
+                    if (typeof aeonic.ext[value] === 'function') {
+                        ext = aeonic.ext[value]
+                
+                        var e = {}
+                        if (opts && opts.hasOwnProperty('e')) {
+                            e = opts.e
+                        }
+
+                        value = ext(e)
+                    }
+                    // ... or if simple variable, get it
+                    else {
+                        value = aeonic.ext[value]
+                    }
+
+                } 
+                // ... or is it a global element ...
+                else if (typeof window[value] != 'undefined') {
+                    // if function, call it ...
+                    if (typeof window[value] === 'function') {
+                        ext = window[value]
+                
+                        var e = {}
+                        if (opts && opts.hasOwnProperty('e')) {
+                            e = opts.e
+                        }
+
+                        value = ext(e)
+                    }
+                    // ... or if simple variable, get it
+                    else {
+                        value = window[value]
+                    }
+                }
+                // ... or neither.
+                else {
+                    console.error('invalid value:', value); debugger
                 }
 
-                value = ext(e)
             }
         }
 

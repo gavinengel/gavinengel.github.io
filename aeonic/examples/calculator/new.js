@@ -16,6 +16,8 @@
 
 */
 
+window.hiya = 'fooey'
+
 //TODO 3.2 -3 = ?????
 
 var operators = ['+', '-', 'x', '%']

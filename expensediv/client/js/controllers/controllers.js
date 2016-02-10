@@ -2,26 +2,26 @@
 // TODO remove all firebase stuff
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, $routeParams, timezone_table, filterFilter, UserService, TimezonesService, store) {
+expensedivApp.controller('ExpenseCtrl', function(envoy, $scope, $modal, $location, $routeParams, expense_table, filterFilter, UserService, ExpensesService, store) {
     UserService.auth()
 
     // Define variables
-    envoy.TimezoneCtrl = true;
+    envoy.ExpenseCtrl = true;
 
     $scope.alerts = [];     // array of alert message objects.
 
-    // Remove timezone
-    $scope.removeRecord = function(timezoneId) {
+    // Remove expense
+    $scope.removeRecord = function(expenseId) {
       $scope.alerts.splice(0, 1);
       $scope.alerts.push({
         type: 'success',
-        msg: "timezone removed successfully!"
+        msg: "expense removed successfully!"
       });
 
-      TimezonesService.destroy(timezoneId)
+      ExpensesService.destroy(expenseId)
       .then(function (result) {
         cancelEditing();
-        $scope.getTimezones();
+        $scope.getExpenses();
       });
     };
 
@@ -30,99 +30,99 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
       $scope.alerts.splice(index, 1);
     };
 
-    // Modal: called by edit(timezoneId) and Add new timezone
-    $scope.open = function(timezoneId) {
+    // Modal: called by edit(expenseId) and Add new expense
+    $scope.open = function(expenseId) {
       var modalInstance = $modal.open({
-        templateUrl: 'add_timezone_modal',
+        templateUrl: 'add_expense_modal',
         controller: $scope.model,
         resolve: {
           id: function() {
-            return timezoneId;
+            return expenseId;
           }
         }
       });
     };
 
-    $scope.getLocalTime = function(timezone) {
+    $scope.getLocalTime = function(expense) {
 
     };
 
     var dashboard = this;
 
-    $scope.getTimezones = function() {
-      TimezonesService.fetchAll()
+    $scope.getExpenses = function() {
+      ExpensesService.fetchAll()
       .then(function (result) {
             dashboard.expenses = result.data;//debug
             envoy.expenses = result.data;
           });
     };
 
-    $scope.createTimezone = function(timezone) {
-      TimezonesService.create(timezone)
+    $scope.createExpense = function(expense) {
+      ExpensesService.create(expense)
       .then(function (result) {
             //initCreateForm();
-            $scope.getTimezones();
+            $scope.getExpenses();
             $modalInstance.dismiss('cancel');
 
           });
     };
 
-    function updateTimezone(timezone) {
-      alert('in updateTimezones')
-      TimezonesService.update(timezone.id, timezone)
+    function updateExpense(expense) {
+      alert('in updateExpenses')
+      ExpensesService.update(expense.id, expense)
       .then(function (result) {
         cancelEditing();
-        $scope.getTimezones();
+        $scope.getExpenses();
       });
     }
 
-    function deleteTimezone(timezoneId) {
-      alert('in deleteTimezone')
-      TimezonesService.destroy(timezoneId)
+    function deleteExpense(expenseId) {
+      alert('in deleteExpense')
+      ExpensesService.destroy(expenseId)
       .then(function (result) {
         cancelEditing();
-        $scope.getTimezones();
+        $scope.getExpenses();
       });
     }
 
     //function initCreateForm() {
-    //    dashboard.newTimezone = { name: '', description: '' };
+    //    dashboard.newExpense = { name: '', description: '' };
     //}
 
-    function setEditedTimezone(timezone) {
-      dashboard.editedTimezone = angular.copy(timezone);
+    function setEditedExpense(expense) {
+      dashboard.editedExpense = angular.copy(expense);
       dashboard.isEditing = true;
     }
 
-    function isCurrentTimezone(timezoneId) {
-      return dashboard.editedTimezone !== null && dashboard.editedTimezone.id === timezoneId;
+    function isCurrentExpense(expenseId) {
+      return dashboard.editedExpense !== null && dashboard.editedExpense.id === expenseId;
     }
 
     function cancelEditing() {
-      dashboard.editedTimezone = null;
+      dashboard.editedExpense = null;
       dashboard.isEditing = false;
     }
 
     dashboard.expenses = [];
-    dashboard.editedTimezone = null;
+    dashboard.editedExpense = null;
     dashboard.isEditing = false;
-    dashboard.getTimezones = $scope.getTimezones;
-    dashboard.createTimezone = $scope.createTimezone;
-    dashboard.updateTimezone = updateTimezone;
-    dashboard.deleteTimezone = deleteTimezone;
-    dashboard.setEditedTimezone = setEditedTimezone;
-    dashboard.isCurrentTimezone = isCurrentTimezone;
+    dashboard.getExpenses = $scope.getExpenses;
+    dashboard.createExpense = $scope.createExpense;
+    dashboard.updateExpense = updateExpense;
+    dashboard.deleteExpense = deleteExpense;
+    dashboard.setEditedExpense = setEditedExpense;
+    dashboard.isCurrentExpense = isCurrentExpense;
     dashboard.cancelEditing = cancelEditing;
 
-    $scope.model = function(envoy, $scope, $modalInstance, id, timezone_table) {
+    $scope.model = function(envoy, $scope, $modalInstance, id, expense_table) {
       envoy.model = true;
-      $scope.timezone = {};
+      $scope.expense = {};
       $scope.alerts = []; // array of alert message objects.
 
       if (angular.isDefined(id)) {
-        TimezonesService.fetch(id)
+        ExpensesService.fetch(id)
         .then(function (res) {
-          $scope.timezone = res.data[0];
+          $scope.expense = res.data[0];
         });
       }
 
@@ -131,12 +131,12 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
         $modalInstance.dismiss('cancel');
       };
 
-      // Add new timezone
+      // Add new expense
       $scope.add = function() {
-        TimezonesService.create($scope.timezone)
+        ExpensesService.create($scope.expense)
         .then(function (result) {
 
-          TimezonesService.fetchAll()
+          ExpensesService.fetchAll()
           .then(function (result) {
             envoy.expenses = result.data;
           });
@@ -148,11 +148,11 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
 
       }
 
-      // Save edited timezone.
+      // Save edited expense.
       $scope.save = function() {
-        TimezonesService.update($scope.timezone._id, $scope.timezone)
+        ExpensesService.update($scope.expense._id, $scope.expense)
         .then(function (res) {
-          TimezonesService.fetchAll()
+          ExpensesService.fetchAll()
           .then(function (result) {
             envoy.expenses = result.data;
           });
@@ -164,11 +164,11 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
     
     // controller final
     //initCreateForm();
-    $scope.getTimezones();
+    $scope.getExpenses();
     $scope.envoy = envoy //TODO
   })
 
-expensedivApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, store, UserService) {
+expensedivApp.service('ExpensesService', function($http, ENDPOINT_URI, envoy, store, UserService) {
   var service = this,
   path = 'expenses/';
 
@@ -188,8 +188,8 @@ expensedivApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, s
     return  url
   }
 
-  function getUrlForId(timezoneId) {
-        return getUrl(path, timezoneId) //+ "?username=" + credentials.username + "&password=" + credentials.password
+  function getUrlForId(expenseId) {
+        return getUrl(path, expenseId) //+ "?username=" + credentials.username + "&password=" + credentials.password
       }
 /*
       function addCredentials(data) {
@@ -211,31 +211,31 @@ expensedivApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, s
         return $http.get(getUrl(true));
       };
 
-      service.fetch = function (timezoneId) {
+      service.fetch = function (expenseId) {
 
-        return $http.get(getUrlForId(timezoneId));
+        return $http.get(getUrlForId(expenseId));
 
       };
 
-      service.create = function (timezone) {
-        timezone = addCredentials(timezone)
+      service.create = function (expense) {
+        expense = addCredentials(expense)
         return $http({
           url: getUrl(),
           method: "POST",
-          params: timezone,
+          params: expense,
         }).success(function (data, status, headers, config) {
             //TODO
           })
       };
 
-      service.update = function (timezoneId, timezone) {
-        var url = getUrlForId(timezoneId);
-        url = url + '&city=' + timezone.city + '&designation=' + timezone.designation + '&difference=' + timezone.difference + '&zonename=' + timezone.zonename
-        return $http.put(url, timezone); //TODO figure out why params aren't being sent:
+      service.update = function (expenseId, expense) {
+        var url = getUrlForId(expenseId);
+        url = url + '&city=' + expense.city + '&designation=' + expense.designation + '&difference=' + expense.difference + '&expenseName=' + expense.expenseName
+        return $http.put(url, expense); //TODO figure out why params aren't being sent:
       };
 
-      service.destroy = function (timezoneId) {
-        var url = getUrlForId(timezoneId);
+      service.destroy = function (expenseId) {
+        var url = getUrlForId(expenseId);
         return $http.delete(url);
       };
     })
@@ -360,7 +360,7 @@ expensedivApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
     };
 
     function cancelEditing() {
-      dashboard.editedTimezone = null;
+      dashboard.editedExpense = null;
       dashboard.isEditing = false;
     }
 

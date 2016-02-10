@@ -56,13 +56,24 @@ alkahest.fetch = function (path, success, error) {
 /**
  *
  */
-alkahest.compare = function(lft, oper, rgt) {
+alkahest.compare = function(lft, oper, rgt, typecast) {
     result = false
 
     if (alkahest.debug) console.log({lft:lft, oper:oper, rgt:rgt})
 
-    lft = parseFloat(lft)
-    rgt = parseFloat(rgt)
+
+    typecast = typecast || typeof lft;
+
+    if (typecast == 'number') {
+        lft = parseFloat(lft)
+        rgt = parseFloat(rgt)
+
+    }
+    else if (typecast == 'boolean') {
+        lft = JSON.parse(lft)
+        rgt = JSON.parse(rgt)
+
+    }
 
     switch(oper) {
         case '=':
@@ -129,15 +140,34 @@ alkahest.mix = function(O, p, opts) {
                 // is a rule.  do not add this to selectors.
                 if (property.substr(1, 2) == 'on') {
                     // is @onEvent rule.
-                    var eve = property.slice(3).toLowerCase()
-                    alkahest.priv.addListeners(eve, selector, value)
+
+                    // get `eve`
+                    var pieces = property.split('(')
+                    var eve = pieces[0].slice(3).toLowerCase()
+
+                    // get `eventCond`
+                    eventCond = { 
+                        lft: '',
+                        op: '',
+                        rgt: ''
+                    }
+                    if (pieces[1]) {
+
+                        pieces = pieces[1].split(')')
+                        wholeCond = pieces[0].trim()
+                        if (alkahest.debug) console.log('found potential condition:', wholeCond)
+                        eventCond = alkahest.priv.parseCondition(wholeCond)
+                        if (alkahest.debug) console.log('... and here it is:', eventCond)
+                    }
+
+                    alkahest.priv.addListeners(eve, eventCond, selector, value)
                 }
                 else if (property.substr(0, 3) == '@if') {
                     // obtain the the left, op, and right from the condition
                     var pieces = property.split('(')
                     var pieces = pieces[1].split(')')
                     alkahest.proc.cond.raw = pieces[0].trim()
-                    if ( alkahest.priv.evalIf(alkahest.proc.cond.raw, opts) ) { 
+                    if ( alkahest.priv.evalIf( alkahest.proc.cond.raw, opts ) ) { 
                         alkahest.mix(value, null, opts)
                     }
                 }
@@ -170,7 +200,7 @@ alkahest.mix = function(O, p, opts) {
 /**
  *
  */
-alkahest.priv.addListeners = function (eve, selector, value) {
+alkahest.priv.addListeners = function (eve, eventCond, selector, value) {
     // we must add a listener for the current selector + this onEvent.
     var els = document.querySelectorAll( selector )
 
@@ -181,15 +211,42 @@ alkahest.priv.addListeners = function (eve, selector, value) {
         // stash the event data for later use (by saving key to new element attribute)
         var a = document.createAttribute( 'data-' + eve + '-eid'  )
         var eId = ++alkahest.proc.eId
-        alkahest.proc.eData[ eId ] = newMix
+        alkahest.proc.eData[ eId ] = { aeon: newMix, condition: eventCond }
         a.value = eId
         els[i].setAttributeNode( a )
 
         els[i].addEventListener(eve, function(e){
+            if (alkahest.debug) console.log(e)
             eAttr = 'data-' + e.type + '-eid'
             eId = e.target.getAttribute( eAttr )
-            newMix = alkahest.proc.eData[ eId ]
-            alkahest.mix(newMix, null, {el: e.target, e: e})
+            eData = alkahest.proc.eData[ eId ]
+
+            var condResult = true
+            if (eData.condition.lft) { 
+                if (eData.condition.oper && eData.condition.rgt) {
+                    if (alkahest.debug) console.log('3 part condition found', {e:e, eData: eData})
+
+                    condResult = alkahest.compare(e[eData.condition.lft], eData.condition.oper, eData.condition.rgt)
+                }    
+                else {
+                    if (alkahest.debug) console.log('1 part condition found', {e:e, eData: eData})
+
+                    if (!e[eData.condition.lft]) condResult = false
+                }
+            }
+            else {
+                if (alkahest.debug) console.log('no event condition', eventCond)
+
+            }
+            
+            if (condResult) { 
+                if (alkahest.debug) console.log('condition passed', {e:e, eData: eData})
+                alkahest.mix(eData.aeon, null, {el: e.target, e: e})
+
+            }
+            else {
+                if (alkahest.debug) console.log('condition failed', {e:e, eData: eData})
+            }
         })
     }
 }
@@ -224,16 +281,7 @@ alkahest.priv.evalIf = function (expression, opts) {
             alkahest.proc.cond.attr = withoutSel = pieces[1].trim()
         }    
 
-        for (var i=0; i < alkahest.condOper.length; i++ ) {
-            if (withoutSel.indexOf( alkahest.condOper[i] ) != -1) {
-                if (alkahest.debug) console.log('found a conditional operator:', alkahest.condOper[i])
-                alkahest.proc.cond.oper = alkahest.condOper[i]
-                pieces = withoutSel.split( alkahest.proc.cond.oper )
-                alkahest.proc.cond.attr = pieces[0].trim()
-                alkahest.proc.cond.rgt = pieces[1].trim()
-                break
-            }
-        }
+        var trio = alkahest.priv.parseCondition(withoutSel)
 
         alkahest.proc.cond.lft = alkahest.priv.get(alkahest.proc.cond.attr, alkahest.proc.cond.sel)
 
@@ -249,6 +297,30 @@ alkahest.priv.evalIf = function (expression, opts) {
     }
 
     return result
+}
+
+/**
+ *
+ */
+alkahest.priv.parseCondition = function (condition) {
+    var trio = {
+        lft: '',
+        oper: '',
+        rgt: '',
+    }
+
+    for (var i=0; i < alkahest.condOper.length; i++ ) {
+        if (condition.indexOf( alkahest.condOper[i] ) != -1) {
+            if (alkahest.debug) console.log('found a conditional operator:', alkahest.condOper[i])
+            trio.oper = alkahest.proc.cond.oper = alkahest.condOper[i]
+            pieces = condition.split( alkahest.proc.cond.oper )
+            trio.lft = alkahest.proc.cond.attr = pieces[0].trim()
+            trio.rgt = alkahest.proc.cond.rgt = pieces[1].trim()
+            break
+        }
+    }
+
+    return trio
 }
 
 /**

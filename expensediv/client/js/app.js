@@ -14,7 +14,7 @@ var expensedivApp = angular.module('expensediv', ['ngRoute', 'ui.bootstrap',  'a
     controller: 'UserCtrl',
     templateUrl: 'partials/user.html'
   })
-  .when('/timezones', {
+  .when('/expenses', {
     controller: 'TimezoneCtrl',
     templateUrl: 'partials/timezone.html'
   })

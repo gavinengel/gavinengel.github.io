@@ -52,8 +52,8 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
     $scope.getTimezones = function() {
       TimezonesService.fetchAll()
       .then(function (result) {
-            dashboard.timezones = result.data;//debug
-            envoy.timezones = result.data;
+            dashboard.expenses = result.data;//debug
+            envoy.expenses = result.data;
           });
     };
 
@@ -103,7 +103,7 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
       dashboard.isEditing = false;
     }
 
-    dashboard.timezones = [];
+    dashboard.expenses = [];
     dashboard.editedTimezone = null;
     dashboard.isEditing = false;
     dashboard.getTimezones = $scope.getTimezones;
@@ -138,7 +138,7 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
 
           TimezonesService.fetchAll()
           .then(function (result) {
-            envoy.timezones = result.data;
+            envoy.expenses = result.data;
           });
 
           //initCreateForm();
@@ -154,7 +154,7 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
         .then(function (res) {
           TimezonesService.fetchAll()
           .then(function (result) {
-            envoy.timezones = result.data;
+            envoy.expenses = result.data;
           });
           //initCreateForm();
           $modalInstance.dismiss('cancel');
@@ -170,7 +170,7 @@ expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
 
 expensedivApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, store, UserService) {
   var service = this,
-  path = 'timezones/';
+  path = 'expenses/';
 
   function getUrl(addCredentials, id) {
     var url = ENDPOINT_URI + path
@@ -519,7 +519,7 @@ expensedivApp.controller('LoginCtrl', function($rootScope, $scope, $location, Lo
         //$scope.loggedIn = true
         $scope.currentUser = user
         //console.log('now loggedin with: '+$scope.user.username)
-        $location.path('timezones')
+        $location.path('expenses')
       }).catch(function(response) {
         console.log('invalid login')
         
@@ -529,7 +529,7 @@ expensedivApp.controller('LoginCtrl', function($rootScope, $scope, $location, Lo
         console.log('ahmmmmmm')
         UserService.setCurrentUser(user);
         $rootScope.$broadcast('authorized');
-        $location.path('timezones')
+        $location.path('expenses')
       }).then(function(response) {
         console.log(259)
         //$scope.login(user);

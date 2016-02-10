@@ -2,7 +2,7 @@
 // TODO remove all firebase stuff
 // TIMEZONES //////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, $routeParams, timezone_table, filterFilter, UserService, TimezonesService, store) {
+expensedivApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $location, $routeParams, timezone_table, filterFilter, UserService, TimezonesService, store) {
     UserService.auth()
 
     // Define variables
@@ -168,7 +168,7 @@ timezonelyApp.controller('TimezoneCtrl', function(envoy, $scope, $modal, $locati
     $scope.envoy = envoy //TODO
   })
 
-timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, store, UserService) {
+expensedivApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, store, UserService) {
   var service = this,
   path = 'timezones/';
 
@@ -243,7 +243,7 @@ timezonelyApp.service('TimezonesService', function($http, ENDPOINT_URI, envoy, s
 // USERS //////////////////////////////////////////////////////////////////////
 
 
-timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, $routeParams, user_table, filterFilter, UserService) {
+expensedivApp.controller('UserCtrl', function($scope, $modal, $location, envoy, $routeParams, user_table, filterFilter, UserService) {
     UserService.auth()
 
     // Define valiables
@@ -370,7 +370,7 @@ timezonelyApp.controller('UserCtrl', function($scope, $modal, $location, envoy, 
 
       })
 
-timezonelyApp.service('UserService', function($http, $location, ENDPOINT_URI, envoy, store) {
+expensedivApp.service('UserService', function($http, $location, ENDPOINT_URI, envoy, store) {
   var service = this,
   currentUser = null,
   path = 'users/';
@@ -502,7 +502,7 @@ timezonelyApp.service('UserService', function($http, $location, ENDPOINT_URI, en
 
 // LOGIN //////////////////////////////////////////////////////////////////////
 
-timezonelyApp.controller('LoginCtrl', function($rootScope, $scope, $location, LoginService, UserService, store){
+expensedivApp.controller('LoginCtrl', function($rootScope, $scope, $location, LoginService, UserService, store){
   var login = this;
 
   //function signIn(user) {
@@ -569,7 +569,7 @@ timezonelyApp.controller('LoginCtrl', function($rootScope, $scope, $location, Lo
  })
 
 
-timezonelyApp.service('LoginService', function($http, ENDPOINT_URI, UserService, store) {
+expensedivApp.service('LoginService', function($http, ENDPOINT_URI, UserService, store) {
   var service = this,
   path = 'Users/';
 
@@ -603,11 +603,11 @@ timezonelyApp.service('LoginService', function($http, ENDPOINT_URI, UserService,
 })
 
 // HOME ///////////////////////////////////////////////////////////////////////
-timezonelyApp.controller('HomeCtrl', function($scope, UserService) {
+expensedivApp.controller('HomeCtrl', function($scope, UserService) {
     UserService.auth()
 })
 /*
-timezonelyApp.controller('MainCtrl', function ($rootScope, LoginService, UserService) {
+expensedivApp.controller('MainCtrl', function ($rootScope, LoginService, UserService) {
   var main = this;
 
   function logout() {
@@ -634,7 +634,7 @@ timezonelyApp.controller('MainCtrl', function ($rootScope, LoginService, UserSer
   main.currentUser = UserService.getCurrentUser();
 })
 
-timezonelyApp.service('APIInterceptor', function($rootScope, UserService) {
+expensedivApp.service('APIInterceptor', function($rootScope, UserService) {
   var service = this;
 
   service.request = function(config) {

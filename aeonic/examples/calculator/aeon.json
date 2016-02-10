@@ -2,7 +2,7 @@
 	"#calculator": {
 		".eval": {
 			"@onclick": {
-				".screen & value": "`$hiya`"
+				".screen & value": "`$onClickEqFilter`"
 			}
 		},
 		".num": {

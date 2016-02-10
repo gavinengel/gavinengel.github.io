@@ -406,54 +406,40 @@ aeonic.priv.unstring = function(value, opts) {
         else if (value.charAt(0) == '$') { 
             value = value.slice(1)
 
+            parent = {}
+            parentName = ''
+            if (typeof aeonic.ext[value] != 'undefined') {
+                parent = aeonic.ext
+                parentName = 'aeonic.ext'
+            }
+            else if (typeof window[value] != 'undefined') {
+                parent = window
+                parentName = 'window'
+            }
+            else {
+                console.error('invalid value:', value); debugger
+            }
+
             // if: extension-link
             if (aeonic.proc.tar.attr.slice(0, 2) == 'on') {
-                value = 'return aeonic.ext.' + value + '(event);'
+                value = 'return ' + parentName + '.' + value + '(event);'
             }
-            // else: extension-exec
+            // else: extension-exec or extension-value
             else {
-                //value = 'return aeonic.ext.' + value + '(event);'
 
-                // is `value` an element in aeonic.ext...
-                if (typeof aeonic.ext[value] != 'undefined') {
-                    // if function, call it ...
-                    if (typeof aeonic.ext[value] === 'function') {
-                        ext = aeonic.ext[value]
-                
-                        var e = {}
-                        if (opts && opts.hasOwnProperty('e')) {
-                            e = opts.e
-                        }
-
-                        value = ext(e)
-                    }
-                    // ... or if simple variable, get it
-                    else {
-                        value = aeonic.ext[value]
+                if (typeof parent[value] === 'function') {
+                    ext = parent[value]
+            
+                    var e = {}
+                    if (opts && opts.hasOwnProperty('e')) {
+                        e = opts.e
                     }
 
-                } 
-                // ... or is it a global element ...
-                else if (typeof window[value] != 'undefined') {
-                    // if function, call it ...
-                    if (typeof window[value] === 'function') {
-                        ext = window[value]
-                
-                        var e = {}
-                        if (opts && opts.hasOwnProperty('e')) {
-                            e = opts.e
-                        }
-
-                        value = ext(e)
-                    }
-                    // ... or if simple variable, get it
-                    else {
-                        value = window[value]
-                    }
+                    value = ext(e)
                 }
-                // ... or neither.
+                // ... or if simple variable, get it
                 else {
-                    console.error('invalid value:', value); debugger
+                    value = parent[value]
                 }
 
             }
@@ -462,7 +448,6 @@ aeonic.priv.unstring = function(value, opts) {
         // b) new sel & attribute:     #foo .bar & data-foo
         else if (value.indexOf('&') != -1) {
             var values = value.split('&')
-
 
             aeonic.proc.src.attr = values[1]
             aeonic.proc.src.sel = values[0]

@@ -7,7 +7,7 @@
  * - mix
  */
 window.aeonic = {
-    ver: '0.0.10',
+    ver: '0.1.0',
     debug: false,
     condOper: ['!=', '>=', '<=', '>', '<', '='], // add single char conditions at end of array
     ext: {},

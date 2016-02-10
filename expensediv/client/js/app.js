@@ -2,12 +2,12 @@ user = { username:{} }
 
 
 // TODO eliminate a router library
-var expensedivApp = angular.module('expensediv', ['ngRoute', 'ui.bootstrap',  'angular-storage', 'ui.router', 'ngResource'])
+var expensedivApp = angular.module('expensediv', ['ngRoute', 'ui.bootstrap',  'angular-storage', 'ngResource'])
 .value('user_table', 'user')
 .value('expense_table', 'expense')
 .value('envoy', {name:'envoy'}) // carries data to views
 .constant('ENDPOINT_URI', 'http://express.api.expensediv.engeldev.com/api/') 
-.config(function($routeProvider) {
+/*.config(function($routeProvider) {
   $routeProvider
   .when('/home', {
     controller: 'HomeCtrl',
@@ -32,6 +32,6 @@ var expensedivApp = angular.module('expensediv', ['ngRoute', 'ui.bootstrap',  'a
   .otherwise({
     redirectTo: '/home'
   });
-})
+})*/
 
 

@@ -1,3 +1,5 @@
+body #displayViews .display {
+  display: block; }
 body .container {
   width: inherit;
   padding: 15px 15px;
@@ -18,5 +20,3 @@ body .container {
     max-width: 100px; }
 body .modal.fade.in {
   top: 40%; }
-
-/*# sourceMappingURL=style.css.map */

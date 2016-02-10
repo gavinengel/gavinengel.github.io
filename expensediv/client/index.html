@@ -8,7 +8,7 @@
       <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/bootstrap.min.css">
       <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/docs.css">
       <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/league-0.0.1.css">
-      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/style.css">
+      <link type="text/css" rel="stylesheet" href="/css/style.css">
       <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
     </id>
     <ego>
@@ -39,20 +39,20 @@
       <div class="navbar-inner">
         <div class="container">
           <ul class="nav">
-            <li ui-route="/home" ng-class="{active:$uiRoute}" class="ng-scope">
-              <a href="#/home">
+            <li>
+              <a href="#home">
                 <i class="icon-home"></i>
                 Home
               </a>
             </li>
-            <li ui-route="/users" ng-class="{active:$uiRoute}" class="ng-scope">
-              <a href="#/users">
+            <li>
+              <a href="#users">
                 <i class="icon-github-alt"></i>
                 Users
               </a>
             </li>
-            <li ui-route="/expenses" ng-class="{active:$uiRoute}" class="ng-scope">
-              <a href="#/expenses">
+            <li>
+              <a href="#expenses">
                 <i class="icon-info-sign"></i>
                 Expenses
               </a>
@@ -62,6 +62,285 @@
       </div>
     </div>
 		<div ng-view></div>
+    <div id="displayViews">
+      <div id="displayUser" class="display">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <section>
+          <input type="text" ng-model="search" class="search-query pull-left" placeholder="Search">
+          <button ng-click="open()" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add new user</button>
+        </section>
+        <br/>
+        <table ng-table="tableParams" class="table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, user) in envoy.users | filter:search | orderBy:'username'">
+              <td data-title="'Username'">
+                <span ng-if="!user.$edit">{{user.username}}</span>
+                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.username" /></div>
+              </td>
+              <td data-title="'Name'">
+                <span ng-if="!user.$edit">{{user.name}}</span>
+                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.name" /></div>
+              </td>
+              <td data-title="'Text'" width="330">
+                <span ng-if="!user.$edit">{{user.designation}}</span>
+                <div ng-if="user.$edit"><input class="form-control" type="text" ng-model="user.designation" /></div>
+              </td>
+              <td data-title="'Actions'" width="200">
+                <a ng-if="!user.$edit" href="" class="btn btn-primary btn-xs" ng-click="open(user._id)">Edit</a>
+                <a ng-if="!user.$destroy" ng-click="removeRecord(user._id)" class="btn btn-default btn-xs">Delete</a>
+                <a ng-if="user.$edit" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <script type="text/ng-template" id="add_user_modal">
+          <div class="modal-header">
+            <h3>User Form</h3>
+          </div>
+          <div class="modal-body">
+            <!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
+            <form name="userForm" class="form-horizontal">
+              
+              <div class="control-group">
+                <label class="control-label" for="username">Username</label>
+                <div class="controls">
+                  <input id="username" name="username" ng-model="user.username" type="text" placeholder="Username" class="input-xlarge" required=""  ng-class="{error: user.username.$invalid && !user.username.$pristine}"/>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="name">Name</label>
+                <div class="controls">
+                  <input id="name" name="name" ng-model="user.name" type="text" placeholder="Name" class="input-xlarge" required=""  ng-class="{error: user.name.$invalid && !user.name.$pristine}"/>
+                </div>
+              </div>
+              
+              <div class="control-group" ng-class="{error: user.password.$invalid && !user.password.$pristine}">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                  <input id="password" name="password" ng-model="user.password" type="password" placeholder="Password" class="input-xlarge" required="" />
+                </div>
+              </div>
+              <!--
+              <div class="control-group" ng-class="{error: user.dob.$invalid && !user.dob.$pristine}">
+                <label class="control-label" for="dob">Date Of Birth</label>
+                <div class="controls">
+                  <input type="text" class="input-xlarge" datepicker-popup="yyyy-MM-dd" ng-model="user.dob" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="" date-disabled="disabled(date, mode)" ng-required="true" show-weeks="false" show-button-bar="false" />
+                </div>
+              </div>
+              -->
+              <!--
+              <div class="control-group">
+                <label class="control-label" for="gender">Gender</label>
+                <div class="controls">
+                  <label class="radio inline" for="male">
+                    <input type="radio" name="gender" ng-model="user.gender" id="male" value="male" checked="checked">
+                    Male
+                  </label>
+                  <label class="radio inline" for="female">
+                    <input type="radio" name="gender" ng-model="user.gender" id="female" value="female">
+                    Female
+                  </label>
+                </div>
+              </div>
+              -->
+              
+              <div class="control-group">
+                <label class="control-label" for="designation">Designation</label>
+                <div class="controls">
+                  <select id="designation" ng-model="user.designation" name="designation" class="input-xlarge" ng-options="opt.name as opt.name for opt in designations"></select>
+                </div>
+              </div>
+              
+              <div class="control-group">
+                <label class="control-label" for="tnc">Term &amp; Condition</label>
+                <div class="controls">
+                  <label class="checkbox inline" for="tnc">
+                    <input name="tnc" id="tnc" type="checkbox" ng-model="user.tnc" required />Accept
+                  </label>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button ng-click="save()" ng-if="user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+            <button ng-click="add()" type="submit" ng-if="!user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+            <button ng-click="cancel()" class="btn">Cancel</button>
+          </div>
+        </script>
+      </div>
+      <div id="displayExpense" class="display">
+                
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <section>
+          <input type="text" ng-model="search" class="search-query pull-left" placeholder="Search">
+          <button ng-click="open()" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add new expense</button>
+        </section>
+        <br/>
+
+        <table ng-table="tableParams" class="table">
+          <thead>
+            <tr>
+              <th>Expense Name</th>
+              <th>Name of city</th>
+              <th>+/-</th>
+              <th>local time</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="(key, expense) in envoy.expenses | filter:search | orderBy:'expenseName'">
+            <td data-title="'Name'" >
+              <span >{{expense.expenseName}}</span>
+              <div ng-if="expense.$edit"><input class="form-control" type="text" ng-model="expense.expenseName" /></div>
+            </td>
+            <td data-title="'Text'" >
+              <span >{{expense.city}}</span>
+              <div ng-if="expense.$edit"><input class="form-control" type="text" ng-model="expense.city" /></div>
+            </td>
+            <td data-title="'Text'" >
+              <span >{{expense.difference}}</span>
+              <div ng-if="expense.$edit"><input class="form-control" type="text" ng-model="expense.difference" /></div>
+            </td>
+            <td data-title="'Text'" >
+              <div ng-controller='TimeCtrl'>
+                  <p>{{ clock | date:'medium'}}</p>
+              </div>
+              <span ng-bind="getLocalTime(expense)"></span>
+              <span ng-if="true">{{expense.id}}</span>
+              <div ng-if="false"><input class="form-control" type="text" ng-model="getLocalTime(expense._id)" /></div>
+            </td>
+
+            <td data-title="'Actions'" >
+              <a ng-if="true" href="" class="btn btn-primary btn-xs" ng-click="open(expense._id)">Edit</a>
+              <a ng-if="true" ng-click="removeRecord(expense._id)" class="btn btn-default btn-xs">Delete</a>
+              <a ng-if="false" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <script type="text/ng-template" id="add_expense_modal">
+          <div class="modal-header">
+            <h3>Expense Form</h3>
+          </div>
+          <div class="modal-body">
+            <!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
+            <form name="expenseForm" class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="expenseName">Expense Name</label>
+                <div class="controls">
+                  <input id="expenseName" name="expenseName" ng-model="expense.expenseName" type="text" placeholder="Expense Name" class="input-xlarge" required=""  ng-class="{error: expense.expenseName.$invalid && !expense.expenseName.$pristine}"/>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="city">Name of city in expense</label>
+                <div class="controls">
+                  <input id="city" name="city" ng-model="expense.city" type="text" placeholder="City" class="input-xlarge" required="required"  ng-class="{error: expense.city.$invalid && !expense.city.$pristine}"/>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="difference">difference to GMT time</label>
+                <div class="controls">
+                  <input id="difference" name="difference" ng-model="expense.difference" type="text" placeholder="Difference" class="input-xlarge" required="required"  ng-class="{error: expense.difference.$invalid && !expense.difference.$pristine}"/>
+                </div>
+              </div>      
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button ng-click="save()" ng-if="expense._id" ng-disabled="!expense.expenseName || !expense.city || !expense.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+            
+            <button ng-click="add()" type="submit" ng-if="!expense._id" ng-disabled="expense.$invalid || !expense.expenseName || !expense.city || !expense.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+
+            <button ng-click="cancel()" class="btn">Cancel</button>
+          </div>
+        </script>
+      </div>
+      <div id="displayHome" class="display">
+        <div class="container" ui-view="main">
+          <div class="ng-scope">
+          <h1>Expensediv</h1>
+
+          <p class="lead">
+            An <a href="http://angularjs.org/">Angular.js</a>, <a href="http://getbootstrap.com/">Bootstrap</a>, and <a href="http://expressjs.com/">Express</a> app
+          </p>
+         
+          </div>
+        </div>
+
+
+
+
+
+        <!-- asdf -->
+
+        <div class="container">
+          <h2>Modal Example</h2>
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+              <div class="col-sm-4 col-sm-offset-4">
+                  <div class="portal col-xs-12">
+                      <h4 class="col-xs-12">Login</h4>
+                      <hr/>
+                      <form class="col-xs-12" ng-submit="submit(login.user)">
+                          <div class="form-group">
+                              <label for="username">Username</label>
+                              <input id="username" name="username" class="form-control" type="username"
+                                     ng-model="login.user.username" placeholder="Enter username"/>
+                          </div>
+                          <div class="form-group">
+                              <label for="password">Password</label>
+                              <input id="password" name="password" class="form-control" type="password"
+                                     ng-model="login.user.password" placeholder="Enter password"/>
+                          </div>
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-info btn-lg">Submit</button>
+                              <input id="new_user" name="new_user" type="checkbox" ng-model="login.user.newUser"/>
+                              <label for="new_user">I am a new user</label>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+                
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+
+
+      </div>
+      
+    </div>
     <footer class="footer">
       <div class="container">
         <div class="footer-inner">

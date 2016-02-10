@@ -1,4 +1,9 @@
 body {
+  #displayViews {
+    .display {
+      display: block;
+    }
+  }
   .container { 
     width: inherit;
     padding: 15px 15px;

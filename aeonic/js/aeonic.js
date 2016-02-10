@@ -2,17 +2,22 @@
  * Alkahest.js
  * `Alchemy for DOM Events and Attributes` 
  * example usage: aeonic.fetch('/aeon.json', aeonic.mix)
+ * Public methods:
+ * - fetch
+ * - mix
  */
 window.aeonic = {
-    ver: '0.0.9',
+    ver: '0.0.10',
     debug: false,
     condOper: ['!=', '>=', '<=', '>', '<', '='], // add single char conditions at end of array
     ext: {},
+    // these internal *will* change names frequently, and without notice... 
     priv: {
         mixxers: {},
         valuables: ['input'],
         selectors: []
     },
+    // ... as will these data store names.
     proc: {
         opts: {},
         e: {},
@@ -55,10 +60,53 @@ aeonic.fetch = function (path, success, error) {
     xhr.send()
 }
 
+
 /**
  *
  */
-aeonic.compare = function(lft, oper, rgt, typecast) {
+aeonic.mix = function(O, p, opts) {
+    if (p) { aeonic.priv.selectors.push(p); }
+
+    for (var property in O) {
+        var value      = O[property]
+
+        aeonic.proc.opts = opts
+        aeonic.proc.src.attr = value
+        aeonic.proc.tar.attr = property
+
+        // Array?
+        if (Array.isArray(value)) {
+            aeonic.priv.mixxers.mixArray(property, value)
+        }
+    
+        // String?
+        else if (typeof value === 'string' || value instanceof String) {
+            aeonic.priv.set(property, aeonic.priv.unstring(value))
+        }
+    
+        // Function?
+        else if (typeof value === 'function') {
+            aeonic.priv.set(property, value)    
+        }
+
+        // Plain Object?
+        else if (typeof value == 'object' && value.constructor == Object) {
+            aeonic.priv.mixxers.mixObject(property, value)
+        }
+        else if (typeof value === 'boolean' || typeof value === 'number') {
+            aeonic.priv.set(property, value)    
+        }
+        else {
+            console.error('invalid value', value)
+        }
+    }
+    aeonic.priv.selectors.pop()
+}
+
+/**
+ *
+ */
+aeonic.priv.compare = function(lft, oper, rgt, typecast) {
     result = false
 
     if (aeonic.debug) console.log({lft:lft, oper:oper, rgt:rgt})
@@ -105,47 +153,6 @@ aeonic.compare = function(lft, oper, rgt, typecast) {
     return result
 }
 
-/**
- *
- */
-aeonic.mix = function(O, p, opts) {
-    if (p) { aeonic.priv.selectors.push(p); }
-
-    for (var property in O) {
-        var value      = O[property]
-
-        aeonic.proc.opts = opts
-        aeonic.proc.src.attr = value
-        aeonic.proc.tar.attr = property
-
-        // Array?
-        if (Array.isArray(value)) {
-            aeonic.priv.mixxers.mixArray(property, value)
-        }
-    
-        // String?
-        else if (typeof value === 'string' || value instanceof String) {
-            aeonic.priv.set(property, aeonic.priv.unstring(value))
-        }
-    
-        // Function?
-        else if (typeof value === 'function') {
-            aeonic.priv.set(property, value)    
-        }
-
-        // Plain Object?
-        else if (typeof value == 'object' && value.constructor == Object) {
-            aeonic.priv.mixxers.mixObject(property, value)
-        }
-        else if (typeof value === 'boolean' || typeof value === 'number') {
-            aeonic.priv.set(property, value)    
-        }
-        else {
-            console.error('invalid value', value)
-        }
-    }
-    aeonic.priv.selectors.pop()
-}
 
 /**
  *
@@ -284,7 +291,7 @@ aeonic.priv.addListeners = function (eventType, eventCond, selector, value) {
                 if (eData.condition.oper && eData.condition.rgt) {
                     if (aeonic.debug) console.log('3 part condition found', {e:e, eData: eData})
 
-                    condResult = aeonic.compare(e[eData.condition.lft], eData.condition.oper, eData.condition.rgt)
+                    condResult = aeonic.priv.compare(e[eData.condition.lft], eData.condition.oper, eData.condition.rgt)
                 }    
                 else {
                     if (aeonic.debug) console.log('1 part condition found', {e:e, eData: eData})
@@ -345,7 +352,7 @@ aeonic.priv.evalIf = function (expression) {
 
         console.log('get cond result from:', aeonic.proc.cond)
         if (aeonic.proc.cond.oper) {
-            aeonic.proc.cond.result = aeonic.compare(aeonic.proc.cond.lft, aeonic.proc.cond.oper, aeonic.proc.cond.rgt)
+            aeonic.proc.cond.result = aeonic.priv.compare(aeonic.proc.cond.lft, aeonic.proc.cond.oper, aeonic.proc.cond.rgt)
         }
         else if (aeonic.proc.cond.lft) {
             aeonic.proc.cond.result = true

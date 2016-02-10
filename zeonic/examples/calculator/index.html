@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>Aeonic AEON Calculator App.</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="calculator">
+		<!-- Screen and clear key -->
+		<div class="top">
+			<span class="clear">C</span>
+			<div class="screen"></div>
+		</div>
+
+		<div class="keys">
+			<!-- operators and other keys -->
+			<span class="num">7</span>
+			<span class="num">8</span>
+			<span class="num">9</span>
+			<span class="operator">+</span>
+			<span class="num">4</span>
+			<span class="num">5</span>
+			<span class="num">6</span>
+			<span class="operator">-</span>
+			<span class="num">1</span>
+			<span class="num">2</span>
+			<span class="num">3</span>
+			<span class="operator">%</span>
+			<span class="num">0</span>
+			<span class="dec">.</span>
+			<span class="eval">=</span>
+			<span class="operator">x</span>
+		</div>
+	</div>
+
+</body>
+
+<self>
+	<precog>
+		<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+		<script src="../../js/zeonic.js" type="text/javascript"></script>
+		<script src="new.js" type="text/javascript"></script>
+	</precog>
+	<cog>
+		<script type="text/javascript">
+			//zeonic.debug = true
+			zeonic.fetch('aeon.json', zeonic.mix);
+		</script>
+	</cog>
+</self>
+
+</html>

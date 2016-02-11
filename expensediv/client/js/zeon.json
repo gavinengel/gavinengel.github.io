@@ -1,9 +1,20 @@
 {
 	"#expensediv": {
-		".modal": {
-			".btn-save": {
-				"@onclick": {
-					"data-save-result": "`$expensesSet`"
+		"#expenses": {
+			".modal": {
+				".btn-save": {
+					"@onclick": {
+						"data-save-result": "`$expensesSet`"
+					}
+				}
+			}
+		},
+		"#users": {
+			".modal": {
+				".btn-save": {
+					"@onclick": {
+						"data-save-result": "`$usersGetAll`"
+					}
 				}
 			}
 		}

@@ -11,6 +11,10 @@ expensediv = {
   }
 }
 
+zeonic.ext.isLoggedIn = function() {
+  return true
+}
+
 zeonic.ext.hideModal = function(){
   $('.modal').modal('hide');
 }
@@ -18,14 +22,17 @@ zeonic.ext.hideModal = function(){
 zeonic.ext.fillTable = function(tableId, key, data) {
 
   $.each(data[key], function (index, value) {
+      var row = ''
+
       if (tableId == 'usersTable')
       {
-        $('#' + tableId).append('<tr><td>'+value.id+'</td><td>'+value.username+'</td><td>'+value.name+'</td><td>'+value.role+'</td><td data-title="action" width="200"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a><a href="" class="btn btn-primary btn-xs">Save</a></td></tr>');
+        row = '<tr><td>'+value.id+'</td><td>'+value.username+'</td><td>'+value.name+'</td><td>'+value.role+'</td><td data-title="action"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a></td></tr>'
       }
       else {
-        $('#' + tableId).append('<tr><td>'+value.id+'</td><td>'+value.date+'</td><td>'+value.time+'</td><td>'+value.description+'</td><td>'+value.amount+'</td><td>'+value.comment+'</td><td data-title="action" width="200"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a><a href="" class="btn btn-primary btn-xs">Save</a></td></tr>');    
+        row = '<tr><td>'+value.id+'</td><td>'+value.date+'</td><td>'+value.time+'</td><td>'+value.description+'</td><td>'+value.amount+'</td><td>'+value.comment+'</td><td data-title="action"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a></tr>'
       }
 
+      $('#' + tableId).append(row)
   });
 
 }

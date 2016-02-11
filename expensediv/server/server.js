@@ -18,6 +18,7 @@ var mongodbConnect = 'mongodb://'+config.mongodb.username + ':'+ config.mongodb.
 console.log(mongodbConnect)
 mongoose.connect(mongodbConnect);
 
+var useAuth = false
 
 // Create our Express application
 var app = express();
@@ -40,7 +41,7 @@ app.use(session({
 }));
 
 // Use the passport package in our application
-app.use(passport.initialize());
+if (useAuth) app.use(passport.initialize());
 
 // Enable all CORS requests
 app.use(cors());
@@ -49,29 +50,29 @@ app.use(cors());
 var router = express.Router();
 
 // Create endpoint handlers for /expenses
-router.route('/api/expenses')
+router.route('/api/expense')
   .post(authController.isAuthenticated, expenseController.postExpenses)
   .get(authController.isAuthenticated, expenseController.getExpenses);
 
 // Create endpoint handlers for /expenses/:expense_id
-router.route('/api/expenses/:expense_id')
+router.route('/api/expense/:expense_id')
   .get(authController.isAuthenticated, expenseController.getExpense)
   .put(authController.isAuthenticated, expenseController.putExpense)
   .delete(authController.isAuthenticated, expenseController.deleteExpense);
 
 // Create endpoint handlers for /users
-router.route('/api/users')
+router.route('/api/user')
   .post(userController.postUsers) // no auth for adding user
   .get(authController.isAuthenticated, userController.getUsers);
 
 // Create endpoint handlers for /users/:user_id
-router.route('/api/users/:user_id')
+router.route('/api/user/:user_id')
   .get(authController.isAuthenticated, userController.getUser)
   .put(userController.putUser) // TODO authenticate
   .delete(authController.isAuthenticated, userController.deleteUser);
 
 // minimal authentication TODO improve authentication of login
-router.route('/api/users/login/:username')
+router.route('/api/user/login/:username')
   .get(authController.isAuthenticated, userController.getUsername)
 
 // Create endpoint handlers for /clients

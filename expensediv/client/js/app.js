@@ -1,4 +1,5 @@
 
+
 currentUser = {}
 
 expensediv = {
@@ -10,6 +11,18 @@ expensediv = {
     user: "user/"
   }
 }
+
+// test post
+
+$.ajax({
+    type: "POST",
+    data: { date:'asdf', time:'asdf', amount:123, description:'asff', comment:'asdfasdf' },
+    url: "http://localhost:9000/api/expense/",
+    success: function success(data) {
+        alert('yaya')
+    },
+    cache: false
+});
 
 // listeners
 $("#add_user_modal").on('show.bs.modal', function (e) {

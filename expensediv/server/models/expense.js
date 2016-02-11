@@ -3,10 +3,11 @@ var mongoose = require('mongoose');
 
 // Define our expense schema
 var ExpenseSchema   = new mongoose.Schema({
-  city: String,
-  zonename: String,
-  difference: String,
-  userId: String
+  date: String,
+  time: String,
+  description: String,
+  amount: String,
+  comment: String
 });
 
 // Export the Mongoose model

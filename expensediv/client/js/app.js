@@ -15,6 +15,21 @@ zeonic.ext.hideModal = function(){
   $('.modal').modal('hide');
 }
 
+zeonic.ext.fillTable = function(tableId, key, data) {
+
+  $.each(data[key], function (index, value) {
+      if (tableId == 'usersTable')
+      {
+        $('#' + tableId).append('<tr><td>'+value.id+'</td><td>'+value.username+'</td><td>'+value.name+'</td><td>'+value.role+'</td><td data-title="action" width="200"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a><a href="" class="btn btn-primary btn-xs">Save</a></td></tr>');
+      }
+      else {
+        $('#' + tableId).append('<tr><td>'+value.id+'</td><td>'+value.date+'</td><td>'+value.time+'</td><td>'+value.description+'</td><td>'+value.amount+'</td><td>'+value.comment+'</td><td data-title="action" width="200"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a><a href="" class="btn btn-primary btn-xs">Save</a></td></tr>');    
+      }
+
+  });
+
+}
+
 zeonic.ext.fetch = function (path, method, success, error) {
     var xhr = new XMLHttpRequest()
     method = method || 'get'
@@ -34,8 +49,8 @@ zeonic.ext.fetch = function (path, method, success, error) {
 
 zeonic.ext.expensesGet = function(e) {
   id = 12
-  zeonic.ext.fetch( expensediv.urls.base + expensediv.urls.expense + id, 'get', function(val){
-    console.log(val)
+  zeonic.ext.fetch( expensediv.urls.base + expensediv.urls.expense + id, 'get', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
   }, function(err){
     console.log(err)
@@ -43,9 +58,12 @@ zeonic.ext.expensesGet = function(e) {
 }
 
 zeonic.ext.expensesGetAll = function(e) {
-  zeonic.ext.fetch( expensediv.urls.base + expensediv.urls.expense, 'get', function(val){
-    console.log(val)
+  zeonic.ext.fetch( expensediv.urls.base + expensediv.urls.expense, 'get', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
+
+    zeonic.ext.fillTable('expensesTable', 'expenses', data)
+
 
   }, function(err){
     console.log(err)
@@ -54,8 +72,8 @@ zeonic.ext.expensesGetAll = function(e) {
 
 zeonic.ext.expensesSet = function(e) {
   id = 12
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense + id, 'put', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense + id, 'put', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
 
   }, function(err){
@@ -64,8 +82,8 @@ zeonic.ext.expensesSet = function(e) {
 }
 
 zeonic.ext.expensesAdd = function(e) {
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense, 'post', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense, 'post', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
 
   }, function(err){
@@ -75,8 +93,8 @@ zeonic.ext.expensesAdd = function(e) {
 
 zeonic.ext.expensesDel = function(e) {
   id = 12
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense + id, 'delete', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense + id, 'delete', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
 
   }, function(err){
@@ -86,8 +104,8 @@ zeonic.ext.expensesDel = function(e) {
 
 zeonic.ext.usersGet = function(e) {
   id = 12
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'get', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'get', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
 
   }, function(err){
@@ -96,9 +114,10 @@ zeonic.ext.usersGet = function(e) {
 }
 
 zeonic.ext.usersGetAll = function(e) {
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user, 'get', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user, 'get', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
+    zeonic.ext.fillTable('usersTable', 'users', data)
 
   }, function(err){
     console.log(err)
@@ -107,8 +126,8 @@ zeonic.ext.usersGetAll = function(e) {
 
 zeonic.ext.usersSet = function(e) {
   id = 12
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'put', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'put', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
 
   }, function(err){
@@ -117,8 +136,8 @@ zeonic.ext.usersSet = function(e) {
 }
 
 zeonic.ext.usersAdd = function(e) {
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user, 'post', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user, 'post', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
 
   }, function(err){
@@ -128,8 +147,8 @@ zeonic.ext.usersAdd = function(e) {
 
 zeonic.ext.usersDel = function(e) {
   id = 12
-  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'delete', function(val){
-    console.log(val)
+  zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'delete', function(data){
+    console.log(data)
     zeonic.ext.hideModal()
 
   }, function(err){

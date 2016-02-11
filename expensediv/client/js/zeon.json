@@ -4,7 +4,7 @@
 			".modal": {
 				".btn-save": {
 					"@onclick": {
-						"data-save-result": "`$expensesSet`"
+						"data-save-result": "`$expensesGetAll`"
 					}
 				}
 			}

@@ -15,6 +15,7 @@ var clientController = require('./controllers/client');
 
 // Connect to the expenseapp MongoDB
 var mongodbConnect = 'mongodb://'+config.mongodb.username + ':'+ config.mongodb.password + '@' + config.mongodb.host + ':' + config.mongodb.port + '/' + config.mongodb.db
+console.log(mongodbConnect)
 mongoose.connect(mongodbConnect);
 
 

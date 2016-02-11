@@ -1,20 +1,21 @@
 {
-  "name": "expenseapp",
+  "name": "expensediv",
+  "description": "expensediv",
   "main": "server.js",
   "dependencies": {
-    "bcrypt-nodejs": "0.*",
-    "body-parser": "1.*",
-    "bson": "^0.4.21",
-    "cors": "^2.6.0",
-    "ejs": "1.*",
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "bson": "*",
+    "cors": "*",
+    "ejs": "*",
     "express": "4.*",
     "express-session": "1.*",
     "magic-globals": "0.*",
-    "mongoose": "3.*",
-    "oauth2orize": "1.*",
-    "passport": "0.*",
-    "passport-http": "0.*",
-    "passport-http-bearer": "1.*",
-    "passport-local": "1.*"
+    "mongoose": "*",
+    "oauth2orize": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-http-bearer": "*",
+    "passport-local": "*"
   }
 }

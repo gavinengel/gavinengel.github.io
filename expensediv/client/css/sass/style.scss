@@ -1,13 +1,11 @@
-// init
-.view {
-  display: none;
-}
-
-body {
-  .view:target { display: block; } 
+#expensediv {
   #views {
-
-
+    .view {
+      display: none;
+    }
+    .view:target { 
+      display: block;
+    } 
   }
   .container { 
     width: inherit;

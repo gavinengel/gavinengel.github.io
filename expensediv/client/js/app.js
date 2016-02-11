@@ -1,5 +1,8 @@
-//#user = { username:{} }
+currentUser = currentUser || {}
 
+
+//##
+//#user = { username:{} }
 /*
 // TODO eliminate a router library
 var expensedivApp = angular.module('expensediv', ['ngRoute', 'ui.bootstrap',  'angular-storage', 'ngResource'])

@@ -209,6 +209,8 @@
       <h2>Expenses</h2>
       <!-- Trigger the modal with a button -->
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_expense_modal"><i class="icon-white icon-plus"></i> Add new expense</button>
+
+      
       <!-- /button for: add_expense_modal -->
 
       <!-- fields: date, time, description, amount, comment ... debug-->
@@ -418,14 +420,14 @@
   <precog>
 
     <script src="https://cdn.rawgit.com/gavinengel/gavinengel.github.io/master/zeonic/js/zeonic.js" ></script>
-    <script src="/js/app.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/js/app.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   </precog>
   <cog>
     <script type="text/javascript">
-      //zeonic.debug = true
+      zeonic.debug = true
       zeonic.fetch('js/zeon.json', zeonic.mix);
     </script>
   </cog>

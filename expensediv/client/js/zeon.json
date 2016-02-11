@@ -2,6 +2,8 @@
 	"#expensediv": {
 		"#expenses": {
 			"data-result-expensesGetAll": "`$expensesGetAll`",
+			"#expensesTable":{
+			},
 			".modal": {
 				".btn-save": {
 					"@onclick": {

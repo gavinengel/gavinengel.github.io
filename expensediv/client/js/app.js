@@ -11,6 +11,22 @@ expensediv = {
   }
 }
 
+// listeners
+
+$( "h3" ).click(function(e) {
+  id = 12//$(this).attr('data-id')
+
+  // get user from ajax, callback: asign user to modal fields
+  zeonic.ext.usersGet(e, id, function(data){
+    console.log('hhhh')
+  })  
+
+  //$( "#add_expense_modal" ).click(function(e, id){
+  //  $(this)
+
+  //});
+});
+
 zeonic.ext.isLoggedIn = function() {
   return true
 }
@@ -29,7 +45,7 @@ zeonic.ext.fillTable = function(tableId, key, data) {
         row = '<tr><td>'+value.id+'</td><td>'+value.username+'</td><td>'+value.name+'</td><td>'+value.role+'</td><td data-title="action"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a></td></tr>'
       }
       else {
-        row = '<tr><td>'+value.id+'</td><td>'+value.date+'</td><td>'+value.time+'</td><td>'+value.description+'</td><td>'+value.amount+'</td><td>'+value.comment+'</td><td data-title="action"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a></tr>'
+        row = '<tr><td>'+value.id+'</td><td>'+value.date+'</td><td>'+value.time+'</td><td>'+value.description+'</td><td>'+value.amount+'</td><td>'+value.comment+'</td><td data-title="action"><button type="button" class="btn btn-info btn-lg btn-edit" data-toggle="modal" data-target="#add_expense_modal" data-id="'+value.id+'"><i class="icon-white icon-pencil"></i> Edit</button><a class="btn btn-default btn-xs">Delete</a></tr>'
       }
 
       $('#' + tableId).append(row)
@@ -54,110 +70,117 @@ zeonic.ext.fetch = function (path, method, success, error) {
     xhr.send()
 }
 
-zeonic.ext.expensesGet = function(e) {
+zeonic.ext.fillUserModal = function(data){
+console.log('in fill modal')
+  alert(58)
+}
+
+zeonic.ext.expensesGet = function(e, id, callback) {
   id = 12
   zeonic.ext.fetch( expensediv.urls.base + expensediv.urls.expense + id, 'get', function(data){
     console.log(data)
     zeonic.ext.hideModal()
+    if (callback) callback(data)
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.expensesGetAll = function(e) {
+zeonic.ext.expensesGetAll = function(e, callback) {
   zeonic.ext.fetch( expensediv.urls.base + expensediv.urls.expense, 'get', function(data){
     console.log(data)
     zeonic.ext.hideModal()
 
     zeonic.ext.fillTable('expensesTable', 'expenses', data)
-
+if (callback) callback(data)
 
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.expensesSet = function(e) {
+zeonic.ext.expensesSet = function(e, id, callback) {
   id = 12
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense + id, 'put', function(data){
     console.log(data)
     zeonic.ext.hideModal()
-
+if (callback) callback(data)
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.expensesAdd = function(e) {
+zeonic.ext.expensesAdd = function(e, callback) {
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense, 'post', function(data){
     console.log(data)
     zeonic.ext.hideModal()
-
+if (callback) callback(data)
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.expensesDel = function(e) {
+zeonic.ext.expensesDel = function(e, id, callback) {
   id = 12
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.expense + id, 'delete', function(data){
     console.log(data)
     zeonic.ext.hideModal()
-
+if (callback) callback(data)
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.usersGet = function(e) {
+zeonic.ext.usersGet = function(e, id, callback) {
   id = 12
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'get', function(data){
     console.log(data)
     zeonic.ext.hideModal()
+    if (callback) callback(data)
 
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.usersGetAll = function(e) {
+zeonic.ext.usersGetAll = function(e, callback) {
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user, 'get', function(data){
     console.log(data)
     zeonic.ext.hideModal()
     zeonic.ext.fillTable('usersTable', 'users', data)
-
+if (callback) callback(data)
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.usersSet = function(e) {
+zeonic.ext.usersSet = function(e, id, callback) {
   id = 12
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'put', function(data){
     console.log(data)
     zeonic.ext.hideModal()
-
+if (callback) callback(data)
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.usersAdd = function(e) {
+zeonic.ext.usersAdd = function(e, callback) {
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user, 'post', function(data){
     console.log(data)
     zeonic.ext.hideModal()
-
+if (callback) callback(data)
   }, function(err){
     console.log(err)
   });
 }
 
-zeonic.ext.usersDel = function(e) {
+zeonic.ext.usersDel = function(e, id, callback) {
   id = 12
   zeonic.ext.fetch(expensediv.urls.base + expensediv.urls.user + id, 'delete', function(data){
     console.log(data)
     zeonic.ext.hideModal()
-
+if (callback) callback(data)
   }, function(err){
     console.log(err)
   });

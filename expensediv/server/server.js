@@ -7,13 +7,13 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var session = require('express-session');
 var passport = require('passport');
-var timezoneController = require('./controllers/timezone');
+var expenseController = require('./controllers/expense');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
 var oauth2Controller = require('./controllers/oauth2');
 var clientController = require('./controllers/client');
 
-// Connect to the timezoneapp MongoDB
+// Connect to the expenseapp MongoDB
 var mongodbConnect = 'mongodb://'+config.mongodb.username + ':'+ config.mongodb.password + '@' + config.mongodb.host + ':' + config.mongodb.port + '/' + config.mongodb.db
 mongoose.connect(mongodbConnect);
 
@@ -47,16 +47,16 @@ app.use(cors());
 // Create our Express router
 var router = express.Router();
 
-// Create endpoint handlers for /timezones
-router.route('/api/timezones')
-  .post(authController.isAuthenticated, timezoneController.postTimezones)
-  .get(authController.isAuthenticated, timezoneController.getTimezones);
+// Create endpoint handlers for /expenses
+router.route('/api/expenses')
+  .post(authController.isAuthenticated, expenseController.postExpenses)
+  .get(authController.isAuthenticated, expenseController.getExpenses);
 
-// Create endpoint handlers for /timezones/:timezone_id
-router.route('/api/timezones/:timezone_id')
-  .get(authController.isAuthenticated, timezoneController.getTimezone)
-  .put(authController.isAuthenticated, timezoneController.putTimezone)
-  .delete(authController.isAuthenticated, timezoneController.deleteTimezone);
+// Create endpoint handlers for /expenses/:expense_id
+router.route('/api/expenses/:expense_id')
+  .get(authController.isAuthenticated, expenseController.getExpense)
+  .put(authController.isAuthenticated, expenseController.putExpense)
+  .delete(authController.isAuthenticated, expenseController.deleteExpense);
 
 // Create endpoint handlers for /users
 router.route('/api/users')

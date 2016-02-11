@@ -1,5 +1,5 @@
 {
-  "name": "timezoneapp",
+  "name": "expenseapp",
   "main": "server.js",
   "dependencies": {
     "bcrypt-nodejs": "0.*",

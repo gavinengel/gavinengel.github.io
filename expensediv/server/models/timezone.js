@@ -1,8 +1,8 @@
 // Load required packages
 var mongoose = require('mongoose');
 
-// Define our timezone schema
-var TimezoneSchema   = new mongoose.Schema({
+// Define our expense schema
+var ExpenseSchema   = new mongoose.Schema({
   city: String,
   zonename: String,
   difference: String,
@@ -10,4 +10,4 @@ var TimezoneSchema   = new mongoose.Schema({
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model('Timezone', TimezoneSchema);
+module.exports = mongoose.model('Expense', ExpenseSchema);

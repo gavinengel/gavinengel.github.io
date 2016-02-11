@@ -1,11 +1,11 @@
-# api-timezonely-express
+# api-expensely-express
 
 # frontend:
-http://code.gavinengel.com/timezonely/
+http://code.gavinengel.com/expensely/
 
 # repository:
-https://github.com/gavinengel/api-timezonely-express
+https://github.com/gavinengel/api-expensely-express
 
 # live url:
-http://express.api.timezonely.engeldev.com/api/
+http://express.api.expensely.engeldev.com/api/
 

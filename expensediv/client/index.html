@@ -185,15 +185,12 @@
 
                 </form>
               </div>
-              <div class="modal-footer">
-                <button ng-click="save()" ng-if="user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
-                <button ng-click="add()" type="submit" ng-if="!user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
-                <button ng-click="cancel()" class="btn">Cancel</button>
-              </div>
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button ng-click="save()" ng-if="user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+                <button ng-click="add()" type="submit" ng-if="!user._id" ng-disabled="user.$invalid || !user.tnc" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
           </div>
 
@@ -267,15 +264,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Login</h4>
+            <h4 class="modal-title">Expense Form</h4>
           </div>
           <div class="modal-body">
 
-            <div class="modal-header">
-              <h3>Expense Form</h3>
-            </div>
-            <div class="modal-body">
-              <!--<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>-->
               <form name="expenseForm" class="form-horizontal">
                 <div class="control-group">
                   <label class="control-label" for="expenseName">Expense Name</label>
@@ -299,17 +291,13 @@
                 </div>      
 
               </form>
-            </div>
-            <div class="modal-footer">
-              <button ng-click="save()" ng-if="expense._id" ng-disabled="!expense.expenseName || !expense.city || !expense.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
 
-              <button ng-click="add()" type="submit" ng-if="!expense._id" ng-disabled="expense.$invalid || !expense.expenseName || !expense.city || !expense.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
-
-              <button ng-click="cancel()" class="btn">Cancel</button>
-            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button ng-click="save()" ng-if="expense._id" ng-disabled="!expense.expenseName || !expense.city || !expense.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
+
+            <button ng-click="add()" type="submit" ng-if="!expense._id" ng-disabled="expense.$invalid || !expense.expenseName || !expense.city || !expense.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </div>
 
@@ -334,13 +322,11 @@
 
 
     <!-- button for: myModal -->
-    <h2>Modal Example</h2>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
     <!-- /button for: myModal -->
 
     <!-- myModal -->
-    <div class="modal fade" id="myModal" role="dialog" tabindex="-1">
+    <div class="modal fade" id="loginModal" role="dialog" tabindex="-1">
       <div class="modal-dialog">
 
         <!-- Modal content-->

@@ -12,18 +12,17 @@ expensediv = {
 }
 
 // listeners
-
-$( ".modal-header" ).click(function(e) {
-  id = 12//$(this).attr('data-id')
-
-  // get user from ajax, callback: asign user to modal fields
-  zeonic.ext.expensesGet(e, id, zeonic.ext.fillExpenseModal)  
-
-  //$( "#add_expense_modal" ).click(function(e, id){
-  //  $(this)
-
-  //});
+$("#add_user_modal").on('show.bs.modal', function (e) {
+  if ($(e.relatedTarget).hasClass('btn-edit')) {
+    zeonic.ext.usersGet(e, e.relatedTarget['data-id'], zeonic.ext.fillUserModal)  
+  }
 });
+$("#add_expense_modal").on('show.bs.modal', function (e) {
+  if ($(e.relatedTarget).hasClass('btn-edit')) {
+    zeonic.ext.expensesGet(e, e.relatedTarget['data-id'], zeonic.ext.fillExpenseModal)  
+  }
+});
+
 
 zeonic.ext.isLoggedIn = function() {
   return true
@@ -40,7 +39,7 @@ zeonic.ext.fillTable = function(tableId, key, data) {
 
       if (tableId == 'usersTable')
       {
-        row = '<tr><td>'+value.id+'</td><td>'+value.username+'</td><td>'+value.name+'</td><td>'+value.role+'</td><td data-title="action"><a href="" class="btn btn-primary btn-xs">Edit</a><a class="btn btn-default btn-xs">Delete</a></td></tr>'
+        row = '<tr><td>'+value.id+'</td><td>'+value.username+'</td><td>'+value.name+'</td><td>'+value.role+'</td><td data-title="action"><button type="button" class="btn btn-info btn-lg btn-edit" data-toggle="modal" data-target="#add_user_modal" data-id="'+value.id+'"><i class="icon-white icon-pencil"></i> Edit</button><a class="btn btn-default btn-xs">Delete</a></td></tr>'
       }
       else {
         row = '<tr><td>'+value.id+'</td><td>'+value.date+'</td><td>'+value.time+'</td><td>'+value.description+'</td><td>'+value.amount+'</td><td>'+value.comment+'</td><td data-title="action"><button type="button" class="btn btn-info btn-lg btn-edit" data-toggle="modal" data-target="#add_expense_modal" data-id="'+value.id+'"><i class="icon-white icon-pencil"></i> Edit</button><a class="btn btn-default btn-xs">Delete</a></tr>'
@@ -69,7 +68,7 @@ zeonic.ext.fetch = function (path, method, success, error) {
 }
 
 zeonic.ext.fillUserModal = function(data){
-  console.log('aaaaaaaaaa', data)
+  console.log('fill usssssssssssss', data)
   $('#add_user_modal #username').attr('value', data.username)
   $('#add_user_modal #name').attr('value', data.name)
   $('#add_user_modal #role').attr('value', data.role)

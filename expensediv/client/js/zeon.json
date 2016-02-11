@@ -1,5 +1,11 @@
 {
 	"#expensediv": {
-		
+		".modal": {
+			".btn-save": {
+				"@onclick": {
+					"data-save-result": "`$expensesSet`"
+				}
+			}
+		}
 	}
 }

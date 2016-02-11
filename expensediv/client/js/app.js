@@ -1,5 +1,127 @@
-currentUser = currentUser || {}
 
+currentUser = {}
+
+expensediv = {
+  expenses: {},
+  users: {},
+  urls: {
+    expense: "http://demo4555572.mockable.io/expense/",
+    user: "http://demo4555572.mockable.io/user/"
+  }
+}
+
+zeonic.ext.fetch = function (path, method, success, error) {
+    var xhr = new XMLHttpRequest()
+    method = method || 'get'
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (success) success(JSON.parse(xhr.responseText))
+            } else {
+                if (error) error(xhr)
+            }
+        }
+    }
+    xhr.open(method.toUpperCase(), path, true)
+    xhr.send()
+}
+
+zeonic.ext.expensesGet = function(e) {
+  id = 12
+  zeonic.ext.fetch( expensediv.urls.expense + id, 'get', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.expensesGetAll = function(e) {
+  zeonic.ext.fetch( expensediv.urls.expense, 'get', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.expensesSet = function(e) {
+  id = 12
+  zeonic.ext.fetch(expensediv.urls.expense + id, 'put', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.expensesAdd = function(e) {
+  zeonic.ext.fetch(expensediv.urls.expense + id, 'post', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.expensesDel = function(e) {
+  id = 12
+  zeonic.ext.fetch(expensediv.urls.expense + id, 'delete', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.usersGet = function(e) {
+  id = 12
+  zeonic.ext.fetch('js/zeon.json', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.usersGetAll = function(e) {
+  zeonic.ext.fetch('js/zeon.json', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.usersSet = function(e) {
+  id = 12
+  zeonic.ext.fetch('js/zeon.json', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.usersAdd = function(e) {
+  zeonic.ext.fetch('js/zeon.json', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
+
+zeonic.ext.usersDel = function(e) {
+  id = 12
+  zeonic.ext.fetch('js/zeon.json', function(val){
+    console.log(val)
+
+  }, function(err){
+    console.log(err)
+  });
+}
 
 //##
 //#user = { username:{} }

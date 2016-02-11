@@ -31,9 +31,18 @@
     <h3>A Zeonic, Bootstrap, and Express app</h3>
 
     <nav ng-controller="LoginCtrl" class="navbar navbar-default">
+
+      <!-- logout -->
       <button ng-if="currentUser.username" class="btn btn-default navbar-btn" ng-click="logout()">
         Logout <strong>{{currentUser.username}}</strong>
       </button>
+      <!-- /logout -->
+
+
+      <!-- button for: loginModal -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
+      <!-- /button for: loginModal -->
+
     </nav>
     <div class="navbar">
       <div class="navbar-inner">
@@ -212,38 +221,45 @@
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_expense_modal"><i class="icon-white icon-plus"></i> Add new expense</button>
         <!-- /button for: add_expense_modal -->
 
+              <!-- fields: date, time, description, amount, comment ... debug-->
 
     <table ng-table="tableParams" class="table">
       <thead>
         <tr>
-          <th>Expense Name</th>
-          <th>Name of city</th>
-          <th>+/-</th>
-          <th>local time</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Comment</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="(key, expense) in envoy.expenses | filter:search | orderBy:'expenseName'">
+
           <td data-title="'Name'" >
             <span >{{expense.expenseName}}</span>
-            <div ng-if="expense.$edit"><input class="form-control" type="text" ng-model="expense.expenseName" /></div>
+            <div><input class="form-control" type="text" /></div>
           </td>
+
           <td data-title="'Text'" >
             <span >{{expense.city}}</span>
-            <div ng-if="expense.$edit"><input class="form-control" type="text" ng-model="expense.city" /></div>
+            <div><input class="form-control" type="text" /></div>
           </td>
+
           <td data-title="'Text'" >
             <span >{{expense.difference}}</span>
-            <div ng-if="expense.$edit"><input class="form-control" type="text" ng-model="expense.difference" /></div>
+            <div><input class="form-control" type="text" /></div>
           </td>
+
           <td data-title="'Text'" >
-            <div ng-controller='TimeCtrl'>
-              <p>{{ clock | date:'medium'}}</p>
-            </div>
-            <span ng-bind="getLocalTime(expense)"></span>
-            <span ng-if="true">{{expense.id}}</span>
-            <div ng-if="false"><input class="form-control" type="text" ng-model="getLocalTime(expense._id)" /></div>
+            <span >{{expense.difference}}</span>
+            <div><input class="form-control" type="text" /></div>
+          </td>
+
+          <td data-title="'Text'" >
+            <span >{{expense.difference}}</span>
+            <div ><input class="form-control" type="text" ng-model="expense.difference" /></div>
           </td>
 
           <td data-title="'Actions'" >
@@ -267,36 +283,48 @@
             <h4 class="modal-title">Expense Form</h4>
           </div>
           <div class="modal-body">
-
               <form name="expenseForm" class="form-horizontal">
                 <div class="control-group">
-                  <label class="control-label" for="expenseName">Expense Name</label>
+                  <label class="control-label" for="expenseDate">Expense date</label>
                   <div class="controls">
-                    <input id="expenseName" name="expenseName" ng-model="expense.expenseName" type="text" placeholder="Expense Name" class="input-xlarge" required=""  ng-class="{error: expense.expenseName.$invalid && !expense.expenseName.$pristine}"/>
+                    <input id="expenseDate" type="date" name="expenseDate" type="text" placeholder="Expense Date" class="input-xlarge" required="required" />
                   </div>
                 </div>
 
                 <div class="control-group">
-                  <label class="control-label" for="city">Name of city in expense</label>
+                  <label class="control-label" for="expenseTime">Expense time</label>
                   <div class="controls">
-                    <input id="city" name="city" ng-model="expense.city" type="text" placeholder="City" class="input-xlarge" required="required"  ng-class="{error: expense.city.$invalid && !expense.city.$pristine}"/>
+                    <input id="expenseTime" name="expenseTime" ng-model="expense.expenseTime" type="time" placeholder="Expense Time" class="input-xlarge" required="required" />
                   </div>
                 </div>
 
                 <div class="control-group">
-                  <label class="control-label" for="difference">difference to GMT time</label>
+                  <label class="control-label" for="expenseDescription">Expense description</label>
                   <div class="controls">
-                    <input id="difference" name="difference" ng-model="expense.difference" type="text" placeholder="Difference" class="input-xlarge" required="required"  ng-class="{error: expense.difference.$invalid && !expense.difference.$pristine}"/>
+                    <input id="expenseDescription" name="expenseDescription" ng-model="expense.expenseDescription" type="text" placeholder="Expense Description" class="input-xlarge" required="required" />
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="expenseAmount">Expense amount</label>
+                  <div class="controls">
+                    <input id="expenseAmount" name="expenseAmount" ng-model="expense.expenseAmount" type="text" placeholder="Expense Amount" class="input-xlarge" required="required"/>
                   </div>
                 </div>      
+
+                <div class="control-group">
+                  <label class="control-label" for="expenseComment">Expense comment</label>
+                  <div class="controls">
+                    <input id="expenseComment" name="expenseComment" ng-model="expense.expenseComment" type="text" placeholder="Expense comment" class="input-xlarge" required="required" />
+                  </div>
+                </div>
+
 
               </form>
 
           </div>
           <div class="modal-footer">
-            <button ng-click="save()" ng-if="expense._id" ng-disabled="!expense.expenseName || !expense.city || !expense.difference " class="btn btn-primary"><i class="icon-white icon-plus"></i> Save</button>
-
-            <button ng-click="add()" type="submit" ng-if="!expense._id" ng-disabled="expense.$invalid || !expense.expenseName || !expense.city || !expense.difference" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+            <button class="btn btn-primary btn-save"><i class="icon-white icon-plus"></i> Save</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </div>
@@ -321,9 +349,7 @@
 
 
 
-    <!-- button for: myModal -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
-    <!-- /button for: myModal -->
+
 
     <!-- myModal -->
     <div class="modal fade" id="loginModal" role="dialog" tabindex="-1">
@@ -379,6 +405,12 @@
 </div>
 
 </div>
+
+
+  
+
+  <script src="https://cdn.rawgit.com/gavinengel/gavinengel.github.io/master/zeonic/js/zeonic.js" ></script>
+    <script src="/js/app.js"></script>
 </body>
 <self>
   <precog>
@@ -405,7 +437,6 @@
 
 <!--
     <script src="js/misc.js" defer></script>
-    <script src="js/app.js" defer></script>
     <script src="js/services/services.js" defer></script>
     <script src="js/factories/factories.js" defer></script>
     <script src="js/controllers/controllers.js" defer></script>
@@ -413,9 +444,6 @@
     <script src="js/directives/directives.js" defer></script>
   -->
 
-  
-
-  <script src="https://cdn.rawgit.com/gavinengel/gavinengel.github.io/master/zeonic/js/zeonic.js" ></script>
 </precog>
 <cog>
   <script type="text/javascript">

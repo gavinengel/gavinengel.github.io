@@ -13,13 +13,11 @@ expensediv = {
 
 // listeners
 
-$( "h3" ).click(function(e) {
+$( ".modal-header" ).click(function(e) {
   id = 12//$(this).attr('data-id')
 
   // get user from ajax, callback: asign user to modal fields
-  zeonic.ext.usersGet(e, id, function(data){
-    console.log('hhhh')
-  })  
+  zeonic.ext.expensesGet(e, id, zeonic.ext.fillExpenseModal)  
 
   //$( "#add_expense_modal" ).click(function(e, id){
   //  $(this)
@@ -32,7 +30,7 @@ zeonic.ext.isLoggedIn = function() {
 }
 
 zeonic.ext.hideModal = function(){
-  $('.modal').modal('hide');
+  //$('.modal').modal('hide');
 }
 
 zeonic.ext.fillTable = function(tableId, key, data) {
@@ -71,8 +69,20 @@ zeonic.ext.fetch = function (path, method, success, error) {
 }
 
 zeonic.ext.fillUserModal = function(data){
-console.log('in fill modal')
-  alert(58)
+  console.log('aaaaaaaaaa', data)
+  $('#add_user_modal #username').attr('value', data.username)
+  $('#add_user_modal #name').attr('value', data.name)
+  $('#add_user_modal #role').attr('value', data.role)
+  $('#add_user_modal #expenseAmount').attr('value', data.amount)
+}
+
+zeonic.ext.fillExpenseModal = function(data){
+  console.log('aaaaaaaaaa', data)
+  $('#add_expense_modal #expenseDate').attr('value', data.date)
+  $('#add_expense_modal #expenseTime').attr('value', data.time)
+  $('#add_expense_modal #expenseDescription').attr('value', data.description)
+  $('#add_expense_modal #expenseAmount').attr('value', data.amount)
+  $('#add_expense_modal #expenseComment').attr('value', data.comment)
 }
 
 zeonic.ext.expensesGet = function(e, id, callback) {

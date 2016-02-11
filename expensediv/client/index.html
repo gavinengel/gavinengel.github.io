@@ -62,8 +62,8 @@
       </div>
     </div>
 		<div ng-view></div>
-    <div id="displayViews">
-      <div id="displayUser" class="display">
+    <div id="views">
+      <div id="users" class="view">
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <section>
           <input type="text" ng-model="search" class="search-query pull-left" placeholder="Search">
@@ -179,7 +179,7 @@
           </div>
         </script>
       </div>
-      <div id="displayExpense" class="display">
+      <div id="expenses" class="view">
                 
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <section>
@@ -269,7 +269,7 @@
           </div>
         </script>
       </div>
-      <div id="displayHome" class="display">
+      <div id="home" class="view">
         <div class="container" ui-view="main">
           <div class="ng-scope">
           <h1>Expensediv</h1>

@@ -1,4 +1,7 @@
-body #displayViews .display {
+.view {
+  display: none; }
+
+body .view:target {
   display: block; }
 body .container {
   width: inherit;

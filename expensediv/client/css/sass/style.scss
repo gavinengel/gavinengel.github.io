@@ -1,8 +1,13 @@
+// init
+.view {
+  display: none;
+}
+
 body {
-  #displayViews {
-    .display {
-      display: block;
-    }
+  .view:target { display: block; } 
+  #views {
+
+
   }
   .container { 
     width: inherit;

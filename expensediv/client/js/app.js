@@ -1,4 +1,110 @@
+document.onreadystatechange = function () {
+    console.log(2)
+}
 
+/*
+// Create the event.
+var event = document.createEvent('Event');
+
+// Define that the event name is 'build'.
+event.initEvent('build', true, true);
+
+// Listen for the event.
+elem.addEventListener('build', function (e) {
+  // e.target matches elem
+}, false);
+
+// target can be any Element or other EventTarget.
+elem.dispatchEvent(event);
+*/
+
+///begin
+/*
+onabort: (...)
+onerror: (...)
+onload: (...)
+onloadend: (...)
+onloadstart: (...)
+onprogress: (...)
+*/
+var s_ajaxListener = new Object();
+s_ajaxListener.tempOpen = XMLHttpRequest.prototype.open;
+s_ajaxListener.tempSend = XMLHttpRequest.prototype.send;
+/*
+s_ajaxListener.tempSend = XMLHttpRequest.prototype.onabort;
+s_ajaxListener.tempSend = XMLHttpRequest.prototype.onerror;
+s_ajaxListener.tempSend = XMLHttpRequest.prototype.onload;
+s_ajaxListener.tempSend = XMLHttpRequest.prototype.onloadend;
+s_ajaxListener.tempSend = XMLHttpRequest.prototype.onloadstart;
+s_ajaxListener.tempSend = XMLHttpRequest.prototype.onprogress;
+*/
+s_ajaxListener.callback = function () {
+  //console.log(6)
+  // this.method :the ajax method used
+  // this.url    :the url of the requested script (including query string, if any) (urlencoded) 
+  // this.data   :the data sent, if any ex: foo=bar&a=b (urlencoded)
+}
+console.log('xhr:', XMLHttpRequest.prototype)
+
+XMLHttpRequest.prototype.open = function(a,b) {
+  //console.log(13)
+  if (!a) var a='';
+  if (!b) var b='';
+  s_ajaxListener.tempOpen.apply(this, arguments);
+  s_ajaxListener.method = a;  
+  s_ajaxListener.url = b;
+  if (a.toLowerCase() == 'get') {
+    s_ajaxListener.data = b.split('?');
+    s_ajaxListener.data = s_ajaxListener.data[1];
+  }
+}
+
+XMLHttpRequest.prototype.send = function(a,b) {
+  //console.log(26)
+  if (!a) var a='';
+  if (!b) var b='';
+  s_ajaxListener.tempSend.apply(this, arguments);
+  if(s_ajaxListener.method.toLowerCase() == 'post')s_ajaxListener.data = a;
+  s_ajaxListener.callback();
+}
+
+XMLHttpRequest.prototype.response = function() { console.log(70); }
+/*
+XMLHttpRequest.prototype.onerror = function(a,b) { console.log(71); }
+XMLHttpRequest.prototype.onload = function(a,b) { console.log(72); }
+XMLHttpRequest.prototype.onloadend = function(a,b) { console.log(73); }
+XMLHttpRequest.prototype.onloadstart = function(a,b) { console.log(74); }
+XMLHttpRequest.prototype.onprogress = function(a,b) { console.log(75); }
+*/
+
+///end
+function reqListener () {
+  console.log('inside reqListener')
+  console.log(this.responseText);
+}
+
+var oReq = new XMLHttpRequest();
+oReq.addEventListener("load", reqListener);
+oReq.open("GET", "http://demo4555572.mockable.io/user/12");
+oReq.send();
+
+///
+
+$( "body" ).load(function() {
+  console.log('Handler for .load() called.')
+});
+
+
+XMLHttpRequest.prototype.getResponseHeader = function() {
+ console.log('O hai, looks like you made an AJAX request.');
+}
+///
+
+var temp = XMLHttpRequest.getResponseHeader;
+XMLHttpRequest.getResponseHeader = function() { console.log(24); };
+
+
+//
 
 currentUser = {}
 
@@ -13,17 +119,17 @@ expensediv = {
 }
 
 // test post
-
+/*
 $.ajax({
     type: "POST",
     data: { date:'asdf', time:'asdf', amount:123, description:'asff', comment:'asdfasdf' },
     url: "http://localhost:9000/api/expense/",
     success: function success(data) {
-        alert('yaya')
+        console.log('yaya')
     },
     cache: false
 });
-
+*/
 // listeners
 $("#add_user_modal").on('show.bs.modal', function (e) {
   if ($(e.relatedTarget).hasClass('btn-edit')) {

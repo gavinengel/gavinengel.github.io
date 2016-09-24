@@ -1,0 +1,42 @@
+html[hash="active"] .todoapp .todo-list li.completed {
+  display: none;
+}
+html[hash="completed"] .todoapp .todo-list li {
+  display: none;
+}
+html[hash="completed"] .todoapp .todo-list li.completed {
+  display: block;
+}
+
+html[hash=""] .todoapp .filters #filter-all {
+  border-color: rgba(175, 47, 47, 0.2);
+}
+html[hash="active"] .todoapp .filters #filter-active {
+  border-color: rgba(175, 47, 47, 0.2);
+}
+html[hash="completed"] .todoapp .filters #filter-completed {
+  border-color: rgba(175, 47, 47, 0.2);
+}
+
+.todoapp .label {
+    background-color: transparent;
+    white-space: pre-line;
+    word-break: break-all;
+    padding: 15px 60px 15px 15px;
+    margin-left: 45px;
+    display: block;
+    line-height: 1.2;
+    transition: color 0.4s;
+    border: 1px solid silver;
+    font-size: 24px;
+}
+
+.todoapp .label:disabled {
+  border: 0;
+}
+
+
+.todoapp li.completed .label{
+  text-decoration: line-through;
+  color: #d9d9d9;
+}

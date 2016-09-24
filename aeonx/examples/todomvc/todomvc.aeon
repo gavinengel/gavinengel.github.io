@@ -1,0 +1,41 @@
+.todoapp {
+  .toggle-all {
+    @onclick {
+      .todo-list & class!: "hidden";
+    }
+  }
+  #entry {
+    onsubmit: $Handler.addTodo;
+  }
+  .clear-completed {
+    onclick: $Handler.clearCompleted;
+  }
+  .filters {
+    a {
+      @ondblclick {
+        class!: "selected";
+      }
+    }
+  }
+  .toggle{
+    @onclick {
+      data-onclick: $Handler.toggleTodo;
+    } 
+  }
+  .destroy {
+    @onclick {
+      data-onclick: $Handler.delTodo;
+    }
+  }
+  .label {
+    @ondblclick {
+      disabled!: 'disabled';
+    } 
+    @onfocusout {
+      disabled: 'disabled';
+    }
+    @onmouseout {
+      disabled: 'disabled';
+    }
+  }
+}

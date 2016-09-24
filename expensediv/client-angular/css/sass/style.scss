@@ -1,0 +1,46 @@
+#expensediv {
+  #views {
+    .view {
+      display: none;
+    }
+    .view:target { 
+      display: block;
+    } 
+  }
+  .container { 
+    width: inherit;
+    padding: 15px 15px;
+    max-width: 960px;
+    h1 {
+      margin-top: 0;
+    }
+    .footer {
+      margin-top: 0;
+      background-color: inherit;
+      color: inherit;
+      .container {
+        padding: 0;
+        .footer-inner {
+          padding: 5px 5px;
+        }
+      }
+    }
+    .navbar {
+      .navbar-inner {
+        .container {
+          padding: 0;
+        }
+      }
+    }
+    .search-query {
+      max-width: 100px;
+    }
+  }
+  .modal {
+    &.fade {
+      &.in {
+        top: 40%;
+      }
+    }
+  }
+}

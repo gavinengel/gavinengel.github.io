@@ -1,0 +1,26 @@
+{
+	"#expensediv": {
+		"#expenses": {
+			"data-result-expensesGetAll": "`$expensesGetAll`",
+			"#expensesTable":{
+			},
+			".modal": {
+				".btn-save": {
+					"@onclick": {
+						"data-result-expensesGetAll": "`$expensesGetAll`"
+					}
+				}
+			}
+		},
+		"#users": {
+			"data-result-usersGetAll": "`$usersGetAll`",
+			".modal": {
+				".btn-save": {
+					"@onclick": {
+						"data-result-usersGetAll": "`$usersGetAll`"
+					}
+				}
+			}
+		}
+	}
+}

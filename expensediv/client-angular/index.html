@@ -1,0 +1,406 @@
+<!doctype html>
+<html ng-app="expensediv">
+
+<head>
+
+  <adorn>
+    <id>
+      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/bootstrap.min.css">
+      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/docs.css">
+      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/league-0.0.1.css">
+      <link type="text/css" rel="stylesheet" href="/css/style.css">
+      <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    </id>
+    <ego>
+      <style type="text/css">
+        .dropdown-menu .btn.btn-default.btn-sm.btn-block { width: 100%;}
+        .dropdown-menu .btn.btn-default.btn-sm { background-color: #fff; background-image: none; }
+      </style>
+    </ego>
+  </adorn>
+
+
+</head>
+
+<body>
+
+
+  <div id="expensediv">
+   <div class="container">
+    <h2>Expensediv</h2>
+    <h3>A Zeonic, Bootstrap, and Express app</h3>
+
+    <nav ng-controller="LoginCtrl" class="navbar navbar-default">
+
+      <!-- logout -->
+      <button ng-if="currentUser.username" class="btn btn-default navbar-btn" ng-click="logout()">
+        Logout <strong>{{currentUser.username}}</strong>
+      </button>
+      <!-- /logout -->
+
+
+      <!-- button for: loginModal -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loginModal">Login</button>
+      <!-- /button for: loginModal -->
+
+    </nav>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav">
+            <li>
+              <a href="#home">
+                <i class="icon-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#users">
+                <i class="icon-github-alt"></i>
+                Users
+              </a>
+            </li>
+            <li>
+              <a href="#expenses">
+                <i class="icon-info-sign"></i>
+                Expenses
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div ng-view></div>
+    <div id="views">
+      <div id="users" class="view">
+        <!-- button for: myModal -->
+        <h2>Users</h2>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_user_modal"><i class="icon-white icon-plus"></i> Add new user</button>
+        <!-- /button for: myModal -->
+
+        <table id="usersTable" class="table table-bordered table-hover table-striped ">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+
+      <!-- add_user_modal -->
+      <div class="modal fade" id="add_user_modal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>User Form</h3>
+            </div>
+            <div class="modal-body">
+              <form name="userForm" class="form-horizontal">
+
+                <div class="control-group">
+                  <label class="control-label" for="username">Username</label>
+                  <div class="controls">
+                    <input id="username" name="username" type="text" placeholder="Username" class="input-xlarge" required="" />
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="name">Name</label>
+                  <div class="controls">
+                    <input id="name" name="name" type="text" placeholder="Name" class="input-xlarge" required="" />
+                  </div>
+                </div>
+
+                <div class="control-group" >
+                  <label class="control-label" for="password">Password</label>
+                  <div class="controls">
+                    <input id="password" name="password" type="password" placeholder="Password" class="input-xlarge" required="" />
+                  </div>
+                </div>
+
+
+                <div class="control-group">
+                  <label class="control-label" for="role">Role</label>
+                  <div class="controls">
+                    <input id="role" name="role" type="text" placeholder="Role" class="input-xlarge" required="" />
+                  </div>
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary btn-save"><i class="icon-white icon-plus"></i> Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- /add_user_modal -->
+    </div>
+
+
+
+    <div id="expenses" class="view">
+
+
+
+
+      <!-- button for: add_expense_modal -->
+      <h2>Expenses</h2>
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_expense_modal"><i class="icon-white icon-plus"></i> Add new expense</button>
+
+      
+      <!-- /button for: add_expense_modal -->
+
+      <!-- fields: date, time, description, amount, comment ... debug-->
+        <table id="expensesTable" class="table table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>date</th>
+              <th>time</th>
+              <th>description</th>
+              <th>amount</th>
+              <th>comment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+<!--
+      <table ng-table="tableParams" class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Comment</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, expense) in envoy.expenses | filter:search | orderBy:'expenseName'">
+
+            <td data-title="'Name'" >
+              <span >{{expense.expenseName}}</span>
+              <div><input class="form-control" type="text" /></div>
+            </td>
+
+            <td data-title="'Text'" >
+              <span >{{expense.city}}</span>
+              <div><input class="form-control" type="text" /></div>
+            </td>
+
+            <td data-title="'Text'" >
+              <span >{{expense.difference}}</span>
+              <div><input class="form-control" type="text" /></div>
+            </td>
+
+            <td data-title="'Text'" >
+              <span >{{expense.difference}}</span>
+              <div><input class="form-control" type="text" /></div>
+            </td>
+
+            <td data-title="'Text'" >
+              <span >{{expense.difference}}</span>
+              <div ><input class="form-control" type="text" ng-model="expense.difference" /></div>
+            </td>
+
+            <td data-title="'Actions'" >
+              <a ng-if="true" href="" class="btn btn-primary btn-xs" ng-click="open(expense._id)">Edit</a>
+              <a ng-if="true" ng-click="removeRecord(expense._id)" class="btn btn-default btn-xs">Delete</a>
+              <a ng-if="false" href="" class="btn btn-primary btn-xs" ng-click="save()">Save</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+-->
+
+      <!-- add_expense_modal -->
+      <div class="modal fade" id="add_expense_modal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Expense Form</h4>
+            </div>
+            <div class="modal-body">
+              <form name="expenseForm" class="form-horizontal">
+                <div class="control-group">
+                  <label class="control-label" for="expenseDate">Expense date</label>
+                  <div class="controls">
+                    <input id="expenseDate" type="date" name="expenseDate" type="text" placeholder="Expense Date" class="input-xlarge" required="required" />
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="expenseTime">Expense time</label>
+                  <div class="controls">
+                    <input id="expenseTime" name="expenseTime" ng-model="expense.expenseTime" type="time" placeholder="Expense Time" class="input-xlarge" required="required" />
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="expenseDescription">Expense description</label>
+                  <div class="controls">
+                    <input id="expenseDescription" name="expenseDescription" ng-model="expense.expenseDescription" type="text" placeholder="Expense Description" class="input-xlarge" required="required" />
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label" for="expenseAmount">Expense amount</label>
+                  <div class="controls">
+                    <input id="expenseAmount" name="expenseAmount" ng-model="expense.expenseAmount" type="text" placeholder="Expense Amount" class="input-xlarge" required="required"/>
+                  </div>
+                </div>      
+
+                <div class="control-group">
+                  <label class="control-label" for="expenseComment">Expense comment</label>
+                  <div class="controls">
+                    <input id="expenseComment" name="expenseComment" ng-model="expense.expenseComment" type="text" placeholder="Expense comment" class="input-xlarge" required="required" />
+                  </div>
+                </div>
+
+
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary btn-save"><i class="icon-white icon-plus"></i> Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /add_expense_modal -->
+      <!-- /myModal -->
+    </div><!-- /expenses -->
+    <div id="home" class="view">
+      <div class="container" ui-view="main">
+        <div class="ng-scope">
+          <h1>Expensediv</h1>
+
+          <p class="lead">
+            A Zeonic, <a href="http://getbootstrap.com/">Bootstrap</a>, and <a href="http://expressjs.com/">Express</a> app
+          </p>
+
+        </div>
+      </div>
+
+      <!-- myModal -->
+      <div class="modal fade" id="loginModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+              <form class="col-xs-12">
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input id="username" name="username" class="form-control" type="username"
+                  ng-model="login.user.username" placeholder="Enter username"/>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input id="password" name="password" class="form-control" type="password"
+                  ng-model="login.user.password" placeholder="Enter password"/>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-info btn-lg">Submit</button>
+                  <input id="new_user" name="new_user" type="checkbox" ng-model="login.user.newUser"/>
+                  <label for="new_user">I am a new user</label>
+                </div>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- /myModal -->
+
+
+
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>
+            :-)
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</div>
+
+
+
+  <templates>
+      <!-- add_expense_modal -->
+      <div class="modal fade" id="deleteConfirm" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Confirm delete</h4>
+            </div>
+            <div class="modal-body">
+              <p>Are you absolutely, super sure you want to delete <span id="deleteType"></span> #<span id="deleteId"></span>?</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary btn-save"><i class="icon-white icon-ok"></i> Delete</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /add_expense_modal -->
+      <!-- /myModal -->
+  <templates>  
+
+
+</body>
+<self>
+  <precog>
+
+    <script src="https://cdn.rawgit.com/gavinengel/gavinengel.github.io/master/zeonic/js/zeonic.js" ></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  </precog>
+  <cog>
+    <script type="text/javascript">
+      zeonic.debug = true
+      zeonic.fetch('js/zeon.json', zeonic.mix);
+    </script>
+  </cog>
+</self>
+
+</html>

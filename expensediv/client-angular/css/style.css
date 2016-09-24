@@ -1,0 +1,24 @@
+#expensediv #views .view {
+  display: none; }
+#expensediv #views .view:target {
+  display: block; }
+#expensediv .container {
+  width: inherit;
+  padding: 15px 15px;
+  max-width: 960px; }
+  #expensediv .container h1 {
+    margin-top: 0; }
+  #expensediv .container .footer {
+    margin-top: 0;
+    background-color: inherit;
+    color: inherit; }
+    #expensediv .container .footer .container {
+      padding: 0; }
+      #expensediv .container .footer .container .footer-inner {
+        padding: 5px 5px; }
+  #expensediv .container .navbar .navbar-inner .container {
+    padding: 0; }
+  #expensediv .container .search-query {
+    max-width: 100px; }
+#expensediv .modal.fade.in {
+  top: 40%; }

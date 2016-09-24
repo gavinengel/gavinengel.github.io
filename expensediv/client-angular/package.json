@@ -1,0 +1,16 @@
+{
+  "name": "expensediv",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "dev": "pm2 start .etc/shd/expensediv.httpd.sh; pm2 start .etc/shd/expensediv.sass.sh;",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Gavin Engel <gavin@engel.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "shd": "0.0.3"
+  }
+}

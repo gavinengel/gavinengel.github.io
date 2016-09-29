@@ -38,5 +38,5 @@ html[hash="completed"] .todoapp .filters #filter-completed {
 
 .todoapp li.completed .label{
   text-decoration: line-through;
-  color: black;
+  color: #999;
 }

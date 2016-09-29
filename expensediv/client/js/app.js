@@ -133,16 +133,17 @@ $.ajax({
 // listeners
 $("#add_user_modal").on('show.bs.modal', function (e) {
   if ($(e.relatedTarget).hasClass('btn-edit')) {
-    zeonic.ext.usersGet(e, e.relatedTarget['data-id'], zeonic.ext.fillUserModal)  
+    //zeonic.ext.usersGet(e, e.relatedTarget['data-id'], zeonic.ext.fillUserModal)  
   }
 });
 $("#add_expense_modal").on('show.bs.modal', function (e) {
   if ($(e.relatedTarget).hasClass('btn-edit')) {
-    zeonic.ext.expensesGet(e, e.relatedTarget['data-id'], zeonic.ext.fillExpenseModal)  
+    //zeonic.ext.expensesGet(e, e.relatedTarget['data-id'], zeonic.ext.fillExpenseModal)  
   }
 });
 
 
+/*
 zeonic.ext.isLoggedIn = function() {
   return true
 }
@@ -185,7 +186,6 @@ zeonic.ext.fetch = function (path, method, success, error) {
     xhr.open(method.toUpperCase(), path, true)
     xhr.send()
 }
-
 zeonic.ext.fillUserModal = function(data){
   console.log('fill usssssssssssss', data)
   $('#add_user_modal #username').attr('value', data.username)
@@ -313,7 +313,7 @@ if (callback) callback(data)
     console.log(err)
   });
 }
-
+*/
 //##
 //#user = { username:{} }
 /*

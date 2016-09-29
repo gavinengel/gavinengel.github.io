@@ -3,22 +3,17 @@
 
 <head>
 
-  <adorn>
-    <id>
-      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/bootstrap.min.css">
-      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/docs.css">
-      <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/league-0.0.1.css">
-      <link type="text/css" rel="stylesheet" href="/css/style.css">
-      <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-    </id>
-    <ego>
-      <style type="text/css">
-        .dropdown-menu .btn.btn-default.btn-sm.btn-block { width: 100%;}
-        .dropdown-menu .btn.btn-default.btn-sm { background-color: #fff; background-image: none; }
-      </style>
-    </ego>
-  </adorn>
-
+  <face>
+    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/docs.css">
+    <link type="text/css" rel="stylesheet" href="http://code.gavinengel.com/expensediv/client/css/league-0.0.1.css">
+    <link type="text/css" rel="stylesheet" href="/expensediv/client/css/style.css">
+    <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <style type="text/css">
+      .dropdown-menu .btn.btn-default.btn-sm.btn-block { width: 100%;}
+      .dropdown-menu .btn.btn-default.btn-sm { background-color: #fff; background-image: none; }
+    </style>
+  </face>
 
 </head>
 
@@ -28,7 +23,7 @@
   <div id="expensediv">
    <div class="container">
     <h2>Expensediv</h2>
-    <h3>A Zeonic, Bootstrap, and Express app</h3>
+    <h3>A Bootstrap, Express, and Aeon app</h3>
 
     <nav ng-controller="LoginCtrl" class="navbar navbar-default">
 
@@ -386,21 +381,17 @@
 
 
 </body>
-<self>
-  <precog>
+<foot>
+  <script src="https://cdn.rawgit.com/gavinengel/aeonx/master/js/aeonx.js" ></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="/expensediv/client/js/app.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <script src="https://cdn.rawgit.com/gavinengel/gavinengel.github.io/master/zeonic/js/zeonic.js" ></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="/js/app.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-  </precog>
-  <cog>
-    <script type="text/javascript">
-      zeonic.debug = true
-      zeonic.fetch('js/zeon.json', zeonic.mix);
-    </script>
-  </cog>
-</self>
+  <script type="text/javascript">
+    //aeonx.debug = true 
+    //aeonx.fetch('todomvc.aeon', aeonx.run);
+  </script>
+</foot>
 
 </html>

@@ -44,9 +44,9 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $translatr = __webpack_require__(1);
+	var $parser = __webpack_require__(5);
 	var $net = __webpack_require__(2);
-	var $domcrud = __webpack_require__(3);
+	var $dom = __webpack_require__(6);
 	var $conditionr = __webpack_require__(4);
 
 	/**
@@ -121,12 +121,12 @@
 	    
 	        // String?
 	        else if (typeof value === 'string' || value instanceof String) {
-	            $domcrud.set(property, _unstringExec(value, _data.opts), null, null, _data)
+	            $dom.set(property, _unstringExec(value, _data.opts), null, null, _data)
 	        }
 	    
 	        // Function?
 	        else if (typeof value === 'function') {
-	            $domcrud.set(property, value, null, null, _data)    
+	            $dom.set(property, value, null, null, _data)    
 	        }
 
 	        // Plain Object?
@@ -134,7 +134,7 @@
 	            _execObject(property, value)
 	        }
 	        else if (typeof value === 'boolean' || typeof value === 'number') {
-	            $domcrud.set(property, value, null, null, _data)    
+	            $dom.set(property, value, null, null, _data)    
 	        }
 	        else {
 	            console.error('invalid value', value)
@@ -163,7 +163,7 @@
 	var _execArray = function(property, value) {
 	    newValue = _unstringExec(value[1], _data.opts)
 	    newOperator = value[0]
-	    $domcrud.set(property, newValue, newOperator, null, _data)
+	    $dom.set(property, newValue, newOperator, null, _data)
 	}
 
 	/**
@@ -217,20 +217,19 @@
 	var _execOnRule = function (selector, value, eventType, eventConds){
 	    
 	    // there are conditions, loop and add listeners
+	    var passConds = []
 	    if (eventConds.length) {
-	        ///console.log('add _execOnRule '+eventType+' for multiple listeners: '+selector)
-
-	        ///for( i=0; i < eventConds.length; i++ ) {
-	            ///eventType = eventConds[i].eventType || eventConds[i].rgt
-	            _addListeners(eventType, eventConds, selector, value)
-	        ///}
+	        passConds = eventConds
 	    }
 
-	    // otherwise add a single listener
-	    else {
-	        ///console.log('add _execOnRule '+eventType+' for single listener: '+selector)
-	        _addListeners(eventType, [], selector, value)
+	    // loop each eventType (it is possible to pass comma-delimited eventType)
+	    var pieces = eventType.split(',');
+
+	    for (var eventTypePiece of pieces) {
+	        if (eventTypePiece) _addListeners(eventTypePiece, passConds, selector, value)
 	    }
+
+
 	}
 
 
@@ -258,7 +257,6 @@
 	    _data.cond.result = null
 	}
 
-
 	/**
 	 *
 	 */
@@ -267,6 +265,8 @@
 	    ///var els = document.querySelectorAll( selector )
 	    var delegateSel = ($delegate)? $delegate : 'body' 
 	    var delegate = document.querySelectorAll( delegateSel )[0]      
+
+	console.log({addListeners:[eventType, eventConds, selector, value]});
 
 	    ///for (var i=0; i < els.length; i++ ) {
 	        newExec = {}
@@ -406,13 +406,13 @@
 	            _data.src.attr = values[1].trim()
 	            _data.src.sel = values[0].trim()
 
-	            value = $domcrud.get(_data.src.attr, _data.src.sel) 
+	            value = $dom.get(_data.src.attr, _data.src.sel) 
 	        }
 	        // c) empty or attribute from same selector:         data-foo
 	        else {
 	            if (value.length) {
 	                opts.el = opts.e.target
-	                value = $domcrud.get(value, _data.selectors[0], opts)  // May 25th  
+	                value = $dom.get(value, _data.selectors[0], opts)  // May 25th  
 	            }
 	            else {
 	                value = ''
@@ -441,7 +441,208 @@
 
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */
+/***/ function(module, exports) {
+
+	
+	/**
+	 *
+	 */
+	var $fetch = function (path, success, error) {
+	    var xhr = new XMLHttpRequest()
+	    xhr.onreadystatechange = function()
+	    {
+	        if (xhr.readyState === XMLHttpRequest.DONE) {
+	            if (xhr.status === 200) {
+	                if (success) success(xhr.responseText)
+	            } else {
+	                if (error) error(xhr)
+	            }
+	        }
+	    }
+	    xhr.open("GET", path, true)
+	    xhr.send()
+	}
+
+
+	module.exports = {
+	    fetch: $fetch
+	};
+
+/***/ },
+/* 3 */,
+/* 4 */
+/***/ function(module, exports) {
+
+	$debug = true
+	_condOper = ['!=', '>=', '<=', '>', '<', '='] // add single char conditions at end of array
+
+	/**
+	 *
+	 */
+	var $compare = function(lft, oper, rgt, typecast) {
+	    result = false
+
+	    if ($debug) console.log({lft:lft, oper:oper, rgt:rgt})
+
+
+	    typecast = typecast || typeof lft;
+
+	    if (typecast == 'number') {
+	        lft = parseFloat(lft)
+	        rgt = parseFloat(rgt)
+
+	    }
+	    else if (typecast == 'boolean') {
+	        lft = JSON.parse(lft)
+	        rgt = JSON.parse(rgt)
+
+	    }
+
+	    switch(oper) {
+	        case '=':
+	            if (lft == rgt) result = true
+	            break
+	        case '!=':
+	            if (lft != rgt) result = true
+	            break
+	        case '<':
+	            if (lft < rgt) result = true
+	            break
+	        case '>':
+	            if (lft > rgt) result = true
+	            break
+	        case '<=':
+	            if (lft <= rgt) result = true
+	            break
+	        case '>=':
+	            if (lft >= rgt) result = true
+	            break
+	        default:
+	            console.error('invalid oper', oper)
+	    }
+
+	    if ($debug) console.log({lft:lft, oper:oper, rgt:rgt, result:result})
+
+	    return result
+	}
+
+	/**
+	 *
+	 */
+	var $multiCompare = function(e, eData) {
+	    var foundFail = false
+	    
+	    for (var j=0; j < eData.conditions.length; j++ ) {
+	        var cnd = eData.conditions[j]
+	        if (cnd.lft) { 
+	            if (cnd.oper && cnd.rgt) {
+	                if ($debug) console.log('3 part condition found', {e:e, eData: eData})
+
+	                // loop each eventType (it is possible to pass comma-delimited eventType)
+	                var pieces = cnd.rgt.split(',');
+	                var found = false;
+	                for (var eventTypePiece of pieces) {
+	                    if ($compare(e[cnd.lft], cnd.oper, eventTypePiece)) found = true;
+	                }
+
+	                if (!found) foundFail = true;
+	            }    
+	            else {
+	                if ($debug) console.log('1 part condition found', {e:e, eData: eData})
+
+	                if (!e[cnd.lft]) foundFail = true
+	            }
+	        }
+	    }
+
+	console.log({foundFail:foundFail});
+
+	    return foundFail
+	}
+
+	/**
+	 *
+	 */
+	var $evalIf = function (expression) {
+	    result = false; // aka: _data.cond.result
+
+	    var withoutSel = _data.cond.attr = expression
+	                    
+	    // is extension-exec?
+	    if (withoutSel.charAt(0) == '$') {
+	        // extension-exec
+	        _data.cond.ext = withoutSel.substr(1)    
+	        // execute it
+	        var ext = window[ _data.cond.ext ]
+	        var e = {}
+	        if (_data.opts && _data.opts.hasOwnProperty('e')) {
+	            e = _data.opts.e
+	        }
+
+	        _data.cond.extReturn = ext(e)
+	        if (_data.cond.extReturn === true) _data.cond.result = true
+	    }
+	    else {
+	        // not extension-exec
+	        if (_data.cond.raw.indexOf('&') != -1) {
+	            pieces = _data.cond.raw.split('&')
+	            _data.cond.sel = pieces[0].trim()
+	            _data.cond.attr = withoutSel = pieces[1].trim()
+	        }    
+
+	        var trio = $parse(withoutSel, _data)
+
+	        _data.cond.lft = $domcrud.get(_data.cond.attr, _data.cond.sel)
+
+	        console.log('get cond result from:', _data.cond)
+	        if (_data.cond.oper) {
+	            _data.cond.result = $compare(_data.cond.lft, _data.cond.oper, _data.cond.rgt)
+	        }
+	        else if (_data.cond.lft) {
+	            _data.cond.result = true
+	        }
+
+	        result = _data.cond.result
+	    }
+
+	    return result
+	}
+
+	/**
+	 *
+	 */
+	var $parse = function (condition, _data) {
+	    var trio = {
+	        lft: condition,
+	        oper: '',
+	        rgt: ''
+	    }
+
+	    for (var i=0; i < _condOper.length; i++ ) {
+	        if (condition.indexOf( _condOper[i] ) != -1) {
+	            if ($debug) console.log('found a conditional operator:', _condOper[i])
+	            trio.oper = _data.cond.oper = _condOper[i]
+	            pieces = condition.split( _data.cond.oper )
+	            trio.lft = _data.cond.attr = pieces[0].trim()
+	            trio.rgt = _data.cond.rgt = pieces[1].trim()
+	            break
+	        }
+	    }
+
+	    return trio
+	}
+
+	module.exports = {
+	    compare: $compare,
+	    multiCompare: $multiCompare,
+	    parse: $parse,
+	    evalIf: $evalIf
+	};
+
+/***/ },
+/* 5 */
 /***/ function(module, exports) {
 
 	var $debug = true
@@ -755,36 +956,7 @@
 	};
 
 /***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	
-	/**
-	 *
-	 */
-	var $fetch = function (path, success, error) {
-	    var xhr = new XMLHttpRequest()
-	    xhr.onreadystatechange = function()
-	    {
-	        if (xhr.readyState === XMLHttpRequest.DONE) {
-	            if (xhr.status === 200) {
-	                if (success) success(xhr.responseText)
-	            } else {
-	                if (error) error(xhr)
-	            }
-	        }
-	    }
-	    xhr.open("GET", path, true)
-	    xhr.send()
-	}
-
-
-	module.exports = {
-	    fetch: $fetch
-	};
-
-/***/ },
-/* 3 */
+/* 6 */
 /***/ function(module, exports) {
 
 	
@@ -1004,167 +1176,6 @@
 	module.exports = {
 	    get: $get,
 	    set: $set,
-	};
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	$debug = true
-	_condOper = ['!=', '>=', '<=', '>', '<', '='] // add single char conditions at end of array
-
-	/**
-	 *
-	 */
-	var $compare = function(lft, oper, rgt, typecast) {
-	    result = false
-
-	    if ($debug) console.log({lft:lft, oper:oper, rgt:rgt})
-
-
-	    typecast = typecast || typeof lft;
-
-	    if (typecast == 'number') {
-	        lft = parseFloat(lft)
-	        rgt = parseFloat(rgt)
-
-	    }
-	    else if (typecast == 'boolean') {
-	        lft = JSON.parse(lft)
-	        rgt = JSON.parse(rgt)
-
-	    }
-
-	    switch(oper) {
-	        case '=':
-	            if (lft == rgt) result = true
-	            break
-	        case '!=':
-	            if (lft != rgt) result = true
-	            break
-	        case '<':
-	            if (lft < rgt) result = true
-	            break
-	        case '>':
-	            if (lft > rgt) result = true
-	            break
-	        case '<=':
-	            if (lft <= rgt) result = true
-	            break
-	        case '>=':
-	            if (lft >= rgt) result = true
-	            break
-	        default:
-	            console.error('invalid oper', oper)
-	    }
-
-	    if ($debug) console.log({lft:lft, oper:oper, rgt:rgt, result:result})
-
-	    return result
-	}
-
-	/**
-	 *
-	 */
-	var $multiCompare = function(e, eData) {
-	    var foundFail = false
-	    
-	    for (var j=0; j < eData.conditions.length; j++ ) {
-	        var cnd = eData.conditions[j]
-	        if (cnd.lft) { 
-	            if (cnd.oper && cnd.rgt) {
-	                if ($debug) console.log('3 part condition found', {e:e, eData: eData})
-
-	                if (!$compare(e[cnd.lft], cnd.oper, cnd.rgt)) foundFail = true
-	            }    
-	            else {
-	                if ($debug) console.log('1 part condition found', {e:e, eData: eData})
-
-	                if (!e[cnd.lft]) foundFail = true
-	            }
-	        }
-	    }
-
-	    return foundFail
-	}
-
-	/**
-	 *
-	 */
-	var $evalIf = function (expression) {
-	    result = false; // aka: _data.cond.result
-
-	    var withoutSel = _data.cond.attr = expression
-	                    
-	    // is extension-exec?
-	    if (withoutSel.charAt(0) == '$') {
-	        // extension-exec
-	        _data.cond.ext = withoutSel.substr(1)    
-	        // execute it
-	        var ext = window[ _data.cond.ext ]
-	        var e = {}
-	        if (_data.opts && _data.opts.hasOwnProperty('e')) {
-	            e = _data.opts.e
-	        }
-
-	        _data.cond.extReturn = ext(e)
-	        if (_data.cond.extReturn === true) _data.cond.result = true
-	    }
-	    else {
-	        // not extension-exec
-	        if (_data.cond.raw.indexOf('&') != -1) {
-	            pieces = _data.cond.raw.split('&')
-	            _data.cond.sel = pieces[0].trim()
-	            _data.cond.attr = withoutSel = pieces[1].trim()
-	        }    
-
-	        var trio = $parse(withoutSel, _data)
-
-	        _data.cond.lft = $domcrud.get(_data.cond.attr, _data.cond.sel)
-
-	        console.log('get cond result from:', _data.cond)
-	        if (_data.cond.oper) {
-	            _data.cond.result = $compare(_data.cond.lft, _data.cond.oper, _data.cond.rgt)
-	        }
-	        else if (_data.cond.lft) {
-	            _data.cond.result = true
-	        }
-
-	        result = _data.cond.result
-	    }
-
-	    return result
-	}
-
-	/**
-	 *
-	 */
-	var $parse = function (condition, _data) {
-	    var trio = {
-	        lft: condition,
-	        oper: '',
-	        rgt: ''
-	    }
-
-	    for (var i=0; i < _condOper.length; i++ ) {
-	        if (condition.indexOf( _condOper[i] ) != -1) {
-	            if ($debug) console.log('found a conditional operator:', _condOper[i])
-	            trio.oper = _data.cond.oper = _condOper[i]
-	            pieces = condition.split( _data.cond.oper )
-	            trio.lft = _data.cond.attr = pieces[0].trim()
-	            trio.rgt = _data.cond.rgt = pieces[1].trim()
-	            break
-	        }
-	    }
-
-	    return trio
-	}
-
-	module.exports = {
-	    compare: $compare,
-	    multiCompare: $multiCompare,
-	    parse: $parse,
-	    evalIf: $evalIf
 	};
 
 /***/ }

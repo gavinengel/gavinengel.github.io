@@ -5,10 +5,10 @@
     }
   }
   #entry {
-    onsubmit: $Handler.addTodo;
+    onsubmit: $handler.addTodo;
   }
   .clear-completed {
-    onclick: $Handler.clearCompleted;
+    onclick: $handler.clearCompleted;
   }
   .filters {
     a {
@@ -19,22 +19,19 @@
   }
   .toggle{
     @onclick {
-      data-onclick: $Handler.toggleTodo;
+      data-onclick: $handler.toggleTodo;
     } 
   }
   .destroy {
     @onclick {
-      data-onclick: $Handler.delTodo;
+      data-onclick: $handler.delTodo;
     }
   }
   .label {
     @ondblclick {
       disabled!: 'disabled';
     } 
-    @onfocusout {
-      disabled: 'disabled';
-    }
-    @onmouseout {
+    @on(focusout,mouseout) {
       disabled: 'disabled';
     }
   }

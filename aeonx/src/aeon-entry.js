@@ -1,6 +1,6 @@
-var $translatr = require("./aeon-translatr.js");
+var $parser = require("./aeon-parser.js");
 var $net = require("./aeon-net.js");
-var $domcrud = require("./aeon-domcrud.js");
+var $dom = require("./aeon-dom.js");
 var $conditionr = require("./aeon-conditionr.js");
 
 /**
@@ -75,12 +75,12 @@ var $runObj = function(O, p, opts) {
     
         // String?
         else if (typeof value === 'string' || value instanceof String) {
-            $domcrud.set(property, _unstringExec(value, _data.opts), null, null, _data)
+            $dom.set(property, _unstringExec(value, _data.opts), null, null, _data)
         }
     
         // Function?
         else if (typeof value === 'function') {
-            $domcrud.set(property, value, null, null, _data)    
+            $dom.set(property, value, null, null, _data)    
         }
 
         // Plain Object?
@@ -88,7 +88,7 @@ var $runObj = function(O, p, opts) {
             _execObject(property, value)
         }
         else if (typeof value === 'boolean' || typeof value === 'number') {
-            $domcrud.set(property, value, null, null, _data)    
+            $dom.set(property, value, null, null, _data)    
         }
         else {
             console.error('invalid value', value)
@@ -117,7 +117,7 @@ var _execObject = function(property, value) {
 var _execArray = function(property, value) {
     newValue = _unstringExec(value[1], _data.opts)
     newOperator = value[0]
-    $domcrud.set(property, newValue, newOperator, null, _data)
+    $dom.set(property, newValue, newOperator, null, _data)
 }
 
 /**
@@ -171,20 +171,19 @@ var _execRule = function(property, value) {
 var _execOnRule = function (selector, value, eventType, eventConds){
     
     // there are conditions, loop and add listeners
+    var passConds = []
     if (eventConds.length) {
-        ///console.log('add _execOnRule '+eventType+' for multiple listeners: '+selector)
-
-        ///for( i=0; i < eventConds.length; i++ ) {
-            ///eventType = eventConds[i].eventType || eventConds[i].rgt
-            _addListeners(eventType, eventConds, selector, value)
-        ///}
+        passConds = eventConds
     }
 
-    // otherwise add a single listener
-    else {
-        ///console.log('add _execOnRule '+eventType+' for single listener: '+selector)
-        _addListeners(eventType, [], selector, value)
+    // loop each eventType (it is possible to pass comma-delimited eventType)
+    var pieces = eventType.split(',');
+
+    for (var eventTypePiece of pieces) {
+        if (eventTypePiece) _addListeners(eventTypePiece, passConds, selector, value)
     }
+
+
 }
 
 
@@ -212,7 +211,6 @@ var _execElseRule = function (value) {
     _data.cond.result = null
 }
 
-
 /**
  *
  */
@@ -221,6 +219,8 @@ var _addListeners = function (eventType, eventConds, selector, value) {
     ///var els = document.querySelectorAll( selector )
     var delegateSel = ($delegate)? $delegate : 'body' 
     var delegate = document.querySelectorAll( delegateSel )[0]      
+
+console.log({addListeners:[eventType, eventConds, selector, value]});
 
     ///for (var i=0; i < els.length; i++ ) {
         newExec = {}
@@ -360,13 +360,13 @@ var _unstringExec = function(value, opts) {
             _data.src.attr = values[1].trim()
             _data.src.sel = values[0].trim()
 
-            value = $domcrud.get(_data.src.attr, _data.src.sel) 
+            value = $dom.get(_data.src.attr, _data.src.sel) 
         }
         // c) empty or attribute from same selector:         data-foo
         else {
             if (value.length) {
                 opts.el = opts.e.target
-                value = $domcrud.get(value, _data.selectors[0], opts)  // May 25th  
+                value = $dom.get(value, _data.selectors[0], opts)  // May 25th  
             }
             else {
                 value = ''

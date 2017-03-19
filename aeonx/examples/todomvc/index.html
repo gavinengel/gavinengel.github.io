@@ -47,8 +47,8 @@
 
 	</body>
 <foot>
-	<script src="js/Handler.js"></script>
-	<script src="https://rawgit.com/gavinengel/aeonx/master/js/aeonx.js" type="text/javascript"></script> 
+	<script src="js/handler.js"></script>
+	<script src="https://rawgit.com/gavinengel/aeonx/master/js/aeonx.js" type="text/javascript"></script>
 	<script src="https://rawgit.com/gavinengel/rehash/master/rehash.js" type="text/javascript"></script>
 
 	<script type="text/javascript">
@@ -59,12 +59,12 @@
 			for (var i = 0; i < todos.length; i++) {
 				if (todos[i] && todos[i].id) {
 					var completed = todos[i].completed || false;
-					window.Handler.addTodo(null, todos[i].msg, todos[i].id, completed, true);
+					window.handler.addTodo(null, todos[i].msg, todos[i].id, completed, true);
 				}
 			}
 		}
 
-		//aeonx.debug = true 
+		//aeonx.debug = true
 		aeonx.fetch('todomvc.aeon', aeonx.run);
 	</script>
 </foot>

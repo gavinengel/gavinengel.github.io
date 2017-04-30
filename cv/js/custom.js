@@ -155,6 +155,7 @@ $(document).ready(function() {
     }
   })
 */
+/*
   $.ajax({
     url: "http://quotely.gavinengel.com?svc=4",
     jsonp: "callback",
@@ -166,19 +167,21 @@ $(document).ready(function() {
     success: function( response ) {
       console.log('here is quotely response:');
       console.log(response)
-      /*
-      var source = response.query.results.json.source 
-      var full = response.query.results.json.quote
-      full = full.replace("\n\n-", '--') // some authors have a single dash in front. sigh.
-      var pieces = full.split('--')
-      var quote = pieces[0]
-      var author = (pieces[1])? pieces[1] : 'anonymous'
-      */
+      
+      //var source = response.query.results.json.source 
+      //var full = response.query.results.json.quote
+      //full = full.replace("\n\n-", '--') // some authors have a single dash in front. sigh.
+      //var pieces = full.split('--')
+      //var quote = pieces[0]
+      //var author = (pieces[1])? pieces[1] : 'anonymous'
+      
       $('.blockquote-reverse span').html(response.result.quote)
       $('.blockquote-reverse footer').html(response.result.author + '<!-- source: ' + response.result.source + '-->')
       
     }
   })
+*/
+
 
   $("a.scroll[href^='#']").on('click', function(e) {
     e.preventDefault()
